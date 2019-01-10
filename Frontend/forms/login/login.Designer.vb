@@ -26,30 +26,32 @@ Partial Class login
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPasswd = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.lbAdvertencia = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label1.Location = New System.Drawing.Point(262, 124)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(103, 29)
+        Me.Label1.Size = New System.Drawing.Size(103, 32)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Usuario"
         '
         'txtUsuario
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuario.Location = New System.Drawing.Point(162, 156)
+        Me.txtUsuario.Location = New System.Drawing.Point(149, 156)
         Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(308, 34)
+        Me.txtUsuario.Size = New System.Drawing.Size(321, 34)
         Me.txtUsuario.TabIndex = 1
         Me.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -57,11 +59,11 @@ Partial Class login
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label2.Location = New System.Drawing.Point(247, 209)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(146, 29)
+        Me.Label2.Size = New System.Drawing.Size(144, 32)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Contraseña"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -69,31 +71,19 @@ Partial Class login
         'txtPasswd
         '
         Me.txtPasswd.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPasswd.Location = New System.Drawing.Point(162, 241)
+        Me.txtPasswd.Location = New System.Drawing.Point(149, 241)
         Me.txtPasswd.Name = "txtPasswd"
         Me.txtPasswd.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.txtPasswd.Size = New System.Drawing.Size(308, 34)
+        Me.txtPasswd.Size = New System.Drawing.Size(321, 34)
         Me.txtPasswd.TabIndex = 2
         Me.txtPasswd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(200, 31)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(232, 32)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Inicio de Sesión"
-        '
         'btnLogin
         '
-        Me.btnLogin.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnLogin.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogin.BackColor = System.Drawing.Color.SeaGreen
+        Me.btnLogin.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogin.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnLogin.Location = New System.Drawing.Point(162, 327)
+        Me.btnLogin.Location = New System.Drawing.Point(149, 358)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(140, 42)
         Me.btnLogin.TabIndex = 3
@@ -102,10 +92,10 @@ Partial Class login
         '
         'btnSalir
         '
-        Me.btnSalir.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.btnSalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSalir.BackColor = System.Drawing.Color.SeaGreen
+        Me.btnSalir.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSalir.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnSalir.Location = New System.Drawing.Point(330, 327)
+        Me.btnSalir.Location = New System.Drawing.Point(330, 358)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(140, 42)
         Me.btnSalir.TabIndex = 4
@@ -116,22 +106,49 @@ Partial Class login
         '
         Me.lbAdvertencia.AutoSize = True
         Me.lbAdvertencia.BackColor = System.Drawing.Color.Transparent
-        Me.lbAdvertencia.Location = New System.Drawing.Point(252, 292)
+        Me.lbAdvertencia.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAdvertencia.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.lbAdvertencia.Location = New System.Drawing.Point(145, 288)
         Me.lbAdvertencia.Name = "lbAdvertencia"
-        Me.lbAdvertencia.Size = New System.Drawing.Size(0, 17)
+        Me.lbAdvertencia.Size = New System.Drawing.Size(41, 28)
         Me.lbAdvertencia.TabIndex = 4
+        Me.lbAdvertencia.Text = "AD"
+        Me.lbAdvertencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lbAdvertencia.Visible = False
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.SeaGreen
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(644, 77)
+        Me.Panel1.TabIndex = 5
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(184, 19)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(270, 46)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Inicio de Sesión"
         '
         'login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Frontend.My.Resources.Resources.fondo
+        Me.BackgroundImage = Global.Frontend.My.Resources.Resources.fondo_bmp
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(644, 436)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.lbAdvertencia)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnLogin)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtPasswd)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtUsuario)
@@ -140,6 +157,8 @@ Partial Class login
         Me.Name = "login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -149,8 +168,9 @@ Partial Class login
     Friend WithEvents txtUsuario As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtPasswd As TextBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents btnLogin As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents lbAdvertencia As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label3 As Label
 End Class

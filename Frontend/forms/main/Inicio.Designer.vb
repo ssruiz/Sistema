@@ -24,13 +24,6 @@ Partial Class Inicio
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MantenimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CobrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProducciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExpediciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProcesosEspecialesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProveedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -43,6 +36,13 @@ Partial Class Inicio
         Me.TipoProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoPlanchaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CobrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProducciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExpediciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProcesosEspecialesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -62,48 +62,6 @@ Partial Class Inicio
         Me.MantenimientoToolStripMenuItem.Name = "MantenimientoToolStripMenuItem"
         Me.MantenimientoToolStripMenuItem.Size = New System.Drawing.Size(122, 24)
         Me.MantenimientoToolStripMenuItem.Text = "Mantenimiento"
-        '
-        'VentasToolStripMenuItem
-        '
-        Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
-        Me.VentasToolStripMenuItem.Text = "Ventas"
-        '
-        'CobrosToolStripMenuItem
-        '
-        Me.CobrosToolStripMenuItem.Name = "CobrosToolStripMenuItem"
-        Me.CobrosToolStripMenuItem.Size = New System.Drawing.Size(68, 24)
-        Me.CobrosToolStripMenuItem.Text = "Cobros"
-        '
-        'StockToolStripMenuItem
-        '
-        Me.StockToolStripMenuItem.Name = "StockToolStripMenuItem"
-        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
-        Me.StockToolStripMenuItem.Text = "Stock"
-        '
-        'ProducciónToolStripMenuItem
-        '
-        Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
-        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(95, 24)
-        Me.ProducciónToolStripMenuItem.Text = "Producción"
-        '
-        'ExpediciónToolStripMenuItem
-        '
-        Me.ExpediciónToolStripMenuItem.Name = "ExpediciónToolStripMenuItem"
-        Me.ExpediciónToolStripMenuItem.Size = New System.Drawing.Size(94, 24)
-        Me.ExpediciónToolStripMenuItem.Text = "Expedición"
-        '
-        'ProcesosEspecialesToolStripMenuItem
-        '
-        Me.ProcesosEspecialesToolStripMenuItem.Name = "ProcesosEspecialesToolStripMenuItem"
-        Me.ProcesosEspecialesToolStripMenuItem.Size = New System.Drawing.Size(151, 24)
-        Me.ProcesosEspecialesToolStripMenuItem.Text = "Procesos Especiales"
-        '
-        'InformesToolStripMenuItem
-        '
-        Me.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem"
-        Me.InformesToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
-        Me.InformesToolStripMenuItem.Text = "Informes"
         '
         'ProductosToolStripMenuItem
         '
@@ -177,14 +135,57 @@ Partial Class Inicio
         Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
+        'VentasToolStripMenuItem
+        '
+        Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
+        Me.VentasToolStripMenuItem.Text = "Ventas"
+        '
+        'CobrosToolStripMenuItem
+        '
+        Me.CobrosToolStripMenuItem.Name = "CobrosToolStripMenuItem"
+        Me.CobrosToolStripMenuItem.Size = New System.Drawing.Size(68, 24)
+        Me.CobrosToolStripMenuItem.Text = "Cobros"
+        '
+        'StockToolStripMenuItem
+        '
+        Me.StockToolStripMenuItem.Name = "StockToolStripMenuItem"
+        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
+        Me.StockToolStripMenuItem.Text = "Stock"
+        '
+        'ProducciónToolStripMenuItem
+        '
+        Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
+        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(95, 24)
+        Me.ProducciónToolStripMenuItem.Text = "Producción"
+        '
+        'ExpediciónToolStripMenuItem
+        '
+        Me.ExpediciónToolStripMenuItem.Name = "ExpediciónToolStripMenuItem"
+        Me.ExpediciónToolStripMenuItem.Size = New System.Drawing.Size(94, 24)
+        Me.ExpediciónToolStripMenuItem.Text = "Expedición"
+        '
+        'ProcesosEspecialesToolStripMenuItem
+        '
+        Me.ProcesosEspecialesToolStripMenuItem.Name = "ProcesosEspecialesToolStripMenuItem"
+        Me.ProcesosEspecialesToolStripMenuItem.Size = New System.Drawing.Size(151, 24)
+        Me.ProcesosEspecialesToolStripMenuItem.Text = "Procesos Especiales"
+        '
+        'InformesToolStripMenuItem
+        '
+        Me.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem"
+        Me.InformesToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
+        Me.InformesToolStripMenuItem.Text = "Informes"
+        '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Frontend.My.Resources.Resources.fondo
+        Me.BackgroundImage = Global.Frontend.My.Resources.Resources.fondo_bmp
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(935, 531)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Inicio"
         Me.Text = "Inicio"

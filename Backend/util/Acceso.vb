@@ -16,10 +16,10 @@ Public Class Acceso
                 Case 1042
                     Throw New DAOException("No se puede acceder al servidor." & vbCrLf & "Contacte al administrator.")
                 Case 1045
-                    Throw New DAOException("Usuario o contraseña incorrectos." & vbCrLf & "intente de nuevo.")
+                    Throw New DAOException("Usuario o contraseña incorrectos." & vbCrLf & "Intente de nuevo.")
                 Case 0
 
-                    Throw New DAOException("Usuario o contraseña incorrectos." & vbCrLf & "intente de nuevo.")
+                    Throw New DAOException("Usuario o contraseña incorrectos." & vbCrLf & "Intente de nuevo.")
             End Select
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
