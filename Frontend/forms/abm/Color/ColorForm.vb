@@ -5,11 +5,11 @@ Public Class ColorForm
         Try
             Me.SuspendLayout()
             cargarColores()
-            Me.Visible = True
+
 
             Me.ResumeLayout()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
 

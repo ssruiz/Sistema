@@ -77,8 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\ColorDAO.vb" />
+    <Compile Include="DAO\ProductoDAO.vb" />
     <Compile Include="DAO\TipoProdDAO.vb" />
     <Compile Include="Models\ColorM.vb" />
+    <Compile Include="Models\Producto.vb" />
     <Compile Include="Models\TipoProducto.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

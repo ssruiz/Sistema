@@ -88,6 +88,12 @@
     <Compile Include="forms\abm\Color\ColorForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\abm\Producto\ProductoForm.Designer.vb">
+      <DependentUpon>ProductoForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\abm\Producto\ProductoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\abm\TipoProducto\TipoProd.Designer.vb">
       <DependentUpon>TipoProd.vb</DependentUpon>
     </Compile>
@@ -101,6 +107,7 @@
       <DependentUpon>login.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\main\ColoresMenu.vb" />
     <Compile Include="forms\main\Inicio.Designer.vb">
       <DependentUpon>Inicio.vb</DependentUpon>
     </Compile>
@@ -126,6 +133,9 @@
   <ItemGroup>
     <EmbeddedResource Include="forms\abm\Color\ColorForm.resx">
       <DependentUpon>ColorForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\abm\Producto\ProductoForm.resx">
+      <DependentUpon>ProductoForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\abm\TipoProducto\TipoProd.resx">
       <DependentUpon>TipoProd.vb</DependentUpon>

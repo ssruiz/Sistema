@@ -60,7 +60,7 @@ Public Class TipoProd
 
                 End If
             Else
-                MsgBox("Seleccione un color a eliminar", MsgBoxStyle.Critical, "Seleccione color")
+                MsgBox("Seleccione un tipo a eliminar", MsgBoxStyle.Critical, "Seleccione color")
 
             End If
         Catch ex As Exception

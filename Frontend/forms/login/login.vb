@@ -40,7 +40,7 @@ Public Class login
         'lbbienvenida.BackColor = Color.FromArgb(80, Color.Black)
 
         'Dim image As New Bitmap(My.Resources.Panther1)
-        Me.BackgroundImage = My.Resources.fondo_bmp
+        'Me.BackgroundImage = My.Resources.fondo_bmp
         Me.BackgroundImageLayout = ImageLayout.Center
         Me.ResumeLayout()
     End Sub

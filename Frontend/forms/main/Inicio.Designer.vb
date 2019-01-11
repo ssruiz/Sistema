@@ -23,169 +23,223 @@ Partial Class Inicio
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.MantenimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.manteTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProveedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GrupoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BancosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TipoPagoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoClienteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ColoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EspesoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipoPlanchaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CobrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProducciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExpediciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProcesosEspecialesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VentasTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CobrosTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProducciónTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExpediciónTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProcesosTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InformesTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MantenimientoToolStripMenuItem, Me.VentasToolStripMenuItem, Me.CobrosToolStripMenuItem, Me.StockToolStripMenuItem, Me.ProducciónToolStripMenuItem, Me.ExpediciónToolStripMenuItem, Me.ProcesosEspecialesToolStripMenuItem, Me.InformesToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.manteTS, Me.VentasTS, Me.CobrosTS, Me.StockTS, Me.ProducciónTS, Me.ExpediciónTS, Me.ProcesosTS, Me.InformesTS})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(935, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1033, 43)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'MantenimientoToolStripMenuItem
+        'manteTS
         '
-        Me.MantenimientoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductosToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ProveedorToolStripMenuItem, Me.GrupoToolStripMenuItem, Me.BancosToolStripMenuItem, Me.TipoPagoToolStripMenuItem, Me.TipoClienteToolStripMenuItem, Me.ColoresToolStripMenuItem, Me.EspesoresToolStripMenuItem, Me.TipoProductoToolStripMenuItem, Me.TipoPlanchaToolStripMenuItem, Me.UsuariosToolStripMenuItem})
-        Me.MantenimientoToolStripMenuItem.Name = "MantenimientoToolStripMenuItem"
-        Me.MantenimientoToolStripMenuItem.Size = New System.Drawing.Size(122, 24)
-        Me.MantenimientoToolStripMenuItem.Text = "Mantenimiento"
+        Me.manteTS.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.manteTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductosToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ProveedorToolStripMenuItem, Me.GrupoToolStripMenuItem, Me.BancosToolStripMenuItem, Me.ToolStripMenuItem6, Me.TipoClienteToolStripMenuItem, Me.ColoresToolStripMenuItem, Me.EspesoresToolStripMenuItem, Me.TipoProductoToolStripMenuItem, Me.TipoPlanchaToolStripMenuItem, Me.UsuariosToolStripMenuItem})
+        Me.manteTS.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.manteTS.Name = "manteTS"
+        Me.manteTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.manteTS.Size = New System.Drawing.Size(159, 39)
+        Me.manteTS.Text = "Mantenimiento"
         '
         'ProductosToolStripMenuItem
         '
+        Me.ProductosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.ProductosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.ProductosToolStripMenuItem.Name = "ProductosToolStripMenuItem"
-        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ProductosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.ProductosToolStripMenuItem.Text = "Productos"
         '
         'ClientesToolStripMenuItem
         '
+        Me.ClientesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.ClientesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ClientesToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'ProveedorToolStripMenuItem
         '
+        Me.ProveedorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.ProveedorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.ProveedorToolStripMenuItem.Name = "ProveedorToolStripMenuItem"
-        Me.ProveedorToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ProveedorToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.ProveedorToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.ProveedorToolStripMenuItem.Text = "Proveedor"
         '
         'GrupoToolStripMenuItem
         '
+        Me.GrupoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.GrupoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.GrupoToolStripMenuItem.Name = "GrupoToolStripMenuItem"
-        Me.GrupoToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.GrupoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.GrupoToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.GrupoToolStripMenuItem.Text = "Grupo"
         '
         'BancosToolStripMenuItem
         '
+        Me.BancosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.BancosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.BancosToolStripMenuItem.Name = "BancosToolStripMenuItem"
-        Me.BancosToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.BancosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.BancosToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.BancosToolStripMenuItem.Text = "Bancos"
         '
-        'TipoPagoToolStripMenuItem
+        'ToolStripMenuItem6
         '
-        Me.TipoPagoToolStripMenuItem.Name = "TipoPagoToolStripMenuItem"
-        Me.TipoPagoToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.TipoPagoToolStripMenuItem.Text = "Tipo Pago"
+        Me.ToolStripMenuItem6.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.ToolStripMenuItem6.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        Me.ToolStripMenuItem6.Padding = New System.Windows.Forms.Padding(3)
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(222, 34)
+        Me.ToolStripMenuItem6.Text = "Tipo Pago"
         '
         'TipoClienteToolStripMenuItem
         '
+        Me.TipoClienteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.TipoClienteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.TipoClienteToolStripMenuItem.Name = "TipoClienteToolStripMenuItem"
-        Me.TipoClienteToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.TipoClienteToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.TipoClienteToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.TipoClienteToolStripMenuItem.Text = "Tipo Cliente"
         '
         'ColoresToolStripMenuItem
         '
+        Me.ColoresToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.ColoresToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ColoresToolStripMenuItem.Name = "ColoresToolStripMenuItem"
-        Me.ColoresToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ColoresToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.ColoresToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.ColoresToolStripMenuItem.Text = "Colores"
         '
         'EspesoresToolStripMenuItem
         '
+        Me.EspesoresToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.EspesoresToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.EspesoresToolStripMenuItem.Name = "EspesoresToolStripMenuItem"
-        Me.EspesoresToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.EspesoresToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.EspesoresToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.EspesoresToolStripMenuItem.Text = "Espesores"
         '
         'TipoProductoToolStripMenuItem
         '
+        Me.TipoProductoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.TipoProductoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.TipoProductoToolStripMenuItem.Name = "TipoProductoToolStripMenuItem"
-        Me.TipoProductoToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.TipoProductoToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.TipoProductoToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.TipoProductoToolStripMenuItem.Text = "Tipo Producto"
         '
         'TipoPlanchaToolStripMenuItem
         '
+        Me.TipoPlanchaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.TipoPlanchaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.TipoPlanchaToolStripMenuItem.Name = "TipoPlanchaToolStripMenuItem"
-        Me.TipoPlanchaToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.TipoPlanchaToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.TipoPlanchaToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.TipoPlanchaToolStripMenuItem.Text = "Tipo Plancha"
         '
         'UsuariosToolStripMenuItem
         '
+        Me.UsuariosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.UsuariosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.UsuariosToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(222, 34)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
-        'VentasToolStripMenuItem
+        'VentasTS
         '
-        Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
-        Me.VentasToolStripMenuItem.Text = "Ventas"
+        Me.VentasTS.ForeColor = System.Drawing.Color.White
+        Me.VentasTS.Name = "VentasTS"
+        Me.VentasTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.VentasTS.Size = New System.Drawing.Size(83, 39)
+        Me.VentasTS.Text = "Ventas"
         '
-        'CobrosToolStripMenuItem
+        'CobrosTS
         '
-        Me.CobrosToolStripMenuItem.Name = "CobrosToolStripMenuItem"
-        Me.CobrosToolStripMenuItem.Size = New System.Drawing.Size(68, 24)
-        Me.CobrosToolStripMenuItem.Text = "Cobros"
+        Me.CobrosTS.ForeColor = System.Drawing.Color.White
+        Me.CobrosTS.Name = "CobrosTS"
+        Me.CobrosTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.CobrosTS.Size = New System.Drawing.Size(86, 39)
+        Me.CobrosTS.Text = "Cobros"
         '
-        'StockToolStripMenuItem
+        'StockTS
         '
-        Me.StockToolStripMenuItem.Name = "StockToolStripMenuItem"
-        Me.StockToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
-        Me.StockToolStripMenuItem.Text = "Stock"
+        Me.StockTS.ForeColor = System.Drawing.Color.White
+        Me.StockTS.Name = "StockTS"
+        Me.StockTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.StockTS.Size = New System.Drawing.Size(72, 39)
+        Me.StockTS.Text = "Stock"
         '
-        'ProducciónToolStripMenuItem
+        'ProducciónTS
         '
-        Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
-        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(95, 24)
-        Me.ProducciónToolStripMenuItem.Text = "Producción"
+        Me.ProducciónTS.ForeColor = System.Drawing.Color.White
+        Me.ProducciónTS.Name = "ProducciónTS"
+        Me.ProducciónTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.ProducciónTS.Size = New System.Drawing.Size(122, 39)
+        Me.ProducciónTS.Text = "Producción"
         '
-        'ExpediciónToolStripMenuItem
+        'ExpediciónTS
         '
-        Me.ExpediciónToolStripMenuItem.Name = "ExpediciónToolStripMenuItem"
-        Me.ExpediciónToolStripMenuItem.Size = New System.Drawing.Size(94, 24)
-        Me.ExpediciónToolStripMenuItem.Text = "Expedición"
+        Me.ExpediciónTS.ForeColor = System.Drawing.Color.White
+        Me.ExpediciónTS.Name = "ExpediciónTS"
+        Me.ExpediciónTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.ExpediciónTS.Size = New System.Drawing.Size(119, 39)
+        Me.ExpediciónTS.Text = "Expedición"
         '
-        'ProcesosEspecialesToolStripMenuItem
+        'ProcesosTS
         '
-        Me.ProcesosEspecialesToolStripMenuItem.Name = "ProcesosEspecialesToolStripMenuItem"
-        Me.ProcesosEspecialesToolStripMenuItem.Size = New System.Drawing.Size(151, 24)
-        Me.ProcesosEspecialesToolStripMenuItem.Text = "Procesos Especiales"
+        Me.ProcesosTS.ForeColor = System.Drawing.Color.White
+        Me.ProcesosTS.Name = "ProcesosTS"
+        Me.ProcesosTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.ProcesosTS.Size = New System.Drawing.Size(192, 39)
+        Me.ProcesosTS.Text = "Procesos Especiales"
         '
-        'InformesToolStripMenuItem
+        'InformesTS
         '
-        Me.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem"
-        Me.InformesToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
-        Me.InformesToolStripMenuItem.Text = "Informes"
+        Me.InformesTS.ForeColor = System.Drawing.Color.White
+        Me.InformesTS.Name = "InformesTS"
+        Me.InformesTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.InformesTS.Size = New System.Drawing.Size(103, 39)
+        Me.InformesTS.Text = "Informes"
         '
         'Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Frontend.My.Resources.Resources.fondo_bmp
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(935, 531)
+        Me.ClientSize = New System.Drawing.Size(1033, 619)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Inicio"
         Me.Text = "Inicio"
@@ -198,24 +252,24 @@ Partial Class Inicio
     End Sub
 
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents MantenimientoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents manteTS As ToolStripMenuItem
     Friend WithEvents ProductosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProveedorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GrupoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BancosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TipoPagoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoClienteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ColoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EspesoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoProductoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipoPlanchaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CobrosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents StockToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProducciónToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExpediciónToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProcesosEspecialesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents InformesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents VentasTS As ToolStripMenuItem
+    Friend WithEvents CobrosTS As ToolStripMenuItem
+    Friend WithEvents StockTS As ToolStripMenuItem
+    Friend WithEvents ProducciónTS As ToolStripMenuItem
+    Friend WithEvents ExpediciónTS As ToolStripMenuItem
+    Friend WithEvents ProcesosTS As ToolStripMenuItem
+    Friend WithEvents InformesTS As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem6 As ToolStripMenuItem
 End Class
