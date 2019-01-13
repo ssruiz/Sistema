@@ -1,14 +1,14 @@
 ﻿Imports Backend
 
-Public Class TipoProd
+Public Class TipoPlanchaForm
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Try
             Dim daoc As New TipoProdDAO
             If (controlarCampos()) Then
-                Dim color As New TipoProducto
-                color.nombre = txtNombre.Text.ToLower
-                daoc.agregar(color)
-                MsgBox("Tipo agregado correctamente", MsgBoxStyle.Information, "Éxito")
+                Dim tipo As New TipoPlancha
+                tipo.nombre = txtNombre.Text.ToLower
+                daoc.agregarPlancha(tipo)
+                MsgBox("Tipo de plancha agregado correctamente", MsgBoxStyle.Information, "Éxito")
                 cargarTipos()
             Else
                 MsgBox("Ingrese el nombre para el tipo", MsgBoxStyle.Critical, "Campos")
@@ -19,23 +19,13 @@ Public Class TipoProd
         End Try
     End Sub
 
-    Private Function controlarCampos() As Boolean
-        If txtNombre.Text.Length > 0 Then
-            Return True
-        End If
-        Return False
-    End Function
-
-    Private Sub TipoProd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.SuspendLayout()
+    Private Sub TipoPlanchaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarTipos()
-        Me.ResumeLayout()
-
     End Sub
 
     Private Sub cargarTipos()
         Dim daoC As New TipoProdDAO
-        Dim ds = daoC.getTipos()
+        Dim ds = daoC.getTiposPlancha()
         dgvTipos.DataSource = ""
         dgvTipos.DataSource = ds.Tables("tabla")
         'dgvTipos.ColumnHeadersDefaultCellStyle.BackColor = Color.Aquamarine
@@ -44,6 +34,13 @@ Public Class TipoProd
         dgvTipos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         dgvTipos.ClearSelection()
     End Sub
+
+    Private Function controlarCampos() As Boolean
+        If txtNombre.Text.Length > 0 Then
+            Return True
+        End If
+        Return False
+    End Function
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Try
@@ -55,8 +52,8 @@ Public Class TipoProd
 
                 If result = DialogResult.Yes Then
                     Dim daoC As New TipoProdDAO
-                    daoC.eliminar(codigo)
-                    MsgBox("Tipo eliminado correctamente", MsgBoxStyle.Information, "Éxito")
+                    daoC.eliminarPlancha(codigo)
+                    MsgBox("Tipo de plancha eliminado correctamente", MsgBoxStyle.Information, "Éxito")
                     cargarTipos()
 
                 End If

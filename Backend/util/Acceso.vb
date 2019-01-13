@@ -1,15 +1,32 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Acceso
-    Public Sub login(ByVal user As String, ByVal passwd As String)
+    Public Function login(ByVal user As String, ByVal passwd As String) As Boolean
 
         Try
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(user, passwd))
             con.Open()
-
+            Dim query = "select * from usuario where usuNombre = @user"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@user", user)
+            Dim reader = cmd.ExecuteReader()
+            Dim estado As Char
+            If reader.Read Then
+                Sesion.Usuario = user
+                Sesion.Password = passwd
+                Sesion.Codigo = SafeGetString(reader, 0)
+                Sesion.Nivel = SafeGetInt(reader, 2)
+                estado = safeGetChar(reader, 4)
+            Else
+                Sesion.Usuario = user
+                Sesion.Password = passwd
+            End If
             con.Close()
-            Sesion.Usuario = user
-            Sesion.Password = passwd
+            If estado = "I" Then
+                Return False
+            Else
+                Return True
+            End If
 
         Catch ex As MySql.Data.MySqlClient.MySqlException
             Select Case ex.Number
@@ -21,10 +38,9 @@ Public Class Acceso
 
                     Throw New DAOException("Usuario o contraseña incorrectos." & vbCrLf & "Intente de nuevo.")
             End Select
-        Catch ex As Exception
-            Throw New DAOException(ex.ToString)
+
         End Try
-    End Sub
+    End Function
 
     Public Function seguridad() As Integer
         Dim res = 0

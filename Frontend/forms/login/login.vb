@@ -12,14 +12,24 @@ Public Class login
     Private Sub conexion()
         Try
             Dim conectar As New Acceso
-            conectar.login(Me.txtUsuario.Text, Me.txtPasswd.Text)
-            Me.Visible = False
-            Dim mdi As New Inicio
-            mdi.Show()
+            If (conectar.login(Me.txtUsuario.Text, Me.txtPasswd.Text)) Then
+                Me.Visible = False
+                Dim mdi As New Inicio
+                mdi.Show()
+            Else
+                Me.lbAdvertencia.Visible = True
+
+                Me.lbAdvertencia.Text = "Su usuario actualmente se encuentra desactivado." & vbCrLf & "Contacte al administrator."
+                lbAdvertencia.Left = (Me.ClientSize.Width / 2) - (lbAdvertencia.Width / 2)
+                Me.txtUsuario.Text = ""
+                Me.txtPasswd.Text = ""
+                Me.txtUsuario.Focus()
+            End If
         Catch ex As Exception
 
             Me.lbAdvertencia.Visible = True
             Me.lbAdvertencia.Text = ex.Message
+            lbAdvertencia.Left = (Me.ClientSize.Width / 2) - (lbAdvertencia.Width / 2)
             Me.txtUsuario.Text = ""
             Me.txtPasswd.Text = ""
             Me.txtUsuario.Focus()

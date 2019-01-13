@@ -21,6 +21,13 @@ Module Funciones
         Return String.Empty
     End Function
 
+    Public Function safeGetChar(ByRef reader As MySqlDataReader, ByVal Index As Integer) As Char
+        If Not reader.IsDBNull(Index) Then
+            Return reader.GetChar(Index)
+        End If
+        Return Nothing
+    End Function
+
     Public Function SafeGetInt(ByRef reader As MySqlDataReader, ByVal Index As Integer) As Integer
         If Not reader.IsDBNull(Index) Then
             Return reader.GetInt32(Index)

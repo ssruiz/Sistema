@@ -88,16 +88,34 @@
     <Compile Include="forms\abm\Color\ColorForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\abm\Espesores\EspesoresForm.Designer.vb">
+      <DependentUpon>EspesoresForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\abm\Espesores\EspesoresForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\abm\Producto\ProductoForm.Designer.vb">
       <DependentUpon>ProductoForm.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\abm\Producto\ProductoForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\abm\TipoPlancha\TipoPlanchaForm.Designer.vb">
+      <DependentUpon>TipoPlanchaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\abm\TipoPlancha\TipoPlanchaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\abm\TipoProducto\TipoProd.Designer.vb">
       <DependentUpon>TipoProd.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\abm\TipoProducto\TipoProd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\abm\Usuario\UsuarioForm.Designer.vb">
+      <DependentUpon>UsuarioForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\abm\Usuario\UsuarioForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\login\login.vb">
@@ -114,6 +132,7 @@
     <Compile Include="forms\main\Inicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Funciones\Funciones.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -134,11 +153,20 @@
     <EmbeddedResource Include="forms\abm\Color\ColorForm.resx">
       <DependentUpon>ColorForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\abm\Espesores\EspesoresForm.resx">
+      <DependentUpon>EspesoresForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\abm\Producto\ProductoForm.resx">
       <DependentUpon>ProductoForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\abm\TipoPlancha\TipoPlanchaForm.resx">
+      <DependentUpon>TipoPlanchaForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\abm\TipoProducto\TipoProd.resx">
       <DependentUpon>TipoProd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\abm\Usuario\UsuarioForm.resx">
+      <DependentUpon>UsuarioForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\login\login.resx">
       <DependentUpon>login.vb</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class ColorDAO
-    Public Function getColores() As DataSet
+Public Class EspesorDAO
+    Public Function getEspesores() As DataSet
         Dim clientes As New Collection
         Dim ds As New DataSet
         Dim da As New MySqlDataAdapter
@@ -11,7 +11,7 @@ Public Class ColorDAO
             con.Open()
 
 
-            Dim mysql = "SELECT * from vlistadocolores"
+            Dim mysql = "SELECT * from vlistadoespesores"
 
             Dim cmd As New MySqlCommand(mysql, con)
             Dim adp As New MySqlDataAdapter(mysql, con)
@@ -28,15 +28,15 @@ Public Class ColorDAO
 
 
 
-    Public Sub agregar(ByVal modelo As ColorM)
+    Public Sub agregar(ByVal modelo As Espesor)
         Try
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
 
-            Dim query As String = "INSERT INTO `color` (`color`) VALUES (@color);"
+            Dim query As String = "INSERT INTO `espesor` (`espesor`) VALUES (@espesor);"
             Dim cmd As New MySqlCommand(query, con)
 
-            cmd.Parameters.AddWithValue("@color", modelo.nombre)
+            cmd.Parameters.AddWithValue("@espesor", modelo.espesor)
 
 
             cmd.ExecuteNonQuery()
@@ -46,16 +46,16 @@ Public Class ColorDAO
         End Try
     End Sub
 
-    Public Sub update(ByVal modelo As ColorM)
+    Public Sub update(ByVal modelo As Espesor)
         Try
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
 
-            Dim query As String = "UPDATE `color` SET `color` = @color WHERE `colorCod` = @id;"
+            Dim query As String = "UPDATE `espesor` SET `espesor` = @espesor WHERE `espesorCod` = @id;"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@id", modelo.id)
-            cmd.Parameters.AddWithValue("@color", modelo.nombre)
+            cmd.Parameters.AddWithValue("@espesor", modelo.espesor)
 
 
             cmd.ExecuteNonQuery()
@@ -70,7 +70,7 @@ Public Class ColorDAO
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
 
-            Dim query As String = "DELETE FROM `color` WHERE `colorCod` = @id;"
+            Dim query As String = "DELETE FROM `espesor` WHERE `espesorCod` = @id;"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@id", id)
@@ -83,19 +83,19 @@ Public Class ColorDAO
         End Try
     End Sub
 
-    Public Function getColor(ByVal id As String) As ColorM
+    Public Function getEspesor(ByVal id As String) As Espesor
         Try
-            Dim modelo As New ColorM
+            Dim modelo As New Espesor
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim query = "SELECT * FROM `color` where `colorCod` = @codigo;"
+            Dim query = "SELECT * FROM `espesor` where `espesorCod` = @codigo;"
             Dim cmd As New MySqlCommand(query, con)
             cmd.Parameters.AddWithValue("@codigo", id)
             Dim reader = cmd.ExecuteReader()
 
             While reader.Read
                 modelo.id = SafeGetInt(reader, 0)
-                modelo.nombre = SafeGetString(reader, 1)
+                modelo.espesor = SafeGetString(reader, 1)
             End While
 
             reader.Close()

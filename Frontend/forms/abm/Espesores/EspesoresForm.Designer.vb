@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ColorForm
+Partial Class EspesoresForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,16 +22,15 @@ Partial Class ColorForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.dgvColores = New System.Windows.Forms.DataGridView()
+        Me.dgvEspesores = New System.Windows.Forms.DataGridView()
         Me.gbOperaciones = New System.Windows.Forms.GroupBox()
-        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.txtEspesor = New System.Windows.Forms.TextBox()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
@@ -41,94 +40,95 @@ Partial Class ColorForm
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.dgvColores, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvEspesores, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbOperaciones.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.dgvColores)
+        Me.GroupBox1.Controls.Add(Me.dgvEspesores)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.GroupBox1.Location = New System.Drawing.Point(84, 406)
+        Me.GroupBox1.Location = New System.Drawing.Point(99, 399)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(14, 18, 14, 18)
         Me.GroupBox1.Size = New System.Drawing.Size(791, 477)
-        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Colores Guardados"
+        Me.GroupBox1.Text = "Espesores Guardados"
         '
-        'dgvColores
+        'dgvEspesores
         '
-        Me.dgvColores.AllowUserToAddRows = False
-        Me.dgvColores.AllowUserToDeleteRows = False
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvColores.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvColores.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgvColores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvColores.DefaultCellStyle = DataGridViewCellStyle6
-        Me.dgvColores.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvColores.EnableHeadersVisualStyles = False
-        Me.dgvColores.GridColor = System.Drawing.SystemColors.ActiveCaption
-        Me.dgvColores.Location = New System.Drawing.Point(14, 45)
-        Me.dgvColores.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.dgvColores.Name = "dgvColores"
-        Me.dgvColores.ReadOnly = True
-        Me.dgvColores.RowHeadersVisible = False
-        Me.dgvColores.RowTemplate.Height = 24
-        Me.dgvColores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvColores.Size = New System.Drawing.Size(763, 414)
-        Me.dgvColores.TabIndex = 0
+        Me.dgvEspesores.AllowUserToAddRows = False
+        Me.dgvEspesores.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvEspesores.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvEspesores.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvEspesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvEspesores.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvEspesores.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvEspesores.EnableHeadersVisualStyles = False
+        Me.dgvEspesores.GridColor = System.Drawing.SystemColors.ActiveCaption
+        Me.dgvEspesores.Location = New System.Drawing.Point(14, 45)
+        Me.dgvEspesores.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.dgvEspesores.Name = "dgvEspesores"
+        Me.dgvEspesores.ReadOnly = True
+        Me.dgvEspesores.RowHeadersVisible = False
+        Me.dgvEspesores.RowTemplate.Height = 24
+        Me.dgvEspesores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvEspesores.Size = New System.Drawing.Size(763, 414)
+        Me.dgvEspesores.TabIndex = 0
         '
         'gbOperaciones
         '
         Me.gbOperaciones.BackColor = System.Drawing.Color.Transparent
-        Me.gbOperaciones.Controls.Add(Me.txtNombre)
+        Me.gbOperaciones.Controls.Add(Me.txtEspesor)
         Me.gbOperaciones.Controls.Add(Me.lblNombre)
         Me.gbOperaciones.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbOperaciones.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.gbOperaciones.Location = New System.Drawing.Point(84, 97)
+        Me.gbOperaciones.Location = New System.Drawing.Point(99, 94)
         Me.gbOperaciones.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbOperaciones.Name = "gbOperaciones"
         Me.gbOperaciones.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbOperaciones.Size = New System.Drawing.Size(792, 112)
-        Me.gbOperaciones.TabIndex = 1
+        Me.gbOperaciones.TabIndex = 9
         Me.gbOperaciones.TabStop = False
         Me.gbOperaciones.Text = "Datos"
         '
-        'txtNombre
+        'txtEspesor
         '
-        Me.txtNombre.Location = New System.Drawing.Point(147, 52)
-        Me.txtNombre.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(313, 34)
-        Me.txtNombre.TabIndex = 1
+        Me.txtEspesor.Location = New System.Drawing.Point(147, 52)
+        Me.txtEspesor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtEspesor.Name = "txtEspesor"
+        Me.txtEspesor.Size = New System.Drawing.Size(313, 34)
+        Me.txtEspesor.TabIndex = 1
         '
         'lblNombre
         '
@@ -136,9 +136,9 @@ Partial Class ColorForm
         Me.lblNombre.Location = New System.Drawing.Point(38, 55)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(87, 28)
+        Me.lblNombre.Size = New System.Drawing.Size(82, 28)
         Me.lblNombre.TabIndex = 0
-        Me.lblNombre.Text = "Nombre"
+        Me.lblNombre.Text = "Espesor"
         '
         'Label1
         '
@@ -149,20 +149,9 @@ Partial Class ColorForm
         Me.Label1.Location = New System.Drawing.Point(245, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(458, 45)
+        Me.Label1.Size = New System.Drawing.Size(490, 45)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "MANTENIMIENTO COLORES"
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(982, 71)
-        Me.Panel1.TabIndex = 2
+        Me.Label1.Text = "MANTENIMIENTO ESPESORES"
         '
         'TableLayoutPanel1
         '
@@ -171,14 +160,14 @@ Partial Class ColorForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.19028!))
         Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(84, 237)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(99, 228)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(792, 152)
-        Me.TableLayoutPanel1.TabIndex = 7
+        Me.TableLayoutPanel1.TabIndex = 11
         '
         'Panel3
         '
@@ -232,7 +221,7 @@ Partial Class ColorForm
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnModificar.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnModificar.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnModificar.Location = New System.Drawing.Point(468, 12)
+        Me.btnModificar.Location = New System.Drawing.Point(458, 12)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(122, 45)
         Me.btnModificar.TabIndex = 15
@@ -278,51 +267,61 @@ Partial Class ColorForm
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = False
         '
-        'ColorForm
+        'Panel1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 28.0!)
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(982, 71)
+        Me.Panel1.TabIndex = 10
+        '
+        'EspesoresForm
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(43, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(982, 919)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.gbOperaciones)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.gbOperaciones)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
-        Me.Name = "ColorForm"
+        Me.Name = "EspesoresForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "ABM - Colores"
+        Me.Text = "ABM - Espesores"
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.dgvColores, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvEspesores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbOperaciones.ResumeLayout(False)
         Me.gbOperaciones.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents dgvEspesores As DataGridView
     Friend WithEvents gbOperaciones As GroupBox
-    Friend WithEvents txtNombre As TextBox
+    Friend WithEvents txtEspesor As TextBox
     Friend WithEvents lblNombre As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents dgvColores As DataGridView
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents txtBusqueda As TextBox
+    Friend WithEvents Label2 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnModificar As Button
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnNuevo As Button
     Friend WithEvents btnGuardar As Button
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents txtBusqueda As TextBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents Panel1 As Panel
 End Class

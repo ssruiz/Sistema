@@ -20,15 +20,38 @@
 
     End Sub
 
+    'Mantenimiento tipo productos
     Private Sub TipoProductoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoProductoToolStripMenuItem.Click
         Dim tipoP As New TipoProd
         tipoP.ShowDialog()
         tipoP.Dispose()
     End Sub
 
+    ' Manteni miento tipo planchas
+    Private Sub TipoPlanchaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoPlanchaToolStripMenuItem.Click
+        Dim tipoPL As New TipoPlanchaForm
+        tipoPL.ShowDialog()
+        tipoPL.Dispose()
+    End Sub
+
+    ' Mantenimiento Usuarios
+    Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+        Dim usuarioF As New UsuarioForm
+        usuarioF.ShowDialog()
+        usuarioF.Dispose()
+    End Sub
+
+    ' Mantenimiento Espesores
+    Private Sub EspesoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EspesoresToolStripMenuItem.Click
+        Dim espesoresF As New EspesoresForm
+        espesoresF.ShowDialog()
+        espesoresF.Dispose()
+    End Sub
+
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColoresMenu())
+        Me.ResumeLayout()
     End Sub
 
     Private Sub manteTS_DropDownOpened(sender As Object, e As EventArgs) Handles manteTS.DropDownOpened
@@ -40,11 +63,6 @@
     Private Sub manteTS_DropDownClosed(sender As Object, e As EventArgs) Handles manteTS.DropDownClosed
         Dim ob = DirectCast(sender, ToolStripMenuItem)
         ob.ForeColor = Color.White
-    End Sub
-
-    Private Sub manteTS_MouseEnter(sender As Object, e As EventArgs) Handles manteTS.MouseEnter
-        Dim ob = DirectCast(sender, ToolStripMenuItem)
-
     End Sub
 
 
