@@ -36,6 +36,7 @@ Public Class UsuarioForm
         btnGuardar.Enabled = True
         btnModificar.Enabled = False
         nuevo = True
+        dgvUsuarios.ClearSelection()
         btnGuardar.Text = "Guardar"
     End Sub
 
@@ -75,29 +76,30 @@ Public Class UsuarioForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-        'Try
-        '    If dgvUsuarios.SelectedRows.Count > 0 Then
-        '        Dim row = dgvUsuarios.CurrentRow.Index
-        '        Dim codigo = dgvUsuarios.Item(0, row).Value
-        '        Dim result As Integer = MessageBox.Show("¿Eliminar el usuario seleccionado?", "Eliminar", MessageBoxButtons.YesNo)
+        Try
+            If dgvUsuarios.SelectedRows.Count > 0 Then
+                Dim row = dgvUsuarios.CurrentRow.Index
+                Dim codigo = dgvUsuarios.Item(0, row).Value
+                Dim usuario = dgvUsuarios.Item(1, row).Value
+                Dim result As Integer = MessageBox.Show("¿Eliminar el usuario seleccionado?", "Eliminar", MessageBoxButtons.YesNo)
 
 
-        '        If result = DialogResult.Yes Then
-        '            Dim daoU As New UsuarioDAO
-        '            daoC.eliminar(codigo)
-        '            MsgBox("Producto eliminado correctamente", MsgBoxStyle.Information, "Éxito")
-        '            cargarProductos()
-        '            desactivarCampos()
-        '            limpiarCampos()
-        '        End If
-        '    Else
-        '        MsgBox("Seleccione un producto a eliminar de la lista", MsgBoxStyle.Critical, "Seleccione color")
+                If result = DialogResult.Yes Then
+                    Dim daoU As New UsuarioDAO
+                    Dim res = daoU.eliminar(codigo, usuario)
+                    MsgBox(res, MsgBoxStyle.Information, "Notificación")
+                    cargarUsuarios()
+                    desactivarCampos()
+                    limpiarCampos()
+                End If
+            Else
+                MsgBox("Seleccione un usuario a eliminar de la lista", MsgBoxStyle.Critical, "Seleccione color")
 
-        '    End If
-        'Catch ex As Exception
-        '    MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
 
-        'End Try
+        End Try
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click

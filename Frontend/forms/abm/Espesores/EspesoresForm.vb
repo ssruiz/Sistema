@@ -114,6 +114,7 @@ Public Class EspesoresForm
         btnGuardar.Enabled = True
         btnModificar.Enabled = False
         nuevo = True
+        dgvEspesores.ClearSelection()
         btnGuardar.Text = "Guardar"
     End Sub
 

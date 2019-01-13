@@ -26,29 +26,15 @@ Public Class UsuarioDAO
         Return ds
     End Function
 
-    ' Guarda un nuevo producto en la DB
+    ' Guarda un nuevo usuario en la DB
     Public Sub guardar(ByVal modelo As Usuario)
         Try
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD("root", "system"))
+            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Config.root, Config.Password))
             con.Open()
             ', `prodEsp`
 
-            Dim query = "CREATE USER '" & modelo.nombre & "'@'" & Sesion.Host & "' IDENTIFIED BY '" & modelo.nombre & "'; GRANT ALL PRIVILEGES ON * . * TO '" & modelo.nombre & "'@'" & Sesion.Host & "'; FLUSH PRIVILEGES;"
+            Dim query = "CREATE USER '" & modelo.nombre & "'@'" & Config.Host & "' IDENTIFIED BY '" & modelo.nombre & "'; GRANT ALL PRIVILEGES ON `producir`.* TO '" & modelo.nombre & "'@'" & Config.Host & "'; FLUSH PRIVILEGES;"
             Dim cmd As New MySqlCommand(query, con)
-
-
-
-            'cmd.Parameters.AddWithValue("@fe", modelo.alto)
-            'cmd.Parameters.AddWithValue("@alto", modelo.alto)
-            'cmd.Parameters.AddWithValue("@stockm", modelo.stockMin)
-            'If modelo.tipoPL <> 0 Then
-            '    cmd.Parameters.AddWithValue("@tpl", modelo.tipoPL)
-            'Else
-            '    cmd.Parameters.AddWithValue("@tpl", DBNull.Value)
-            'End If
-
-
-
             cmd.ExecuteNonQuery()
             con.Close()
 
@@ -65,18 +51,25 @@ Public Class UsuarioDAO
             cmd2.Parameters.AddWithValue("@estado", modelo.estado)
             cmd2.ExecuteNonQuery()
 
-
+            con2.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
         End Try
     End Sub
 
-    Public Sub eliminar(ByVal id As String)
+    Public Function eliminar(ByVal id As String, ByVal usuario As String) As String
+        Dim con As New MySqlConnection
+        Dim con2 As New MySqlConnection
         Try
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+
+            If Sesion.Usuario = usuario Then
+                Return "La sesión actual corresponde al usuario que desea eliminar. Operación abortada"
+            End If
+
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Config.root, Config.Password))
             con.Open()
 
-            Dim query As String = "DELETE FROM `usuario` WHERE `usuCod` = @id;"
+            Dim query As String = " DROP USER '" & usuario & "'@'" & Config.Host & "';"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@id", id)
@@ -84,10 +77,24 @@ Public Class UsuarioDAO
 
             cmd.ExecuteNonQuery()
             con.Close()
+
+            con2 = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con2.Open()
+            Dim query2 = "DELETE FROM `usuario` WHERE `usuCod` = @cod;"
+            Dim cmd2 As New MySqlCommand(query2, con2)
+
+            cmd2.Parameters.AddWithValue("@cod", id)
+            cmd2.ExecuteNonQuery()
+
+
+            Return "Usuario eliminado correctamente"
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+            con2.Close()
         End Try
-    End Sub
+    End Function
 
     Public Sub update(ByVal modelo As Usuario)
         Try

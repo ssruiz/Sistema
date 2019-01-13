@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="util\Acceso.vb" />
     <Compile Include="util\ConexionDB.vb" />
+    <Compile Include="util\Config.vb" />
     <Compile Include="util\DAOException.vb" />
     <Compile Include="util\Funciones.vb" />
     <Compile Include="util\Sesion.vb" />

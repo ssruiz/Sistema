@@ -122,6 +122,7 @@ Public Class ProductoForm
         btnGuardar.Enabled = True
         btnModificar.Enabled = False
         nuevo = True
+        dgvProductos.ClearSelection()
         btnGuardar.Text = "Guardar"
     End Sub
 

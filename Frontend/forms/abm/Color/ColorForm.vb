@@ -111,6 +111,7 @@ Public Class ColorForm
         btnModificar.Enabled = False
         nuevo = True
         btnGuardar.Text = "Guardar"
+        dgvColores.ClearSelection()
     End Sub
 
     Private Sub limpiarCampos()
