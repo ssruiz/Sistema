@@ -150,7 +150,7 @@ Public Class ProductoForm
 
     ' Comprueba si algun tipo fue seleccionado
     Private Function tipoCheckeado() As Boolean
-        If rbPerfiles.Checked Or rbHerrajes.Checked Or rbPerfiles.Checked Or rbPlanchas.Checked = True Then
+        If rbPerfiles.Checked Or rbHerrajes.Checked Or rbTemplados.Checked Or rbPlanchas.Checked = True Then
             Return True
         End If
         Return False
