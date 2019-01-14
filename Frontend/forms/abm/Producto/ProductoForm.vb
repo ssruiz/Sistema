@@ -3,6 +3,7 @@
 Public Class ProductoForm
     Dim nuevo = True
     Dim list As New DataSet
+    Dim listTipos As New DataTable
     'Carga del formulario
     Private Sub ProductoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -53,17 +54,17 @@ Public Class ProductoForm
     Private Sub cargarTipos()
         Dim daoT As New TipoProdDAO
         Dim tipos = daoT.getTipos()
-        Dim listTipos = tipos.Tables("tabla")
-        Dim rowV = listTipos.NewRow()
-        rowV("Tipo") = "-- Seleccione Tipo -- "
-        rowV("ID") = 0
-        listTipos.Rows.InsertAt(rowV, 0)
+        listTipos = tipos.Tables("tabla")
 
-        cbTipos.DataSource = listTipos.Copy
-        cbTipos.DisplayMember = "Tipo"
-        cbTipos.ValueMember = "ID"
+        'Dim rowV = listTipos.NewRow()
+        'rowV("Tipo") = "-- Seleccione Tipo -- "
+        'rowV("ID") = 0
+        'listTipos.Rows.InsertAt(rowV, 0)
+
+        'cbTipoPlancha.DataSource = listTipos.Copy
+        'cbTipoPlancha.DisplayMember = "Tipo"
+        'cbTipoPlancha.ValueMember = "ID"
     End Sub
-
     ' Carga de tipo de planchas desde la BD
     Private Sub cargarPlanchas()
         Dim daoT As New TipoProdDAO
@@ -108,23 +109,52 @@ Public Class ProductoForm
         txtPC.Text = modelo.PrecioC
         txtPD.Text = modelo.PrecioD
         txtSM.Text = modelo.stockMin
+        txtEspesor.Text = modelo.espesor
         txtSuperficie.Text = modelo.superficie
         cbColores.SelectedValue = modelo.color
-        cbTipos.SelectedValue = modelo.tipo
+
+        Dim dr = listTipos.Select("ID='" & modelo.tipo & "'")
+        If dr.Length > 0 Then
+            If dr(0)("Tipo").ToString() = "herrajes" Then
+                rbHerrajes.Checked = True
+            ElseIf dr(0)("Tipo").ToString() = "perfiles" Then
+                rbPerfiles.Checked = True
+            ElseIf dr(0)("Tipo").ToString() = "planchas" Then
+                rbPlanchas.Checked = True
+            ElseIf dr(0)("Tipo").ToString() = "templado" Then
+                rbTemplados.Checked = True
+            End If
+        End If
+
+        'cbTipos.SelectedValue = modelo.tipo
         cbTipoPlancha.SelectedValue = modelo.tipoPL
     End Sub
 
     ' Nuevo producto
     Private Sub nuevoProducto(sender As Object, e As EventArgs) Handles btnNuevo.Click
-        limpiarCampos()
-        activarCampos()
-        txtCodigo.Focus()
-        btnGuardar.Enabled = True
-        btnModificar.Enabled = False
-        nuevo = True
-        dgvProductos.ClearSelection()
-        btnGuardar.Text = "Guardar"
+        If tipoCheckeado() Then
+            limpiarCampos()
+            activarCampos()
+            txtCodigo.Focus()
+            btnGuardar.Enabled = True
+            btnModificar.Enabled = False
+            nuevo = True
+            dgvProductos.ClearSelection()
+            btnGuardar.Text = "Guardar"
+        Else
+            MsgBox("Debe seleccionar un tipo para el produco", MsgBoxStyle.Critical, "Notificación")
+            gbTipo.Focus()
+        End If
+
     End Sub
+
+    ' Comprueba si algun tipo fue seleccionado
+    Private Function tipoCheckeado() As Boolean
+        If rbPerfiles.Checked Or rbHerrajes.Checked Or rbPerfiles.Checked Or rbPlanchas.Checked = True Then
+            Return True
+        End If
+        Return False
+    End Function
 
     ' Limpia los campos
     Private Sub limpiarCampos()
@@ -139,8 +169,9 @@ Public Class ProductoForm
         txtPD.Text = ""
         txtSM.Text = ""
         txtSuperficie.Text = ""
+        txtEspesor.Text = ""
         cbColores.SelectedIndex = 0
-        cbTipos.SelectedIndex = 0
+        'cbTipos.SelectedIndex = 0
         cbTipoPlancha.SelectedIndex = 0
     End Sub
 
@@ -156,11 +187,12 @@ Public Class ProductoForm
         txtPD.Enabled = True
         txtSM.Enabled = True
         txtSuperficie.Enabled = True
-        cbTipos.Enabled = True
+        '     cbTipos.Enabled = True
         cbColores.Enabled = True
         cbColores.Enabled = True
-        cbTipos.Enabled = True
+        '   cbTipos.Enabled = True
         cbTipoPlancha.Enabled = True
+        txtEspesor.Enabled = True
         dgvProductos.ClearSelection()
     End Sub
 
@@ -176,10 +208,11 @@ Public Class ProductoForm
         txtPD.Enabled = False
         txtSM.Enabled = False
         txtSuperficie.Enabled = False
-        cbTipos.Enabled = False
+        txtEspesor.Enabled = False
+        ' cbTipos.Enabled = False
         cbColores.Enabled = False
         cbColores.Enabled = False
-        cbTipos.Enabled = False
+        'cbTipos.Enabled = False
         cbTipoPlancha.Enabled = False
 
     End Sub
@@ -193,7 +226,9 @@ Public Class ProductoForm
                 If (nuevo) Then
                     Dim daoP As New ProductoDAO
                     Dim modelo = llenarModelo()
+
                     daoP.guardar(modelo)
+
                     MsgBox("Producto agregado correctamente", MsgBoxStyle.Information, "Éxito")
                     limpiarCampos()
                     desactivarCampos()
@@ -203,6 +238,7 @@ Public Class ProductoForm
                     Dim row = dgvProductos.CurrentRow.Index
                     Dim codigo = dgvProductos.Item(0, row).Value
                     Dim modelo = llenarModelo(codigo)
+
                     daoP.update(modelo)
 
                     MsgBox("Producto actualizado correctamente", MsgBoxStyle.Information, "Éxito")
@@ -221,63 +257,100 @@ Public Class ProductoForm
     ' LLenado de modelo
     Private Function llenarModelo() As Producto
         Dim modelo As New Producto
-        modelo.alto = txtAlto.Text
-        modelo.ancho = txtAncho.Text
+
         modelo.codigo = txtCodigo.Text
         modelo.descripcion = txtDesc.Text
         modelo.PrecioA = txtPA.Text
         modelo.PrecioB = txtPB.Text
         modelo.PrecioC = txtPC.Text
         modelo.PrecioD = txtPD.Text
-        modelo.stockMin = txtSM.Text
-        modelo.superficie = txtSuperficie.Text
+
+
         modelo.color = cbColores.SelectedValue
-        modelo.tipo = cbTipos.SelectedValue
-        If cbTipoPlancha.SelectedIndex <> 0 Then
-            modelo.tipoPL = cbTipoPlancha.SelectedValue
+        modelo.tipo = getTipo()
+        modelo.espesor = txtEspesor.Text
+        If rbPlanchas.Checked Then
+            modelo.alto = txtAlto.Text
+            modelo.ancho = txtAncho.Text
+            modelo.superficie = txtSuperficie.Text
+            modelo.stockMin = txtSM.Text
+            If cbTipoPlancha.SelectedIndex <> 0 Then
+                modelo.tipoPL = cbTipoPlancha.SelectedValue
+            End If
         End If
+
         Return modelo
     End Function
 
+    Private Function getTipo() As Integer
+
+        If rbHerrajes.Checked Then
+
+            Return listTipos.Rows(0).Item("ID")
+        ElseIf rbPerfiles.Checked Then
+            Return listTipos.Rows(1).Item("ID")
+        ElseIf rbPlanchas.Checked Then
+            Return listTipos.Rows(2).Item("ID")
+        Else
+            Return listTipos.Rows(3).Item("ID")
+        End If
+    End Function
+
+    '
     ' Llena el modelo para su actualizacion
     Private Function llenarModelo(ByVal id As Integer) As Producto
         Dim modelo As New Producto
-        modelo.alto = txtAlto.Text
-        modelo.ancho = txtAncho.Text
-        modelo.codigo = txtCodigo.Text
         modelo.descripcion = txtDesc.Text
         modelo.PrecioA = txtPA.Text
         modelo.PrecioB = txtPB.Text
         modelo.PrecioC = txtPC.Text
         modelo.PrecioD = txtPD.Text
-        modelo.stockMin = txtSM.Text
-        modelo.superficie = txtSuperficie.Text
+        modelo.codigo = txtCodigo.Text
         modelo.color = cbColores.SelectedValue
-        modelo.tipo = cbTipos.SelectedValue
+        ' modelo.tipo = cbTipos.SelectedValue
         modelo.id = id
-        If cbTipoPlancha.SelectedIndex <> 0 Then
-            modelo.tipoPL = cbTipoPlancha.SelectedValue
+        modelo.tipo = getTipo()
+        modelo.espesor = txtEspesor.Text
+        If rbPlanchas.Checked Then
+            modelo.alto = txtAlto.Text
+            modelo.ancho = txtAncho.Text
+            modelo.superficie = txtSuperficie.Text
+            modelo.stockMin = txtSM.Text
+            If cbTipoPlancha.SelectedIndex <> 0 Then
+                modelo.tipoPL = cbTipoPlancha.SelectedValue
+            End If
         End If
         Return modelo
     End Function
 
     ' Validaciones
-    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtAlto.KeyPress, txtAncho.KeyPress, txtPA.KeyPress, txtPB.KeyPress, txtPC.KeyPress, txtPD.KeyPress, txtSuperficie.KeyPress, txtSM.KeyPress
+    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtAlto.KeyPress, txtAncho.KeyPress, txtPA.KeyPress, txtPB.KeyPress, txtPC.KeyPress, txtPD.KeyPress, txtSuperficie.KeyPress, txtSM.KeyPress, txtEspesor.KeyPress
         soloNumeros(e)
     End Sub
 
     Private Function validarDatos() As Boolean
-        If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtAlto.Text = "" Or txtAncho.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtSM.Text = "" Or txtSuperficie.Text = "" Then
-            MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
-            Return False
-        ElseIf cbColores.SelectedIndex = 0 Then
-            MsgBox("Debe seleccionar un color", MsgBoxStyle.Critical, "Notificación")
-            cbColores.Focus()
-            Return False
-        ElseIf cbTipos.SelectedIndex = 0 Then
-            MsgBox("Debe seleccionar un tipo", MsgBoxStyle.Critical, "Notificación")
-            cbTipos.Focus()
-            Return False
+        If rbPlanchas.Checked Then
+            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtAlto.Text = "" Or txtAncho.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtSM.Text = "" Or txtSuperficie.Text = "" Or txtEspesor.Text = "" Then
+                MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
+                Return False
+            ElseIf cbColores.SelectedIndex = 0 Then
+                MsgBox("Debe seleccionar un color", MsgBoxStyle.Critical, "Notificación")
+                cbColores.Focus()
+                Return False
+            ElseIf cbTipoPlancha.SelectedIndex = 0 Then
+                MsgBox("Debe seleccionar un tipo para la plancha", MsgBoxStyle.Critical, "Notificación")
+                cbTipoPlancha.Focus()
+                Return False
+            End If
+        Else
+            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtEspesor.Text = "" Then
+                MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
+                Return False
+            ElseIf cbColores.SelectedIndex = 0 Then
+                MsgBox("Debe seleccionar un color", MsgBoxStyle.Critical, "Notificación")
+                cbColores.Focus()
+                Return False
+            End If
         End If
         Return True
 
@@ -319,8 +392,8 @@ Public Class ProductoForm
 
 
                 If result = DialogResult.Yes Then
-                    Dim daoC As New ColorDAO
-                    daoC.eliminar(codigo)
+                    Dim daoP As New ProductoDAO
+                    daoP.eliminar(codigo)
                     MsgBox("Producto eliminado correctamente", MsgBoxStyle.Information, "Éxito")
                     cargarProductos()
                     desactivarCampos()
@@ -345,6 +418,57 @@ Public Class ProductoForm
             limpiarCampos()
             desactivarCampos()
             dgvProductos.ClearSelection()
+        End If
+    End Sub
+
+
+
+    Private Sub RadioButton1_Click(sender As Object, e As EventArgs) Handles rbHerrajes.Click
+
+    End Sub
+
+    Private Sub checkChangeConList(sender As Object, e As EventArgs) Handles rbHerrajes.CheckedChanged, rbPerfiles.CheckedChanged, rbTemplados.CheckedChanged
+        If dgvProductos.SelectedRows.Count > 0 Then
+            If sender.Checked Then
+                lblTipoPL.Visible = False
+                cbTipoPlancha.Visible = False
+                pnlDatosProd.Visible = False
+
+            End If
+        End If
+
+    End Sub
+
+    Private Sub checkChangeConListPlanchas(sender As Object, e As EventArgs) Handles rbPlanchas.CheckedChanged
+        If dgvProductos.SelectedRows.Count > 0 Then
+            If rbPlanchas.Checked = True Then
+                lblTipoPL.Visible = True
+                cbTipoPlancha.Visible = True
+                pnlDatosProd.Visible = True
+
+            End If
+        End If
+    End Sub
+
+    Private Sub rbHerrajes_CheckedChanged(sender As Object, e As EventArgs) Handles rbHerrajes.Click, rbPerfiles.Click, rbTemplados.Click
+        dgvProductos.ClearSelection()
+        If sender.Checked Then
+            lblTipoPL.Visible = False
+            cbTipoPlancha.Visible = False
+            pnlDatosProd.Visible = False
+            limpiarCampos()
+            desactivarCampos()
+        End If
+    End Sub
+
+    Private Sub rbPlanchas_CheckedChanged(sender As Object, e As EventArgs) Handles rbPlanchas.Click
+        dgvProductos.ClearSelection()
+        If rbPlanchas.Checked = True Then
+            lblTipoPL.Visible = True
+            cbTipoPlancha.Visible = True
+            pnlDatosProd.Visible = True
+            limpiarCampos()
+            desactivarCampos()
         End If
     End Sub
 End Class

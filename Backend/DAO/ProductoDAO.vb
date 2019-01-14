@@ -32,29 +32,36 @@ Public Class ProductoDAO
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             ', `prodEsp`
-            Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl);"
+            Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`,`prodEsp`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl,@espe);"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@codigo", modelo.codigo)
             cmd.Parameters.AddWithValue("@tipo", modelo.tipo)
             cmd.Parameters.AddWithValue("@desc", modelo.descripcion)
             cmd.Parameters.AddWithValue("@color", modelo.color)
-            cmd.Parameters.AddWithValue("@alto", modelo.alto)
-            cmd.Parameters.AddWithValue("@ancho", modelo.ancho)
-            cmd.Parameters.AddWithValue("@superf", modelo.superficie)
             cmd.Parameters.AddWithValue("@pa", modelo.PrecioA)
             cmd.Parameters.AddWithValue("@pb", modelo.PrecioB)
             cmd.Parameters.AddWithValue("@pc", modelo.PrecioC)
             cmd.Parameters.AddWithValue("@pd", modelo.PrecioD)
             cmd.Parameters.AddWithValue("@userI", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
+            cmd.Parameters.AddWithValue("@espe", modelo.espesor)
+
             'cmd.Parameters.AddWithValue("@fe", modelo.alto)
             'cmd.Parameters.AddWithValue("@alto", modelo.alto)
-            cmd.Parameters.AddWithValue("@stockm", modelo.stockMin)
+
             If modelo.tipoPL <> 0 Then
                 cmd.Parameters.AddWithValue("@tpl", modelo.tipoPL)
+                cmd.Parameters.AddWithValue("@alto", modelo.alto)
+                cmd.Parameters.AddWithValue("@ancho", modelo.ancho)
+                cmd.Parameters.AddWithValue("@superf", modelo.superficie)
+                cmd.Parameters.AddWithValue("@stockm", modelo.stockMin)
             Else
                 cmd.Parameters.AddWithValue("@tpl", DBNull.Value)
+                cmd.Parameters.AddWithValue("@alto", DBNull.Value)
+                cmd.Parameters.AddWithValue("@ancho", DBNull.Value)
+                cmd.Parameters.AddWithValue("@superf", DBNull.Value)
+                cmd.Parameters.AddWithValue("@stockm", DBNull.Value)
             End If
 
 
@@ -71,7 +78,7 @@ Public Class ProductoDAO
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
 
-            Dim query As String = "DELETE FROM `color` WHERE `colorCod` = @id;"
+            Dim query As String = "DELETE FROM `productos` WHERE `prodCod` = @id;"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@id", id)
@@ -89,7 +96,7 @@ Public Class ProductoDAO
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             '`prodEsp` = @esp,
-            Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl WHERE `prodCod` = @id;"
+            Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl, `prodEsp` = @esp  WHERE `prodCod` = @id;"
 
 
             Dim cmd As New MySqlCommand(query, con)
@@ -100,24 +107,31 @@ Public Class ProductoDAO
             cmd.Parameters.AddWithValue("@tipo", modelo.tipo)
             cmd.Parameters.AddWithValue("@desc", modelo.descripcion)
             cmd.Parameters.AddWithValue("@color", modelo.color)
-            ' cmd.Parameters.AddWithValue("@esp", modelo.espesor)
+            cmd.Parameters.AddWithValue("@esp", modelo.espesor)
             ' cmd.Parameters.AddWithValue("@pl", modelo.tipoPL)
-            cmd.Parameters.AddWithValue("@alto", modelo.alto)
-            cmd.Parameters.AddWithValue("@ancho", modelo.ancho)
-            cmd.Parameters.AddWithValue("@sup", modelo.superficie)
+
             cmd.Parameters.AddWithValue("@pa", modelo.PrecioA)
             cmd.Parameters.AddWithValue("@pb", modelo.PrecioB)
             cmd.Parameters.AddWithValue("@pc", modelo.PrecioC)
             cmd.Parameters.AddWithValue("@pd", modelo.PrecioD)
             cmd.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
-            cmd.Parameters.AddWithValue("@stm", modelo.stockMin)
+
+
+
             If modelo.tipoPL <> 0 Then
                 cmd.Parameters.AddWithValue("@tpl", modelo.tipoPL)
+                cmd.Parameters.AddWithValue("@alto", modelo.alto)
+                cmd.Parameters.AddWithValue("@ancho", modelo.ancho)
+                cmd.Parameters.AddWithValue("@sup", modelo.superficie)
+                cmd.Parameters.AddWithValue("@stm", modelo.stockMin)
             Else
                 cmd.Parameters.AddWithValue("@tpl", DBNull.Value)
+                cmd.Parameters.AddWithValue("@alto", DBNull.Value)
+                cmd.Parameters.AddWithValue("@ancho", DBNull.Value)
+                cmd.Parameters.AddWithValue("@sup", DBNull.Value)
+                cmd.Parameters.AddWithValue("@stm", DBNull.Value)
             End If
-
             cmd.ExecuteNonQuery()
             con.Close()
         Catch ex As Exception
