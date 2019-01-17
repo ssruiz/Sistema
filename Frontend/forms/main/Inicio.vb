@@ -48,9 +48,43 @@
         espesoresF.Dispose()
     End Sub
 
+    'Mantenimiento Sucursales
+    Private Sub SucursalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SucursalesToolStripMenuItem.Click
+        Dim sucursalF As New SucursalForm
+        sucursalF.ShowDialog()
+        sucursalF.Dispose()
+    End Sub
+
+    ' Mantenimiento Depositos
+    Private Sub DepósitosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DepósitosToolStripMenuItem.Click
+        Dim deposF As New DepositoForm
+        deposF.ShowDialog()
+        deposF.Dispose()
+    End Sub
+
+    ' Mantemiento Vendedores
+    Private Sub VendedoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VendedoresToolStripMenuItem.Click
+        Dim vendF As New VendedorForm
+        vendF.ShowDialog()
+        vendF.Dispose()
+    End Sub
+    'Mantemimiento tipo cliente
+    Private Sub TipoClienteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipoClienteToolStripMenuItem.Click
+        Dim tipoC As New TipoClienteForm
+        tipoC.ShowDialog()
+        tipoC.Dispose()
+    End Sub
+    'Mantenimiento Clientes
+    Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
+        Dim cliF As New ClienteForm
+        cliF.ShowDialog()
+        cliF.Dispose()
+    End Sub
+
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColoresMenu())
+
         Me.ResumeLayout()
     End Sub
 

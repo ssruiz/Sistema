@@ -76,17 +76,27 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ClienteDAO.vb" />
     <Compile Include="DAO\ColorDAO.vb" />
+    <Compile Include="DAO\DepositoDAO.vb" />
     <Compile Include="DAO\EspesorDAO.vb" />
     <Compile Include="DAO\ProductoDAO.vb" />
+    <Compile Include="DAO\SucursalDAO.vb" />
+    <Compile Include="DAO\TipoClienteDAO.vb" />
     <Compile Include="DAO\TipoProdDAO.vb" />
     <Compile Include="DAO\UsuarioDAO.vb" />
+    <Compile Include="DAO\VendedorDAO.vb" />
+    <Compile Include="Models\Cliente.vb" />
     <Compile Include="Models\ColorM.vb" />
+    <Compile Include="Models\Deposito.vb" />
     <Compile Include="Models\Espesor.vb" />
     <Compile Include="Models\Producto.vb" />
+    <Compile Include="Models\Sucursal.vb" />
+    <Compile Include="Models\TipoCliente.vb" />
     <Compile Include="Models\TipoPlancha.vb" />
     <Compile Include="Models\TipoProducto.vb" />
     <Compile Include="Models\Usuario.vb" />
+    <Compile Include="Models\Vendedor.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

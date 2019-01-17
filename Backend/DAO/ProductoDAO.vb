@@ -1,27 +1,21 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class ProductoDAO
+    Dim con As New MySqlConnection
     Public Function getProductos() As DataSet
-        Dim clientes As New Collection
         Dim ds As New DataSet
-        Dim da As New MySqlDataAdapter
-        Dim dt As New DataTable
         Try
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-
-
             Dim mysql = "SELECT * from vlistadoproductos"
-
             Dim cmd As New MySqlCommand(mysql, con)
             Dim adp As New MySqlDataAdapter(mysql, con)
-
             ds.Tables.Add("tabla")
             adp.Fill(ds.Tables("tabla"))
-
-            con.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
         End Try
         Return ds
     End Function
@@ -29,7 +23,7 @@ Public Class ProductoDAO
     ' Guarda un nuevo producto en la DB
     Public Sub guardar(ByVal modelo As Producto)
         Try
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             ', `prodEsp`
             Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`,`prodEsp`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl,@espe);"
@@ -63,45 +57,37 @@ Public Class ProductoDAO
                 cmd.Parameters.AddWithValue("@superf", DBNull.Value)
                 cmd.Parameters.AddWithValue("@stockm", DBNull.Value)
             End If
-
-
-
             cmd.ExecuteNonQuery()
-            con.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
         End Try
     End Sub
 
     Public Sub eliminar(ByVal id As String)
         Try
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-
             Dim query As String = "DELETE FROM `productos` WHERE `prodCod` = @id;"
             Dim cmd As New MySqlCommand(query, con)
-
             cmd.Parameters.AddWithValue("@id", id)
-
-
             cmd.ExecuteNonQuery()
-            con.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
         End Try
     End Sub
 
     Public Sub update(ByVal modelo As Producto)
         Try
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             '`prodEsp` = @esp,
             Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl, `prodEsp` = @esp  WHERE `prodCod` = @id;"
 
-
             Dim cmd As New MySqlCommand(query, con)
-
-
             cmd.Parameters.AddWithValue("@id", modelo.id)
             cmd.Parameters.AddWithValue("@cod", modelo.codigo)
             cmd.Parameters.AddWithValue("@tipo", modelo.tipo)
@@ -117,8 +103,6 @@ Public Class ProductoDAO
             cmd.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
 
-
-
             If modelo.tipoPL <> 0 Then
                 cmd.Parameters.AddWithValue("@tpl", modelo.tipoPL)
                 cmd.Parameters.AddWithValue("@alto", modelo.alto)
@@ -133,16 +117,17 @@ Public Class ProductoDAO
                 cmd.Parameters.AddWithValue("@stm", DBNull.Value)
             End If
             cmd.ExecuteNonQuery()
-            con.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
         End Try
     End Sub
 
     Public Function getProducto(ByVal id As String) As Producto
         Try
             Dim modelo As New Producto
-            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             Dim query = "Select * from productos where prodCod = @codigo"
             Dim cmd As New MySqlCommand(query, con)
@@ -170,12 +155,12 @@ Public Class ProductoDAO
                 modelo.fechaM = SafeGetDate(reader, 17)
                 modelo.stockMin = SafeGetInt(reader, 18)
             End While
-
             reader.Close()
-            con.Close()
             Return modelo
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
         End Try
     End Function
 End Class
