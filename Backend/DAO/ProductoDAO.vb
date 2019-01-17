@@ -26,7 +26,7 @@ Public Class ProductoDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             ', `prodEsp`
-            Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`,`prodEsp`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl,@espe);"
+            Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`,`prodEsp`,`prodCosto`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl,@espe,@costo);"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@codigo", modelo.codigo)
@@ -40,6 +40,7 @@ Public Class ProductoDAO
             cmd.Parameters.AddWithValue("@userI", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
             cmd.Parameters.AddWithValue("@espe", modelo.espesor)
+            cmd.Parameters.AddWithValue("@costo", modelo.costo)
 
             'cmd.Parameters.AddWithValue("@fe", modelo.alto)
             'cmd.Parameters.AddWithValue("@alto", modelo.alto)
@@ -85,7 +86,7 @@ Public Class ProductoDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             '`prodEsp` = @esp,
-            Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl, `prodEsp` = @esp  WHERE `prodCod` = @id;"
+            Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl, `prodEsp` = @esp, `prodCosto` = @costo  WHERE `prodCod` = @id;"
 
             Dim cmd As New MySqlCommand(query, con)
             cmd.Parameters.AddWithValue("@id", modelo.id)
@@ -102,6 +103,7 @@ Public Class ProductoDAO
             cmd.Parameters.AddWithValue("@pd", modelo.PrecioD)
             cmd.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
+            cmd.Parameters.AddWithValue("@costo", modelo.costo)
 
             If modelo.tipoPL <> 0 Then
                 cmd.Parameters.AddWithValue("@tpl", modelo.tipoPL)
@@ -154,6 +156,7 @@ Public Class ProductoDAO
                 modelo.usuarioM = SafeGetString(reader, 16)
                 modelo.fechaM = SafeGetDate(reader, 17)
                 modelo.stockMin = SafeGetInt(reader, 18)
+                modelo.costo = SafeGetDouble(reader, 19)
             End While
             reader.Close()
             Return modelo

@@ -189,4 +189,14 @@
             _stockMin = value
         End Set
     End Property
+
+    Private _costo As Double
+    Public Property costo() As Double
+        Get
+            Return _costo
+        End Get
+        Set(ByVal value As Double)
+            _costo = value
+        End Set
+    End Property
 End Class

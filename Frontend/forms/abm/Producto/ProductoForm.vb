@@ -112,7 +112,7 @@ Public Class ProductoForm
         txtEspesor.Text = modelo.espesor
         txtSuperficie.Text = modelo.superficie
         cbColores.SelectedValue = modelo.color
-
+        txtCosto.Text = modelo.costo
         Dim dr = listTipos.Select("ID='" & modelo.tipo & "'")
         If dr.Length > 0 Then
             If dr(0)("Tipo").ToString() = "herrajes" Then
@@ -170,6 +170,7 @@ Public Class ProductoForm
         txtSM.Text = ""
         txtSuperficie.Text = ""
         txtEspesor.Text = ""
+        txtCosto.Text = ""
         cbColores.SelectedIndex = 0
         'cbTipos.SelectedIndex = 0
         cbTipoPlancha.SelectedIndex = 0
@@ -187,6 +188,7 @@ Public Class ProductoForm
         txtPD.Enabled = True
         txtSM.Enabled = True
         txtSuperficie.Enabled = True
+        txtCosto.Enabled = True
         '     cbTipos.Enabled = True
         cbColores.Enabled = True
         cbColores.Enabled = True
@@ -207,6 +209,7 @@ Public Class ProductoForm
         txtPC.Enabled = False
         txtPD.Enabled = False
         txtSM.Enabled = False
+        txtCosto.Enabled = False
         txtSuperficie.Enabled = False
         txtEspesor.Enabled = False
         ' cbTipos.Enabled = False
@@ -269,6 +272,7 @@ Public Class ProductoForm
         modelo.color = cbColores.SelectedValue
         modelo.tipo = getTipo()
         modelo.espesor = txtEspesor.Text
+        modelo.costo = txtCosto.Text
         If rbPlanchas.Checked Then
             modelo.alto = txtAlto.Text
             modelo.ancho = txtAncho.Text
@@ -311,6 +315,7 @@ Public Class ProductoForm
         modelo.id = id
         modelo.tipo = getTipo()
         modelo.espesor = txtEspesor.Text
+        modelo.costo = txtCosto.Text
         If rbPlanchas.Checked Then
             modelo.alto = txtAlto.Text
             modelo.ancho = txtAncho.Text
@@ -324,13 +329,13 @@ Public Class ProductoForm
     End Function
 
     ' Validaciones
-    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtAlto.KeyPress, txtAncho.KeyPress, txtPA.KeyPress, txtPB.KeyPress, txtPC.KeyPress, txtPD.KeyPress, txtSuperficie.KeyPress, txtSM.KeyPress, txtEspesor.KeyPress
+    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtAlto.KeyPress, txtAncho.KeyPress, txtPA.KeyPress, txtPB.KeyPress, txtPC.KeyPress, txtPD.KeyPress, txtSuperficie.KeyPress, txtSM.KeyPress, txtEspesor.KeyPress, txtCosto.KeyPress
         soloNumeros(e)
     End Sub
 
     Private Function validarDatos() As Boolean
         If rbPlanchas.Checked Then
-            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtAlto.Text = "" Or txtAncho.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtSM.Text = "" Or txtSuperficie.Text = "" Or txtEspesor.Text = "" Then
+            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtAlto.Text = "" Or txtAncho.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtSM.Text = "" Or txtSuperficie.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
                 MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
                 Return False
             ElseIf cbColores.SelectedIndex = 0 Then
@@ -343,7 +348,7 @@ Public Class ProductoForm
                 Return False
             End If
         Else
-            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtEspesor.Text = "" Then
+            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
                 MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
                 Return False
             ElseIf cbColores.SelectedIndex = 0 Then
@@ -357,7 +362,7 @@ Public Class ProductoForm
     End Function
 
     ' Formato Precios
-    Private Sub precioFormat(sender As Object, e As EventArgs) Handles txtPA.TextChanged, txtPB.TextChanged, txtPC.TextChanged, txtPD.TextChanged
+    Private Sub precioFormat(sender As Object, e As EventArgs) Handles txtPA.TextChanged, txtPB.TextChanged, txtPC.TextChanged, txtPD.TextChanged, txtCosto.TextChanged
 
         If sender.Text <> "" Then
             sender.Text = FormatCurrency(sender.Text, 1)
@@ -368,7 +373,7 @@ Public Class ProductoForm
         End If
     End Sub
 
-    Private Sub precioClick(sender As Object, e As EventArgs) Handles txtPA.Click, txtPB.Click, txtPC.Click, txtPD.Click
+    Private Sub precioClick(sender As Object, e As EventArgs) Handles txtPA.Click, txtPB.Click, txtPC.Click, txtPD.Click, txtCosto.Click
         If sender.Text <> "" Then
             sender.Select(sender.TextLength - 2, 0)
         End If
