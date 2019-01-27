@@ -81,6 +81,12 @@
         cliF.Dispose()
     End Sub
 
+
+    Private Sub VentasTS_Click(sender As Object, e As EventArgs) Handles VentasTS.Click
+        Dim cliV As New VentasForm
+        cliV.ShowDialog()
+        cliV.Dispose()
+    End Sub
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColoresMenu())

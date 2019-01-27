@@ -183,5 +183,24 @@ Public Class ClienteDAO
             con.Close()
         End Try
     End Function
+
+    Public Function buscarClientes(ByVal filtro) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vlistadoclientes where Nombre LIKE '%" & filtro & "%' OR CI LIKE  '%" & filtro & "%'"
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
 End Class
 

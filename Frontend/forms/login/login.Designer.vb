@@ -134,7 +134,7 @@ Partial Class login
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(185, 9)
+        Me.Label3.Location = New System.Drawing.Point(186, 9)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(261, 45)
         Me.Label3.TabIndex = 0

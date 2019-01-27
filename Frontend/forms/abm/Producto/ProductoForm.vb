@@ -7,11 +7,13 @@ Public Class ProductoForm
     'Carga del formulario
     Private Sub ProductoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            Me.SuspendLayout()
             cargarProductos()
             cargarColores()
             cargarTipos()
             cargarPlanchas()
             desactivarCampos()
+            Me.ResumeLayout()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
@@ -29,7 +31,7 @@ Public Class ProductoForm
         dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         'dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        dgvProductos.Columns("Codigo").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvProductos.Columns("Código").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         dgvProductos.ClearSelection()
         Me.SuspendLayout()
@@ -82,7 +84,7 @@ Public Class ProductoForm
 
     'Carga de producto seleccionado
     Private Sub dgvProductos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvProductos.SelectionChanged
-        If dgvProductos.Focused Then
+        If dgvProductos.Focused And dgvProductos.SelectedRows.Count > 0 Then
             Try
                 btnGuardar.Enabled = False
                 btnModificar.Enabled = True
@@ -160,7 +162,7 @@ Public Class ProductoForm
     Private Sub limpiarCampos()
         txtAlto.Text = ""
         txtAncho.Text = ""
-        txtBusqueda.Text = ""
+        'txtBusqueda.Text = ""
         txtCodigo.Text = ""
         txtDesc.Text = ""
         txtPA.Text = ""
@@ -187,7 +189,7 @@ Public Class ProductoForm
         txtPC.Enabled = True
         txtPD.Enabled = True
         txtSM.Enabled = True
-        txtSuperficie.Enabled = True
+        txtSuperficie.Enabled = False
         txtCosto.Enabled = True
         '     cbTipos.Enabled = True
         cbColores.Enabled = True
@@ -329,8 +331,12 @@ Public Class ProductoForm
     End Function
 
     ' Validaciones
-    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtAlto.KeyPress, txtAncho.KeyPress, txtPA.KeyPress, txtPB.KeyPress, txtPC.KeyPress, txtPD.KeyPress, txtSuperficie.KeyPress, txtSM.KeyPress, txtEspesor.KeyPress, txtCosto.KeyPress
+    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtPA.KeyPress, txtPB.KeyPress, txtPC.KeyPress, txtPD.KeyPress, txtSM.KeyPress, txtCosto.KeyPress
         soloNumeros(e)
+    End Sub
+
+    Private Sub soloNumerosDecilames(sender As Object, e As KeyPressEventArgs) Handles txtSuperficie.KeyPress, txtAlto.KeyPress, txtAncho.KeyPress, txtEspesor.KeyPress
+        soloNumerosDecimales(sender, e)
     End Sub
 
     Private Function validarDatos() As Boolean
@@ -410,21 +416,11 @@ Public Class ProductoForm
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
-
         End Try
     End Sub
 
     'Metodo para la busqueda de productos
-    Private Sub busquedaProducto(sender As Object, e As KeyEventArgs) Handles txtBusqueda.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            Dim dv As New DataView(list.Tables("tabla"))
-            dv.RowFilter = String.Format("Codigo like '%{0}%' or Descripción like '%{0}%' or Tipo like '%{0}%' ", txtBusqueda.Text)
-            dgvProductos.DataSource = dv
-            limpiarCampos()
-            desactivarCampos()
-            dgvProductos.ClearSelection()
-        End If
-    End Sub
+
 
 
 
@@ -475,5 +471,50 @@ Public Class ProductoForm
             limpiarCampos()
             desactivarCampos()
         End If
+    End Sub
+
+    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
+        Try
+            Dim dv As New DataView(list.Tables("tabla"))
+            dv.RowFilter = String.Format("Código like '%{0}%' or Descripción like '%{0}%' or Tipo like '%{0}%' ", txtBusqueda.Text)
+            dgvProductos.DataSource = dv
+            limpiarCampos()
+            desactivarCampos()
+            dgvProductos.ClearSelection()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Private Sub txtAlto_TextChanged(sender As Object, e As EventArgs) Handles txtAlto.TextChanged, txtAncho.TextChanged
+        Try
+            If txtAlto.Text.Contains(".") Then
+                txtAlto.Text = Replace(txtAlto.Text, ".", ",")
+                If txtAlto.Focused Then
+                    txtAlto.SelectionStart = txtAlto.Text.Length
+                End If
+            End If
+
+            If txtAncho.Text.Contains(".") Then
+                txtAncho.Text = Replace(txtAncho.Text, ".", ",")
+                If txtAncho.Focused Then
+                    txtAncho.SelectionStart = txtAncho.Text.Length
+                End If
+            End If
+            If txtAncho.Text <> "" And txtAlto.Text <> "" Then
+                Dim str As Double
+                If Double.TryParse(txtAlto.Text * txtAncho.Text, str) Then
+
+                    txtSuperficie.Text = str
+                End If
+            Else
+                txtSuperficie.Text = ""
+            End If
+        Catch ex As Exception
+            txtAlto.Text = ""
+            txtAncho.Text = ""
+            txtSuperficie.Text = ""
+        End Try
+
     End Sub
 End Class

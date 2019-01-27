@@ -162,6 +162,18 @@
     <Compile Include="forms\main\Inicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Busquedas\ClienteBusqueda.Designer.vb">
+      <DependentUpon>ClienteBusqueda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Busquedas\ClienteBusqueda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Busquedas\ProductoBusqueda.Designer.vb">
+      <DependentUpon>ProductoBusqueda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Busquedas\ProductoBusqueda.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Ventas\VentasForm.Designer.vb">
       <DependentUpon>VentasForm.vb</DependentUpon>
     </Compile>
@@ -225,6 +237,12 @@
     <EmbeddedResource Include="forms\main\Inicio.resx">
       <DependentUpon>Inicio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Busquedas\ClienteBusqueda.resx">
+      <DependentUpon>ClienteBusqueda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Busquedas\ProductoBusqueda.resx">
+      <DependentUpon>ProductoBusqueda.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Ventas\VentasForm.resx">
       <DependentUpon>VentasForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -253,7 +271,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fondo.jpeg" />
-    <None Include="Resources\fondo_bmp.bmp" />
+    <None Include="Resources\tickets1.png" />
+    <None Include="Resources\imprimir.png" />
+    <None Include="Resources\buscar.png" />
+    <None Include="Resources\guardar.png" />
+    <None Include="Resources\nuevo.png" />
+    <None Include="Resources\abajo.png" />
+    <None Include="Resources\up.png" />
+    <None Include="Resources\der.png" />
+    <None Include="Resources\izq.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Backend\Backend.vbproj">

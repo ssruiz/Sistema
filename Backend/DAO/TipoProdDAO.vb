@@ -101,4 +101,27 @@ Public Class TipoProdDAO
             con.Close()
         End Try
     End Sub
+
+
+    Public Function getTipo(ByVal codigo As String) As TipoProducto
+        Dim modelo As New TipoProducto
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vlistadotipoprod where ID = @cod"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@cod", codigo)
+            Dim reader = cmd.ExecuteReader
+            While reader.Read
+                modelo.id = SafeGetInt(reader, 0)
+                modelo.nombre = SafeGetString(reader, 1)
+            End While
+            reader.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return modelo
+    End Function
 End Class

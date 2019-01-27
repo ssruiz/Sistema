@@ -166,5 +166,46 @@ Public Class ProductoDAO
             con.Close()
         End Try
     End Function
+
+    Public Function getProductoByCod(ByVal id As String) As Producto
+        Try
+            Dim modelo As New Producto
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from productos where prodCodigo = @codigo"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@codigo", id)
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                modelo.id = SafeGetInt(reader, 0)
+                modelo.codigo = SafeGetString(reader, 1)
+                modelo.tipo = SafeGetInt(reader, 2)
+                modelo.descripcion = SafeGetString(reader, 3)
+                modelo.color = SafeGetInt(reader, 4)
+                modelo.espesor = SafeGetInt(reader, 5)
+                modelo.tipoPL = SafeGetInt(reader, 6)
+                modelo.alto = SafeGetDecimal(reader, 7)
+                modelo.ancho = SafeGetDecimal(reader, 8)
+                modelo.superficie = SafeGetDecimal(reader, 9)
+                modelo.PrecioA = SafeGetDouble(reader, 10)
+                modelo.PrecioB = SafeGetDouble(reader, 11)
+                modelo.PrecioC = SafeGetDouble(reader, 12)
+                modelo.PrecioD = SafeGetDouble(reader, 13)
+                modelo.usuarioI = SafeGetString(reader, 14)
+                modelo.fechaI = SafeGetDate(reader, 15)
+                modelo.usuarioM = SafeGetString(reader, 16)
+                modelo.fechaM = SafeGetDate(reader, 17)
+                modelo.stockMin = SafeGetInt(reader, 18)
+                modelo.costo = SafeGetDouble(reader, 19)
+            End While
+            reader.Close()
+            Return modelo
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Function
 End Class
 

@@ -96,7 +96,7 @@ Public Class ClienteForm
 
     'Carga de producto seleccionado
     Private Sub dgvProductos_SelectionChanged(sender As Object, e As EventArgs) Handles dgvClientes.SelectionChanged
-        If dgvClientes.Focused Then
+        If dgvClientes.Focused And dgvClientes.SelectedRows.Count > 0 Then
             Try
                 btnGuardar.Enabled = False
                 btnModificar.Enabled = True
@@ -401,5 +401,14 @@ Public Class ClienteForm
             desactivarCampos()
             dgvClientes.ClearSelection()
         End If
+    End Sub
+
+    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
+        Dim dv As New DataView(list.Tables("tabla"))
+        dv.RowFilter = String.Format("Nombre like '%{0}%' or Tipo like '%{0}%' or CI like '%{0}%' or RUC like '%{0}%' ", txtBusqueda.Text)
+        dgvClientes.DataSource = dv
+        limpiarCampos()
+        desactivarCampos()
+        dgvClientes.ClearSelection()
     End Sub
 End Class
