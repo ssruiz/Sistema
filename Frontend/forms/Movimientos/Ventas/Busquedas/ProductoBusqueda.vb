@@ -19,7 +19,7 @@ Public Class ProductoBusqueda
         Dim dv As New DataView(list.Tables("tabla"))
         dv.RowFilter = String.Format("Código like '%{0}%' or Descripción like '%{0}%' or Tipo like '%{0}%' ", txtFiltro.Text)
         dgvProductos.DataSource = dv
-        dgvProductos.ClearSelection()
+        'dgvProductos.ClearSelection()
     End Sub
     Private Sub dgvClientes_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvProductos.KeyDown
         Try

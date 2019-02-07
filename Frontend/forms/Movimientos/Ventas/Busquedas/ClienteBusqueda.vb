@@ -5,6 +5,8 @@ Public Class ClienteBusqueda
     Public cliente As New Cliente
     Dim list As New DataSet
     Private Sub ClienteBusqueda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         cargarClientes()
         aplicarFiltro()
     End Sub
@@ -19,7 +21,7 @@ Public Class ClienteBusqueda
         Dim dv As New DataView(list.Tables("tabla"))
         dv.RowFilter = String.Format("Nombre like '%{0}%' or CI like '%{0}%' ", txtFiltro.Text)
         dgvClientes.DataSource = dv
-        dgvClientes.ClearSelection()
+        'dgvClientes.ClearSelection()
     End Sub
     Private Sub dgvClientes_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvClientes.KeyDown
         Try

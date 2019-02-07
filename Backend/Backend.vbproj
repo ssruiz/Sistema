@@ -86,6 +86,7 @@
     <Compile Include="DAO\TipoProdDAO.vb" />
     <Compile Include="DAO\UsuarioDAO.vb" />
     <Compile Include="DAO\VendedorDAO.vb" />
+    <Compile Include="DAO\VentaDAO.vb" />
     <Compile Include="Models\Cliente.vb" />
     <Compile Include="Models\ColorM.vb" />
     <Compile Include="Models\Deposito.vb" />

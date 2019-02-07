@@ -128,4 +128,34 @@
             _obra = value
         End Set
     End Property
+
+    Private _desc As String
+    Public Property desc() As String
+        Get
+            Return _desc
+        End Get
+        Set(ByVal value As String)
+            _desc = value
+        End Set
+    End Property
+
+    Private _total As Double
+    Public Property total() As Double
+        Get
+            Return _total
+        End Get
+        Set(ByVal value As Double)
+            _total = value
+        End Set
+    End Property
+
+    Private _prodCod As String
+    Public Property prodCod() As String
+        Get
+            Return _prodCod
+        End Get
+        Set(ByVal value As String)
+            _prodCod = value
+        End Set
+    End Property
 End Class
