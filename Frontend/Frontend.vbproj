@@ -51,8 +51,15 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
-    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
@@ -60,6 +67,8 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
@@ -195,6 +204,24 @@
     <Compile Include="forms\Movimientos\Ventas\Busquedas\VentaBusqueda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Factura\ImpresionFactura.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImpresionFactura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Factura\ImprimirFactura.Designer.vb">
+      <DependentUpon>ImprimirFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Factura\ImprimirFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Factura\NroFactura.Designer.vb">
+      <DependentUpon>NroFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Factura\NroFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Ventas\VentasForm.Designer.vb">
       <DependentUpon>VentasForm.vb</DependentUpon>
     </Compile>
@@ -202,6 +229,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Funciones\Funciones.vb" />
+    <Compile Include="Funciones\NumLetra.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -270,6 +298,16 @@
     <EmbeddedResource Include="forms\Movimientos\Ventas\Busquedas\VentaBusqueda.resx">
       <DependentUpon>VentaBusqueda.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Factura\ImpresionFactura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ImpresionFactura.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Factura\ImprimirFactura.resx">
+      <DependentUpon>ImprimirFactura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Factura\NroFactura.resx">
+      <DependentUpon>NroFactura.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Ventas\VentasForm.resx">
       <DependentUpon>VentasForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -309,6 +347,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fondo.jpeg" />
+    <None Include="packages.config" />
     <None Include="Resources\eliminar2.png" />
     <None Include="Resources\eliminar.png" />
     <None Include="Resources\actualizar.png" />
@@ -327,6 +366,9 @@
       <Project>{AB8190E2-E029-4E46-B1E5-A37596C4105B}</Project>
       <Name>Backend</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

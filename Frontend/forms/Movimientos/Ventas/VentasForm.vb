@@ -6,7 +6,7 @@ Public Class VentasForm
     Dim cliente As New Cliente
     Dim producto As New Producto
     Dim vendedor As New Vendedor
-    Dim venta As New Venta
+    Dim venta As New Venta ' almacena la venta que se ve en pantalla
     Dim tipoAct As String
     Dim listadoVentas As New List(Of Integer)
     Dim ventaActual = 0
@@ -43,12 +43,19 @@ Public Class VentasForm
                 btnGuardar.Enabled = False
                 asignarVendedor()
                 cargarVentas()
+                activarNavegacion()
                 txtDirEnvio.Text = cliente.dir
             End If
             buscarC.Dispose()
         End If
     End Sub
 
+    Public Sub activarNavegacion()
+        btnAnterior.Enabled = True
+        btnSgte.Enabled = True
+        btnUlt.Enabled = True
+        btnPrim.Enabled = True
+    End Sub
     'carga de las ventas del cliente seleccionado
     Private Sub cargarVentas()
         Try
@@ -224,6 +231,7 @@ Public Class VentasForm
         txtCantidad.Text = ""
         txtSup.Text = ""
         txtObra.Text = ""
+        txtPrecio.Text = ""
         txtFecha1.Text = ""
         txtFecha2.Text = ""
         txtPlazo1.Text = ""
@@ -252,7 +260,7 @@ Public Class VentasForm
         txtPlazo1.Text = ""
         txtPlazo2.Text = ""
         txtFecha.Text = Date.Today
-
+        txtPrecio.Text = ""
         txtTotal.Text = FormatCurrency(0)
         txtSaldo.Text = FormatCurrency(0)
         txtPago.Text = FormatCurrency(0)
@@ -535,6 +543,7 @@ Public Class VentasForm
                     desactivarCamposNuevaVenta()
                     limpiarCampos2()
                     cargarVentas()
+                    activarNavegacion()
                     'Dim result As Integer = MessageBox.Show("¡Venta realizada! ¿Imprimir factura?", "Atención", MessageBoxButtons.YesNo)
 
                     'If result = DialogResult.Yes Then
@@ -606,6 +615,8 @@ Public Class VentasForm
                     desactivarCamposModificar()
                     limpiarCampos2()
                     cargarVenta()
+                    activarNavegacion()
+
                     'Dim result As Integer = MessageBox.Show("¡Venta realizada! ¿Imprimir factura?", "Atención", MessageBoxButtons.YesNo)
 
                     'If result = DialogResult.Yes Then
@@ -631,11 +642,11 @@ Public Class VentasForm
     ' Validaciones
     'Validar Venta
     Private Function validarVenta() As Boolean
-        If txtFactuNro.Text = "" Then
-            MsgBox("Ingrese un número de factura para la venta", MsgBoxStyle.Critical, "Error de datos")
-            txtFactuNro.Focus()
-            Return False
-        ElseIf rbtnCont.Checked = False And rbtnCred.Checked = False Then
+        'If txtFactuNro.Text = "" Then
+        '    MsgBox("Ingrese un número de factura para la venta", MsgBoxStyle.Critical, "Error de datos")
+        '    txtFactuNro.Focus()
+        '    Return False
+        If rbtnCont.Checked = False And rbtnCred.Checked = False Then
             MsgBox("Seleccione un tipo de pago", MsgBoxStyle.Critical, "Error de datos")
             pnlTipoP.Focus()
             Return False
@@ -920,5 +931,46 @@ Public Class VentasForm
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        Dim nroFactForm As New NroFactura
+        nroFactForm.venta = venta
+        Dim res = nroFactForm.ShowDialog
+        If res = DialogResult.OK Then
+            venta.factura = nroFactForm.venta.factura
+            'imprimirfact()
+        End If
+
+    End Sub
+
+    Public Sub imprimirfact()
+        Dim facturaImprimir As New ImpresionFactura
+        Dim daoCliente As New ClienteDAO
+
+        'Dim currentVenta = daoVenta.obtenerVentaDatos(venta.id)
+        Dim currentCliente = daoCliente.getCliente(venta.cliente)
+        facturaImprimir.SetParameterValue("codigo", venta.id)
+        facturaImprimir.SetParameterValue("nroFactura", venta.factura)
+        facturaImprimir.SetParameterValue("cliente", currentCliente.nombre)
+        facturaImprimir.SetParameterValue("ruc", currentCliente.ruc)
+        Dim convert As New NumLetra
+
+        If venta.credito = "S" Then
+            facturaImprimir.SetParameterValue("contado", "X")
+            facturaImprimir.SetParameterValue("credito", "")
+        Else
+            facturaImprimir.SetParameterValue("contado", "")
+            facturaImprimir.SetParameterValue("credito", "X")
+        End If
+        facturaImprimir.SetParameterValue("totalGuaranies", convert.EnLetras(venta.total))
+        ''facturaImprimir.SetParameterValue("totalVenta", currentVenta.total)
+        ''facturaImprimir.SetParameterValue("liquidacionIva10", currentVenta.total * 0.090909)
+        facturaImprimir.PrintOptions.PrinterName = "EPSONLX-350" ''PONER NOMBRE DE IMPRESORA
+
+        facturaImprimir.PrintToPrinter(1, False, 0, 0)
+        MsgBox("¡Factura impresa!", MsgBoxStyle.Information, "Notificación")
+        'daoVenta.facturaImpresa(Codigo)
+
     End Sub
 End Class
