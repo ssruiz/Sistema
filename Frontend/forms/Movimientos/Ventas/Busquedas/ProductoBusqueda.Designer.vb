@@ -22,17 +22,17 @@ Partial Class ProductoBusqueda
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
@@ -79,33 +79,33 @@ Partial Class ProductoBusqueda
         Me.dgvProductos.AllowUserToAddRows = False
         Me.dgvProductos.AllowUserToDeleteRows = False
         Me.dgvProductos.AllowUserToResizeColumns = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle12
         Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.NombreC, Me.CIC, Me.RUCC, Me.TipoC, Me.Insert, Me.ULTA, Me.FechaACT})
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle22
         Me.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.Location = New System.Drawing.Point(44, 184)
@@ -120,8 +120,8 @@ Partial Class ProductoBusqueda
         'ID
         '
         Me.ID.DataPropertyName = "ID"
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle14
         Me.ID.HeaderText = "ID"
         Me.ID.Name = "ID"
         Me.ID.Visible = False
@@ -129,32 +129,32 @@ Partial Class ProductoBusqueda
         'NombreC
         '
         Me.NombreC.DataPropertyName = "Código"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.NombreC.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.NombreC.DefaultCellStyle = DataGridViewCellStyle15
         Me.NombreC.HeaderText = "Código"
         Me.NombreC.Name = "NombreC"
         '
         'CIC
         '
         Me.CIC.DataPropertyName = "Descripción"
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.CIC.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.CIC.DefaultCellStyle = DataGridViewCellStyle16
         Me.CIC.HeaderText = "Descripción"
         Me.CIC.Name = "CIC"
         '
         'RUCC
         '
         Me.RUCC.DataPropertyName = "Tipo"
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.RUCC.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.RUCC.DefaultCellStyle = DataGridViewCellStyle17
         Me.RUCC.HeaderText = "Tipo"
         Me.RUCC.Name = "RUCC"
         '
         'TipoC
         '
         Me.TipoC.DataPropertyName = "Alta"
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.TipoC.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.TipoC.DefaultCellStyle = DataGridViewCellStyle18
         Me.TipoC.HeaderText = "Alta"
         Me.TipoC.Name = "TipoC"
         Me.TipoC.Visible = False
@@ -162,8 +162,8 @@ Partial Class ProductoBusqueda
         'Insert
         '
         Me.Insert.DataPropertyName = "Fecha alta"
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.Insert.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.Insert.DefaultCellStyle = DataGridViewCellStyle19
         Me.Insert.HeaderText = "Fecha alta"
         Me.Insert.Name = "Insert"
         Me.Insert.Visible = False
@@ -171,8 +171,8 @@ Partial Class ProductoBusqueda
         'ULTA
         '
         Me.ULTA.DataPropertyName = "Última mod"
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ULTA.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ULTA.DefaultCellStyle = DataGridViewCellStyle20
         Me.ULTA.HeaderText = "Última actualizacion"
         Me.ULTA.Name = "ULTA"
         Me.ULTA.Visible = False
@@ -180,8 +180,8 @@ Partial Class ProductoBusqueda
         'FechaACT
         '
         Me.FechaACT.DataPropertyName = "Fecha Última mod."
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.FechaACT.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle21.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.FechaACT.DefaultCellStyle = DataGridViewCellStyle21
         Me.FechaACT.HeaderText = "Fecha Última mod."
         Me.FechaACT.Name = "FechaACT"
         Me.FechaACT.Visible = False
@@ -219,7 +219,7 @@ Partial Class ProductoBusqueda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(43, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(778, 491)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dgvProductos)

@@ -3,13 +3,13 @@ Imports MySql.Data.MySqlClient
 
 Public Class VentaDAO
     Dim con As New MySqlConnection()
-    Public Function guardarVenta(venta As Venta, productos As DataGridViewRowCollection) As Integer
+    Public Function guardarVenta(ByVal venta As Venta, ByVal productos As DataGridViewRowCollection, ByVal sucursal As Sucursal, ByVal deposito As Deposito, ByVal produccionDia As Double) As Integer
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             venta.usuI = Sesion.Usuario
             Dim queryVenta = ""
-            queryVenta = "INSERT INTO `ventas` (`opeCod`, `ventCred`, `ventFecha`, `ventFact`, `ventObs`, `clieCod`, `vendCod`, `ventPlazo`, `ventFechaProm`, `ventRecargo`, `ventDescuento`, `ventTotal`, `ventSaldo`, `ventEstado`, `ventMotivo`, `ventEnvio`, `ventDireccEnv`, `ventUI`, `ventFI`, `ventUU`, `ventFU`, `ventM2`) VALUES (@op, @cre, @fecha, @fact, @obs, @cliente, @vend, @plazo, @fechap, @recar, @desc, @total, @saldo, @estado, @motivo, @envio, @direnv, @user, @fecha, @user, @fecha, @m2); SELECT LAST_INSERT_ID();"
+            queryVenta = "INSERT INTO `ventas` (`opeCod`, `ventCred`, `ventFecha`, `ventFact`, `ventObs`, `clieCod`, `vendCod`, `ventPlazo`, `ventFechaProm`, `ventRecargo`, `ventDescuento`, `ventTotal`, `ventSaldo`, `ventEstado`, `ventMotivo`, `ventEnvio`, `ventDireccEnv`, `ventUI`, `ventFI`, `ventUU`, `ventFU`, `ventM2`,`estadoFactura`,`plano`) VALUES (@op, @cre, @fecha, @fact, @obs, @cliente, @vend, @plazo, @fechap, @recar, @desc, @total, @saldo, @estado, @motivo, @envio, @direnv, @user, @fecha, @user, @fecha, @m2,@estadoFact,@plano); SELECT LAST_INSERT_ID();"
             Dim cmdVenta As New MySqlCommand(queryVenta, con)
 
 
@@ -17,6 +17,7 @@ Public Class VentaDAO
             cmdVenta.Parameters.AddWithValue("@fecha", venta.fecha)
             cmdVenta.Parameters.AddWithValue("@op", 1)
             cmdVenta.Parameters.AddWithValue("@cre", venta.credito)
+
             cmdVenta.Parameters.AddWithValue("@obs", venta.obs)
             cmdVenta.Parameters.AddWithValue("@cliente", venta.cliente)
             cmdVenta.Parameters.AddWithValue("@vend", venta.vendedor)
@@ -32,25 +33,28 @@ Public Class VentaDAO
             cmdVenta.Parameters.AddWithValue("@direnv", venta.direEnv)
             cmdVenta.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmdVenta.Parameters.AddWithValue("@m2", venta.m2)
-
+            cmdVenta.Parameters.AddWithValue("@estadoFact", "N")
+            cmdVenta.Parameters.AddWithValue("@plano", "")
             Dim ventaCod = CInt(cmdVenta.ExecuteScalar())
 
 
             con.Close()
             con.Open()
 
-            Dim queryDetalle = "INSERT INTO `ventasdet` (`ventCod`, `prodCod`, `ventDetCantidad`, `ventDetAncho`, `ventDetAlto`, `ventDetSup`,  `ventDetPrecioUnit`, `ventDetPrecioReal`,`ventDetObra`) VALUES ( @venta, @producto, @cantidad, @ancho, @alto, @sup, @pu, @pr, @obra);"
+            Dim queryDetalle = "INSERT INTO `ventasdet` (`ventCod`, `prodCod`, `ventDetCantidad`, `ventDetAncho`, `ventDetAlto`, `ventDetSup`,  `ventDetPrecioUnit`, `ventDetPrecioReal`,`ventDetObra`,`ventDetRecargo`, `ventDetDescuento`) VALUES ( @venta, @producto, @cantidad, @ancho, @alto, @sup, @pu, @pr, @obra,@recargo,@descuento); SELECT LAST_INSERT_ID();"
             Dim cmdDetalle As New MySqlCommand(queryDetalle, con)
+            Dim panho = 1
             For Each row As Windows.Forms.DataGridViewRow In productos
+                Dim idProducto = row.Cells(0).Value
                 Dim producto = row.Cells(2).Value
-                Dim m2 = CDbl(row.Cells(8).Value)
+                Dim m2 = CDbl(row.Cells(10).Value)
                 Dim cantidad = CInt(row.Cells(5).Value)
-                Dim precio = CDbl(row.Cells(9).Value)
-                Dim precioR = CDbl(row.Cells(10).Value)
+                Dim precio = CDbl(row.Cells(11).Value)
+                Dim total = CDbl(row.Cells(12).Value)
                 Dim ancho = CDbl(row.Cells(6).Value)
                 Dim alto = CDbl(row.Cells(7).Value)
-                Dim sup = CDbl(row.Cells(8).Value)
-                Dim obra = row.Cells(11).Value
+                Dim sup = CDbl(row.Cells(10).Value)
+                Dim obra = row.Cells(13).Value
 
                 cmdDetalle.Parameters.AddWithValue("@venta", ventaCod)
                 cmdDetalle.Parameters.AddWithValue("@producto", producto)
@@ -59,23 +63,57 @@ Public Class VentaDAO
                 cmdDetalle.Parameters.AddWithValue("@alto", alto)
                 cmdDetalle.Parameters.AddWithValue("@sup", sup)
                 cmdDetalle.Parameters.AddWithValue("@pu", precio)
-
                 cmdDetalle.Parameters.AddWithValue("@obra", obra)
-                cmdDetalle.Parameters.AddWithValue("@pr", precioR)
+                cmdDetalle.Parameters.AddWithValue("@pr", total)
 
+                Dim str As String = row.Cells(8).Value
+                str = str.Replace("%", "")
+                Dim val = CDbl(str) / 100
+                cmdDetalle.Parameters.AddWithValue("@descuento", val)
+                str = row.Cells(9).Value
+                str = str.Replace("%", "")
+                val = CDbl(str) / 100
+                cmdDetalle.Parameters.AddWithValue("@recargo", val)
+                Dim detalleCod = CInt(cmdDetalle.ExecuteScalar())
 
-                cmdDetalle.ExecuteNonQuery()
                 cmdDetalle.Parameters.Clear()
+
+                '' Si la venta no es por superficie
+                If venta.m2 = 0 Then
+                    Dim queryStock = "INSERT INTO `stock` (`prodCodigo`, `stCantidad`, `opCod`, `stUsrIns`, `stFchIns`, `sucCod`, `depoCod`, `ventaCod` ) VALUES (@producto, @cantidad, @op, @user, @fecha, @sucursal, @deposito, @venta);"
+                    Dim cmdStock As New MySqlCommand(queryStock, con)
+                    cmdStock.Parameters.AddWithValue("@producto", producto)
+                    cmdStock.Parameters.AddWithValue("@cantidad", -cantidad)
+                    cmdStock.Parameters.AddWithValue("@op", 1)
+                    cmdStock.Parameters.AddWithValue("@user", Sesion.Usuario)
+                    cmdStock.Parameters.AddWithValue("@fecha", Date.Today)
+                    cmdStock.Parameters.AddWithValue("@sucursal", sucursal.id)
+                    cmdStock.Parameters.AddWithValue("@deposito", deposito.id)
+                    cmdStock.Parameters.AddWithValue("@venta", ventaCod)
+                    cmdStock.ExecuteNonQuery()
+                    cmdStock.Parameters.Clear()
+                Else
+                    Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`) VALUES (@vent, @fet, @pan);"
+                    Dim cmdProd As New MySqlCommand(queryProducion, con)
+                    For index As Integer = 1 To cantidad
+                        cmdProd.Parameters.AddWithValue("@vent", ventaCod)
+                        cmdProd.Parameters.AddWithValue("@fet", detalleCod)
+                        cmdProd.Parameters.AddWithValue("@pan", panho)
+                        panho += 1
+                        cmdProd.ExecuteNonQuery()
+                        cmdProd.Parameters.Clear()
+                    Next
+                End If
             Next
 
 
-
-            'If venta.tipo = "Contado" Then
-            '    actualizarCaja(venta.total)
+            'If produccionDia > 0 Then
+            '    Dim queryProd = "UPDATE `producciondia` SET `prodDiaSup` = `prodDiaSup` + @sup WHERE `prodDiaFecha` = @fecha;"
+            '    Dim cmdProd As New MySqlCommand(queryProd, con)
+            '    cmdProd.Parameters.AddWithValue("@sup", produccionDia)
+            '    cmdProd.Parameters.AddWithValue("@fecha", Date.Today)
+            '    cmdProd.ExecuteNonQuery()
             'End If
-
-
-
             Return ventaCod
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
@@ -119,6 +157,8 @@ Public Class VentaDAO
                 modelo.usuU = SafeGetInt(reader, 20)
                 modelo.fechaU = SafeGetDate(reader, 21)
                 modelo.m2 = SafeGetDecimal(reader, 22)
+                modelo.estadoFactura = safeGetChar(reader, 23)
+                modelo.plano = SafeGetString(reader, 24)
             End While
             Return modelo
         Catch ex As Exception
@@ -136,6 +176,24 @@ Public Class VentaDAO
             Dim query = "Select ventCod from ventas where clieCod = @codigo"
             Dim cmd As New MySqlCommand(query, con)
             cmd.Parameters.AddWithValue("@codigo", id)
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                listado.Add(SafeGetInt(reader, 0))
+            End While
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        End Try
+        Return listado
+    End Function
+
+    Public Function getVentas() As List(Of Integer)
+        Dim listado As New List(Of Integer)
+        Try
+            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select ventCod from ventas"
+            Dim cmd As New MySqlCommand(query, con)
             Dim reader = cmd.ExecuteReader()
 
             While reader.Read
@@ -187,7 +245,7 @@ Public Class VentaDAO
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim mysql = "UPDATE `ventas` SET `ventFecha` = @fechaV, `ventFact` = @factura, `ventObs` = @obs,  `ventPlazo` = @plazo, `ventFechaProm` = @fechaP, `ventSaldo` = @saldo, `ventEstado` = @estado, `ventEnvio` = @envio, `ventDireccEnv` = @dirEnv, `ventUU` = @user, `ventFU` = @fecha WHERE `ventCod` = @venta;"
+            Dim mysql = "UPDATE `ventas` SET `ventFecha` = @fechaV, `ventFact` = @factura, `ventObs` = @obs,  `ventPlazo` = @plazo, `ventFechaProm` = @fechaP, `ventSaldo` = @saldo, `ventEstado` = @estado, `ventEnvio` = @envio, `ventDireccEnv` = @dirEnv, `ventUU` = @user, `ventFU` = @fecha,`clieCod` = @cliente WHERE `ventCod` = @venta;"
 
             Dim cmd As New MySqlCommand(mysql, con)
             cmd.Parameters.AddWithValue("@fechaV", venta.fecha)
@@ -202,11 +260,53 @@ Public Class VentaDAO
             cmd.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
             cmd.Parameters.AddWithValue("@venta", venta.id)
+            cmd.Parameters.AddWithValue("@cliente", venta.cliente)
             cmd.ExecuteNonQuery()
 
 
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+    Public Sub guardarImagen(ByVal ruta As String, ByVal id As String, ByRef img As Image)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "UPDATE `ventas` SET `plano` = @ruta WHERE `ventCod` = @venta;"
+            Dim ruta2 = Config.RutaImagenes + ruta
+
+            img.Save(ruta2, System.Drawing.Imaging.ImageFormat.Jpeg)
+
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@venta", id)
+            cmd.Parameters.AddWithValue("@ruta", ruta2)
+            cmd.ExecuteNonQuery()
+
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+    Public Sub anularVenta(ByVal venta As Venta, ByVal motivo As String)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "UPDATE `producir`.`ventas` SET `ventEstado` = 'A',`ventObs` = @motivo WHERE `ventCod` = @cod;"
+            Dim cmd As New MySqlCommand(query, con)
+
+            cmd.Parameters.AddWithValue("@cod", venta.id)
+            cmd.Parameters.AddWithValue("@motivo", motivo)
+            cmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+
         Finally
             con.Close()
         End Try

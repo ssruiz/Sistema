@@ -26,7 +26,7 @@ Public Class ProductoDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             ', `prodEsp`
-            Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`,`prodEsp`,`prodCosto`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl,@espe,@costo);"
+            Dim query As String = "INSERT INTO `productos` (`prodCodigo`, `prodTipo`, `prodDesc`, `prodColor`, `prodAlto`, `prodAncho`, `prodSup`, `prodPA`, `prodPB`, `prodPC`, `prodPD`, `prodUI`, `prodFi`, `prodUU`, `prodFU`, `prodSM`, `prodTipoPl`,`prodEsp`,`prodCosto`, `prodIva`) VALUES (@codigo, @tipo, @desc, @color, @alto, @ancho, @superf, @pa, @pb, @pc, @pd, @userI, @fecha, @userI, @fecha, @stockm,@tpl,@espe,@costo,@iva);"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@codigo", modelo.codigo)
@@ -41,6 +41,7 @@ Public Class ProductoDAO
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
             cmd.Parameters.AddWithValue("@espe", modelo.espesor)
             cmd.Parameters.AddWithValue("@costo", modelo.costo)
+            cmd.Parameters.AddWithValue("@iva", modelo.iva)
 
             'cmd.Parameters.AddWithValue("@fe", modelo.alto)
             'cmd.Parameters.AddWithValue("@alto", modelo.alto)
@@ -86,7 +87,7 @@ Public Class ProductoDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             '`prodEsp` = @esp,
-            Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl, `prodEsp` = @esp, `prodCosto` = @costo  WHERE `prodCod` = @id;"
+            Dim query = "UPDATE `productos` SET `prodCodigo` = @cod, `prodTipo` = @tipo, `prodDesc` = @desc, `prodColor` = @color,  `prodAlto` = @alto, `prodAncho` = @ancho, `prodSup` = @sup, `prodPA` = @pa, `prodPB` = @pb, `prodPC` = @pc, `prodPD` = @pd, `prodUU` = @user, `prodFU` = @fecha, `prodSM` = @stm, `prodTipoPl` = @tpl, `prodEsp` = @esp, `prodCosto` = @costo, `prodIva`= @iva WHERE `prodCod` = @id;"
 
             Dim cmd As New MySqlCommand(query, con)
             cmd.Parameters.AddWithValue("@id", modelo.id)
@@ -104,6 +105,7 @@ Public Class ProductoDAO
             cmd.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
             cmd.Parameters.AddWithValue("@costo", modelo.costo)
+            cmd.Parameters.AddWithValue("@iva", modelo.iva)
 
             If modelo.tipoPL <> 0 Then
                 cmd.Parameters.AddWithValue("@tpl", modelo.tipoPL)
@@ -157,6 +159,7 @@ Public Class ProductoDAO
                 modelo.fechaM = SafeGetDate(reader, 17)
                 modelo.stockMin = SafeGetInt(reader, 18)
                 modelo.costo = SafeGetDouble(reader, 19)
+                modelo.iva = SafeGetInt(reader, 20)
             End While
             reader.Close()
             Return modelo
@@ -198,6 +201,7 @@ Public Class ProductoDAO
                 modelo.fechaM = SafeGetDate(reader, 17)
                 modelo.stockMin = SafeGetInt(reader, 18)
                 modelo.costo = SafeGetDouble(reader, 19)
+                modelo.iva = SafeGetInt(reader, 20)
             End While
             reader.Close()
             Return modelo
@@ -206,6 +210,81 @@ Public Class ProductoDAO
         Finally
             con.Close()
         End Try
+    End Function
+
+    Public Function getStock(ByVal id As String) As Integer
+        Dim stock = 0
+        Try
+
+
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from vstockproductos where Cod = @codigo"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@codigo", id)
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                stock = SafeGetInt(reader, 2)
+            End While
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return stock
+    End Function
+
+    Public Function getStocks() As DataSet
+        Dim stock = 0
+        Dim ds As New DataSet
+        Try
+
+
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from vstockproductosdet"
+            Dim cmd As New MySqlCommand(query, con)
+            Dim adp As New MySqlDataAdapter(query, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getStockSucursal(ByVal id As String, ByVal sucursal As Integer, ByVal depo As Integer) As Integer
+        Dim stock = 0
+        Try
+
+
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select Stock from vstockproductossuc where IDP = @id and IDS = @suc and IDD= @depo"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@id", id)
+            cmd.Parameters.AddWithValue("@suc", sucursal)
+            cmd.Parameters.AddWithValue("@depo", depo)
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                stock = SafeGetInt(reader, 0)
+            End While
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return stock
     End Function
 End Class
 

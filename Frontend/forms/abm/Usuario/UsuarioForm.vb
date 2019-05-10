@@ -211,4 +211,25 @@ Public Class UsuarioForm
             cbEstado.SelectedIndex = 2
         End If
     End Sub
+
+    Private Sub txtCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigo.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtNombre.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNombre_kd(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtNivel.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNievel_kd(sender As Object, e As KeyEventArgs) Handles txtNivel.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnGuardar_Click(sender, e)
+        End If
+    End Sub
 End Class

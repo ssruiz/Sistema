@@ -411,4 +411,60 @@ Public Class ClienteForm
         desactivarCampos()
         dgvClientes.ClearSelection()
     End Sub
+
+    Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtRUC.Focus()
+        End If
+    End Sub
+
+    Private Sub txtRUC_TextChanged(sender As Object, e As KeyEventArgs) Handles txtRUC.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtCI.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCI_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCI.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtDir.Focus()
+        End If
+    End Sub
+
+    Private Sub txtDir_KeyDown(sender As Object, e As KeyEventArgs) Handles txtDir.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtResponsable.Focus()
+        End If
+    End Sub
+
+    Private Sub txtResponsable_KeyDown(sender As Object, e As KeyEventArgs) Handles txtResponsable.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtTel.Focus()
+        End If
+    End Sub
+
+    Private Sub txtTel_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTel.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtCel.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCel_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCel.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtMail.Focus()
+        End If
+    End Sub
+
+    Private Sub txtMail_KeyDown(sender As Object, e As KeyEventArgs) Handles txtMail.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            cbTipoC.Focus()
+        End If
+    End Sub
 End Class

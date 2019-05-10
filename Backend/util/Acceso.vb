@@ -38,7 +38,7 @@ Public Class Acceso
 
                     Throw New DAOException("Usuario o contraseña incorrectos." & vbCrLf & "Intente de nuevo.")
             End Select
-
+            Return False
         End Try
     End Function
 

@@ -232,4 +232,24 @@
             _m2 = value
         End Set
     End Property
+
+    Private _estadoFactura As Char
+    Public Property estadoFactura() As Char
+        Get
+            Return _estadoFactura
+        End Get
+        Set(ByVal value As Char)
+            _estadoFactura = value
+        End Set
+    End Property
+
+    Private _plano As String
+    Public Property plano() As String
+        Get
+            Return _plano
+        End Get
+        Set(ByVal value As String)
+            _plano = value
+        End Set
+    End Property
 End Class

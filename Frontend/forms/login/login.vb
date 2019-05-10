@@ -54,4 +54,13 @@ Public Class login
         Me.BackgroundImageLayout = ImageLayout.Center
         Me.ResumeLayout()
     End Sub
+
+    Private Sub txtUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles txtUsuario.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtPasswd.Focus()
+        End If
+    End Sub
+
+
 End Class

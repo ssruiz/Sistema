@@ -80,12 +80,61 @@
         cliF.ShowDialog()
         cliF.Dispose()
     End Sub
+    'Mantenimiento Proveedores
+    Private Sub ProveedorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProveedorToolStripMenuItem.Click
+        Dim provF As New ProveedorForm
+        provF.ShowDialog()
+        provF.Dispose()
+    End Sub
+    'Mantenimiento Bancos
+    Private Sub BancosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BancosToolStripMenuItem.Click
+        Dim bancF As New BancoForm
+        bancF.ShowDialog()
+        bancF.Dispose()
+    End Sub
 
-
+    ' Inform de ventas
+    Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
+        Dim infV As New InformeVentas
+        infV.ShowDialog()
+        infV.Dispose()
+    End Sub
+    'Ventas
     Private Sub VentasTS_Click(sender As Object, e As EventArgs) Handles VentasTS.Click
         Dim cliV As New VentasForm
         cliV.ShowDialog()
         cliV.Dispose()
+    End Sub
+
+    'Compras
+    Private Sub ComprasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComprasToolStripMenuItem.Click
+        Dim cliC As New CompraForm
+        cliC.ShowDialog()
+        cliC.Dispose()
+    End Sub
+    ' Inform de compras
+    Private Sub ComprasToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ComprasToolStripMenuItem1.Click
+        Dim infV As New ReporteCompra
+        infV.ShowDialog()
+        infV.Dispose()
+    End Sub
+    'Stock
+    Private Sub StockTS_Click(sender As Object, e As EventArgs) Handles StockTS.Click
+        Dim infV As New StockForm
+        infV.ShowDialog()
+        infV.Dispose()
+    End Sub
+    'Mov. Interno
+    Private Sub NuevoMovimientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoMovimientoToolStripMenuItem.Click
+        Dim infV As New MovInternoForm
+        infV.ShowDialog()
+        infV.Dispose()
+    End Sub
+    ' Listado Mov. Internos
+    Private Sub ListadoMovimientosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListadoMovimientosToolStripMenuItem.Click
+        Dim infV As New ListadoMovimientosForm
+        infV.ShowDialog()
+        infV.Dispose()
     End Sub
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()

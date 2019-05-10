@@ -26,6 +26,30 @@ Public Class SucursalDAO
         Return ds
     End Function
 
+    Public Function getSucursalesCB() As DataSet
+        Dim clientes As New Collection
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter
+        Dim dt As New DataTable
+        Try
+            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+
+
+            Dim mysql = "SELECT ID,Nombre from vlistadosucursales"
+
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+
+            con.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        End Try
+        Return ds
+    End Function
     ' Guarda un nuevo usuario en la DB
     Public Sub guardar(ByVal modelo As Sucursal)
         Dim con As New MySqlConnection
@@ -105,5 +129,30 @@ Public Class SucursalDAO
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
         End Try
+    End Function
+
+    Public Function getSucursalesDepositos(ByVal id As Integer) As DataSet
+        Dim clientes As New Collection
+        Dim ds As New DataSet
+        Dim da As New MySqlDataAdapter
+        Dim dt As New DataTable
+        Try
+            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+
+
+            Dim mysql = "SELECT IDD,Depósito from vlistadosucursalesdep where IDD =" & id & ";"
+
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+
+            con.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        End Try
+        Return ds
     End Function
 End Class

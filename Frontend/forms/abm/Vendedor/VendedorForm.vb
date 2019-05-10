@@ -213,4 +213,24 @@ Public Class VendedorForm
             sender.Select(sender.TextLength - 4, 0)
         End If
     End Sub
+
+    Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtCelular.Focus()
+        End If
+    End Sub
+    Private Sub txtcel_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCelular.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtPorcentaje.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPorcentaje_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPorcentaje.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnGuardar_Click(sender, e)
+        End If
+    End Sub
 End Class

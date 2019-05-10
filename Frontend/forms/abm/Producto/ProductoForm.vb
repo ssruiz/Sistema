@@ -115,6 +115,7 @@ Public Class ProductoForm
         txtSuperficie.Text = modelo.superficie
         cbColores.SelectedValue = modelo.color
         txtCosto.Text = modelo.costo
+        cbIva.SelectedIndex = modelo.iva
         Dim dr = listTipos.Select("ID='" & modelo.tipo & "'")
         If dr.Length > 0 Then
             If dr(0)("Tipo").ToString() = "herrajes" Then
@@ -197,6 +198,7 @@ Public Class ProductoForm
         '   cbTipos.Enabled = True
         cbTipoPlancha.Enabled = True
         txtEspesor.Enabled = True
+        cbIva.Enabled = True
         dgvProductos.ClearSelection()
     End Sub
 
@@ -219,7 +221,7 @@ Public Class ProductoForm
         cbColores.Enabled = False
         'cbTipos.Enabled = False
         cbTipoPlancha.Enabled = False
-
+        cbIva.Enabled = False
     End Sub
 
 
@@ -275,6 +277,7 @@ Public Class ProductoForm
         modelo.tipo = getTipo()
         modelo.espesor = txtEspesor.Text
         modelo.costo = txtCosto.Text
+        modelo.iva = cbIva.SelectedIndex
         If rbPlanchas.Checked Then
             modelo.alto = txtAlto.Text
             modelo.ancho = txtAncho.Text
@@ -318,6 +321,7 @@ Public Class ProductoForm
         modelo.tipo = getTipo()
         modelo.espesor = txtEspesor.Text
         modelo.costo = txtCosto.Text
+        modelo.iva = cbIva.SelectedIndex
         If rbPlanchas.Checked Then
             modelo.alto = txtAlto.Text
             modelo.ancho = txtAncho.Text
@@ -352,6 +356,10 @@ Public Class ProductoForm
                 MsgBox("Debe seleccionar un tipo para la plancha", MsgBoxStyle.Critical, "Notificación")
                 cbTipoPlancha.Focus()
                 Return False
+            ElseIf cbIva.SelectedIndex = 0 Then
+                MsgBox("Debe seleccionar el iva aplicado al producto", MsgBoxStyle.Critical, "Notificación")
+                cbIva.Focus()
+                Return False
             End If
         Else
             If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
@@ -360,6 +368,10 @@ Public Class ProductoForm
             ElseIf cbColores.SelectedIndex = 0 Then
                 MsgBox("Debe seleccionar un color", MsgBoxStyle.Critical, "Notificación")
                 cbColores.Focus()
+                Return False
+            ElseIf cbIva.SelectedIndex = 0 Then
+                MsgBox("Debe seleccionar el iva aplicado al producto", MsgBoxStyle.Critical, "Notificación")
+                cbIva.Focus()
                 Return False
             End If
         End If
@@ -516,5 +528,26 @@ Public Class ProductoForm
             txtSuperficie.Text = ""
         End Try
 
+    End Sub
+
+    Private Sub txtCodigo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCodigo.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtDesc.Focus()
+        End If
+    End Sub
+
+    Private Sub txtDes_KeyDown(sender As Object, e As KeyEventArgs) Handles txtDesc.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtSM.Focus()
+        End If
+    End Sub
+
+    Private Sub txtSM_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSM.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtCosto.Focus()
+        End If
     End Sub
 End Class

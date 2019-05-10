@@ -53,6 +53,17 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=samuel;password=system;database=producir;persistsecurity"& _ 
+            "info=True")>  _
+        Public ReadOnly Property producirConnectionString() As String
+            Get
+                Return CType(Me("producirConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

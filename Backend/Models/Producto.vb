@@ -199,4 +199,14 @@
             _costo = value
         End Set
     End Property
+
+    Private _iva As Integer
+    Public Property iva() As Integer
+        Get
+            Return _iva
+        End Get
+        Set(ByVal value As Integer)
+            _iva = value
+        End Set
+    End Property
 End Class

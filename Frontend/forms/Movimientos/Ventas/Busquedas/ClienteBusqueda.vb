@@ -9,6 +9,7 @@ Public Class ClienteBusqueda
 
         cargarClientes()
         aplicarFiltro()
+        dgvClientes.Focus()
     End Sub
 
     Private Sub cargarClientes()
@@ -42,5 +43,12 @@ Public Class ClienteBusqueda
 
     Private Sub txtFiltro_TextChanged(sender As Object, e As EventArgs) Handles txtFiltro.TextChanged
         aplicarFiltro()
+    End Sub
+
+    Private Sub txtFiltro_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFiltro.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            dgvClientes.Focus()
+        End If
     End Sub
 End Class
