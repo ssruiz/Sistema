@@ -10,8 +10,8 @@ Public Class CompraForm
     Dim deposito As New Deposito
     Dim compra As New Compra ' almacena la compra que se ve en pantalla
     Dim tipoAct As String
-    Dim listadoVentas As New List(Of Integer)
-    Dim ventaActual = 0
+    Dim listadoCompras As New List(Of Integer)
+    Dim compraActual = 0
     Dim columnasGrid
     Dim modificar = False
     Dim produccionDia As New Produccion
@@ -25,7 +25,44 @@ Public Class CompraForm
         rbtnCont.Enabled = False
         rbtnCred.Enabled = False
         columnasGrid = dgvProductos.Columns
+        cargarCompras()
+        PersonalizarDAtagridView(dgvProductos)
         dgvProductos.DataSource = New DataSet1.detalleCompraDataTable
+    End Sub
+    Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
+        With dgv
+            .ForeColor = Color.FromArgb(245, 245, 245)
+            .DefaultCellStyle.BackColor = Color.FromArgb(64, 69, 76)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .GridColor = Color.FromArgb(245, 245, 245)
+
+            ' Inabilito EnableHeadersVisualStyles para que la personalizacion se haga efectiva
+
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersHeightSizeMode = False
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .ColumnHeadersHeight = 35
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(217, 64, 23)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            .RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .RowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .AlternatingRowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            'Tipo de letra and color
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            'Coloreo el background del DGV
+            .BackgroundColor = Color.FromArgb(48, 65, 91)
+        End With
+    End Sub
+    Private Sub cargarCompras()
+        Try
+            Dim daoV As New CompraDAO
+            listadoCompras = daoV.getCompras()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub calcularTotal(ByVal monto As Double, ByVal iva5 As Double, ByVal iva10 As Double, ByVal exenta As Double)
@@ -44,8 +81,11 @@ Public Class CompraForm
             txtExentaT.Text = FormatCurrency(exenta)
         End If
 
-        If rbtnCont.Enabled = True Then
-            txtPago.Text = FormatCurrency(txtTotal.Text)
+        If rbtnCont.Checked Then
+            txtSaldo.Text = FormatCurrency(0)
+        Else
+            txtSaldo.Text = FormatCurrency(txtTotal.Text)
+
         End If
     End Sub
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
@@ -53,6 +93,7 @@ Public Class CompraForm
         limpiarCampos()
         Dim res = buscarP.ShowDialog()
         If res = DialogResult.OK Then
+            pnlTipoP.Visible = True
             proveedor = buscarP.proveedor
             asignarProveedor()
             prepararNuevaCompra()
@@ -107,7 +148,6 @@ Public Class CompraForm
         rbtnCont.Checked = False
         btnGuardar.Enabled = False
         btnEliminarProd.Enabled = False
-        txtPago.Enabled = False
         txtCantidad.Enabled = False
     End Sub
     Private Sub asignarSucursal()
@@ -131,45 +171,9 @@ Public Class CompraForm
         lblClienteTel.Text = proveedor.telf
     End Sub
 
-    Private Sub precioFormat(sender As Object, e As EventArgs) Handles txtPago.TextChanged
-        Try
-            If modificar = False Then
-                If sender.Text <> "" Then
-                    sender.Text = FormatCurrency(sender.Text, 1)
-                    sender.Select(sender.TextLength - 2, 0)
-                    If txtPago.Text <> "" And txtTotal.Text <> "" Then
-                        txtSaldo.Text = FormatCurrency(txtTotal.Text - txtPago.Text, 1)
-                    End If
-                Else
-                    sender.Text = FormatCurrency(0, 1)
-                    sender.Select(sender.TextLength - 2, 0)
-                    If txtTotal.Text <> "" And txtPago.Text <> "" Then
-                        txtSaldo.Text = FormatCurrency(txtTotal.Text - txtPago.Text, 1)
-                    End If
-                End If
-            Else
-                If sender.Text <> "" Then
-                    sender.Text = FormatCurrency(sender.Text, 1)
-                    sender.Select(sender.TextLength - 2, 0)
-                    If txtPago.Text <> "" And txtSaldo.Text <> "" Then
-                        txtSaldo.Text = FormatCurrency(compra.saldo - txtPago.Text, 1)
-                    End If
-                Else
-                    sender.Text = FormatCurrency(0, 1)
-                    sender.Select(sender.TextLength - 2, 0)
-                    If txtTotal.Text <> "" And txtPago.Text <> "" Then
-                        txtSaldo.Text = FormatCurrency(compra.saldo - txtPago.Text, 1)
-                    End If
-                End If
-            End If
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
 
-    End Sub
-
-    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtPago.KeyPress, txtCantidad.KeyPress, txtExenta.KeyPress
+    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtCantidad.KeyPress, txtExenta.KeyPress
         soloNumeros(e)
     End Sub
 
@@ -307,10 +311,10 @@ Public Class CompraForm
     Private Sub rbtnCont_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnCont.CheckedChanged
         If rbtnCont.Checked Then
             lblTipoFactura.Text = "Contado"
-            txtPago.Enabled = False
+            txtSaldo.Text = FormatCurrency(0)
         Else
             lblTipoFactura.Text = "Crédito"
-            txtPago.Enabled = True
+            txtSaldo.Text = FormatCurrency(txtTotal.Text)
         End If
     End Sub
 
@@ -339,7 +343,7 @@ Public Class CompraForm
                     Else
                         nuevaCompra.credito = "S"
 
-                        nuevaCompra.saldo = nuevaCompra.total - CDbl(txtPago.Text)
+                        nuevaCompra.saldo = nuevaCompra.total
                         nuevaCompra.estado = "P"
                     End If
 
@@ -404,14 +408,14 @@ Public Class CompraForm
         txtObservacion.Text = ""
         lblProducto.Text = ""
         txtCantidad.Text = ""
-        lblOTActual.Text = ""
+
         lblEstado.Text = ""
         'txtOT.Text = ""
         txtFecha.Text = Date.Today
         txtPrecio.Text = ""
         txtTotal.Text = FormatCurrency(0)
         txtSaldo.Text = FormatCurrency(0)
-        txtPago.Text = FormatCurrency(0)
+
         txtIva10.Text = FormatCurrency(0)
         txtIva5.Text = FormatCurrency(0)
         txtExenta.Text = FormatCurrency(0)
@@ -455,8 +459,8 @@ Public Class CompraForm
                 btnAnular.Enabled = True
                 cargarSucursal()
                 asignarDeposito()
-                cargarCompra()
-                lblOTActual.Text = compra.id
+                cargarCompra(0)
+
                 btnGuardar.Enabled = False
                 btnAnular.Enabled = True
                 If compra.credito = "S" Then
@@ -489,9 +493,14 @@ Public Class CompraForm
             MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Asignar Vendedor - Error")
         End Try
     End Sub
-    Private Sub cargarCompra()
+    Private Sub cargarCompra(ByVal flag As Integer)
         Try
             Dim daoC As New CompraDAO
+            If flag = 1 Then
+
+                compra = daoC.getCompra(listadoCompras.Item(compraActual))
+            End If
+
             lblOTSeleccionada.Text = compra.id
             lblSucursal.Text = sucursal.nombre
             lblDeposito.Text = deposito.nombre
@@ -550,23 +559,25 @@ Public Class CompraForm
                 Dim restarSub = row.Cells("TotalCol").Value
 
                 Dim monto = row.Cells("TotalCol").Value
+                Dim ex = row.Cells("excentaCol").Value
                 Dim iva5 = row.Cells(6).Value
                 Dim iva10 = row.Cells(7).Value
                 Dim tmp = CDbl(txtTotal.Text - monto)
                 Dim tmp2 = CDbl(txtIva5.Text - iva5)
                 Dim tmp3 = CDbl(txtIva10.Text - iva10)
-
+                Dim tmp4 = CDbl(txtExentaT.Text - ex)
 
                 txtTotal.Text = FormatCurrency(tmp)
                 txtIva5.Text = FormatCurrency(tmp2)
                 txtIva10.Text = FormatCurrency(tmp3)
+                txtExentaT.Text = FormatCurrency(tmp4)
                 If rbtnCont.Checked = True Then
-                    txtPago.Text = FormatCurrency(tmp)
+                    txtSaldo.Text = FormatCurrency(0)
                 Else
-                    txtPago.Text = FormatCurrency(0)
+                    txtSaldo.Text = FormatCurrency(tmp)
 
                 End If
-                txtSaldo.Text = FormatCurrency(tmp - CDbl(txtPago.Text))
+
 
 
                 dgvProductos.Rows.Remove(row)
@@ -575,13 +586,67 @@ Public Class CompraForm
     End Sub
 
     Private Sub txtExenta_TextChanged(sender As Object, e As EventArgs) Handles txtExenta.TextChanged
-        If sender.Text <> "" Then
-            sender.Text = FormatCurrency(sender.Text, 1)
-            sender.Select(sender.TextLength - 2, 0)
-        Else
-            sender.Text = FormatCurrency(0, 1)
-            sender.Select(sender.TextLength - 2, 0)
+        Try
+            If sender.Text <> "" Then
 
+                txtExenta.Text = FormatCurrency(txtExenta.Text)
+                txtExenta.Select(txtExenta.TextLength, 0)
+            Else
+
+                txtExenta.Text = FormatCurrency(0)
+                txtExenta.Select(txtExenta.TextLength, 0)
+            End If
+        Catch ex As Exception
+            txtExenta.Text = FormatCurrency(0)
+            txtExenta.Select(txtExenta.TextLength, 0)
+        End Try
+
+    End Sub
+
+    Private Sub btnAnterior_Click(sender As Object, e As EventArgs) Handles btnAnterior.Click
+        If listadoCompras.Count > 0 Then
+            compraActual -= 1
+            If compraActual = -1 Then
+                compraActual = listadoCompras.Count - 1
+
+            End If
+            cargarCompra(1)
         End If
+    End Sub
+
+    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs) Handles GroupBox3.Enter
+
+    End Sub
+
+    Private Sub btnPrim_Click(sender As Object, e As EventArgs) Handles btnPrim.Click
+        If listadoCompras.Count > 0 Then
+            compraActual = 0
+            cargarCompra(1)
+        End If
+    End Sub
+
+    Private Sub btnSgte_Click(sender As Object, e As EventArgs) Handles btnSgte.Click
+        If listadoCompras.Count > 0 Then
+            compraActual += 1
+            If compraActual = listadoCompras.Count Then
+                compraActual = 0
+            End If
+            cargarCompra(1)
+        End If
+    End Sub
+
+    Private Sub btnUlt_Click(sender As Object, e As EventArgs) Handles btnUlt.Click
+        If listadoCompras.Count > 0 Then
+            compraActual = listadoCompras.Count - 1
+            cargarCompra(1)
+        End If
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btnEditar_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

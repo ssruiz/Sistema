@@ -7,8 +7,36 @@ Public Class VendedorForm
     Private Sub UsuarioForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarVendedores()
         desactivarCampos()
+        PersonalizarDAtagridView(dgvVendedores)
     End Sub
+    Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
+        With dgv
 
+            .ForeColor = Color.FromArgb(245, 245, 245)
+            .DefaultCellStyle.BackColor = Color.FromArgb(64, 69, 76)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .GridColor = Color.FromArgb(245, 245, 245)
+
+            ' Inabilito EnableHeadersVisualStyles para que la personalizacion se haga efectiva
+
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersHeightSizeMode = False
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .ColumnHeadersHeight = 35
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(217, 64, 23)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            .RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .RowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .AlternatingRowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            'Tipo de letra and color
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            'Coloreo el background del DGV
+            .BackgroundColor = Color.FromArgb(48, 65, 91)
+        End With
+    End Sub
     Private Sub cargarVendedores()
         Me.SuspendLayout()
         Dim daoO As New VendedorDAO

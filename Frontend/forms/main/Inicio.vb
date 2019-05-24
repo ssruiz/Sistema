@@ -136,6 +136,19 @@
         infV.ShowDialog()
         infV.Dispose()
     End Sub
+    ' Pagos
+    Private Sub PagosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagosToolStripMenuItem.Click
+        Dim pagoForm As New PagoForm
+        pagoForm.ShowDialog()
+        pagoForm.Dispose()
+    End Sub
+
+    ' cambio $
+    Private Sub CambioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CambioToolStripMenuItem.Click
+        Dim cambioForm As New CambioForm
+        cambioForm.ShowDialog()
+        cambioForm.Dispose()
+    End Sub
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColoresMenu())
@@ -153,6 +166,5 @@
         Dim ob = DirectCast(sender, ToolStripMenuItem)
         ob.ForeColor = Color.White
     End Sub
-
 
 End Class

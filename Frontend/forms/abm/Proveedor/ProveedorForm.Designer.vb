@@ -39,7 +39,7 @@ Partial Class ProveedorForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.dgvBancos = New System.Windows.Forms.DataGridView()
+        Me.dgvProveedores = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnModificar = New System.Windows.Forms.Button()
@@ -52,7 +52,7 @@ Partial Class ProveedorForm
         Me.Panel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.dgvBancos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -206,7 +206,7 @@ Partial Class ProveedorForm
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.dgvBancos)
+        Me.GroupBox1.Controls.Add(Me.dgvProveedores)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.GroupBox1.Location = New System.Drawing.Point(17, 350)
@@ -217,18 +217,18 @@ Partial Class ProveedorForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Proveedores Guardados"
         '
-        'dgvBancos
+        'dgvProveedores
         '
-        Me.dgvBancos.AllowUserToAddRows = False
-        Me.dgvBancos.AllowUserToDeleteRows = False
+        Me.dgvProveedores.AllowUserToAddRows = False
+        Me.dgvProveedores.AllowUserToDeleteRows = False
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvBancos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvBancos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgvProveedores.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvProveedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -236,8 +236,8 @@ Partial Class ProveedorForm
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvBancos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.dgvBancos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProveedores.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -245,18 +245,18 @@ Partial Class ProveedorForm
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvBancos.DefaultCellStyle = DataGridViewCellStyle3
-        Me.dgvBancos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvBancos.EnableHeadersVisualStyles = False
-        Me.dgvBancos.GridColor = System.Drawing.SystemColors.ActiveCaption
-        Me.dgvBancos.Location = New System.Drawing.Point(9, 31)
-        Me.dgvBancos.Name = "dgvBancos"
-        Me.dgvBancos.ReadOnly = True
-        Me.dgvBancos.RowHeadersVisible = False
-        Me.dgvBancos.RowTemplate.Height = 24
-        Me.dgvBancos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBancos.Size = New System.Drawing.Size(979, 305)
-        Me.dgvBancos.TabIndex = 2
+        Me.dgvProveedores.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvProveedores.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvProveedores.EnableHeadersVisualStyles = False
+        Me.dgvProveedores.GridColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.dgvProveedores.Location = New System.Drawing.Point(9, 31)
+        Me.dgvProveedores.Name = "dgvProveedores"
+        Me.dgvProveedores.ReadOnly = True
+        Me.dgvProveedores.RowHeadersVisible = False
+        Me.dgvProveedores.RowTemplate.Height = 24
+        Me.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProveedores.Size = New System.Drawing.Size(979, 305)
+        Me.dgvProveedores.TabIndex = 2
         '
         'TableLayoutPanel1
         '
@@ -394,7 +394,7 @@ Partial Class ProveedorForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.dgvBancos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvProveedores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
@@ -417,7 +417,7 @@ Partial Class ProveedorForm
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents dgvBancos As DataGridView
+    Friend WithEvents dgvProveedores As DataGridView
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnModificar As Button

@@ -56,11 +56,11 @@ Partial Class ColorForm
         Me.GroupBox1.Controls.Add(Me.dgvColores)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.GroupBox1.Location = New System.Drawing.Point(84, 406)
+        Me.GroupBox1.Location = New System.Drawing.Point(35, 406)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(14, 18, 14, 18)
-        Me.GroupBox1.Size = New System.Drawing.Size(791, 477)
+        Me.GroupBox1.Size = New System.Drawing.Size(883, 377)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Colores Guardados"
@@ -103,7 +103,7 @@ Partial Class ColorForm
         Me.dgvColores.RowHeadersVisible = False
         Me.dgvColores.RowTemplate.Height = 24
         Me.dgvColores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvColores.Size = New System.Drawing.Size(763, 414)
+        Me.dgvColores.Size = New System.Drawing.Size(855, 314)
         Me.dgvColores.TabIndex = 0
         '
         'gbOperaciones
@@ -113,11 +113,11 @@ Partial Class ColorForm
         Me.gbOperaciones.Controls.Add(Me.lblNombre)
         Me.gbOperaciones.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbOperaciones.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.gbOperaciones.Location = New System.Drawing.Point(84, 97)
+        Me.gbOperaciones.Location = New System.Drawing.Point(35, 97)
         Me.gbOperaciones.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbOperaciones.Name = "gbOperaciones"
         Me.gbOperaciones.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.gbOperaciones.Size = New System.Drawing.Size(792, 112)
+        Me.gbOperaciones.Size = New System.Drawing.Size(882, 112)
         Me.gbOperaciones.TabIndex = 1
         Me.gbOperaciones.TabStop = False
         Me.gbOperaciones.Text = "Datos"
@@ -171,13 +171,13 @@ Partial Class ColorForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.19028!))
         Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(84, 237)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(35, 237)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(792, 152)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(883, 152)
         Me.TableLayoutPanel1.TabIndex = 7
         '
         'Panel3
@@ -188,7 +188,7 @@ Partial Class ColorForm
         Me.Panel3.Location = New System.Drawing.Point(1, 81)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(790, 70)
+        Me.Panel3.Size = New System.Drawing.Size(881, 70)
         Me.Panel3.TabIndex = 2
         '
         'txtBusqueda
@@ -222,7 +222,7 @@ Partial Class ColorForm
         Me.Panel2.Location = New System.Drawing.Point(1, 1)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(790, 79)
+        Me.Panel2.Size = New System.Drawing.Size(881, 79)
         Me.Panel2.TabIndex = 0
         '
         'btnModificar
@@ -283,7 +283,7 @@ Partial Class ColorForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 28.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(982, 919)
+        Me.ClientSize = New System.Drawing.Size(982, 853)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.gbOperaciones)

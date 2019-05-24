@@ -252,4 +252,14 @@
             _plano = value
         End Set
     End Property
+
+    Private _moneda As Char
+    Public Property moneda() As Char
+        Get
+            Return _moneda
+        End Get
+        Set(ByVal value As Char)
+            _moneda = value
+        End Set
+    End Property
 End Class

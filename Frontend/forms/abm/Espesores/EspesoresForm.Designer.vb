@@ -56,11 +56,11 @@ Partial Class EspesoresForm
         Me.GroupBox1.Controls.Add(Me.dgvEspesores)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.GroupBox1.Location = New System.Drawing.Point(99, 399)
+        Me.GroupBox1.Location = New System.Drawing.Point(28, 399)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(14, 18, 14, 18)
-        Me.GroupBox1.Size = New System.Drawing.Size(791, 477)
+        Me.GroupBox1.Size = New System.Drawing.Size(792, 364)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Espesores Guardados"
@@ -103,7 +103,7 @@ Partial Class EspesoresForm
         Me.dgvEspesores.RowHeadersVisible = False
         Me.dgvEspesores.RowTemplate.Height = 24
         Me.dgvEspesores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvEspesores.Size = New System.Drawing.Size(763, 414)
+        Me.dgvEspesores.Size = New System.Drawing.Size(764, 301)
         Me.dgvEspesores.TabIndex = 0
         '
         'gbOperaciones
@@ -113,7 +113,7 @@ Partial Class EspesoresForm
         Me.gbOperaciones.Controls.Add(Me.lblNombre)
         Me.gbOperaciones.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.gbOperaciones.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.gbOperaciones.Location = New System.Drawing.Point(99, 94)
+        Me.gbOperaciones.Location = New System.Drawing.Point(27, 92)
         Me.gbOperaciones.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbOperaciones.Name = "gbOperaciones"
         Me.gbOperaciones.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -146,7 +146,7 @@ Partial Class EspesoresForm
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(245, 9)
+        Me.Label1.Location = New System.Drawing.Point(190, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(490, 45)
@@ -160,7 +160,7 @@ Partial Class EspesoresForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.19028!))
         Me.TableLayoutPanel1.Controls.Add(Me.Panel3, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel2, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(99, 228)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(27, 218)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
@@ -275,7 +275,7 @@ Partial Class EspesoresForm
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(982, 71)
+        Me.Panel1.Size = New System.Drawing.Size(851, 71)
         Me.Panel1.TabIndex = 10
         '
         'EspesoresForm
@@ -283,7 +283,7 @@ Partial Class EspesoresForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(982, 919)
+        Me.ClientSize = New System.Drawing.Size(851, 807)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.gbOperaciones)
         Me.Controls.Add(Me.TableLayoutPanel1)

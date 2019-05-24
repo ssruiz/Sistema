@@ -23,13 +23,13 @@ Partial Class MovInternoForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -44,17 +44,21 @@ Partial Class MovInternoForm
         Me.tblDatosProdutcosDetalle = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtCantidad = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.txtCodProd = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblDesc = New System.Windows.Forms.Label()
-        Me.lblStock = New System.Windows.Forms.Label()
         Me.lblDescPr = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.lblDesc = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtCodProd = New System.Windows.Forms.TextBox()
+        Me.lblCodigo = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblStock = New System.Windows.Forms.Label()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.btnNuevo = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbDepo2 = New System.Windows.Forms.ComboBox()
         Me.cbDepo1 = New System.Windows.Forms.ComboBox()
@@ -63,7 +67,9 @@ Partial Class MovInternoForm
         Me.cbS1 = New System.Windows.Forms.ComboBox()
         Me.txtObservacion = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtSolicitante = New System.Windows.Forms.TextBox()
         Me.txtFecha = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblAuto = New System.Windows.Forms.Label()
@@ -73,12 +79,6 @@ Partial Class MovInternoForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtSolicitante = New System.Windows.Forms.TextBox()
-        Me.btnNuevo = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.lblCodigo = New System.Windows.Forms.Label()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,9 +86,9 @@ Partial Class MovInternoForm
         Me.TableLayoutPanel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -147,33 +147,33 @@ Partial Class MovInternoForm
         Me.dgvProductos.AllowUserToAddRows = False
         Me.dgvProductos.AllowUserToDeleteRows = False
         Me.dgvProductos.AllowUserToResizeColumns = False
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvProductos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.MovCol, Me.IDProdCol, Me.ProdCodCol, Me.ProductoCol, Me.CantidadCol})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle7
         Me.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvProductos.EnableHeadersVisualStyles = False
         Me.dgvProductos.Location = New System.Drawing.Point(63, 19)
@@ -189,8 +189,8 @@ Partial Class MovInternoForm
         'ID
         '
         Me.ID.DataPropertyName = "ID"
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle3
         Me.ID.HeaderText = "ID"
         Me.ID.Name = "ID"
         Me.ID.Visible = False
@@ -198,8 +198,8 @@ Partial Class MovInternoForm
         'MovCol
         '
         Me.MovCol.DataPropertyName = "Mov"
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.MovCol.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.MovCol.DefaultCellStyle = DataGridViewCellStyle4
         Me.MovCol.HeaderText = "Mov"
         Me.MovCol.Name = "MovCol"
         Me.MovCol.Visible = False
@@ -207,8 +207,8 @@ Partial Class MovInternoForm
         'IDProdCol
         '
         Me.IDProdCol.DataPropertyName = "ProdID"
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.IDProdCol.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.IDProdCol.DefaultCellStyle = DataGridViewCellStyle5
         Me.IDProdCol.HeaderText = "ProdID"
         Me.IDProdCol.Name = "IDProdCol"
         Me.IDProdCol.Visible = False
@@ -228,10 +228,10 @@ Partial Class MovInternoForm
         'CantidadCol
         '
         Me.CantidadCol.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle13.Format = "N2"
-        DataGridViewCellStyle13.NullValue = "0"
-        Me.CantidadCol.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = "0"
+        Me.CantidadCol.DefaultCellStyle = DataGridViewCellStyle6
         Me.CantidadCol.HeaderText = "Cantidad"
         Me.CantidadCol.Name = "CantidadCol"
         '
@@ -260,8 +260,8 @@ Partial Class MovInternoForm
         Me.TableLayoutPanel4.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 361.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 129.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 129.0!))
         Me.TableLayoutPanel4.Size = New System.Drawing.Size(1590, 130)
         Me.TableLayoutPanel4.TabIndex = 1
         '
@@ -272,8 +272,40 @@ Partial Class MovInternoForm
         Me.Panel5.Location = New System.Drawing.Point(1, 1)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1588, 128)
+        Me.Panel5.Size = New System.Drawing.Size(1588, 129)
         Me.Panel5.TabIndex = 11
+        '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.GroupBox2)
+        Me.Panel6.Controls.Add(Me.btnBuscar)
+        Me.Panel6.Controls.Add(Me.btnGuardar)
+        Me.Panel6.Controls.Add(Me.btnNuevo)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(0, 0)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1588, 129)
+        Me.Panel6.TabIndex = 10
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label14)
+        Me.GroupBox2.Controls.Add(Me.txtCantidad)
+        Me.GroupBox2.Controls.Add(Me.lblDescPr)
+        Me.GroupBox2.Controls.Add(Me.Label15)
+        Me.GroupBox2.Controls.Add(Me.lblDesc)
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.txtCodProd)
+        Me.GroupBox2.Controls.Add(Me.lblCodigo)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.lblStock)
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.GroupBox2.Location = New System.Drawing.Point(363, 0)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1225, 129)
+        Me.GroupBox2.TabIndex = 10
+        Me.GroupBox2.TabStop = False
         '
         'Label14
         '
@@ -296,6 +328,16 @@ Partial Class MovInternoForm
         Me.txtCantidad.TabIndex = 0
         Me.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'lblDescPr
+        '
+        Me.lblDescPr.AutoSize = True
+        Me.lblDescPr.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescPr.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDescPr.Location = New System.Drawing.Point(185, 83)
+        Me.lblDescPr.Name = "lblDescPr"
+        Me.lblDescPr.Size = New System.Drawing.Size(0, 23)
+        Me.lblDescPr.TabIndex = 9
+        '
         'Label15
         '
         Me.Label15.AutoSize = True
@@ -306,26 +348,6 @@ Partial Class MovInternoForm
         Me.Label15.Size = New System.Drawing.Size(79, 23)
         Me.Label15.TabIndex = 1
         Me.Label15.Text = "Cantidad"
-        '
-        'txtCodProd
-        '
-        Me.txtCodProd.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCodProd.Location = New System.Drawing.Point(178, 35)
-        Me.txtCodProd.Name = "txtCodProd"
-        Me.txtCodProd.Size = New System.Drawing.Size(271, 30)
-        Me.txtCodProd.TabIndex = 0
-        Me.txtCodProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(479, 83)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(135, 23)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Stock disponible"
         '
         'lblDesc
         '
@@ -338,6 +360,47 @@ Partial Class MovInternoForm
         Me.lblDesc.TabIndex = 1
         Me.lblDesc.Text = "Descripción"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label2.Location = New System.Drawing.Point(479, 38)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(65, 23)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Código"
+        '
+        'txtCodProd
+        '
+        Me.txtCodProd.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCodProd.Location = New System.Drawing.Point(178, 35)
+        Me.txtCodProd.Name = "txtCodProd"
+        Me.txtCodProd.Size = New System.Drawing.Size(271, 30)
+        Me.txtCodProd.TabIndex = 0
+        Me.txtCodProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblCodigo
+        '
+        Me.lblCodigo.AutoSize = True
+        Me.lblCodigo.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCodigo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblCodigo.Location = New System.Drawing.Point(633, 38)
+        Me.lblCodigo.Name = "lblCodigo"
+        Me.lblCodigo.Size = New System.Drawing.Size(0, 23)
+        Me.lblCodigo.TabIndex = 9
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.Location = New System.Drawing.Point(479, 83)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(135, 23)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Stock disponible"
+        '
         'lblStock
         '
         Me.lblStock.AutoSize = True
@@ -347,29 +410,6 @@ Partial Class MovInternoForm
         Me.lblStock.Name = "lblStock"
         Me.lblStock.Size = New System.Drawing.Size(0, 23)
         Me.lblStock.TabIndex = 9
-        '
-        'lblDescPr
-        '
-        Me.lblDescPr.AutoSize = True
-        Me.lblDescPr.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescPr.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblDescPr.Location = New System.Drawing.Point(185, 83)
-        Me.lblDescPr.Name = "lblDescPr"
-        Me.lblDescPr.Size = New System.Drawing.Size(0, 23)
-        Me.lblDescPr.TabIndex = 9
-        '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.GroupBox2)
-        Me.Panel6.Controls.Add(Me.btnBuscar)
-        Me.Panel6.Controls.Add(Me.btnGuardar)
-        Me.Panel6.Controls.Add(Me.btnNuevo)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Panel6.Margin = New System.Windows.Forms.Padding(0)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1588, 128)
-        Me.Panel6.TabIndex = 10
         '
         'btnBuscar
         '
@@ -401,6 +441,22 @@ Partial Class MovInternoForm
         Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar Movimiento")
         Me.btnGuardar.UseVisualStyleBackColor = False
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevo.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevo.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnNuevo.Image = Global.Frontend.My.Resources.Resources.nuevo
+        Me.btnNuevo.Location = New System.Drawing.Point(93, 40)
+        Me.btnNuevo.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Size = New System.Drawing.Size(63, 53)
+        Me.btnNuevo.TabIndex = 4
+        Me.btnNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ToolTip1.SetToolTip(Me.btnNuevo, "Nuevo Movimiento")
+        Me.btnNuevo.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
@@ -498,6 +554,14 @@ Partial Class MovInternoForm
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Observación"
         '
+        'txtSolicitante
+        '
+        Me.txtSolicitante.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSolicitante.Location = New System.Drawing.Point(465, 75)
+        Me.txtSolicitante.Name = "txtSolicitante"
+        Me.txtSolicitante.Size = New System.Drawing.Size(242, 30)
+        Me.txtSolicitante.TabIndex = 0
+        '
         'txtFecha
         '
         Me.txtFecha.Enabled = False
@@ -506,6 +570,17 @@ Partial Class MovInternoForm
         Me.txtFecha.Name = "txtFecha"
         Me.txtFecha.Size = New System.Drawing.Size(202, 30)
         Me.txtFecha.TabIndex = 0
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label8.Location = New System.Drawing.Point(371, 78)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(82, 20)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Solicitante"
         '
         'Label1
         '
@@ -596,81 +671,6 @@ Partial Class MovInternoForm
         Me.lblTitulo.TabIndex = 1
         Me.lblTitulo.Text = "Movimiento Interno"
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label8.Location = New System.Drawing.Point(371, 78)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(82, 20)
-        Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Solicitante"
-        '
-        'txtSolicitante
-        '
-        Me.txtSolicitante.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSolicitante.Location = New System.Drawing.Point(465, 75)
-        Me.txtSolicitante.Name = "txtSolicitante"
-        Me.txtSolicitante.Size = New System.Drawing.Size(242, 30)
-        Me.txtSolicitante.TabIndex = 0
-        '
-        'btnNuevo
-        '
-        Me.btnNuevo.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevo.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNuevo.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnNuevo.Image = Global.Frontend.My.Resources.Resources.nuevo
-        Me.btnNuevo.Location = New System.Drawing.Point(93, 40)
-        Me.btnNuevo.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Size = New System.Drawing.Size(63, 53)
-        Me.btnNuevo.TabIndex = 4
-        Me.btnNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ToolTip1.SetToolTip(Me.btnNuevo, "Nuevo Movimiento")
-        Me.btnNuevo.UseVisualStyleBackColor = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(479, 38)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 23)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Código"
-        '
-        'lblCodigo
-        '
-        Me.lblCodigo.AutoSize = True
-        Me.lblCodigo.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCodigo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblCodigo.Location = New System.Drawing.Point(633, 38)
-        Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(0, 23)
-        Me.lblCodigo.TabIndex = 9
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.Label14)
-        Me.GroupBox2.Controls.Add(Me.txtCantidad)
-        Me.GroupBox2.Controls.Add(Me.lblDescPr)
-        Me.GroupBox2.Controls.Add(Me.Label15)
-        Me.GroupBox2.Controls.Add(Me.lblDesc)
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.txtCodProd)
-        Me.GroupBox2.Controls.Add(Me.lblCodigo)
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.lblStock)
-        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.GroupBox2.Location = New System.Drawing.Point(363, 0)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1225, 128)
-        Me.GroupBox2.TabIndex = 10
-        Me.GroupBox2.TabStop = False
-        '
         'MovInternoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
@@ -693,12 +693,12 @@ Partial Class MovInternoForm
         Me.TableLayoutPanel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

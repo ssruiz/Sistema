@@ -57,7 +57,7 @@ Public Class ProductoDAO
                 cmd.Parameters.AddWithValue("@alto", DBNull.Value)
                 cmd.Parameters.AddWithValue("@ancho", DBNull.Value)
                 cmd.Parameters.AddWithValue("@superf", DBNull.Value)
-                cmd.Parameters.AddWithValue("@stockm", DBNull.Value)
+                cmd.Parameters.AddWithValue("@stockm", modelo.stockMin)
             End If
             cmd.ExecuteNonQuery()
         Catch ex As Exception

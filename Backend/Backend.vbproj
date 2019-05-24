@@ -88,23 +88,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\BancoDAO.vb" />
+    <Compile Include="DAO\CambioDAO.vb" />
     <Compile Include="DAO\ClienteDAO.vb" />
     <Compile Include="DAO\ColorDAO.vb" />
     <Compile Include="DAO\CompraDAO.vb" />
     <Compile Include="DAO\DepositoDAO.vb" />
     <Compile Include="DAO\EspesorDAO.vb" />
     <Compile Include="DAO\MovInternoDAO.vb" />
+    <Compile Include="DAO\PagoDAO.vb" />
     <Compile Include="DAO\ProduccionDAO.vb" />
     <Compile Include="DAO\ProductoDAO.vb" />
     <Compile Include="DAO\ProveedorDAO.vb" />
     <Compile Include="DAO\SesionDAO.vb" />
     <Compile Include="DAO\SucursalDAO.vb" />
     <Compile Include="DAO\TipoClienteDAO.vb" />
+    <Compile Include="DAO\TipoPagoDAO.vb" />
     <Compile Include="DAO\TipoProdDAO.vb" />
     <Compile Include="DAO\UsuarioDAO.vb" />
     <Compile Include="DAO\VendedorDAO.vb" />
     <Compile Include="DAO\VentaDAO.vb" />
     <Compile Include="Models\Banco.vb" />
+    <Compile Include="Models\Cambio.vb" />
     <Compile Include="Models\Cliente.vb" />
     <Compile Include="Models\ColorM.vb" />
     <Compile Include="Models\Compra.vb" />
@@ -112,11 +116,13 @@
     <Compile Include="Models\DetalleVenta.vb" />
     <Compile Include="Models\Espesor.vb" />
     <Compile Include="Models\MInterno.vb" />
+    <Compile Include="Models\Pago.vb" />
     <Compile Include="Models\Produccion.vb" />
     <Compile Include="Models\Producto.vb" />
     <Compile Include="Models\Proveedor.vb" />
     <Compile Include="Models\Sucursal.vb" />
     <Compile Include="Models\TipoCliente.vb" />
+    <Compile Include="Models\TipoPagoM.vb" />
     <Compile Include="Models\TipoPlancha.vb" />
     <Compile Include="Models\TipoProducto.vb" />
     <Compile Include="Models\Usuario.vb" />

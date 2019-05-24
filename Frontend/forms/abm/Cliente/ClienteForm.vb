@@ -12,11 +12,38 @@ Public Class ClienteForm
             cargarTipos()
             cargarVendedores()
             desactivarCampos()
+            PersonalizarDAtagridView(dgvClientes)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+    Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
+        With dgv
+            .ForeColor = Color.FromArgb(245, 245, 245)
+            .DefaultCellStyle.BackColor = Color.FromArgb(64, 69, 76)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .GridColor = Color.FromArgb(245, 245, 245)
 
+            ' Inabilito EnableHeadersVisualStyles para que la personalizacion se haga efectiva
+
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersHeightSizeMode = False
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .ColumnHeadersHeight = 35
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(217, 64, 23)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            .RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .RowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .AlternatingRowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            'Tipo de letra and color
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            'Coloreo el background del DGV
+            .BackgroundColor = Color.FromArgb(48, 65, 91)
+        End With
+    End Sub
     'Carga de productos de la db
     Private Sub cargarClientes()
         Me.SuspendLayout()

@@ -204,4 +204,22 @@ Public Class CompraDAO
             con.Close()
         End Try
     End Sub
+
+    Public Function getCompras() As List(Of Integer)
+        Dim listado As New List(Of Integer)
+        Try
+            Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select comprasCod from compras"
+            Dim cmd As New MySqlCommand(query, con)
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                listado.Add(SafeGetInt(reader, 0))
+            End While
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        End Try
+        Return listado
+    End Function
 End Class

@@ -11,26 +11,52 @@ Public Class BancoForm
             limpiarCampos()
             desactivarCampos()
 
-
+            PersonalizarDAtagridView(dgvBancos)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+    Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
+        With dgv
+            .ForeColor = Color.FromArgb(245, 245, 245)
+            .DefaultCellStyle.BackColor = Color.FromArgb(64, 69, 76)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .GridColor = Color.FromArgb(245, 245, 245)
 
+            ' Inabilito EnableHeadersVisualStyles para que la personalizacion se haga efectiva
+
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersHeightSizeMode = False
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .ColumnHeadersHeight = 35
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(217, 64, 23)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            .RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .RowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .AlternatingRowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            'Tipo de letra and color
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            'Coloreo el background del DGV
+            .BackgroundColor = Color.FromArgb(48, 65, 91)
+        End With
+    End Sub
     Private Sub cargarBancos()
         Me.SuspendLayout()
         Dim daoP As New BancoDAO
         list = daoP.getBancos()
-        dgvProveedores.DataSource = ""
-        dgvProveedores.DataSource = list.Tables("tabla")
+        dgvBancos.DataSource = ""
+        dgvBancos.DataSource = list.Tables("tabla")
         ''dgvProveedores.Columns("ID").Visible = False
         'dgvColores.ColumnHeadersDefaultCellStyle.BackColor = Color.Aquamarine
-        dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvProveedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvBancos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvBancos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         'dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        dgvProveedores.Columns("Nombre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        dgvProveedores.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        dgvProveedores.ClearSelection()
+        dgvBancos.Columns("Nombre").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        dgvBancos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        dgvBancos.ClearSelection()
         Me.SuspendLayout()
     End Sub
 
@@ -45,20 +71,20 @@ Public Class BancoForm
         btnGuardar.Enabled = True
         btnModificar.Enabled = False
         nuevo = True
-        dgvProveedores.ClearSelection()
+        dgvBancos.ClearSelection()
         btnGuardar.Text = "Guardar"
     End Sub
 
     ' Limpia los campos
     Private Sub limpiarCampos()
-        dgvProveedores.ClearSelection()
+        dgvBancos.ClearSelection()
         txtNombre.Text = ""
     End Sub
 
     ' Activa los campos
     Private Sub activarCampos()
         txtNombre.Enabled = True
-        dgvProveedores.ClearSelection()
+        dgvBancos.ClearSelection()
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
@@ -81,8 +107,8 @@ Public Class BancoForm
                 Else
                     Dim daoP As New BancoDAO
 
-                    Dim row = dgvProveedores.CurrentRow.Index
-                    Dim codigo = dgvProveedores.Item(0, row).Value
+                    Dim row = dgvBancos.CurrentRow.Index
+                    Dim codigo = dgvBancos.Item(0, row).Value
                     Dim modelo = llenarModelo(codigo)
 
                     daoP.update(modelo)
@@ -124,13 +150,13 @@ Public Class BancoForm
 
     End Function
 
-    Private Sub dgvClientes_SelectionChanged(sender As Object, e As EventArgs) Handles dgvProveedores.SelectionChanged
-        If dgvProveedores.Focused And dgvProveedores.SelectedRows.Count > 0 Then
+    Private Sub dgvClientes_SelectionChanged(sender As Object, e As EventArgs) Handles dgvBancos.SelectionChanged
+        If dgvBancos.Focused And dgvBancos.SelectedRows.Count > 0 Then
             Try
                 btnGuardar.Enabled = False
                 btnModificar.Enabled = True
-                Dim row = dgvProveedores.CurrentRow.Index
-                Dim codigo = dgvProveedores.Item(0, row).Value
+                Dim row = dgvBancos.CurrentRow.Index
+                Dim codigo = dgvBancos.Item(0, row).Value
                 Dim daoP As New BancoDAO
 
                 Dim prov = daoP.getBanco(codigo)
@@ -159,10 +185,10 @@ Public Class BancoForm
     Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
         Dim dv As New DataView(list.Tables("tabla"))
         dv.RowFilter = String.Format("Nombre like '%{0}%' or ID like '%{0}%' ", txtBusqueda.Text)
-        dgvProveedores.DataSource = dv
+        dgvBancos.DataSource = dv
         limpiarCampos()
         desactivarCampos()
-        dgvProveedores.ClearSelection()
+        dgvBancos.ClearSelection()
     End Sub
 
     Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown

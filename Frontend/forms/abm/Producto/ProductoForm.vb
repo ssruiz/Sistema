@@ -13,12 +13,39 @@ Public Class ProductoForm
             cargarTipos()
             cargarPlanchas()
             desactivarCampos()
+            PersonalizarDAtagridView(dgvProductos)
             Me.ResumeLayout()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+    Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
+        With dgv
+            .ForeColor = Color.FromArgb(245, 245, 245)
+            .DefaultCellStyle.BackColor = Color.FromArgb(64, 69, 76)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .GridColor = Color.FromArgb(245, 245, 245)
 
+            ' Inabilito EnableHeadersVisualStyles para que la personalizacion se haga efectiva
+
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersHeightSizeMode = False
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+            .ColumnHeadersHeight = 35
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(217, 64, 23)
+            .ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+            .RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .RowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(2, 101, 205)
+            .AlternatingRowsDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            'Tipo de letra and color
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            'Coloreo el background del DGV
+            .BackgroundColor = Color.FromArgb(48, 65, 91)
+        End With
+    End Sub
     'Carga de productos de la db
     Private Sub cargarProductos()
         Me.SuspendLayout()
@@ -166,10 +193,10 @@ Public Class ProductoForm
         'txtBusqueda.Text = ""
         txtCodigo.Text = ""
         txtDesc.Text = ""
-        txtPA.Text = ""
-        txtPB.Text = ""
-        txtPC.Text = ""
-        txtPD.Text = ""
+        txtPA.Text = 0
+        txtPB.Text = 0
+        txtPC.Text = 0
+        txtPD.Text = 0
         txtSM.Text = ""
         txtSuperficie.Text = ""
         txtEspesor.Text = ""
@@ -345,8 +372,14 @@ Public Class ProductoForm
 
     Private Function validarDatos() As Boolean
         If rbPlanchas.Checked Then
-            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtAlto.Text = "" Or txtAncho.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtSM.Text = "" Or txtSuperficie.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
+            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtAlto.Text = "" Or txtAncho.Text = "" Or txtDesc.Text = "" Or txtSM.Text = "" Or txtSuperficie.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
                 MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
+                Return False
+            ElseIf txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Then
+                MsgBox("Debe completar todos los precios", MsgBoxStyle.Critical, "Notificación")
+                Return False
+            ElseIf CDbl(txtPA.Text) = 0 Or CDbl(txtPB.Text) = 0 Or CDbl(txtPC.Text) = 0 Or CDbl(txtPD.Text) = 0 Then
+                MsgBox("Debe completar todos los precios", MsgBoxStyle.Critical, "Notificación")
                 Return False
             ElseIf cbColores.SelectedIndex = 0 Then
                 MsgBox("Debe seleccionar un color", MsgBoxStyle.Critical, "Notificación")
@@ -362,8 +395,11 @@ Public Class ProductoForm
                 Return False
             End If
         Else
-            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
-                MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
+            If txtCodigo.Text = "" Or txtDesc.Text = "" Or txtEspesor.Text = "" Or txtCosto.Text = "" Then
+                MsgBox("Debe completar todos los precios", MsgBoxStyle.Critical, "Notificación")
+                Return False
+            ElseIf txtPA.Text = "" Or txtPB.Text = "" Or txtPC.Text = "" Or txtPD.Text = "" Or CDbl(txtPA.Text) = 0 Or CDbl(txtPB.Text) = 0 Or CDbl(txtPC.Text) = 0 Or CDbl(txtPD.Text) = 0 Then
+                MsgBox("Debe completar todos los precios", MsgBoxStyle.Critical, "Notificación")
                 Return False
             ElseIf cbColores.SelectedIndex = 0 Then
                 MsgBox("Debe seleccionar un color", MsgBoxStyle.Critical, "Notificación")
@@ -547,7 +583,60 @@ Public Class ProductoForm
     Private Sub txtSM_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSM.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
+            txtEspesor.Focus()
+        End If
+    End Sub
+
+    Private Sub txtEspesor_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEspesor.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
             txtCosto.Focus()
+        End If
+    End Sub
+
+    Private Sub txtCosto_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCosto.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            If txtAlto.Visible = True Then
+                txtAlto.Focus()
+            Else
+                txtPA.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtAlto_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAlto.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtAncho.Focus()
+        End If
+    End Sub
+
+    Private Sub txtAncho_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAncho.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtPA.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPA_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPA.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtPB.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPB_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPB.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtPC.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPC_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPC.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtPD.Focus()
         End If
     End Sub
 End Class

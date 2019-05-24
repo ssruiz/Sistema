@@ -9,7 +9,7 @@ Public Class VentaDAO
             con.Open()
             venta.usuI = Sesion.Usuario
             Dim queryVenta = ""
-            queryVenta = "INSERT INTO `ventas` (`opeCod`, `ventCred`, `ventFecha`, `ventFact`, `ventObs`, `clieCod`, `vendCod`, `ventPlazo`, `ventFechaProm`, `ventRecargo`, `ventDescuento`, `ventTotal`, `ventSaldo`, `ventEstado`, `ventMotivo`, `ventEnvio`, `ventDireccEnv`, `ventUI`, `ventFI`, `ventUU`, `ventFU`, `ventM2`,`estadoFactura`,`plano`) VALUES (@op, @cre, @fecha, @fact, @obs, @cliente, @vend, @plazo, @fechap, @recar, @desc, @total, @saldo, @estado, @motivo, @envio, @direnv, @user, @fecha, @user, @fecha, @m2,@estadoFact,@plano); SELECT LAST_INSERT_ID();"
+            queryVenta = "INSERT INTO `ventas` (`opeCod`, `ventCred`, `ventFecha`, `ventFact`, `ventObs`, `clieCod`, `vendCod`, `ventPlazo`, `ventFechaProm`, `ventRecargo`, `ventDescuento`, `ventTotal`, `ventSaldo`, `ventEstado`, `ventMotivo`, `ventEnvio`, `ventDireccEnv`, `ventUI`, `ventFI`, `ventUU`, `ventFU`, `ventM2`,`estadoFactura`,`plano`,`moneda`) VALUES (@op, @cre, @fecha, @fact, @obs, @cliente, @vend, @plazo, @fechap, @recar, @desc, @total, @saldo, @estado, @motivo, @envio, @direnv, @user, @fecha, @user, @fecha, @m2,@estadoFact,@plano, @moneda); SELECT LAST_INSERT_ID();"
             Dim cmdVenta As New MySqlCommand(queryVenta, con)
 
 
@@ -35,8 +35,24 @@ Public Class VentaDAO
             cmdVenta.Parameters.AddWithValue("@m2", venta.m2)
             cmdVenta.Parameters.AddWithValue("@estadoFact", "N")
             cmdVenta.Parameters.AddWithValue("@plano", "")
+            cmdVenta.Parameters.AddWithValue("@moneda", venta.moneda)
+
             Dim ventaCod = CInt(cmdVenta.ExecuteScalar())
 
+            If venta.credito = "N" Then
+                Dim pago As New Pago
+                pago.fecha = Date.Today
+                pago.fechaI = Date.Today
+                pago.moneda = venta.moneda
+                pago.monto = venta.total
+                pago.userIn = Sesion.Usuario
+                pago.recibo = "Factura Contado - " & venta.factura
+                pago.tpago = 1
+                pago.saldo = 0
+                pago.venta = ventaCod
+                Dim daop As New PagoDAO
+                daop.guardarPago(pago)
+            End If
 
             con.Close()
             con.Open()
@@ -93,15 +109,45 @@ Public Class VentaDAO
                     cmdStock.ExecuteNonQuery()
                     cmdStock.Parameters.Clear()
                 Else
-                    Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`) VALUES (@vent, @fet, @pan);"
+                    Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`) VALUES (@vent, @fet, @pan); SELECT LAST_INSERT_ID();"
+                    Dim queryCorte = "INSERT INTO `producir`.`corte` (`pCod`, `corteUsuIns`, `corteFchIns`) VALUES (@prod,@usuario,@fecha);"
+                    Dim queryPulida = "INSERT INTO `producir`.`pulida` (`pCod`, `puliUsrIns`, `puliFchIns`) VALUES (@prod, @usuario, @fecha);"
+                    Dim queryTemplado = "INSERT INTO `producir`.`templado` (`pCod`, `templaUsrIns`, `templaFchIns`) VALUES (@prod, @usuario, @fecha);"
+
                     Dim cmdProd As New MySqlCommand(queryProducion, con)
+                    Dim cmdCorte As New MySqlCommand(queryCorte, con)
+                    Dim cmdPulida As New MySqlCommand(queryPulida, con)
+                    Dim cmdTemplado As New MySqlCommand(queryTemplado, con)
+
                     For index As Integer = 1 To cantidad
+                        ' Se agrega a produccion
                         cmdProd.Parameters.AddWithValue("@vent", ventaCod)
                         cmdProd.Parameters.AddWithValue("@fet", detalleCod)
                         cmdProd.Parameters.AddWithValue("@pan", panho)
                         panho += 1
-                        cmdProd.ExecuteNonQuery()
+                        Dim prodCod = CInt(cmdProd.ExecuteScalar())
                         cmdProd.Parameters.Clear()
+
+                        '' A corte
+                        cmdCorte.Parameters.AddWithValue("@prod", prodCod)
+                        cmdCorte.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                        cmdCorte.Parameters.AddWithValue("@fecha", Date.Now)
+                        cmdCorte.ExecuteNonQuery()
+                        cmdCorte.Parameters.Clear()
+
+                        ' A pulida
+                        cmdPulida.Parameters.AddWithValue("@prod", prodCod)
+                        cmdPulida.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                        cmdPulida.Parameters.AddWithValue("@fecha", Date.Now)
+                        cmdPulida.ExecuteNonQuery()
+                        cmdPulida.Parameters.Clear()
+
+                        ' A templado
+                        cmdTemplado.Parameters.AddWithValue("@prod", prodCod)
+                        cmdTemplado.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                        cmdTemplado.Parameters.AddWithValue("@fecha", Date.Now)
+                        cmdTemplado.ExecuteNonQuery()
+                        cmdTemplado.Parameters.Clear()
                     Next
                 End If
             Next
@@ -159,9 +205,11 @@ Public Class VentaDAO
                 modelo.m2 = SafeGetDecimal(reader, 22)
                 modelo.estadoFactura = safeGetChar(reader, 23)
                 modelo.plano = SafeGetString(reader, 24)
+                modelo.moneda = safeGetChar(reader, 25)
             End While
             Return modelo
         Catch ex As Exception
+
             Throw New DAOException(ex.ToString)
         Finally
             con.Close()

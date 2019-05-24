@@ -109,6 +109,12 @@
     <Compile Include="forms\abm\Banco\BancoForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\abm\Cambio\CambioForm.Designer.vb">
+      <DependentUpon>CambioForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\abm\Cambio\CambioForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\abm\Cliente\ClienteForm.Designer.vb">
       <DependentUpon>ClienteForm.vb</DependentUpon>
     </Compile>
@@ -255,6 +261,18 @@
     <Compile Include="forms\Movimientos\Mov. Interno\MovInternoForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Pagos\PagoDetalle.Designer.vb">
+      <DependentUpon>PagoDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Pagos\PagoDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Pagos\PagoForm.Designer.vb">
+      <DependentUpon>PagoForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Pagos\PagoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Stock\StockForm.Designer.vb">
       <DependentUpon>StockForm.vb</DependentUpon>
     </Compile>
@@ -343,6 +361,9 @@
     <EmbeddedResource Include="forms\abm\Banco\BancoForm.resx">
       <DependentUpon>BancoForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\abm\Cambio\CambioForm.resx">
+      <DependentUpon>CambioForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\abm\Cliente\ClienteForm.resx">
       <DependentUpon>ClienteForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +437,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Mov. Interno\MovInternoForm.resx">
       <DependentUpon>MovInternoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Pagos\PagoDetalle.resx">
+      <DependentUpon>PagoDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Pagos\PagoForm.resx">
+      <DependentUpon>PagoForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Stock\StockForm.resx">
       <DependentUpon>StockForm.vb</DependentUpon>
