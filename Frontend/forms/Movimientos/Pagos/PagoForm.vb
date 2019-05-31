@@ -353,12 +353,15 @@ Public Class PagoForm
                 'Textbox1.Text = String.Format("{0:n2} $", CType(Textbox1.Text, Double))
                 Dim aux = txtMontoPago.Text.Replace("$", "")
                 montoTotal = CType(aux, Double)
-                txtMontoPago.Text = String.Format("${0:n2}", CType(aux, Double))
-                txtMontoPago.Select(sender.TextLength - 3, 0)
+                'txtMontoPago.Text = String.Format("${0:n2}", CType(aux, Double))
+                'txtMontoPago.Select(sender.TextLength - 3, 0)
+                txtMontoPago.Text = String.Format("{0:n1}", CType(aux, Double))
+                txtMontoPago.Select(sender.TextLength - 2, 0)
+
             Else
                 montoTotal = CType(0, Double)
-                txtMontoPago.Text = String.Format("${0:n2}", CType(0, Double))
-                txtMontoPago.Select(sender.TextLength - 3, 0)
+                txtMontoPago.Text = String.Format("{0:n1}", CType(0, Double))
+                txtMontoPago.Select(sender.TextLength - 2, 0)
             End If
         Else
             If sender.Text <> "" Then
@@ -377,7 +380,7 @@ Public Class PagoForm
     Private Sub txtMontoPago_Click(sender As Object, e As EventArgs) Handles txtMontoPago.Click
         If cbTiposP.SelectedValue = 2 Or cbTiposP.SelectedValue = 4 Then
             If sender.Text <> "" Then
-                txtMontoPago.Select(sender.TextLength - 3, 0)
+                txtMontoPago.Select(sender.TextLength - 2, 0)
 
             End If
         Else
@@ -397,12 +400,24 @@ Public Class PagoForm
                 txtCheque.Enabled = True
                 txtCheque.Text = ""
                 cbBancos.SelectedValue = 0
+                If cbTiposP.SelectedValue = 4 Then
+                    lblCurrentCurr.Text = "$"
+                Else
+                    lblCurrentCurr.Text = ""
+
+                End If
             Else
                 dpChequeVenc.Enabled = False
                 cbBancos.Enabled = False
                 txtCheque.Enabled = False
                 txtCheque.Text = ""
                 cbBancos.SelectedValue = 0
+                If cbTiposP.SelectedValue = 2 Then
+                    lblCurrentCurr.Text = "$"
+                Else
+                    lblCurrentCurr.Text = ""
+
+                End If
             End If
         End If
 

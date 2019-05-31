@@ -61,6 +61,7 @@ Public Class VentaDAO
             Dim cmdDetalle As New MySqlCommand(queryDetalle, con)
             Dim panho = 1
             For Each row As Windows.Forms.DataGridViewRow In productos
+                panho = 1
                 Dim idProducto = row.Cells(0).Value
                 Dim producto = row.Cells(2).Value
                 Dim m2 = CDbl(row.Cells(10).Value)
@@ -109,21 +110,36 @@ Public Class VentaDAO
                     cmdStock.ExecuteNonQuery()
                     cmdStock.Parameters.Clear()
                 Else
-                    Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`) VALUES (@vent, @fet, @pan); SELECT LAST_INSERT_ID();"
+
+                    Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`, `produccion_detalle`) VALUES (@vent, @fet, @pan, @pdetalle); SELECT LAST_INSERT_ID();"
                     Dim queryCorte = "INSERT INTO `producir`.`corte` (`pCod`, `corteUsuIns`, `corteFchIns`) VALUES (@prod,@usuario,@fecha);"
                     Dim queryPulida = "INSERT INTO `producir`.`pulida` (`pCod`, `puliUsrIns`, `puliFchIns`) VALUES (@prod, @usuario, @fecha);"
                     Dim queryTemplado = "INSERT INTO `producir`.`templado` (`pCod`, `templaUsrIns`, `templaFchIns`) VALUES (@prod, @usuario, @fecha);"
+                    Dim queryMarcado = "INSERT INTO `producir`.`marcado` (`pCod`, `marcadoUsrIns`, `marcadoFchIns`) VALUES (@prod,@usuario,@fecha);"
 
+                    '' Detalle de la produccion'' ---------------------------------------------
+                    Dim queryDetalleProduccion = "INSERT INTO `producir`.`producciondetalle` (`prod_id`) VALUES (@producto); SELECT LAST_INSERT_ID();"
+                    Dim cmdDetalleProduccion As New MySqlCommand(queryDetalleProduccion, con)
+
+
+                    cmdDetalleProduccion.Parameters.AddWithValue("@producto", producto)
+                    Dim detalleProduccionCod = CInt(cmdDetalleProduccion.ExecuteScalar())
+
+                    cmdDetalleProduccion.Parameters.Clear()
+                    '' ---------------------------------------------
+
+                    '' CMDS
                     Dim cmdProd As New MySqlCommand(queryProducion, con)
                     Dim cmdCorte As New MySqlCommand(queryCorte, con)
                     Dim cmdPulida As New MySqlCommand(queryPulida, con)
                     Dim cmdTemplado As New MySqlCommand(queryTemplado, con)
-
+                    Dim cmdMarcado As New MySqlCommand(queryMarcado, con)
                     For index As Integer = 1 To cantidad
                         ' Se agrega a produccion
                         cmdProd.Parameters.AddWithValue("@vent", ventaCod)
                         cmdProd.Parameters.AddWithValue("@fet", detalleCod)
                         cmdProd.Parameters.AddWithValue("@pan", panho)
+                        cmdProd.Parameters.AddWithValue("@pdetalle", detalleProduccionCod)
                         panho += 1
                         Dim prodCod = CInt(cmdProd.ExecuteScalar())
                         cmdProd.Parameters.Clear()
@@ -148,6 +164,13 @@ Public Class VentaDAO
                         cmdTemplado.Parameters.AddWithValue("@fecha", Date.Now)
                         cmdTemplado.ExecuteNonQuery()
                         cmdTemplado.Parameters.Clear()
+
+                        ' A marcado
+                        cmdMarcado.Parameters.AddWithValue("@prod", prodCod)
+                        cmdMarcado.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                        cmdMarcado.Parameters.AddWithValue("@fecha", Date.Now)
+                        cmdMarcado.ExecuteNonQuery()
+                        cmdMarcado.Parameters.Clear()
                     Next
                 End If
             Next
@@ -319,22 +342,30 @@ Public Class VentaDAO
         End Try
     End Sub
 
-    Public Sub guardarImagen(ByVal ruta As String, ByVal id As String, ByRef img As Image)
+    Public Sub guardarPlanos(ByVal id As String, ByRef planos As DataTable)
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim mysql = "UPDATE `ventas` SET `plano` = @ruta WHERE `ventCod` = @venta;"
-            Dim ruta2 = Config.RutaImagenes + ruta
-
-            img.Save(ruta2, System.Drawing.Imaging.ImageFormat.Jpeg)
-
+            Dim mysql = "INSERT INTO `planos` (`nombre_plano`, `fecha`, `id_venta`) VALUES (@ruta, @fecha, @venta);"
             Dim cmd As New MySqlCommand(mysql, con)
 
-            cmd.Parameters.AddWithValue("@venta", id)
-            cmd.Parameters.AddWithValue("@ruta", ruta2)
-            cmd.ExecuteNonQuery()
+            Dim ruta2 = ""
 
+            Dim i = 1
+            MsgBox(planos.Rows.Count)
+            For Each row As DataRow In planos.Rows
+                ruta2 = Config.RutaImagenes & "ot_" & id & "_pl_" & i & ".jpg"
+                Dim dirImg = row("Nombre")
+                Dim newImage As Image = Image.FromFile(dirImg)
+                newImage.Save(ruta2, System.Drawing.Imaging.ImageFormat.Jpeg)
+                i += 1
 
+                cmd.Parameters.AddWithValue("@venta", id)
+                cmd.Parameters.AddWithValue("@ruta", ruta2)
+                cmd.Parameters.AddWithValue("@fecha", Date.Today)
+                cmd.ExecuteNonQuery()
+                cmd.Parameters.Clear()
+            Next
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
         Finally
@@ -354,9 +385,62 @@ Public Class VentaDAO
             cmd.ExecuteNonQuery()
 
         Catch ex As Exception
-
+            Throw New DAOException(ex.ToString)
         Finally
             con.Close()
+        End Try
+    End Sub
+
+    Public Function cargarPlanos(ByVal venta As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from `vplanosventa` WHERE `Venta` =" & venta & ";"
+
+            Dim adp As New MySqlDataAdapter(query, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function cargarEtiquetas(ByVal venta As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from `vetiquetas` WHERE `Venta` =" & venta & " and Impreso = 'No';"
+
+            Dim adp As New MySqlDataAdapter(query, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Sub actualizarProduccion(ByVal venta As String, ByVal ini As String, ByVal fin As String)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "UPDATE `producir`.`produccion` SET `produccion_ticket` = 'S' WHERE `pCod` between @ini and @fin;"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@ini", ini)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
         End Try
     End Sub
 End Class

@@ -279,6 +279,12 @@
     <Compile Include="forms\Movimientos\Stock\StockForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Ventas\AgregarPlanos.Designer.vb">
+      <DependentUpon>AgregarPlanos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\AgregarPlanos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Ventas\Busquedas\ClienteBusqueda.Designer.vb">
       <DependentUpon>ClienteBusqueda.vb</DependentUpon>
     </Compile>
@@ -325,6 +331,18 @@
       <DependentUpon>NroFactura.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\Movimientos\Ventas\Factura\NroFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Tickets\Tickets.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tickets.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Tickets\TicketsForm.Designer.vb">
+      <DependentUpon>TicketsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Tickets\TicketsForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\Movimientos\Ventas\VentasForm.Designer.vb">
@@ -447,6 +465,9 @@
     <EmbeddedResource Include="forms\Movimientos\Stock\StockForm.resx">
       <DependentUpon>StockForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\AgregarPlanos.resx">
+      <DependentUpon>AgregarPlanos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Ventas\Busquedas\ClienteBusqueda.resx">
       <DependentUpon>ClienteBusqueda.vb</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +493,13 @@
     <EmbeddedResource Include="forms\Movimientos\Ventas\Factura\NroFactura.resx">
       <DependentUpon>NroFactura.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Tickets\Tickets.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Tickets.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Tickets\TicketsForm.resx">
+      <DependentUpon>TicketsForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Ventas\VentasForm.resx">
       <DependentUpon>VentasForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -480,9 +508,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -514,10 +542,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fondo.jpeg" />
+    <None Include="Resources\ver_planos_2.png" />
+    <None Include="Resources\ver_planos.png" />
     <None Include="Resources\detalle.png" />
     <None Include="Resources\reinciar2.png" />
     <None Include="Resources\reiniciar.png" />
-    <None Include="Resources\ver_plano.png" />
     <None Include="Resources\subir_plano.png" />
     <None Include="packages.config" />
     <None Include="Resources\eliminar2.png" />

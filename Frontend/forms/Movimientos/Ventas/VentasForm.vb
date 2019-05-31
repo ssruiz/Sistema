@@ -25,6 +25,7 @@ Public Class VentasForm
     Dim dolar = False
     Dim descuentoTotal = 0
     Dim recargoTotal = 0
+    Dim planos As New DataTable
     ' Carga del formulario
     Private Sub VentasForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblFechaVenta.Text = Date.Today
@@ -292,8 +293,13 @@ Public Class VentasForm
         limpiarClientes()
         venta = New Venta
         cliente = New Cliente
+        planos = New DataTable
         txtFactuNro.Text = ""
-        pbPlano.Image = Nothing
+        lblCantidadPlanos.Visible = False
+        lblSucursal.Text = ""
+        lblDeposito.Text = ""
+        lblCantidadPlanos.Text = ""
+        lblTitCantPlanos.Visible = False
         txtObservacion.Text = ""
         lblFechaEntrega.Text = ""
         txtOT.Text = ""
@@ -310,8 +316,7 @@ Public Class VentasForm
         rbtnNo.Checked = True
     End Sub
 
-
-    Private Sub btnNuevo_Click_1(sender As Object, e As EventArgs) Handles btnNuevo.Click
+    Private Sub nuevaVenta()
         'If cliente.nombre = "" Then
         Dim buscarC As New ClienteBusqueda
         Dim res = buscarC.ShowDialog()
@@ -338,6 +343,9 @@ Public Class VentasForm
         End If
         buscarC.Dispose()
 
+    End Sub
+    Private Sub btnNuevo_Click_1(sender As Object, e As EventArgs) Handles btnNuevo.Click
+        nuevaVenta()
     End Sub
 
     Private Sub limpiarClientes()
@@ -662,10 +670,8 @@ Public Class VentasForm
                     Dim daoVenta As New VentaDAO
                     Dim ventaGuardada = daoVenta.guardarVenta(nuevaVenta, dgvProductos.Rows, sucursal, deposito, produccionVenta)
                     If templado2 = True Then
-                        If pbPlano.Image IsNot Nothing Then
-                            Dim ruta = "venta_" + ventaGuardada.ToString + "_plano_.jpg"
-                            Dim plano As Image = pbPlano.Image
-                            daoVenta.guardarImagen(ruta, ventaGuardada, plano)
+                        If planos.Rows.Count > 0 Then
+                            daoVenta.guardarPlanos(ventaGuardada, planos)
                         End If
                     End If
 
@@ -682,6 +688,7 @@ Public Class VentasForm
                     btnUlt.Enabled = False
 
                     dgvProductos.DataSource = New DataSet1.detalleVentaDataTable
+                    cargarVentas()
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
@@ -873,7 +880,19 @@ Public Class VentasForm
 
     '---------------------------------------------'---------------------------------------------'---------------------------------------------
     ' Navegacion entre ventas
-
+    Private Sub desactivarCampos()
+        txtFactuNro.Enabled = False
+        txtObservacion.Enabled = False
+        txtCodProd.Enabled = False
+        txtCantidad.Enabled = False
+        txtAncho.Enabled = False
+        txtAlto.Enabled = False
+        txtObra.Enabled = False
+        txtDescuento.Enabled = False
+        txtRecargo.Enabled = False
+        limpiarProductos()
+        pnlEnvioNuevo.Visible = False
+    End Sub
     'Venta anterior
     Private Sub btnAnterior_Click(sender As Object, e As EventArgs) Handles btnAnterior.Click
         If listadoVentas.Count > 0 Then
@@ -883,6 +902,7 @@ Public Class VentasForm
 
             End If
             cargarVenta()
+            desactivarCampos()
         End If
 
     End Sub
@@ -894,6 +914,7 @@ Public Class VentasForm
                 ventaActual = 0
             End If
             cargarVenta()
+            desactivarCampos()
         End If
     End Sub
     'Primera Venta
@@ -901,6 +922,7 @@ Public Class VentasForm
         If listadoVentas.Count > 0 Then
             ventaActual = 0
             cargarVenta()
+            desactivarCampos()
         End If
 
     End Sub
@@ -909,6 +931,7 @@ Public Class VentasForm
         If listadoVentas.Count > 0 Then
             ventaActual = listadoVentas.Count - 1
             cargarVenta()
+            desactivarCampos()
         End If
     End Sub
     ' carga la venta
@@ -936,13 +959,9 @@ Public Class VentasForm
 
             lblOTSeleccionada.Text = venta.id
             Try
-                If venta.plano <> "" Then
-                    pbPlano.Image = Image.FromFile(venta.plano)
-                Else
-                    pbPlano.Image = Nothing
-                End If
+                cargarPlanos()
             Catch ex As Exception
-                pbPlano.Image = Nothing
+
             End Try
 
 
@@ -1004,12 +1023,13 @@ Public Class VentasForm
         End Try
     End Sub
     ' Actualizar/Modificar Venta
-    Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        If cliente.nombre = "" Then
-            MsgBox("Seleccione un cliente antes de modificar una venta", MsgBoxStyle.Information, "Notificacion")
+    Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEtiquetas.Click
+        If venta.id = 0 Then
+            MsgBox("Seleccione una ot antes de imprimir etiquetas", MsgBoxStyle.Information, "Notificacion")
         Else
-            activarCamposModificar()
-            modificar = True
+            Dim impEt As New TicketsForm
+            impEt.idVenta = venta.id
+            impEt.ShowDialog()
         End If
     End Sub
 
@@ -1240,6 +1260,16 @@ Public Class VentasForm
             Dim ventaAux = daoP.getVenta(txtOT.Text)
             If txtOT.Text <> "" Then
                 lblTipoFactura.Visible = True
+                txtFactuNro.Enabled = False
+                txtObservacion.Enabled = False
+                txtCodProd.Enabled = False
+                txtCantidad.Enabled = False
+                txtAncho.Enabled = False
+                txtAlto.Enabled = False
+                txtObra.Enabled = False
+                txtDescuento.Enabled = False
+                txtRecargo.Enabled = False
+
                 cargarVentaOT()
             End If
         End If
@@ -1280,11 +1310,7 @@ Public Class VentasForm
 
                 lblOTSeleccionada.Text = venta.id
                 pnlTipoP.Visible = False
-                If venta.plano <> "" Then
-                    pbPlano.Image = Image.FromFile(venta.plano)
-                Else
-                    pbPlano.Image = Nothing
-                End If
+
 
                 If venta.credito = "N" Then
                     'rbtnCont.Checked = True
@@ -1325,7 +1351,18 @@ Public Class VentasForm
                 cargarCliente()
 
                 txtOT.Text = ""
+                cargarPlanos()
             End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub cargarPlanos()
+        Try
+            Dim daov As New VentaDAO
+            Dim res = daov.cargarPlanos(venta.id)
+            planos = res.Tables("tabla")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -1380,6 +1417,9 @@ Public Class VentasForm
 
     Private Sub txtFactuNro_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFactuNro.KeyDown
         If e.KeyCode = Keys.Enter Then
+            If cliente.nombre = "" Then
+                nuevaVenta()
+            End If
             e.SuppressKeyPress = True
             txtObservacion.Focus()
         End If
@@ -1474,28 +1514,37 @@ Public Class VentasForm
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnSubirPlano.Click
         If templado2 = True Then
-            Dim file As New OpenFileDialog()
-            file.Filter = "Archivo JPG|*.jpg"
-            If file.ShowDialog() = DialogResult.OK Then
-                pbPlano.Image = Image.FromFile(file.FileName)
-                pbPlano.SizeMode = PictureBoxSizeMode.Zoom
+            '    'Dim file As New OpenFileDialog()
+            '    'file.Filter = "Archivo JPG|*.jpg"
+            '    'If file.ShowDialog() = DialogResult.OK Then
+            '    '    pbPlano.Image = Image.FromFile(file.FileName)
+            '    '    pbPlano.SizeMode = PictureBoxSizeMode.Zoom
+            '    'End If
+            '    'file.Dispose()
+            Dim agregarP As New AgregarPlanos
+            agregarP.ShowDialog()
+            planos = agregarP.planos
+            agregarP.Dispose()
+            If planos.Rows.Count > 0 Then
+                lblCantidadPlanos.Visible = True
+                lblCantidadPlanos.Text = planos.Rows.Count
+                lblTitCantPlanos.Visible = True
             End If
-            file.Dispose()
         End If
     End Sub
 
-    Private Sub pbPlano_Click(sender As Object, e As EventArgs) Handles pbPlano.Click
-        Try
-            If venta.plano <> "" Then
-                Dim planoForm As New VerPlano
-                planoForm.ruta = venta.plano
-                planoForm.ShowDialog()
-                planoForm.Dispose()
-            End If
-        Catch ex As Exception
+    'Private Sub pbPlano_Click(sender As Object, e As EventArgs) Handles pbPlano.Click
+    '    Try
+    '        If venta.plano <> "" Then
+    '            Dim planoForm As New VerPlano
+    '            planoForm.ruta = venta.plano
+    '            planoForm.ShowDialog()
+    '            planoForm.Dispose()
+    '        End If
+    '    Catch ex As Exception
 
-        End Try
-    End Sub
+    '    End Try
+    'End Sub
 
     Private Sub btnAnular_Click(sender As Object, e As EventArgs) Handles btnAnular.Click
         Dim anularF As New ComentarioAnularVenta
@@ -1612,5 +1661,14 @@ Public Class VentasForm
 
     Private Sub txtRecargo_Click(sender As Object, e As EventArgs) Handles txtRecargo.Click
         txtRecargo.Select(sender.TextLength - 2, 0)
+    End Sub
+
+    Private Sub btnPlanos_Click(sender As Object, e As EventArgs) Handles btnPlanos.Click
+        If planos.Rows.Count > 0 Then
+            Dim fplano As New VerPlano
+            fplano.planos = planos
+            fplano.ShowDialog()
+            fplano.Dispose()
+        End If
     End Sub
 End Class
