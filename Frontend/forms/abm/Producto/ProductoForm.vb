@@ -14,6 +14,7 @@ Public Class ProductoForm
             cargarPlanchas()
             desactivarCampos()
             PersonalizarDAtagridView(dgvProductos)
+            lblSuperficie.Text = "Superficie (m" & Chr(178) & ")"
             Me.ResumeLayout()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -549,9 +550,10 @@ Public Class ProductoForm
                     txtAncho.SelectionStart = txtAncho.Text.Length
                 End If
             End If
+
             If txtAncho.Text <> "" And txtAlto.Text <> "" Then
                 Dim str As Double
-                If Double.TryParse(txtAlto.Text * txtAncho.Text, str) Then
+                If Double.TryParse((txtAlto.Text * txtAncho.Text) / 1000000, str) Then
 
                     txtSuperficie.Text = str
                 End If

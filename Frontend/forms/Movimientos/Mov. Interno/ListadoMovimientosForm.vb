@@ -135,20 +135,25 @@ Public Class ListadoMovimientosForm
         fechaFin = dpFin.Value.ToShortDateString
     End Sub
 
-    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnLimpiarFiltro.Click
         lblDesdeF.Text = ""
         lblHastaF.Text = ""
         fechaInicio = Nothing
         fechaFin = Nothing
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If lblDesdeF.Text <> "" And lblHastaF.Text <> "" Then
-            Dim dv As New DataView(listado.Tables("tabla"))
-            dv.RowFilter = String.Format("Fecha >= '{0}' and Fecha <= '{1}'", fechaInicio, fechaFin)
-            dgvMovimientos.DataSource = dv
-            dgvMovimientos.ClearSelection()
-        End If
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnAplicarFiltro.Click
+        Try
+            If lblDesdeF.Text <> "" And lblHastaF.Text <> "" Then
+                Dim dv As New DataView(listado.Tables("tabla"))
+                dv.RowFilter = String.Format("Fecha >= '{0}' and Fecha <= '{1}'", fechaInicio, fechaFin)
+                dgvMovimientos.DataSource = dv
+                dgvMovimientos.ClearSelection()
+            End If
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub btnDetalle_Click(sender As Object, e As EventArgs) Handles btnDetalle.Click

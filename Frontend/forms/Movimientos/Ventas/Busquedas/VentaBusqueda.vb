@@ -6,7 +6,9 @@ Public Class VentaBusqueda
     Dim list As New DataSet
     Public venta As String
     Private Sub VentaBusqueda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Show()
         cargarVentasCliente()
+        txtFiltro.Focus()
     End Sub
 
     Private Sub cargarVentasCliente()
@@ -14,6 +16,7 @@ Public Class VentaBusqueda
             Dim daoV As New VentaDAO
             list = daoV.ventasCliente(codigoCliente)
             dgvVentas.DataSource = list.Tables("tabla")
+            dgvVentas.ClearSelection()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -21,7 +24,7 @@ Public Class VentaBusqueda
 
     Private Sub aplicarFiltro()
         Dim dv As New DataView(list.Tables("tabla"))
-        dv.RowFilter = String.Format("Factura like '%{0}%' OR Estado like '%{1}%'", txtFiltro.Text, estadoFiltro)
+        dv.RowFilter = String.Format("Factura like '%{0}%'", txtFiltro.Text)
         dgvVentas.DataSource = dv
         'dgvVendedores.ClearSelection()
     End Sub
@@ -59,12 +62,22 @@ Public Class VentaBusqueda
                     Dim codigo = dgvVentas.Item(0, row).Value
 
                     venta = codigo
-                    MsgBox(venta)
                     Me.DialogResult = DialogResult.OK
                 End If
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub txtFiltro_TextChanged(sender As Object, e As EventArgs) Handles txtFiltro.TextChanged
+        aplicarFiltro()
+    End Sub
+
+    Private Sub txtFiltro_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFiltro.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            dgvVentas.Focus()
+        End If
     End Sub
 End Class

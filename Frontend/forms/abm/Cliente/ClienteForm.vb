@@ -342,9 +342,21 @@ Public Class ClienteForm
 
     Private Function validarDatos() As Boolean
 
-        If txtCI.Text = "" Or txtNombre.Text = "" Or txtCel.Text = "" Or txtRUC.Text = "" Then
-            MsgBox("Debe completar todos los campos", MsgBoxStyle.Critical, "Notificación")
+        If txtCI.Text = "" Then
+            MsgBox("El campo CI es obligatorio", MsgBoxStyle.Critical, "Notificación")
+            txtCI.Focus()
+            Return False
+        ElseIf txtNombre.Text = "" Then
+            MsgBox("El campo nombre es obligatorio", MsgBoxStyle.Critical, "Notificación")
             txtNombre.Focus()
+            Return False
+        ElseIf txtRUC.Text = "" Then
+            MsgBox("El campo RUC es obligatorio", MsgBoxStyle.Critical, "Notificación")
+            txtRUC.Focus()
+            Return False
+        ElseIf txtCel.Text = "" Then
+            MsgBox("El campo celular es obligatorio", MsgBoxStyle.Critical, "Notificación")
+            txtCel.Focus()
             Return False
         ElseIf cbVendedor.SelectedIndex = 0 Then
             MsgBox("Debe seleccionar un vendedor", MsgBoxStyle.Critical, "Notificación")

@@ -71,7 +71,7 @@ Public Class ColorForm
             If (controlarCampos()) Then
                 If nuevo = True Then
                     Dim color As New ColorM
-                    color.nombre = txtNombre.Text.ToLower
+                    color.nombre = txtNombre.Text
                     daoc.agregar(color)
                     MsgBox("Color agregado correctamente", MsgBoxStyle.Information, "Éxito")
                     cargarColores()

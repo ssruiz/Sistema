@@ -6,7 +6,7 @@ Public Class TipoPlanchaForm
             Dim daoc As New TipoProdDAO
             If (controlarCampos()) Then
                 Dim tipo As New TipoPlancha
-                tipo.nombre = txtNombre.Text.ToLower
+                tipo.nombre = txtNombre.Text
                 daoc.agregarPlancha(tipo)
                 MsgBox("Tipo de plancha agregado correctamente", MsgBoxStyle.Information, "Éxito")
                 cargarTipos()
@@ -22,6 +22,7 @@ Public Class TipoPlanchaForm
     Private Sub TipoPlanchaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cargarTipos()
         PersonalizarDAtagridView(dgvTipos)
+        lblTitulo.Left = (Me.ClientSize.Width / 2) - (lblTitulo.Width / 2)
     End Sub
     Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
         With dgv

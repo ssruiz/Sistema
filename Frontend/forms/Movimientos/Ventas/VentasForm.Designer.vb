@@ -38,15 +38,6 @@ Partial Class VentasForm
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btnUlt = New System.Windows.Forms.Button()
-        Me.btnPrim = New System.Windows.Forms.Button()
-        Me.btnSgte = New System.Windows.Forms.Button()
-        Me.btnEtiquetas = New System.Windows.Forms.Button()
-        Me.btnImprimir = New System.Windows.Forms.Button()
-        Me.btnGuardar = New System.Windows.Forms.Button()
-        Me.btnNuevo = New System.Windows.Forms.Button()
-        Me.btnAnterior = New System.Windows.Forms.Button()
-        Me.btnSubirPlano = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -79,7 +70,6 @@ Partial Class VentasForm
         Me.lblFechaVenta = New System.Windows.Forms.Label()
         Me.lblCambio = New System.Windows.Forms.Label()
         Me.lblOTSeleccionada = New System.Windows.Forms.Label()
-        Me.btnPlanos = New System.Windows.Forms.Button()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.lblCantidadPlanos = New System.Windows.Forms.Label()
@@ -138,8 +128,6 @@ Partial Class VentasForm
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.lblProduccion = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.btnAnular = New System.Windows.Forms.Button()
-        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -152,7 +140,6 @@ Partial Class VentasForm
         Me.txtDescuentoTotal = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.btnEliminarProd = New System.Windows.Forms.Button()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
         Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VentaCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -170,6 +157,20 @@ Partial Class VentasForm
         Me.ObraCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.btnAnular = New System.Windows.Forms.Button()
+        Me.btnUlt = New System.Windows.Forms.Button()
+        Me.btnPrim = New System.Windows.Forms.Button()
+        Me.btnSgte = New System.Windows.Forms.Button()
+        Me.btnEtiquetas = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.btnNuevo = New System.Windows.Forms.Button()
+        Me.btnAnterior = New System.Windows.Forms.Button()
+        Me.btnEliminarProd = New System.Windows.Forms.Button()
+        Me.btnPlanos = New System.Windows.Forms.Button()
+        Me.btnSubirPlano = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -192,158 +193,6 @@ Partial Class VentasForm
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnUlt
-        '
-        Me.btnUlt.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnUlt.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUlt.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUlt.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnUlt.Image = Global.Frontend.My.Resources.Resources.abajo
-        Me.btnUlt.Location = New System.Drawing.Point(1146, 35)
-        Me.btnUlt.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnUlt.Name = "btnUlt"
-        Me.btnUlt.Size = New System.Drawing.Size(117, 49)
-        Me.btnUlt.TabIndex = 4
-        Me.btnUlt.Text = "Último"
-        Me.btnUlt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnUlt, "Último registro")
-        Me.btnUlt.UseVisualStyleBackColor = False
-        '
-        'btnPrim
-        '
-        Me.btnPrim.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnPrim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPrim.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrim.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnPrim.Image = Global.Frontend.My.Resources.Resources.up
-        Me.btnPrim.Location = New System.Drawing.Point(884, 35)
-        Me.btnPrim.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnPrim.Name = "btnPrim"
-        Me.btnPrim.Size = New System.Drawing.Size(117, 49)
-        Me.btnPrim.TabIndex = 4
-        Me.btnPrim.Text = "Primero"
-        Me.btnPrim.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnPrim, "Primer registro")
-        Me.btnPrim.UseVisualStyleBackColor = False
-        '
-        'btnSgte
-        '
-        Me.btnSgte.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnSgte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSgte.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSgte.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnSgte.Image = Global.Frontend.My.Resources.Resources.der
-        Me.btnSgte.Location = New System.Drawing.Point(1014, 35)
-        Me.btnSgte.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnSgte.Name = "btnSgte"
-        Me.btnSgte.Size = New System.Drawing.Size(117, 49)
-        Me.btnSgte.TabIndex = 4
-        Me.btnSgte.Text = "Siguiente"
-        Me.btnSgte.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.btnSgte, "Siguiente registro")
-        Me.btnSgte.UseVisualStyleBackColor = False
-        '
-        'btnEtiquetas
-        '
-        Me.btnEtiquetas.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnEtiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEtiquetas.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEtiquetas.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnEtiquetas.Image = Global.Frontend.My.Resources.Resources.tickets1
-        Me.btnEtiquetas.Location = New System.Drawing.Point(208, 35)
-        Me.btnEtiquetas.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnEtiquetas.Name = "btnEtiquetas"
-        Me.btnEtiquetas.Size = New System.Drawing.Size(122, 49)
-        Me.btnEtiquetas.TabIndex = 4
-        Me.btnEtiquetas.Text = "Etiquetas"
-        Me.btnEtiquetas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnEtiquetas, "Imprimir Etiquetas")
-        Me.btnEtiquetas.UseVisualStyleBackColor = False
-        '
-        'btnImprimir
-        '
-        Me.btnImprimir.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimir.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnImprimir.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnImprimir.Location = New System.Drawing.Point(1480, 12)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(81, 72)
-        Me.btnImprimir.TabIndex = 4
-        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ToolTip1.SetToolTip(Me.btnImprimir, "Imprimir Factura")
-        Me.btnImprimir.UseVisualStyleBackColor = False
-        '
-        'btnGuardar
-        '
-        Me.btnGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnGuardar.Enabled = False
-        Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGuardar.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnGuardar.Image = Global.Frontend.My.Resources.Resources.guardar
-        Me.btnGuardar.Location = New System.Drawing.Point(348, 35)
-        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(141, 49)
-        Me.btnGuardar.TabIndex = 4
-        Me.btnGuardar.Text = "Grabar Venta"
-        Me.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar Venta")
-        Me.btnGuardar.UseVisualStyleBackColor = False
-        '
-        'btnNuevo
-        '
-        Me.btnNuevo.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNuevo.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNuevo.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnNuevo.Image = Global.Frontend.My.Resources.Resources.nuevo
-        Me.btnNuevo.Location = New System.Drawing.Point(503, 35)
-        Me.btnNuevo.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Size = New System.Drawing.Size(152, 49)
-        Me.btnNuevo.TabIndex = 4
-        Me.btnNuevo.Text = "Nueva Venta"
-        Me.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnNuevo, "Nueva Venta")
-        Me.btnNuevo.UseVisualStyleBackColor = False
-        '
-        'btnAnterior
-        '
-        Me.btnAnterior.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnterior.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAnterior.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnAnterior.Image = Global.Frontend.My.Resources.Resources.izq
-        Me.btnAnterior.Location = New System.Drawing.Point(755, 35)
-        Me.btnAnterior.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnAnterior.Name = "btnAnterior"
-        Me.btnAnterior.Size = New System.Drawing.Size(117, 49)
-        Me.btnAnterior.TabIndex = 4
-        Me.btnAnterior.Text = "Anterior"
-        Me.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btnAnterior, "Anterior Registro")
-        Me.btnAnterior.UseVisualStyleBackColor = False
-        '
-        'btnSubirPlano
-        '
-        Me.btnSubirPlano.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnSubirPlano.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSubirPlano.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSubirPlano.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnSubirPlano.Image = Global.Frontend.My.Resources.Resources.subir_plano
-        Me.btnSubirPlano.Location = New System.Drawing.Point(1220, 176)
-        Me.btnSubirPlano.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnSubirPlano.Name = "btnSubirPlano"
-        Me.btnSubirPlano.Size = New System.Drawing.Size(183, 41)
-        Me.btnSubirPlano.TabIndex = 4
-        Me.btnSubirPlano.Text = "Subir planos"
-        Me.btnSubirPlano.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.ToolTip1.SetToolTip(Me.btnSubirPlano, "Subir Plano")
-        Me.btnSubirPlano.UseVisualStyleBackColor = False
         '
         'Panel1
         '
@@ -789,22 +638,6 @@ Partial Class VentasForm
         Me.lblOTSeleccionada.Size = New System.Drawing.Size(214, 38)
         Me.lblOTSeleccionada.TabIndex = 12
         Me.lblOTSeleccionada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnPlanos
-        '
-        Me.btnPlanos.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnPlanos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPlanos.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPlanos.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnPlanos.Image = Global.Frontend.My.Resources.Resources.ver_planos_2
-        Me.btnPlanos.Location = New System.Drawing.Point(1220, 60)
-        Me.btnPlanos.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnPlanos.Name = "btnPlanos"
-        Me.btnPlanos.Size = New System.Drawing.Size(183, 57)
-        Me.btnPlanos.TabIndex = 4
-        Me.btnPlanos.Text = "Ver Planos"
-        Me.btnPlanos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.btnPlanos.UseVisualStyleBackColor = False
         '
         'Label31
         '
@@ -1498,8 +1331,7 @@ Partial Class VentasForm
         Me.Panel6.Controls.Add(Me.btnPrim)
         Me.Panel6.Controls.Add(Me.btnSgte)
         Me.Panel6.Controls.Add(Me.btnEtiquetas)
-        Me.Panel6.Controls.Add(Me.btnImprimir)
-        Me.Panel6.Controls.Add(Me.btnBuscar)
+        Me.Panel6.Controls.Add(Me.btnModificar)
         Me.Panel6.Controls.Add(Me.btnGuardar)
         Me.Panel6.Controls.Add(Me.btnNuevo)
         Me.Panel6.Controls.Add(Me.btnAnterior)
@@ -1547,38 +1379,6 @@ Partial Class VentasForm
         Me.Label18.TabIndex = 6
         Me.Label18.Text = "Producción del día:"
         '
-        'btnAnular
-        '
-        Me.btnAnular.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnAnular.Enabled = False
-        Me.btnAnular.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnular.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAnular.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnAnular.Image = Global.Frontend.My.Resources.Resources.eliminar2
-        Me.btnAnular.Location = New System.Drawing.Point(1292, 37)
-        Me.btnAnular.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnAnular.Name = "btnAnular"
-        Me.btnAnular.Size = New System.Drawing.Size(117, 47)
-        Me.btnAnular.TabIndex = 5
-        Me.btnAnular.Text = "Anular"
-        Me.btnAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnAnular.UseVisualStyleBackColor = False
-        '
-        'btnBuscar
-        '
-        Me.btnBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBuscar.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnBuscar.Image = Global.Frontend.My.Resources.Resources.buscar
-        Me.btnBuscar.Location = New System.Drawing.Point(684, 35)
-        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(59, 49)
-        Me.btnBuscar.TabIndex = 4
-        Me.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnBuscar.UseVisualStyleBackColor = False
-        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Panel4)
@@ -1598,11 +1398,13 @@ Partial Class VentasForm
         Me.Panel4.Controls.Add(Me.Label34)
         Me.Panel4.Controls.Add(Me.lblasda)
         Me.Panel4.Controls.Add(Me.Label22)
+        Me.Panel4.Controls.Add(Me.Label35)
         Me.Panel4.Controls.Add(Me.txtSaldo)
         Me.Panel4.Controls.Add(Me.txtRecargoTotal)
         Me.Panel4.Controls.Add(Me.txtIva)
         Me.Panel4.Controls.Add(Me.txtDescuentoTotal)
         Me.Panel4.Controls.Add(Me.txtTotal)
+        Me.Panel4.Controls.Add(Me.Label23)
         Me.Panel4.Controls.Add(Me.Label24)
         Me.Panel4.Location = New System.Drawing.Point(10, 398)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(0)
@@ -1627,7 +1429,7 @@ Partial Class VentasForm
         Me.Label34.AutoSize = True
         Me.Label34.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label34.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label34.Location = New System.Drawing.Point(406, 54)
+        Me.Label34.Location = New System.Drawing.Point(369, 54)
         Me.Label34.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(73, 23)
@@ -1639,7 +1441,7 @@ Partial Class VentasForm
         Me.lblasda.AutoSize = True
         Me.lblasda.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblasda.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblasda.Location = New System.Drawing.Point(406, 17)
+        Me.lblasda.Location = New System.Drawing.Point(369, 14)
         Me.lblasda.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblasda.Name = "lblasda"
         Me.lblasda.Size = New System.Drawing.Size(91, 23)
@@ -1663,7 +1465,7 @@ Partial Class VentasForm
         Me.txtSaldo.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtSaldo.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSaldo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtSaldo.Location = New System.Drawing.Point(875, 25)
+        Me.txtSaldo.Location = New System.Drawing.Point(912, 11)
         Me.txtSaldo.Margin = New System.Windows.Forms.Padding(0)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -1676,7 +1478,7 @@ Partial Class VentasForm
         Me.txtRecargoTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtRecargoTotal.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRecargoTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtRecargoTotal.Location = New System.Drawing.Point(501, 49)
+        Me.txtRecargoTotal.Location = New System.Drawing.Point(474, 49)
         Me.txtRecargoTotal.Margin = New System.Windows.Forms.Padding(0)
         Me.txtRecargoTotal.Name = "txtRecargoTotal"
         Me.txtRecargoTotal.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -1702,7 +1504,7 @@ Partial Class VentasForm
         Me.txtDescuentoTotal.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtDescuentoTotal.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDescuentoTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtDescuentoTotal.Location = New System.Drawing.Point(501, 12)
+        Me.txtDescuentoTotal.Location = New System.Drawing.Point(474, 9)
         Me.txtDescuentoTotal.Margin = New System.Windows.Forms.Padding(0)
         Me.txtDescuentoTotal.Name = "txtDescuentoTotal"
         Me.txtDescuentoTotal.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -1728,28 +1530,12 @@ Partial Class VentasForm
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label24.Location = New System.Drawing.Point(818, 32)
+        Me.Label24.Location = New System.Drawing.Point(818, 16)
         Me.Label24.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(52, 23)
         Me.Label24.TabIndex = 1
         Me.Label24.Text = "Saldo"
-        '
-        'btnEliminarProd
-        '
-        Me.btnEliminarProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnEliminarProd.Enabled = False
-        Me.btnEliminarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEliminarProd.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminarProd.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnEliminarProd.Image = Global.Frontend.My.Resources.Resources.eliminar
-        Me.btnEliminarProd.Location = New System.Drawing.Point(1368, 18)
-        Me.btnEliminarProd.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnEliminarProd.Name = "btnEliminarProd"
-        Me.btnEliminarProd.Size = New System.Drawing.Size(62, 49)
-        Me.btnEliminarProd.TabIndex = 19
-        Me.btnEliminarProd.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnEliminarProd.UseVisualStyleBackColor = False
         '
         'dgvProductos
         '
@@ -1946,6 +1732,234 @@ Partial Class VentasForm
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label23.Location = New System.Drawing.Point(818, 59)
+        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(84, 23)
+        Me.Label23.TabIndex = 1
+        Me.Label23.Text = "Sup. Total"
+        '
+        'Label35
+        '
+        Me.Label35.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.Label35.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label35.Location = New System.Drawing.Point(912, 54)
+        Me.Label35.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label35.Name = "Label35"
+        Me.Label35.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label35.Size = New System.Drawing.Size(266, 30)
+        Me.Label35.TabIndex = 12
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnAnular
+        '
+        Me.btnAnular.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnAnular.Enabled = False
+        Me.btnAnular.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAnular.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnular.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnAnular.Image = Global.Frontend.My.Resources.Resources.eliminar2
+        Me.btnAnular.Location = New System.Drawing.Point(1292, 37)
+        Me.btnAnular.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnAnular.Name = "btnAnular"
+        Me.btnAnular.Size = New System.Drawing.Size(117, 47)
+        Me.btnAnular.TabIndex = 5
+        Me.btnAnular.Text = "Anular"
+        Me.btnAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAnular.UseVisualStyleBackColor = False
+        '
+        'btnUlt
+        '
+        Me.btnUlt.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnUlt.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUlt.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUlt.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnUlt.Image = Global.Frontend.My.Resources.Resources.abajo
+        Me.btnUlt.Location = New System.Drawing.Point(1146, 35)
+        Me.btnUlt.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnUlt.Name = "btnUlt"
+        Me.btnUlt.Size = New System.Drawing.Size(117, 49)
+        Me.btnUlt.TabIndex = 4
+        Me.btnUlt.Text = "Último"
+        Me.btnUlt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnUlt, "Último registro")
+        Me.btnUlt.UseVisualStyleBackColor = False
+        '
+        'btnPrim
+        '
+        Me.btnPrim.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnPrim.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrim.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrim.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnPrim.Image = Global.Frontend.My.Resources.Resources.up
+        Me.btnPrim.Location = New System.Drawing.Point(884, 35)
+        Me.btnPrim.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnPrim.Name = "btnPrim"
+        Me.btnPrim.Size = New System.Drawing.Size(117, 49)
+        Me.btnPrim.TabIndex = 4
+        Me.btnPrim.Text = "Primero"
+        Me.btnPrim.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnPrim, "Primer registro")
+        Me.btnPrim.UseVisualStyleBackColor = False
+        '
+        'btnSgte
+        '
+        Me.btnSgte.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnSgte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSgte.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSgte.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnSgte.Image = Global.Frontend.My.Resources.Resources.der
+        Me.btnSgte.Location = New System.Drawing.Point(1014, 35)
+        Me.btnSgte.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnSgte.Name = "btnSgte"
+        Me.btnSgte.Size = New System.Drawing.Size(117, 49)
+        Me.btnSgte.TabIndex = 4
+        Me.btnSgte.Text = "Siguiente"
+        Me.btnSgte.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.btnSgte, "Siguiente registro")
+        Me.btnSgte.UseVisualStyleBackColor = False
+        '
+        'btnEtiquetas
+        '
+        Me.btnEtiquetas.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnEtiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEtiquetas.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEtiquetas.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnEtiquetas.Image = Global.Frontend.My.Resources.Resources.tickets1
+        Me.btnEtiquetas.Location = New System.Drawing.Point(180, 36)
+        Me.btnEtiquetas.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnEtiquetas.Name = "btnEtiquetas"
+        Me.btnEtiquetas.Size = New System.Drawing.Size(114, 49)
+        Me.btnEtiquetas.TabIndex = 4
+        Me.btnEtiquetas.Text = "Etiquetas"
+        Me.btnEtiquetas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnEtiquetas, "Imprimir Etiquetas")
+        Me.btnEtiquetas.UseVisualStyleBackColor = False
+        '
+        'btnModificar
+        '
+        Me.btnModificar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnModificar.Enabled = False
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnModificar.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnModificar.Image = Global.Frontend.My.Resources.Resources.buscar
+        Me.btnModificar.Location = New System.Drawing.Point(617, 35)
+        Me.btnModificar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(127, 49)
+        Me.btnModificar.TabIndex = 4
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.btnModificar.UseVisualStyleBackColor = False
+        '
+        'btnGuardar
+        '
+        Me.btnGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnGuardar.Enabled = False
+        Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardar.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardar.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnGuardar.Image = Global.Frontend.My.Resources.Resources.guardar
+        Me.btnGuardar.Location = New System.Drawing.Point(303, 35)
+        Me.btnGuardar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(141, 49)
+        Me.btnGuardar.TabIndex = 4
+        Me.btnGuardar.Text = "Grabar Venta"
+        Me.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnGuardar, "Guardar Venta")
+        Me.btnGuardar.UseVisualStyleBackColor = False
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNuevo.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevo.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnNuevo.Image = Global.Frontend.My.Resources.Resources.nuevo
+        Me.btnNuevo.Location = New System.Drawing.Point(454, 35)
+        Me.btnNuevo.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Size = New System.Drawing.Size(152, 49)
+        Me.btnNuevo.TabIndex = 4
+        Me.btnNuevo.Text = "Nueva Venta"
+        Me.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnNuevo, "Nueva Venta")
+        Me.btnNuevo.UseVisualStyleBackColor = False
+        '
+        'btnAnterior
+        '
+        Me.btnAnterior.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAnterior.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAnterior.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnAnterior.Image = Global.Frontend.My.Resources.Resources.izq
+        Me.btnAnterior.Location = New System.Drawing.Point(755, 35)
+        Me.btnAnterior.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnAnterior.Name = "btnAnterior"
+        Me.btnAnterior.Size = New System.Drawing.Size(117, 49)
+        Me.btnAnterior.TabIndex = 4
+        Me.btnAnterior.Text = "Anterior"
+        Me.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btnAnterior, "Anterior Registro")
+        Me.btnAnterior.UseVisualStyleBackColor = False
+        '
+        'btnEliminarProd
+        '
+        Me.btnEliminarProd.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnEliminarProd.Enabled = False
+        Me.btnEliminarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEliminarProd.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEliminarProd.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnEliminarProd.Image = Global.Frontend.My.Resources.Resources.eliminar
+        Me.btnEliminarProd.Location = New System.Drawing.Point(1368, 18)
+        Me.btnEliminarProd.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnEliminarProd.Name = "btnEliminarProd"
+        Me.btnEliminarProd.Size = New System.Drawing.Size(62, 49)
+        Me.btnEliminarProd.TabIndex = 19
+        Me.btnEliminarProd.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnEliminarProd.UseVisualStyleBackColor = False
+        '
+        'btnPlanos
+        '
+        Me.btnPlanos.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnPlanos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPlanos.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPlanos.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnPlanos.Image = Global.Frontend.My.Resources.Resources.ver_planos_2
+        Me.btnPlanos.Location = New System.Drawing.Point(1220, 60)
+        Me.btnPlanos.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnPlanos.Name = "btnPlanos"
+        Me.btnPlanos.Size = New System.Drawing.Size(183, 57)
+        Me.btnPlanos.TabIndex = 4
+        Me.btnPlanos.Text = "Ver Planos"
+        Me.btnPlanos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.btnPlanos.UseVisualStyleBackColor = False
+        '
+        'btnSubirPlano
+        '
+        Me.btnSubirPlano.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnSubirPlano.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSubirPlano.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSubirPlano.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnSubirPlano.Image = Global.Frontend.My.Resources.Resources.subir_plano
+        Me.btnSubirPlano.Location = New System.Drawing.Point(1220, 176)
+        Me.btnSubirPlano.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnSubirPlano.Name = "btnSubirPlano"
+        Me.btnSubirPlano.Size = New System.Drawing.Size(183, 41)
+        Me.btnSubirPlano.TabIndex = 4
+        Me.btnSubirPlano.Text = "Subir planos"
+        Me.btnSubirPlano.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.ToolTip1.SetToolTip(Me.btnSubirPlano, "Subir Plano")
+        Me.btnSubirPlano.UseVisualStyleBackColor = False
+        '
         'VentasForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
@@ -2027,7 +2041,6 @@ Partial Class VentasForm
     Friend WithEvents btnPrim As Button
     Friend WithEvents btnSgte As Button
     Friend WithEvents btnEtiquetas As Button
-    Friend WithEvents btnImprimir As Button
     Friend WithEvents btnGuardar As Button
     Friend WithEvents btnNuevo As Button
     Friend WithEvents btnAnterior As Button
@@ -2052,7 +2065,7 @@ Partial Class VentasForm
     Friend WithEvents Label32 As Label
     Friend WithEvents Label33 As Label
     Friend WithEvents btnUlt As Button
-    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnModificar As Button
     Friend WithEvents pnlProductos As Panel
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Panel5 As Panel
@@ -2132,4 +2145,6 @@ Partial Class VentasForm
     Friend WithEvents btnPlanos As Button
     Friend WithEvents lblCantidadPlanos As Label
     Friend WithEvents lblTitCantPlanos As Label
+    Friend WithEvents Label35 As Label
+    Friend WithEvents Label23 As Label
 End Class

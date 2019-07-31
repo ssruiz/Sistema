@@ -32,15 +32,29 @@ Partial Class ListadoMovimientosForm
         Me.tbl1 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.dgvMovimientos = New System.Windows.Forms.DataGridView()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.solCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.autoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EstadoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SDCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.tblfiltros = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.chbRecibido = New System.Windows.Forms.CheckBox()
+        Me.chbEnviados = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnAplicarFiltro = New System.Windows.Forms.Button()
+        Me.btnLimpiarFiltro = New System.Windows.Forms.Button()
         Me.dpFin = New System.Windows.Forms.DateTimePicker()
         Me.dpInicio = New System.Windows.Forms.DateTimePicker()
+        Me.lblDesdeF = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblHastaF = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cbS1 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -52,6 +66,7 @@ Partial Class ListadoMovimientosForm
         Me.txtDD = New System.Windows.Forms.TextBox()
         Me.txtSD = New System.Windows.Forms.TextBox()
         Me.txtSO = New System.Windows.Forms.TextBox()
+        Me.btnDetalle = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -59,21 +74,6 @@ Partial Class ListadoMovimientosForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MovCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.solCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.autoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EstadoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SDCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.chbRecibido = New System.Windows.Forms.CheckBox()
-        Me.chbEnviados = New System.Windows.Forms.CheckBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.lblDesdeF = New System.Windows.Forms.Label()
-        Me.lblHastaF = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.btnBuscar = New System.Windows.Forms.Button()
-        Me.btnDetalle = New System.Windows.Forms.Button()
         Me.tbl1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.dgvMovimientos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -81,9 +81,9 @@ Partial Class ListadoMovimientosForm
         Me.Panel2.SuspendLayout()
         Me.tblfiltros.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'tbl1
@@ -162,6 +162,61 @@ Partial Class ListadoMovimientosForm
         Me.dgvMovimientos.Size = New System.Drawing.Size(1191, 380)
         Me.dgvMovimientos.TabIndex = 17
         '
+        'ID
+        '
+        Me.ID.DataPropertyName = "ID"
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle3
+        Me.ID.HeaderText = "ID"
+        Me.ID.Name = "ID"
+        Me.ID.Visible = False
+        '
+        'MovCol
+        '
+        Me.MovCol.DataPropertyName = "SO"
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.MovCol.DefaultCellStyle = DataGridViewCellStyle4
+        Me.MovCol.HeaderText = "SO"
+        Me.MovCol.Name = "MovCol"
+        Me.MovCol.Visible = False
+        '
+        'solCol
+        '
+        Me.solCol.DataPropertyName = "Solicitante"
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.solCol.DefaultCellStyle = DataGridViewCellStyle5
+        Me.solCol.HeaderText = "Solicitante"
+        Me.solCol.Name = "solCol"
+        '
+        'autoCol
+        '
+        Me.autoCol.DataPropertyName = "Autorizador"
+        Me.autoCol.HeaderText = "Autorizado por"
+        Me.autoCol.Name = "autoCol"
+        '
+        'FechaCol
+        '
+        Me.FechaCol.DataPropertyName = "Fecha"
+        Me.FechaCol.HeaderText = "Fecha"
+        Me.FechaCol.Name = "FechaCol"
+        '
+        'EstadoCol
+        '
+        Me.EstadoCol.DataPropertyName = "Estado"
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = "0"
+        Me.EstadoCol.DefaultCellStyle = DataGridViewCellStyle6
+        Me.EstadoCol.HeaderText = "Estado"
+        Me.EstadoCol.Name = "EstadoCol"
+        '
+        'SDCol
+        '
+        Me.SDCol.DataPropertyName = "SD"
+        Me.SDCol.HeaderText = "SD"
+        Me.SDCol.Name = "SDCol"
+        Me.SDCol.Visible = False
+        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
@@ -220,10 +275,42 @@ Partial Class ListadoMovimientosForm
         Me.Panel3.Size = New System.Drawing.Size(1309, 197)
         Me.Panel3.TabIndex = 15
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.chbRecibido)
+        Me.GroupBox4.Controls.Add(Me.chbEnviados)
+        Me.GroupBox4.Location = New System.Drawing.Point(25, 93)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(351, 79)
+        Me.GroupBox4.TabIndex = 17
+        Me.GroupBox4.TabStop = False
+        '
+        'chbRecibido
+        '
+        Me.chbRecibido.AutoSize = True
+        Me.chbRecibido.ForeColor = System.Drawing.SystemColors.Control
+        Me.chbRecibido.Location = New System.Drawing.Point(33, 31)
+        Me.chbRecibido.Name = "chbRecibido"
+        Me.chbRecibido.Size = New System.Drawing.Size(104, 27)
+        Me.chbRecibido.TabIndex = 16
+        Me.chbRecibido.Text = "Recibidos"
+        Me.chbRecibido.UseVisualStyleBackColor = True
+        '
+        'chbEnviados
+        '
+        Me.chbEnviados.AutoSize = True
+        Me.chbEnviados.ForeColor = System.Drawing.SystemColors.Control
+        Me.chbEnviados.Location = New System.Drawing.Point(191, 30)
+        Me.chbEnviados.Name = "chbEnviados"
+        Me.chbEnviados.Size = New System.Drawing.Size(99, 27)
+        Me.chbEnviados.TabIndex = 16
+        Me.chbEnviados.Text = "Enviados"
+        Me.chbEnviados.UseVisualStyleBackColor = True
+        '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.btnBuscar)
+        Me.GroupBox1.Controls.Add(Me.btnAplicarFiltro)
+        Me.GroupBox1.Controls.Add(Me.btnLimpiarFiltro)
         Me.GroupBox1.Controls.Add(Me.dpFin)
         Me.GroupBox1.Controls.Add(Me.dpInicio)
         Me.GroupBox1.Controls.Add(Me.lblDesdeF)
@@ -237,6 +324,40 @@ Partial Class ListadoMovimientosForm
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Fecha"
+        '
+        'btnAplicarFiltro
+        '
+        Me.btnAplicarFiltro.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnAplicarFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnAplicarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAplicarFiltro.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAplicarFiltro.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnAplicarFiltro.Image = Global.Frontend.My.Resources.Resources.buscar
+        Me.btnAplicarFiltro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAplicarFiltro.Location = New System.Drawing.Point(576, 34)
+        Me.btnAplicarFiltro.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnAplicarFiltro.Name = "btnAplicarFiltro"
+        Me.btnAplicarFiltro.Size = New System.Drawing.Size(206, 49)
+        Me.btnAplicarFiltro.TabIndex = 16
+        Me.btnAplicarFiltro.Text = "Aplicar Filtro"
+        Me.btnAplicarFiltro.UseVisualStyleBackColor = False
+        '
+        'btnLimpiarFiltro
+        '
+        Me.btnLimpiarFiltro.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnLimpiarFiltro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnLimpiarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLimpiarFiltro.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLimpiarFiltro.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnLimpiarFiltro.Image = Global.Frontend.My.Resources.Resources.reinciar2
+        Me.btnLimpiarFiltro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnLimpiarFiltro.Location = New System.Drawing.Point(576, 105)
+        Me.btnLimpiarFiltro.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnLimpiarFiltro.Name = "btnLimpiarFiltro"
+        Me.btnLimpiarFiltro.Size = New System.Drawing.Size(206, 48)
+        Me.btnLimpiarFiltro.TabIndex = 16
+        Me.btnLimpiarFiltro.Text = "Limpiar Filtro"
+        Me.btnLimpiarFiltro.UseVisualStyleBackColor = False
         '
         'dpFin
         '
@@ -254,6 +375,16 @@ Partial Class ListadoMovimientosForm
         Me.dpInicio.Size = New System.Drawing.Size(173, 30)
         Me.dpInicio.TabIndex = 15
         '
+        'lblDesdeF
+        '
+        Me.lblDesdeF.AutoSize = True
+        Me.lblDesdeF.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDesdeF.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblDesdeF.Location = New System.Drawing.Point(101, 47)
+        Me.lblDesdeF.Name = "lblDesdeF"
+        Me.lblDesdeF.Size = New System.Drawing.Size(0, 23)
+        Me.lblDesdeF.TabIndex = 14
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -264,6 +395,16 @@ Partial Class ListadoMovimientosForm
         Me.Label2.Size = New System.Drawing.Size(57, 23)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Desde"
+        '
+        'lblHastaF
+        '
+        Me.lblHastaF.AutoSize = True
+        Me.lblHastaF.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblHastaF.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblHastaF.Location = New System.Drawing.Point(101, 105)
+        Me.lblHastaF.Name = "lblHastaF"
+        Me.lblHastaF.Size = New System.Drawing.Size(0, 23)
+        Me.lblHastaF.TabIndex = 14
         '
         'Label3
         '
@@ -380,6 +521,23 @@ Partial Class ListadoMovimientosForm
         Me.txtSO.Size = New System.Drawing.Size(176, 30)
         Me.txtSO.TabIndex = 17
         '
+        'btnDetalle
+        '
+        Me.btnDetalle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnDetalle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.btnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDetalle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDetalle.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnDetalle.Image = Global.Frontend.My.Resources.Resources.detalle
+        Me.btnDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDetalle.Location = New System.Drawing.Point(1062, 81)
+        Me.btnDetalle.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnDetalle.Name = "btnDetalle"
+        Me.btnDetalle.Size = New System.Drawing.Size(206, 48)
+        Me.btnDetalle.TabIndex = 16
+        Me.btnDetalle.Text = "Ver Detalle"
+        Me.btnDetalle.UseVisualStyleBackColor = False
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -457,166 +615,6 @@ Partial Class ListadoMovimientosForm
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Sucursal Origen"
         '
-        'ID
-        '
-        Me.ID.DataPropertyName = "ID"
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle3
-        Me.ID.HeaderText = "ID"
-        Me.ID.Name = "ID"
-        Me.ID.Visible = False
-        '
-        'MovCol
-        '
-        Me.MovCol.DataPropertyName = "SO"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.MovCol.DefaultCellStyle = DataGridViewCellStyle4
-        Me.MovCol.HeaderText = "SO"
-        Me.MovCol.Name = "MovCol"
-        Me.MovCol.Visible = False
-        '
-        'solCol
-        '
-        Me.solCol.DataPropertyName = "Solicitante"
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.solCol.DefaultCellStyle = DataGridViewCellStyle5
-        Me.solCol.HeaderText = "Solicitante"
-        Me.solCol.Name = "solCol"
-        '
-        'autoCol
-        '
-        Me.autoCol.DataPropertyName = "Autorizador"
-        Me.autoCol.HeaderText = "Autorizado por"
-        Me.autoCol.Name = "autoCol"
-        '
-        'FechaCol
-        '
-        Me.FechaCol.DataPropertyName = "Fecha"
-        Me.FechaCol.HeaderText = "Fecha"
-        Me.FechaCol.Name = "FechaCol"
-        '
-        'EstadoCol
-        '
-        Me.EstadoCol.DataPropertyName = "Estado"
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = "0"
-        Me.EstadoCol.DefaultCellStyle = DataGridViewCellStyle6
-        Me.EstadoCol.HeaderText = "Estado"
-        Me.EstadoCol.Name = "EstadoCol"
-        '
-        'SDCol
-        '
-        Me.SDCol.DataPropertyName = "SD"
-        Me.SDCol.HeaderText = "SD"
-        Me.SDCol.Name = "SDCol"
-        Me.SDCol.Visible = False
-        '
-        'chbRecibido
-        '
-        Me.chbRecibido.AutoSize = True
-        Me.chbRecibido.ForeColor = System.Drawing.SystemColors.Control
-        Me.chbRecibido.Location = New System.Drawing.Point(33, 31)
-        Me.chbRecibido.Name = "chbRecibido"
-        Me.chbRecibido.Size = New System.Drawing.Size(104, 27)
-        Me.chbRecibido.TabIndex = 16
-        Me.chbRecibido.Text = "Recibidos"
-        Me.chbRecibido.UseVisualStyleBackColor = True
-        '
-        'chbEnviados
-        '
-        Me.chbEnviados.AutoSize = True
-        Me.chbEnviados.ForeColor = System.Drawing.SystemColors.Control
-        Me.chbEnviados.Location = New System.Drawing.Point(191, 30)
-        Me.chbEnviados.Name = "chbEnviados"
-        Me.chbEnviados.Size = New System.Drawing.Size(99, 27)
-        Me.chbEnviados.TabIndex = 16
-        Me.chbEnviados.Text = "Enviados"
-        Me.chbEnviados.UseVisualStyleBackColor = True
-        '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.chbRecibido)
-        Me.GroupBox4.Controls.Add(Me.chbEnviados)
-        Me.GroupBox4.Location = New System.Drawing.Point(25, 93)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(351, 79)
-        Me.GroupBox4.TabIndex = 17
-        Me.GroupBox4.TabStop = False
-        '
-        'lblDesdeF
-        '
-        Me.lblDesdeF.AutoSize = True
-        Me.lblDesdeF.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDesdeF.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblDesdeF.Location = New System.Drawing.Point(101, 47)
-        Me.lblDesdeF.Name = "lblDesdeF"
-        Me.lblDesdeF.Size = New System.Drawing.Size(57, 23)
-        Me.lblDesdeF.TabIndex = 14
-        Me.lblDesdeF.Text = "Desde"
-        '
-        'lblHastaF
-        '
-        Me.lblHastaF.AutoSize = True
-        Me.lblHastaF.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHastaF.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.lblHastaF.Location = New System.Drawing.Point(101, 105)
-        Me.lblHastaF.Name = "lblHastaF"
-        Me.lblHastaF.Size = New System.Drawing.Size(54, 23)
-        Me.lblHastaF.TabIndex = 14
-        Me.lblHastaF.Text = "Hasta"
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.SystemColors.Control
-        Me.Button1.Image = Global.Frontend.My.Resources.Resources.buscar
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(576, 34)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(206, 49)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Aplicar Filtro"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'btnBuscar
-        '
-        Me.btnBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBuscar.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnBuscar.Image = Global.Frontend.My.Resources.Resources.reinciar2
-        Me.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBuscar.Location = New System.Drawing.Point(576, 105)
-        Me.btnBuscar.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(206, 48)
-        Me.btnBuscar.TabIndex = 16
-        Me.btnBuscar.Text = "Limpiar Filtro"
-        Me.btnBuscar.UseVisualStyleBackColor = False
-        '
-        'btnDetalle
-        '
-        Me.btnDetalle.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnDetalle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.btnDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDetalle.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDetalle.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnDetalle.Image = Global.Frontend.My.Resources.Resources.detalle
-        Me.btnDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDetalle.Location = New System.Drawing.Point(1062, 81)
-        Me.btnDetalle.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnDetalle.Name = "btnDetalle"
-        Me.btnDetalle.Size = New System.Drawing.Size(206, 48)
-        Me.btnDetalle.TabIndex = 16
-        Me.btnDetalle.Text = "Ver Detalle"
-        Me.btnDetalle.UseVisualStyleBackColor = False
-        '
         'ListadoMovimientosForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
@@ -641,12 +639,12 @@ Partial Class ListadoMovimientosForm
         Me.tblfiltros.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -664,7 +662,7 @@ Partial Class ListadoMovimientosForm
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents dpFin As DateTimePicker
     Friend WithEvents dpInicio As DateTimePicker
-    Friend WithEvents btnBuscar As Button
+    Friend WithEvents btnLimpiarFiltro As Button
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents btnDetalle As Button
@@ -683,7 +681,7 @@ Partial Class ListadoMovimientosForm
     Friend WithEvents txtDD As TextBox
     Friend WithEvents txtSD As TextBox
     Friend WithEvents txtSO As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnAplicarFiltro As Button
     Friend WithEvents ID As DataGridViewTextBoxColumn
     Friend WithEvents MovCol As DataGridViewTextBoxColumn
     Friend WithEvents solCol As DataGridViewTextBoxColumn

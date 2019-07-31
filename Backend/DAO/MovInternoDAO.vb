@@ -9,7 +9,7 @@ Public Class MovInternoDAO
             con.Open()
             mov.autorizador = Sesion.Usuario
             Dim query = ""
-            query = "INSERT INTO `movinterno` (`sucursalOrigen`, `sucursalDestino`, `depositoOrigen`, `depositoDestino`, `solicitante`, `autorizado`, `fecha`, `observacion`) VALUES (@sor, @sdest, @depor, @depdest, @sol, @aut, @fecha, @obs); SELECT LAST_INSERT_ID();"
+            query = "INSERT INTO `movinterno` (`sucursalOrigen`, `sucursalDestino`, `depositoOrigen`, `depositoDestino`, `solicitante`, `autorizado`,  `estado`, `fecha`, `observacion`) VALUES (@sor, @sdest, @depor, @depdest, @sol, @aut, 'C' , @fecha, @obs); SELECT LAST_INSERT_ID();"
             Dim cmdMov As New MySqlCommand(query, con)
 
             cmdMov.Parameters.AddWithValue("@sor", mov.sorigen)
@@ -38,31 +38,31 @@ Public Class MovInternoDAO
                 cmdDetalle.ExecuteNonQuery()
                 cmdDetalle.Parameters.Clear()
 
-                'Actualizacion stock
-                Dim queryStock = "INSERT INTO `stock` (`prodCodigo`, `stCantidad`, `opCod`, `stUsrIns`, `stFchIns`, `sucCod`, `depoCod`, `movCod` ) VALUES (@producto, @cantidad, @op, @user, @fecha, @sucursal, @deposito, @mov);"
-                Dim cmdStock As New MySqlCommand(queryStock, con)
-                cmdStock.Parameters.AddWithValue("@producto", producto)
-                cmdStock.Parameters.AddWithValue("@cantidad", -cantidad)
-                cmdStock.Parameters.AddWithValue("@op", 3)
-                cmdStock.Parameters.AddWithValue("@user", Sesion.Usuario)
-                cmdStock.Parameters.AddWithValue("@fecha", Date.Today)
-                cmdStock.Parameters.AddWithValue("@sucursal", mov.sorigen)
-                cmdStock.Parameters.AddWithValue("@deposito", mov.dorigen)
-                cmdStock.Parameters.AddWithValue("@mov", movCod)
-                cmdStock.ExecuteNonQuery()
-                cmdStock.Parameters.Clear()
+                ''Actualizacion stock
+                'Dim queryStock = "INSERT INTO `stock` (`prodCodigo`, `stCantidad`, `opCod`, `stUsrIns`, `stFchIns`, `sucCod`, `depoCod`, `movCod` ) VALUES (@producto, @cantidad, @op, @user, @fecha, @sucursal, @deposito, @mov);"
+                'Dim cmdStock As New MySqlCommand(queryStock, con)
+                'cmdStock.Parameters.AddWithValue("@producto", producto)
+                'cmdStock.Parameters.AddWithValue("@cantidad", -cantidad)
+                'cmdStock.Parameters.AddWithValue("@op", 3)
+                'cmdStock.Parameters.AddWithValue("@user", Sesion.Usuario)
+                'cmdStock.Parameters.AddWithValue("@fecha", Date.Today)
+                'cmdStock.Parameters.AddWithValue("@sucursal", mov.sorigen)
+                'cmdStock.Parameters.AddWithValue("@deposito", mov.dorigen)
+                'cmdStock.Parameters.AddWithValue("@mov", movCod)
+                'cmdStock.ExecuteNonQuery()
+                'cmdStock.Parameters.Clear()
 
-                Dim cmdStock2 As New MySqlCommand(queryStock, con)
-                cmdStock2.Parameters.AddWithValue("@producto", producto)
-                cmdStock2.Parameters.AddWithValue("@cantidad", cantidad)
-                cmdStock2.Parameters.AddWithValue("@op", 3)
-                cmdStock2.Parameters.AddWithValue("@user", Sesion.Usuario)
-                cmdStock2.Parameters.AddWithValue("@fecha", Date.Today)
-                cmdStock2.Parameters.AddWithValue("@sucursal", mov.sdestino)
-                cmdStock2.Parameters.AddWithValue("@deposito", mov.ddestino)
-                cmdStock2.Parameters.AddWithValue("@mov", movCod)
-                cmdStock2.ExecuteNonQuery()
-                cmdStock2.Parameters.Clear()
+                'Dim cmdStock2 As New MySqlCommand(queryStock, con)
+                'cmdStock2.Parameters.AddWithValue("@producto", producto)
+                'cmdStock2.Parameters.AddWithValue("@cantidad", cantidad)
+                'cmdStock2.Parameters.AddWithValue("@op", 3)
+                'cmdStock2.Parameters.AddWithValue("@user", Sesion.Usuario)
+                'cmdStock2.Parameters.AddWithValue("@fecha", Date.Today)
+                'cmdStock2.Parameters.AddWithValue("@sucursal", mov.sdestino)
+                'cmdStock2.Parameters.AddWithValue("@deposito", mov.ddestino)
+                'cmdStock2.Parameters.AddWithValue("@mov", movCod)
+                'cmdStock2.ExecuteNonQuery()
+                'cmdStock2.Parameters.Clear()
             Next
 
         Catch ex As Exception
@@ -81,6 +81,26 @@ Public Class MovInternoDAO
             Dim mysql = "SELECT * from vmovimientosinternos where SO = " & so & " or SD = " & so & ";"
             Dim cmd As New MySqlCommand(mysql, con)
             Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getMovimientosA(ByVal so As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vmovimientosinternos where SO = @so and Estado = 'Pendiente' ; "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@so", so)
+
+            Dim adp As New MySqlDataAdapter(cmd)
             ds.Tables.Add("tabla")
             adp.Fill(ds.Tables("tabla"))
         Catch ex As Exception
@@ -139,4 +159,93 @@ Public Class MovInternoDAO
         End Try
         Return ds
     End Function
+
+    Public Function autorizar(ByVal id As Integer, ByVal sorigen As Integer, ByVal sdestino As Integer, ByVal dorigen As Integer, ByVal ddestino As Integer) As Integer
+        Dim ds = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "UPDATE `producir`.`movinterno` SET `autorizado` = @user, `estado` = 'B', `fecha_auto` = @fecha  WHERE `id` = @id;"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@id", id)
+            cmd.Parameters.AddWithValue("@fecha", Date.Now)
+            cmd.Parameters.AddWithValue("@user", Sesion.Usuario)
+
+            cmd.ExecuteNonQuery()
+
+            Dim daoM As New MovInternoDAO
+            Dim listado = daoM.getDetalle(id)
+
+
+            For Each row As DataRow In listado.Tables("tabla").Rows
+
+                Dim producto = row(2)
+                Dim cantidad = CInt(row(5))
+
+
+
+                ''Actualizacion stock
+                Dim queryStock = "INSERT INTO `stock` (`prodCodigo`, `stCantidad`, `opCod`, `stUsrIns`, `stFchIns`, `sucCod`, `depoCod`, `movCod` ) VALUES (@producto, @cantidad, @op, @user, @fecha, @sucursal, @deposito, @mov);"
+                Dim cmdStock As New MySqlCommand(queryStock, con)
+                cmdStock.Parameters.AddWithValue("@producto", producto)
+                cmdStock.Parameters.AddWithValue("@cantidad", -cantidad)
+                cmdStock.Parameters.AddWithValue("@op", 3)
+                cmdStock.Parameters.AddWithValue("@user", Sesion.Usuario)
+                cmdStock.Parameters.AddWithValue("@fecha", Date.Today)
+                cmdStock.Parameters.AddWithValue("@sucursal", sorigen)
+                cmdStock.Parameters.AddWithValue("@deposito", dorigen)
+                cmdStock.Parameters.AddWithValue("@mov", id)
+                cmdStock.ExecuteNonQuery()
+                cmdStock.Parameters.Clear()
+
+                Dim cmdStock2 As New MySqlCommand(queryStock, con)
+                cmdStock2.Parameters.AddWithValue("@producto", producto)
+                cmdStock2.Parameters.AddWithValue("@cantidad", cantidad)
+                cmdStock2.Parameters.AddWithValue("@op", 3)
+                cmdStock2.Parameters.AddWithValue("@user", Sesion.Usuario)
+                cmdStock2.Parameters.AddWithValue("@fecha", Date.Today)
+                cmdStock2.Parameters.AddWithValue("@sucursal", sdestino)
+                cmdStock2.Parameters.AddWithValue("@deposito", ddestino)
+                cmdStock2.Parameters.AddWithValue("@mov", id)
+                cmdStock2.ExecuteNonQuery()
+                cmdStock2.Parameters.Clear()
+            Next
+            ds = 1
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Sub anular(ByVal id As Integer)
+        Dim ds = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "UPDATE `producir`.`movinterno` SET `estado` = 'A'  WHERE `id` = @id;"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@id", id)
+            cmd.ExecuteNonQuery()
+
+
+
+
+
+            ''Actualizacion stock
+            Dim queryStock = "UPDATE `producir`.`stock` SET `stEstado` = 'A' WHERE `movCod` = @id;"
+            Dim cmdStock As New MySqlCommand(queryStock, con)
+            cmdStock.Parameters.AddWithValue("@id", id)
+
+            cmdStock.ExecuteNonQuery()
+
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+
+    End Sub
 End Class

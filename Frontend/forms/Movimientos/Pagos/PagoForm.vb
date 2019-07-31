@@ -6,11 +6,13 @@ Public Class PagoForm
     Dim cambio As New Cambio
     Dim montoTotal = 0
     Private Sub PagoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Show()
         cargarTiposP()
         cargarBancos()
         cargarCambio()
         txtMontoPago.Text = 0
         PersonalizarDAtagridView(Me.dgvPagos)
+        txtOt.Focus()
     End Sub
 
     Private Sub cargarTiposP()
@@ -113,10 +115,30 @@ Public Class PagoForm
     Private Sub txtOt_KeyDown(sender As Object, e As KeyEventArgs) Handles txtOt.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
+            Dim ot = ""
+            If txtOt.Text = "" Then
+                Dim busquedaCli As New ClienteBusqueda
+                busquedaCli.ShowDialog()
+                Dim cli = busquedaCli.cliente
+                busquedaCli.Dispose()
+
+                If cli.id <> 0 Then
+                    Dim busquedaOT As New VentaBusqueda
+                    busquedaOT.codigoCliente = cli.id
+                    busquedaOT.ShowDialog()
+                    ot = busquedaOT.venta
+
+                    busquedaOT.Dispose()
+                End If
+            Else
+                ot = txtOt.Text
+            End If
+            e.SuppressKeyPress = True
             Dim daoP As New VentaDAO
-            Dim ventaAux = daoP.getVenta(txtOt.Text)
-            If txtOt.Text <> "" Then
-                cargarVentaOT(txtOt.Text)
+            Dim ventaAux = daoP.getVenta(ot)
+            If ot <> "" Then
+                cargarVentaOT(ot)
+                cbTiposP.Focus()
             End If
         End If
     End Sub
@@ -312,7 +334,6 @@ Public Class PagoForm
         If cbBancos.SelectedValue <> 0 Then
             pag.banco = cbBancos.SelectedValue
         End If
-        MsgBox(pag.banco)
         pag.chequenro = txtCheque.Text
         pag.chequevenc = dpChequeVenc.Value
         pag.descuento = 0
@@ -328,7 +349,7 @@ Public Class PagoForm
         pag.monto = montoTotal
         pag.recargo = 0
         pag.recibo = txtRecibo.Text
-        pag.saldo = venta.total - montoTotal
+        pag.saldo = venta.saldo - montoTotal
         pag.tpago = cbTiposP.SelectedValue
         pag.venta = venta.id
 
@@ -508,6 +529,34 @@ Public Class PagoForm
                     End If
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub cbTiposP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbTiposP.KeyPress
+
+    End Sub
+
+    Private Sub cbTiposP_KeyDown(sender As Object, e As KeyEventArgs) Handles cbTiposP.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            If cbBancos.Enabled = True Then
+                cbBancos.Focus()
+            Else
+                txtMontoPago.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub cbBancos_KeyDown(sender As Object, e As KeyEventArgs) Handles cbBancos.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            If cbBancos.SelectedIndex = 0 Then
+                MsgBox("Seleccione un banco", MsgBoxStyle.Critical, "Banco no seleccionado")
+                cbBancos.Focus()
+            Else
+                txtCheque.Focus()
+            End If
+
         End If
     End Sub
 End Class

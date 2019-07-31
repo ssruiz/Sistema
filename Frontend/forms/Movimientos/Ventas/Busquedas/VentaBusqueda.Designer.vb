@@ -22,13 +22,13 @@ Partial Class VentaBusqueda
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.dgvVentas = New System.Windows.Forms.DataGridView()
@@ -59,7 +59,7 @@ Partial Class VentaBusqueda
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(922, 46)
+        Me.Panel1.Size = New System.Drawing.Size(1184, 49)
         Me.Panel1.TabIndex = 17
         '
         'Label6
@@ -68,7 +68,8 @@ Partial Class VentaBusqueda
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(339, 0)
+        Me.Label6.Location = New System.Drawing.Point(471, 0)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(198, 41)
         Me.Label6.TabIndex = 1
@@ -79,49 +80,50 @@ Partial Class VentaBusqueda
         Me.dgvVentas.AllowUserToAddRows = False
         Me.dgvVentas.AllowUserToDeleteRows = False
         Me.dgvVentas.AllowUserToResizeColumns = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvVentas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvVentas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle22
         Me.dgvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvVentas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle23.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle23.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvVentas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle23
         Me.dgvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvVentas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.FechaC, Me.Factura, Me.ClienteCod, Me.Cliente, Me.Estado})
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvVentas.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvVentas.DefaultCellStyle = DataGridViewCellStyle28
         Me.dgvVentas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvVentas.EnableHeadersVisualStyles = False
-        Me.dgvVentas.Location = New System.Drawing.Point(21, 273)
+        Me.dgvVentas.Location = New System.Drawing.Point(27, 270)
+        Me.dgvVentas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dgvVentas.MultiSelect = False
         Me.dgvVentas.Name = "dgvVentas"
         Me.dgvVentas.RowHeadersVisible = False
         Me.dgvVentas.RowTemplate.Height = 24
         Me.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvVentas.Size = New System.Drawing.Size(867, 318)
+        Me.dgvVentas.Size = New System.Drawing.Size(1115, 430)
         Me.dgvVentas.TabIndex = 16
         '
         'ID
         '
         Me.ID.DataPropertyName = "ID"
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle24
         Me.ID.HeaderText = "ID"
         Me.ID.Name = "ID"
         Me.ID.Visible = False
@@ -129,24 +131,24 @@ Partial Class VentaBusqueda
         'FechaC
         '
         Me.FechaC.DataPropertyName = "Fecha"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.FechaC.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle25.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.FechaC.DefaultCellStyle = DataGridViewCellStyle25
         Me.FechaC.HeaderText = "Fecha"
         Me.FechaC.Name = "FechaC"
         '
         'Factura
         '
         Me.Factura.DataPropertyName = "Factura"
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.Factura.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.Factura.DefaultCellStyle = DataGridViewCellStyle26
         Me.Factura.HeaderText = "Factura"
         Me.Factura.Name = "Factura"
         '
         'ClienteCod
         '
         Me.ClienteCod.DataPropertyName = "ClienteCod"
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ClienteCod.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ClienteCod.DefaultCellStyle = DataGridViewCellStyle27
         Me.ClienteCod.HeaderText = "ClienteCod"
         Me.ClienteCod.Name = "ClienteCod"
         Me.ClienteCod.Visible = False
@@ -165,9 +167,10 @@ Partial Class VentaBusqueda
         '
         'txtFiltro
         '
-        Me.txtFiltro.Location = New System.Drawing.Point(335, 41)
+        Me.txtFiltro.Location = New System.Drawing.Point(451, 55)
+        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFiltro.Name = "txtFiltro"
-        Me.txtFiltro.Size = New System.Drawing.Size(250, 25)
+        Me.txtFiltro.Size = New System.Drawing.Size(320, 30)
         Me.txtFiltro.TabIndex = 15
         '
         'Label1
@@ -175,7 +178,8 @@ Partial Class VentaBusqueda
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label1.Location = New System.Drawing.Point(252, 40)
+        Me.Label1.Location = New System.Drawing.Point(377, 58)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(66, 23)
         Me.Label1.TabIndex = 18
@@ -186,7 +190,8 @@ Partial Class VentaBusqueda
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label2.Location = New System.Drawing.Point(238, 247)
+        Me.Label2.Location = New System.Drawing.Point(351, 243)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(419, 23)
         Me.Label2.TabIndex = 19
@@ -201,9 +206,11 @@ Partial Class VentaBusqueda
         Me.GroupBox1.Controls.Add(Me.txtFiltro)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.GroupBox1.Location = New System.Drawing.Point(21, 62)
+        Me.GroupBox1.Location = New System.Drawing.Point(27, 84)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(867, 147)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1115, 134)
         Me.GroupBox1.TabIndex = 21
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Filtros"
@@ -211,55 +218,64 @@ Partial Class VentaBusqueda
         'chPendiente
         '
         Me.chPendiente.AutoSize = True
-        Me.chPendiente.Location = New System.Drawing.Point(561, 103)
+        Me.chPendiente.Location = New System.Drawing.Point(721, 139)
+        Me.chPendiente.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chPendiente.Name = "chPendiente"
-        Me.chPendiente.Size = New System.Drawing.Size(145, 23)
+        Me.chPendiente.Size = New System.Drawing.Size(175, 27)
         Me.chPendiente.TabIndex = 0
         Me.chPendiente.Text = "Pendiente de Pago"
         Me.chPendiente.UseVisualStyleBackColor = True
+        Me.chPendiente.Visible = False
         '
         'chDevuelto
         '
         Me.chDevuelto.AutoSize = True
-        Me.chDevuelto.Location = New System.Drawing.Point(404, 103)
+        Me.chDevuelto.Location = New System.Drawing.Point(519, 139)
+        Me.chDevuelto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chDevuelto.Name = "chDevuelto"
-        Me.chDevuelto.Size = New System.Drawing.Size(86, 23)
+        Me.chDevuelto.Size = New System.Drawing.Size(100, 27)
         Me.chDevuelto.TabIndex = 0
         Me.chDevuelto.Text = "Devuelto"
         Me.chDevuelto.UseVisualStyleBackColor = True
+        Me.chDevuelto.Visible = False
         '
         'chCobrado
         '
         Me.chCobrado.AutoSize = True
-        Me.chCobrado.Location = New System.Drawing.Point(247, 103)
+        Me.chCobrado.Location = New System.Drawing.Point(318, 139)
+        Me.chCobrado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chCobrado.Name = "chCobrado"
-        Me.chCobrado.Size = New System.Drawing.Size(84, 23)
+        Me.chCobrado.Size = New System.Drawing.Size(98, 27)
         Me.chCobrado.TabIndex = 0
         Me.chCobrado.Text = "Cobrado"
         Me.chCobrado.UseVisualStyleBackColor = True
+        Me.chCobrado.Visible = False
         '
         'chAnulado
         '
         Me.chAnulado.AutoSize = True
-        Me.chAnulado.Location = New System.Drawing.Point(85, 103)
+        Me.chAnulado.Location = New System.Drawing.Point(109, 139)
+        Me.chAnulado.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chAnulado.Name = "chAnulado"
-        Me.chAnulado.Size = New System.Drawing.Size(82, 23)
+        Me.chAnulado.Size = New System.Drawing.Size(96, 27)
         Me.chAnulado.TabIndex = 0
         Me.chAnulado.Text = "Anulado"
         Me.chAnulado.UseVisualStyleBackColor = True
+        Me.chAnulado.Visible = False
         '
         'VentaBusqueda
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(158, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(922, 603)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(1184, 735)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dgvVentas)
         Me.Controls.Add(Me.Label2)
-        Me.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "VentaBusqueda"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -99,6 +99,7 @@
     <Compile Include="DAO\ProduccionDAO.vb" />
     <Compile Include="DAO\ProductoDAO.vb" />
     <Compile Include="DAO\ProveedorDAO.vb" />
+    <Compile Include="DAO\ReposicionesDAO.vb" />
     <Compile Include="DAO\SesionDAO.vb" />
     <Compile Include="DAO\SucursalDAO.vb" />
     <Compile Include="DAO\TipoClienteDAO.vb" />
@@ -108,7 +109,9 @@
     <Compile Include="DAO\VendedorDAO.vb" />
     <Compile Include="DAO\VentaDAO.vb" />
     <Compile Include="Models\Banco.vb" />
+    <Compile Include="Models\CajaVenta.vb" />
     <Compile Include="Models\Cambio.vb" />
+    <Compile Include="Models\CargaProduccion.vb" />
     <Compile Include="Models\Cliente.vb" />
     <Compile Include="Models\ColorM.vb" />
     <Compile Include="Models\Compra.vb" />

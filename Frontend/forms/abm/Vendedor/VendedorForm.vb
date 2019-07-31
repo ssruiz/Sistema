@@ -54,7 +54,7 @@ Public Class VendedorForm
         Me.SuspendLayout()
     End Sub
     Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtCelular.KeyPress, txtPorcentaje.KeyPress
-        soloNumeros(e)
+        'soloNumeros(e)
     End Sub
 
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
@@ -128,35 +128,38 @@ Public Class VendedorForm
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Try
-            If validarDatos() Then
-                If (nuevo) Then
-                    Dim daoU As New VendedorDAO
-                    Dim modelo = llenarModelo()
+        Dim result As Integer = MessageBox.Show("¿Guardar vendedor?", "Guardar", MessageBoxButtons.YesNo)
+        If result = DialogResult.Yes Then
+            Try
+                If validarDatos() Then
+                    If (nuevo) Then
+                        Dim daoU As New VendedorDAO
+                        Dim modelo = llenarModelo()
 
-                    daoU.guardar(modelo)
-                    MsgBox("Vendedor/a agregado/a correctamente", MsgBoxStyle.Information, "Éxito")
-                    limpiarCampos()
-                    desactivarCampos()
-                    cargarVendedores()
-                Else
-                    Dim daoU As New VendedorDAO
-                    Dim row = dgvVendedores.CurrentRow.Index
-                    Dim codigo = dgvVendedores.Item(0, row).Value
-                    Dim modelo = llenarModelo(codigo)
-                    daoU.update(modelo)
+                        daoU.guardar(modelo)
+                        MsgBox("Vendedor/a agregado/a correctamente", MsgBoxStyle.Information, "Éxito")
+                        limpiarCampos()
+                        desactivarCampos()
+                        cargarVendedores()
+                    Else
+                        Dim daoU As New VendedorDAO
+                        Dim row = dgvVendedores.CurrentRow.Index
+                        Dim codigo = dgvVendedores.Item(0, row).Value
+                        Dim modelo = llenarModelo(codigo)
+                        daoU.update(modelo)
 
-                    MsgBox("Vendedor/a actualizado/a correctamente", MsgBoxStyle.Information, "Éxito")
-                    limpiarCampos()
-                    desactivarCampos()
-                    cargarVendedores()
-                    btnModificar.Enabled = False
+                        MsgBox("Vendedor/a actualizado/a correctamente", MsgBoxStyle.Information, "Éxito")
+                        limpiarCampos()
+                        desactivarCampos()
+                        cargarVendedores()
+                        btnModificar.Enabled = False
+                    End If
+
                 End If
-
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
-        End Try
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            End Try
+        End If
     End Sub
 
     Private Function llenarModelo(ByVal cod As String) As Vendedor
@@ -166,6 +169,7 @@ Public Class VendedorForm
         modelo.celular = txtCelular.Text
         Dim str As String = txtPorcentaje.Text
         str = str.Replace("%", "")
+        str = str.Replace(".", ",")
         modelo.porcentaje = CDbl(str) / 100
         Return modelo
     End Function
@@ -178,13 +182,18 @@ Public Class VendedorForm
     End Function
 
     Private Function llenarModelo() As Vendedor
-        Dim vend As New Vendedor
-        Dim str As String = txtPorcentaje.Text
-        str = str.Replace("%", "")
-        vend.nombre = txtNombre.Text
-        vend.celular = txtCelular.Text
-        vend.porcentaje = CDbl(str) / 100
-        Return vend
+        Try
+            Dim vend As New Vendedor
+            Dim str As String = txtPorcentaje.Text
+            str = str.Replace("%", "")
+            str = str.Replace(".", ",")
+            vend.nombre = txtNombre.Text
+            vend.celular = txtCelular.Text
+            vend.porcentaje = CDbl(str) / 100
+            Return vend
+        Catch ex As Exception
+
+        End Try
     End Function
 
     Private Sub busquedaVendedor(sender As Object, e As KeyEventArgs) Handles txtBusqueda.KeyDown
@@ -224,11 +233,11 @@ Public Class VendedorForm
     Private Sub precioFormat(sender As Object, e As EventArgs) Handles txtPorcentaje.TextChanged
         Dim str2 As String = txtPorcentaje.Text
         If sender.Text <> "" Then
-            Dim str As String = txtPorcentaje.Text
-            str = str.Replace("%", "")
-            Dim val = CDbl(str) / 100
-            sender.Text = FormatPercent(val)
-            sender.Select(sender.TextLength - 4, 0)
+            'Dim str As String = txtPorcentaje.Text
+            'str = str.Replace("%", "")
+            'Dim val = CDbl(str) / 100
+            'sender.Text = FormatPercent(val)
+            '' sender.Select(sender.TextLength - 4, 0)
 
 
         Else
@@ -245,7 +254,12 @@ Public Class VendedorForm
     Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtCelular.Focus()
+            If txtNombre.Text <> "" Then
+                txtCelular.Focus()
+            Else
+                MsgBox("El nombre es obligatorio")
+            End If
+
         End If
     End Sub
     Private Sub txtcel_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCelular.KeyDown

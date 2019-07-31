@@ -1,4 +1,5 @@
-﻿Imports Backend
+﻿Imports System.IO
+Imports Backend
 Imports MySql.Data.MySqlClient
 
 Public Class VentaDAO
@@ -14,10 +15,9 @@ Public Class VentaDAO
 
 
             cmdVenta.Parameters.AddWithValue("@fact", venta.factura)
-            cmdVenta.Parameters.AddWithValue("@fecha", venta.fecha)
+            cmdVenta.Parameters.AddWithValue("@fecha", Date.Now)
             cmdVenta.Parameters.AddWithValue("@op", 1)
             cmdVenta.Parameters.AddWithValue("@cre", venta.credito)
-
             cmdVenta.Parameters.AddWithValue("@obs", venta.obs)
             cmdVenta.Parameters.AddWithValue("@cliente", venta.cliente)
             cmdVenta.Parameters.AddWithValue("@vend", venta.vendedor)
@@ -230,6 +230,7 @@ Public Class VentaDAO
                 modelo.plano = SafeGetString(reader, 24)
                 modelo.moneda = safeGetChar(reader, 25)
             End While
+            reader.Close()
             Return modelo
         Catch ex As Exception
 
@@ -252,6 +253,7 @@ Public Class VentaDAO
             While reader.Read
                 listado.Add(SafeGetInt(reader, 0))
             End While
+            reader.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
         End Try
@@ -270,6 +272,7 @@ Public Class VentaDAO
             While reader.Read
                 listado.Add(SafeGetInt(reader, 0))
             End While
+            reader.Close()
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
         End Try
@@ -316,22 +319,14 @@ Public Class VentaDAO
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim mysql = "UPDATE `ventas` SET `ventFecha` = @fechaV, `ventFact` = @factura, `ventObs` = @obs,  `ventPlazo` = @plazo, `ventFechaProm` = @fechaP, `ventSaldo` = @saldo, `ventEstado` = @estado, `ventEnvio` = @envio, `ventDireccEnv` = @dirEnv, `ventUU` = @user, `ventFU` = @fecha,`clieCod` = @cliente WHERE `ventCod` = @venta;"
+            Dim mysql = "UPDATE `ventas` SET  `ventFact` = @factura, `ventUU` = @user, `ventFU` = @fecha WHERE `ventCod` = @venta;"
 
             Dim cmd As New MySqlCommand(mysql, con)
-            cmd.Parameters.AddWithValue("@fechaV", venta.fecha)
+
             cmd.Parameters.AddWithValue("@factura", venta.factura)
-            cmd.Parameters.AddWithValue("@obs", venta.obs)
-            cmd.Parameters.AddWithValue("@plazo", venta.plazo)
-            cmd.Parameters.AddWithValue("@fechaP", venta.fechaP)
-            cmd.Parameters.AddWithValue("@saldo", venta.saldo)
-            cmd.Parameters.AddWithValue("@estado", venta.estado)
-            cmd.Parameters.AddWithValue("@envio", venta.envio)
-            cmd.Parameters.AddWithValue("@dirEnv", venta.direEnv)
             cmd.Parameters.AddWithValue("@user", Sesion.Codigo)
             cmd.Parameters.AddWithValue("@fecha", Date.Now)
             cmd.Parameters.AddWithValue("@venta", venta.id)
-            cmd.Parameters.AddWithValue("@cliente", venta.cliente)
             cmd.ExecuteNonQuery()
 
 
@@ -352,12 +347,19 @@ Public Class VentaDAO
             Dim ruta2 = ""
 
             Dim i = 1
-            MsgBox(planos.Rows.Count)
+            Dim pathImg = Path.Combine(Config.RutaImagenes, id.ToString)
+            If (Not System.IO.Directory.Exists(pathImg)) Then
+                System.IO.Directory.CreateDirectory(pathImg)
+            End If
+
             For Each row As DataRow In planos.Rows
-                ruta2 = Config.RutaImagenes & "ot_" & id & "_pl_" & i & ".jpg"
+                ruta2 = Path.Combine(pathImg, id.ToString & "_pl_" & i & ".jpg")
+                'ruta2 = pathImg & "ot_" & id & "_pl_" & i & ".jpg"
                 Dim dirImg = row("Nombre")
-                Dim newImage As Image = Image.FromFile(dirImg)
-                newImage.Save(ruta2, System.Drawing.Imaging.ImageFormat.Jpeg)
+                My.Computer.Network.UploadFile(dirImg, ruta2)
+
+                'Dim newImage As Image = Image.FromFile(dirImg)
+                'newImage.Save(ruta2, System.Drawing.Imaging.ImageFormat.Jpeg)
                 i += 1
 
                 cmd.Parameters.AddWithValue("@venta", id)
@@ -410,6 +412,29 @@ Public Class VentaDAO
         Return ds
     End Function
 
+    Public Function cargarPlanos2(ByVal venta As String) As List(Of Image)
+        Dim ds As New DataSet
+        Dim planos As New List(Of Image)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from `vplanosventa` WHERE `Venta` =" & venta & ";"
+            Dim cmd As New MySqlCommand(query, con)
+            Dim adp As New MySqlDataAdapter(query, con)
+            Dim reader = cmd.ExecuteReader()
+            While reader.Read
+                planos.Add(Image.FromFile(SafeGetString(reader, 1)))
+            End While
+
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return planos
+    End Function
+
     Public Function cargarEtiquetas(ByVal venta As String) As DataSet
         Dim ds As New DataSet
         Try
@@ -441,6 +466,76 @@ Public Class VentaDAO
 
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
         End Try
     End Sub
+
+    Public Function cajaVenta(ByVal inicio As String, ByVal fin As String, ByVal estado As String, ByVal unidad As Integer, ByVal tipov As String) As CajaVenta
+        Dim res As New CajaVenta
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+
+
+
+            Dim query = "Call pcajaresumen('" & inicio & "','" & fin & "','" & estado.ToCharArray & "'," & unidad & ",'" & tipov.ToCharArray & "')"
+            Dim cmdVenta As New MySqlCommand(query, con)
+
+            Dim reader = cmdVenta.ExecuteReader()
+
+            While reader.Read
+
+                res.M2 = SafeGetDouble(reader, 0)
+                res.anuladas = SafeGetInt(reader, 1)
+                res.credito = SafeGetInt(reader, 2)
+
+                res.contado = SafeGetInt(reader, 3)
+                res.recargoGS = SafeGetDouble(reader, 4)
+                res.descuentoGS = SafeGetDouble(reader, 5)
+                res.totalGS = SafeGetDouble(reader, 6)
+                res.precioPGS = SafeGetDouble(reader, 7)
+            End While
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return res
+    End Function
+
+    Public Function getVentasCaja(ByVal ini As String, ByVal fin As String, ByVal estado As String, ByVal unidad As Integer, ByVal tipov As String) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = ""
+
+            If unidad = 0 Then
+                query = "Select * from vventascaja WHERE `Fecha` between @ini and @fin and (Estado = @estado OR @estado = '') and (Tipo = @tipo OR @tipo = '');"
+            ElseIf unidad = 1 Then
+                query = "Select * from vventascaja WHERE `Fecha` between @ini and @fin and (Estado = @estado OR @estado = '') and (Tipo = @tipo OR @tipo = '') and M2 = 0;"
+            Else
+                query = "Select * from vventascaja WHERE `Fecha` between @ini and @fin and (Estado = @estado OR @estado = '') and (Tipo = @tipo OR @tipo = '') and M2 > 0;"
+            End If
+
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@ini", ini)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.Parameters.AddWithValue("@estado", estado)
+            cmd.Parameters.AddWithValue("@tipo", tipov)
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
 End Class

@@ -51,12 +51,18 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeLib.Barcode.CrystalReports">
+      <HintPath>..\BarcodeLib_CrystalBarcode_Trial (1)\BarcodeLib_CrystalBarcode_Trial\BarcodeLib.Barcode.CrystalReports.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
+    <Reference Include="IDAutomation.LinearBarCode">
+      <HintPath>..\IDAutomation_LinearFormsControlFREE\IDAutomation_LinearFormsControlFREE\IDAutomation.LinearBarCode.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
@@ -102,6 +108,14 @@
     </Compile>
     <Compile Include="datasets\DataSet1.vb">
       <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\DataSetProduccion.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetProduccion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\DataSetProduccion.vb">
+      <DependentUpon>DataSetProduccion.xsd</DependentUpon>
     </Compile>
     <Compile Include="forms\abm\Banco\BancoForm.Designer.vb">
       <DependentUpon>BancoForm.vb</DependentUpon>
@@ -219,6 +233,36 @@
     <Compile Include="forms\Movimientos\Compras\CompraForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Informes\CajaDiariaForm.Designer.vb">
+      <DependentUpon>CajaDiariaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\CajaDiariaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\CajaDiariaReporteForm.Designer.vb">
+      <DependentUpon>CajaDiariaReporteForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\CajaDiariaReporteForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\CajaDiariarpt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CajaDiariarpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\Cobros\CobrosReporte.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CobrosReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\Cobros\ReporteDeCobrosForm.Designer.vb">
+      <DependentUpon>ReporteDeCobrosForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\Cobros\ReporteDeCobrosForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Informes\InformeVentas.Designer.vb">
       <DependentUpon>InformeVentas.vb</DependentUpon>
     </Compile>
@@ -243,6 +287,12 @@
       <DependentUpon>ReporteVentas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Mov. Interno\ConfirmarMIForm.Designer.vb">
+      <DependentUpon>ConfirmarMIForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Mov. Interno\ConfirmarMIForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Mov. Interno\ListadoMovimientosForm.Designer.vb">
       <DependentUpon>ListadoMovimientosForm.vb</DependentUpon>
     </Compile>
@@ -261,6 +311,12 @@
     <Compile Include="forms\Movimientos\Mov. Interno\MovInternoForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Pagos\Busquedas\BusquedaOT.Designer.vb">
+      <DependentUpon>BusquedaOT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Pagos\Busquedas\BusquedaOT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Pagos\PagoDetalle.Designer.vb">
       <DependentUpon>PagoDetalle.vb</DependentUpon>
     </Compile>
@@ -271,6 +327,126 @@
       <DependentUpon>PagoForm.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\Movimientos\Pagos\PagoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Corte\CorteForm.Designer.vb">
+      <DependentUpon>CorteForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Corte\CorteForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Corte\CorteRotura.Designer.vb">
+      <DependentUpon>CorteRotura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Corte\CorteRotura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Corte\SeleccionMesaCorte.Designer.vb">
+      <DependentUpon>SeleccionMesaCorte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Corte\SeleccionMesaCorte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\InformeReporte.Designer.vb">
+      <DependentUpon>InformeReporte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\InformeReporte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\InformesProduccion.Designer.vb">
+      <DependentUpon>InformesProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\InformesProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProd1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd2.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProd2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd3.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProd3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd4.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProd4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Marcado\MarcadoForm.Designer.vb">
+      <DependentUpon>MarcadoForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Marcado\MarcadoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Marcado\MarcadoRotura.Designer.vb">
+      <DependentUpon>MarcadoRotura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Marcado\MarcadoRotura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Marcado\Planos\PlanoViewver.Designer.vb">
+      <DependentUpon>PlanoViewver.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Marcado\Planos\PlanoViewver.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Pulida\RoturaPulida.Designer.vb">
+      <DependentUpon>RoturaPulida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Pulida\RoturaPulida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Pulida\PulidaForm.Designer.vb">
+      <DependentUpon>PulidaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Pulida\PulidaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Pulida\SeleccionMesaPulida.Designer.vb">
+      <DependentUpon>SeleccionMesaPulida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Pulida\SeleccionMesaPulida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Templado\SeleccionTemplado.Designer.vb">
+      <DependentUpon>SeleccionTemplado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Templado\SeleccionTemplado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Templado\TempladoForm.Designer.vb">
+      <DependentUpon>TempladoForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Templado\TempladoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Tickets\ImpresionDeEtiquetas.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImpresionDeEtiquetas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Tickets\PruebaImagens.Designer.vb">
+      <DependentUpon>PruebaImagens.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Tickets\PruebaImagens.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Tickets\PruebaTickets.Designer.vb">
+      <DependentUpon>PruebaTickets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Tickets\PruebaTickets.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\Movimientos\Stock\StockForm.Designer.vb">
@@ -333,16 +509,34 @@
     <Compile Include="forms\Movimientos\Ventas\Factura\NroFactura.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\Movimientos\Ventas\Tickets\Tickets.vb">
+    <Compile Include="forms\Movimientos\Ventas\Reposiciones\Etiquetas\EtiquetasReposicion.vb">
+      <DependentUpon>EtiquetasReposicion.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Reposiciones\ReposicionesForm.Designer.vb">
+      <DependentUpon>ReposicionesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\Reposiciones\ReposicionesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Produccion\Tickets\Tickets.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Tickets.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="forms\Movimientos\Ventas\Tickets\TicketsForm.Designer.vb">
+    <Compile Include="forms\Movimientos\Produccion\Tickets\TicketsForm.Designer.vb">
       <DependentUpon>TicketsForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="forms\Movimientos\Ventas\Tickets\TicketsForm.vb">
+    <Compile Include="forms\Movimientos\Produccion\Tickets\TicketsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\VentaDetalleForm.Designer.vb">
+      <DependentUpon>VentaDetalleForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Ventas\VentaDetalleForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\Movimientos\Ventas\VentasForm.Designer.vb">
@@ -433,6 +627,23 @@
     <EmbeddedResource Include="forms\Movimientos\Compras\CompraForm.resx">
       <DependentUpon>CompraForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\CajaDiariaForm.resx">
+      <DependentUpon>CajaDiariaForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\CajaDiariaReporteForm.resx">
+      <DependentUpon>CajaDiariaReporteForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\CajaDiariarpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CajaDiariarpt.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\Cobros\CobrosReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CobrosReporte.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\Cobros\ReporteDeCobrosForm.resx">
+      <DependentUpon>ReporteDeCobrosForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Informes\InformeVentas.resx">
       <DependentUpon>InformeVentas.vb</DependentUpon>
     </EmbeddedResource>
@@ -447,6 +658,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteVentas.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Mov. Interno\ConfirmarMIForm.resx">
+      <DependentUpon>ConfirmarMIForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Mov. Interno\ListadoMovimientosForm.resx">
       <DependentUpon>ListadoMovimientosForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -456,11 +670,79 @@
     <EmbeddedResource Include="forms\Movimientos\Mov. Interno\MovInternoForm.resx">
       <DependentUpon>MovInternoForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Pagos\Busquedas\BusquedaOT.resx">
+      <DependentUpon>BusquedaOT.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Pagos\PagoDetalle.resx">
       <DependentUpon>PagoDetalle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Pagos\PagoForm.resx">
       <DependentUpon>PagoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Corte\CorteForm.resx">
+      <DependentUpon>CorteForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Corte\CorteRotura.resx">
+      <DependentUpon>CorteRotura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Corte\SeleccionMesaCorte.resx">
+      <DependentUpon>SeleccionMesaCorte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Informes\InformeReporte.resx">
+      <DependentUpon>InformeReporte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Informes\InformesProduccion.resx">
+      <DependentUpon>InformesProduccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProd1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProd2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProd3.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Informes\Reportes\ReporteProd4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProd4.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Marcado\MarcadoForm.resx">
+      <DependentUpon>MarcadoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Marcado\MarcadoRotura.resx">
+      <DependentUpon>MarcadoRotura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Marcado\Planos\PlanoViewver.resx">
+      <DependentUpon>PlanoViewver.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Pulida\RoturaPulida.resx">
+      <DependentUpon>RoturaPulida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Pulida\PulidaForm.resx">
+      <DependentUpon>PulidaForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Pulida\SeleccionMesaPulida.resx">
+      <DependentUpon>SeleccionMesaPulida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Templado\SeleccionTemplado.resx">
+      <DependentUpon>SeleccionTemplado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Templado\TempladoForm.resx">
+      <DependentUpon>TempladoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Tickets\ImpresionDeEtiquetas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ImpresionDeEtiquetas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Tickets\PruebaImagens.resx">
+      <DependentUpon>PruebaImagens.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Tickets\PruebaTickets.resx">
+      <DependentUpon>PruebaTickets.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Stock\StockForm.resx">
       <DependentUpon>StockForm.vb</DependentUpon>
@@ -493,12 +775,22 @@
     <EmbeddedResource Include="forms\Movimientos\Ventas\Factura\NroFactura.resx">
       <DependentUpon>NroFactura.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\Movimientos\Ventas\Tickets\Tickets.rpt">
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Reposiciones\Etiquetas\EtiquetasReposicion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EtiquetasReposicion.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\Reposiciones\ReposicionesForm.resx">
+      <DependentUpon>ReposicionesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Tickets\Tickets.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Tickets.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\Movimientos\Ventas\Tickets\TicketsForm.resx">
+    <EmbeddedResource Include="forms\Movimientos\Produccion\Tickets\TicketsForm.resx">
       <DependentUpon>TicketsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Ventas\VentaDetalleForm.resx">
+      <DependentUpon>VentaDetalleForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Ventas\VentasForm.resx">
       <DependentUpon>VentasForm.vb</DependentUpon>
@@ -525,6 +817,17 @@
     <None Include="datasets\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="datasets\DataSetProduccion.xsc">
+      <DependentUpon>DataSetProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\DataSetProduccion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProduccion.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="datasets\DataSetProduccion.xss">
+      <DependentUpon>DataSetProduccion.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -542,6 +845,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fondo.jpeg" />
+    <None Include="Resources\approve2.png" />
+    <None Include="Resources\approve1.png" />
+    <None Include="Resources\icons8-atrás-30.png" />
+    <None Include="Resources\icons8-adelante-30.png" />
+    <None Include="Resources\rotura1.png" />
+    <None Include="Resources\rotura.png" />
+    <None Include="Resources\planos3.png" />
+    <None Include="Resources\reporte2.png" />
+    <None Include="Resources\reporte.png" />
     <None Include="Resources\ver_planos_2.png" />
     <None Include="Resources\ver_planos.png" />
     <None Include="Resources\detalle.png" />

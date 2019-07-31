@@ -27,11 +27,11 @@ Partial Class InformeVentas
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.ReporteVentasView = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.dpInicio = New System.Windows.Forms.DateTimePicker()
-        Me.dpFin = New System.Windows.Forms.DateTimePicker()
         Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.dpFin = New System.Windows.Forms.DateTimePicker()
+        Me.dpInicio = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -49,8 +49,8 @@ Partial Class InformeVentas
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.33973!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.9859!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.227967!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.86369!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.79083!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1515, 851)
         Me.TableLayoutPanel1.TabIndex = 0
@@ -63,7 +63,7 @@ Partial Class InformeVentas
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1515, 87)
+        Me.Panel1.Size = New System.Drawing.Size(1515, 53)
         Me.Panel1.TabIndex = 4
         '
         'lblTitulo
@@ -72,7 +72,7 @@ Partial Class InformeVentas
         Me.lblTitulo.BackColor = System.Drawing.Color.Transparent
         Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(622, 25)
+        Me.lblTitulo.Location = New System.Drawing.Point(627, 9)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(324, 41)
         Me.lblTitulo.TabIndex = 1
@@ -99,53 +99,11 @@ Partial Class InformeVentas
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 90)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 56)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1509, 95)
+        Me.GroupBox1.Size = New System.Drawing.Size(1509, 129)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(102, 42)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(70, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "DESDE"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(392, 42)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(71, 25)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "HASTA"
-        '
-        'dpInicio
-        '
-        Me.dpInicio.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dpInicio.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dpInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dpInicio.Location = New System.Drawing.Point(178, 36)
-        Me.dpInicio.Name = "dpInicio"
-        Me.dpInicio.Size = New System.Drawing.Size(200, 31)
-        Me.dpInicio.TabIndex = 1
-        '
-        'dpFin
-        '
-        Me.dpFin.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dpFin.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dpFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dpFin.Location = New System.Drawing.Point(469, 37)
-        Me.dpFin.Name = "dpFin"
-        Me.dpFin.Size = New System.Drawing.Size(200, 31)
-        Me.dpFin.TabIndex = 1
         '
         'btnBuscar
         '
@@ -159,6 +117,48 @@ Partial Class InformeVentas
         Me.btnBuscar.TabIndex = 4
         Me.btnBuscar.Text = "BUSCAR"
         Me.btnBuscar.UseVisualStyleBackColor = False
+        '
+        'dpFin
+        '
+        Me.dpFin.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dpFin.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dpFin.Location = New System.Drawing.Point(469, 37)
+        Me.dpFin.Name = "dpFin"
+        Me.dpFin.Size = New System.Drawing.Size(200, 31)
+        Me.dpFin.TabIndex = 1
+        '
+        'dpInicio
+        '
+        Me.dpInicio.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dpInicio.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dpInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dpInicio.Location = New System.Drawing.Point(178, 36)
+        Me.dpInicio.Name = "dpInicio"
+        Me.dpInicio.Size = New System.Drawing.Size(200, 31)
+        Me.dpInicio.TabIndex = 1
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(392, 42)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(71, 25)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "HASTA"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(102, 42)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(70, 25)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "DESDE"
         '
         'InformeVentas
         '

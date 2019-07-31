@@ -32,4 +32,23 @@ Public Class MovInternoDetalle
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub btnDetalle_Click(sender As Object, e As EventArgs) Handles btnDetalle.Click
+        Try
+            If mi.estado <> "A" Then
+                Dim result As Integer = MessageBox.Show("¿Anular Movimiento Interno?", "Guardar", MessageBoxButtons.YesNo)
+                If result = DialogResult.Yes Then
+                    Dim dao As New MovInternoDAO
+                    dao.anular(mi.id)
+                    MsgBox("Movimiento Anulado", MsgBoxStyle.Information, "Anular")
+                    Me.Close()
+                End If
+            Else
+                MsgBox("Movimiento ya Anulado", MsgBoxStyle.Information, "Anular")
+
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 End Class

@@ -213,6 +213,10 @@ Public Class MovInternoForm
             MsgBox("Ingrese un cantidad ", MsgBoxStyle.Critical, "Error de datos")
             txtCantidad.Focus()
             Return False
+        ElseIf CInt(txtCantidad.TEXT) > CInt(lblStock.text) Then
+            MsgBox("Cantidad ingresada supera al stock disponible ", MsgBoxStyle.Critical, "Error de datos")
+            txtCantidad.Focus()
+            Return False
         ElseIf CInt(lblStock.Text) = 0 Then
             MsgBox("No hay stock disponible para realizar movimiento de este producto", MsgBoxStyle.Critical, "Error de datos")
             txtCantidad.Focus()
@@ -259,6 +263,7 @@ Public Class MovInternoForm
                 mov.fecha = Date.Now
                 mov.dorigen = cbDepo1.SelectedValue
                 mov.ddestino = cbDepo2.SelectedValue
+                mov.solicitante = txtSolicitante.Text
                 Dim daoM As New MovInternoDAO
 
                 Dim res = daoM.guardarMovimiento(mov, dgvProductos.Rows)

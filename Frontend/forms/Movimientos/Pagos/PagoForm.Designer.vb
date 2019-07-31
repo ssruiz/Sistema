@@ -22,11 +22,11 @@ Partial Class PagoForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabControlPago = New System.Windows.Forms.TabControl()
         Me.tabPagoNroOrden = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -40,6 +40,7 @@ Partial Class PagoForm
         Me.MontoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Recibo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gbPago = New System.Windows.Forms.GroupBox()
+        Me.lblCurrentCurr = New System.Windows.Forms.Label()
         Me.dpChequeVenc = New System.Windows.Forms.DateTimePicker()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.cbBancos = New System.Windows.Forms.ComboBox()
@@ -86,8 +87,6 @@ Partial Class PagoForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtOt = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.tabPagoCliente = New System.Windows.Forms.TabPage()
-        Me.lblCurrentCurr = New System.Windows.Forms.Label()
         Me.tabControlPago.SuspendLayout()
         Me.tabPagoNroOrden.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -102,7 +101,6 @@ Partial Class PagoForm
         'tabControlPago
         '
         Me.tabControlPago.Controls.Add(Me.tabPagoNroOrden)
-        Me.tabControlPago.Controls.Add(Me.tabPagoCliente)
         Me.tabControlPago.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tabControlPago.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.tabControlPago.ItemSize = New System.Drawing.Size(313, 50)
@@ -181,34 +179,34 @@ Partial Class PagoForm
         Me.dgvPagos.AllowUserToAddRows = False
         Me.dgvPagos.AllowUserToDeleteRows = False
         Me.dgvPagos.AllowUserToResizeColumns = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvPagos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvPagos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.dgvPagos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPagos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.dgvPagos.ColumnHeadersHeight = 30
         Me.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvPagos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.VentaCol, Me.FechaCol, Me.TipoPCol, Me.MontoCol, Me.Recibo})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPagos.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPagos.DefaultCellStyle = DataGridViewCellStyle15
         Me.dgvPagos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvPagos.EnableHeadersVisualStyles = False
         Me.dgvPagos.Location = New System.Drawing.Point(16, 41)
@@ -226,8 +224,8 @@ Partial Class PagoForm
         '
         Me.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ID.DataPropertyName = "ID"
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle13
         Me.ID.HeaderText = "ID"
         Me.ID.Name = "ID"
         Me.ID.Visible = False
@@ -236,8 +234,8 @@ Partial Class PagoForm
         '
         Me.VentaCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.VentaCol.DataPropertyName = "Venta"
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.VentaCol.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.VentaCol.DefaultCellStyle = DataGridViewCellStyle14
         Me.VentaCol.HeaderText = "Venta"
         Me.VentaCol.Name = "VentaCol"
         Me.VentaCol.Visible = False
@@ -298,6 +296,15 @@ Partial Class PagoForm
         Me.gbPago.TabStop = False
         Me.gbPago.Text = "PAGO"
         '
+        'lblCurrentCurr
+        '
+        Me.lblCurrentCurr.AutoSize = True
+        Me.lblCurrentCurr.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCurrentCurr.Location = New System.Drawing.Point(1186, 55)
+        Me.lblCurrentCurr.Name = "lblCurrentCurr"
+        Me.lblCurrentCurr.Size = New System.Drawing.Size(0, 23)
+        Me.lblCurrentCurr.TabIndex = 25
+        '
         'dpChequeVenc
         '
         Me.dpChequeVenc.Cursor = System.Windows.Forms.Cursors.Hand
@@ -316,7 +323,7 @@ Partial Class PagoForm
         Me.btnGuardar.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnGuardar.ForeColor = System.Drawing.SystemColors.Control
         Me.btnGuardar.Image = Global.Frontend.My.Resources.Resources.guardar
-        Me.btnGuardar.Location = New System.Drawing.Point(1265, 52)
+        Me.btnGuardar.Location = New System.Drawing.Point(1234, 78)
         Me.btnGuardar.Margin = New System.Windows.Forms.Padding(0)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(162, 49)
@@ -866,25 +873,6 @@ Partial Class PagoForm
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "NRO ORDEN"
         '
-        'tabPagoCliente
-        '
-        Me.tabPagoCliente.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.tabPagoCliente.Location = New System.Drawing.Point(4, 54)
-        Me.tabPagoCliente.Name = "tabPagoCliente"
-        Me.tabPagoCliente.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPagoCliente.Size = New System.Drawing.Size(1403, 906)
-        Me.tabPagoCliente.TabIndex = 1
-        Me.tabPagoCliente.Text = "Pago por Clientes"
-        '
-        'lblCurrentCurr
-        '
-        Me.lblCurrentCurr.AutoSize = True
-        Me.lblCurrentCurr.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCurrentCurr.Location = New System.Drawing.Point(1186, 55)
-        Me.lblCurrentCurr.Name = "lblCurrentCurr"
-        Me.lblCurrentCurr.Size = New System.Drawing.Size(0, 23)
-        Me.lblCurrentCurr.TabIndex = 25
-        '
         'PagoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
@@ -918,7 +906,6 @@ Partial Class PagoForm
     End Sub
     Friend WithEvents tabControlPago As TabControl
     Friend WithEvents tabPagoNroOrden As TabPage
-    Friend WithEvents tabPagoCliente As TabPage
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label8 As Label

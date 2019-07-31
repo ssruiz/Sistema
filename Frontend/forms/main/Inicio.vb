@@ -95,7 +95,8 @@
 
     ' Inform de ventas
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
-        Dim infV As New InformeVentas
+        Dim infV As New ReporteDeCobrosForm
+
         infV.ShowDialog()
         infV.Dispose()
     End Sub
@@ -149,6 +150,60 @@
         cambioForm.ShowDialog()
         cambioForm.Dispose()
     End Sub
+
+    Private Sub ReposicionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReposicionesToolStripMenuItem.Click
+        Dim repof As New ReposicionesForm
+        repof.ShowDialog()
+        repof.Dispose()
+    End Sub
+    Private Sub CajaDelDíaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CajaDelDíaToolStripMenuItem.Click
+        Dim caja As New CajaDiariaForm
+        caja.ShowDialog()
+        caja.Dispose()
+
+    End Sub
+
+    Private Sub CorteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteToolStripMenuItem.Click
+        Dim corte As New SeleccionMesaCorte
+        corte.ShowDialog()
+        Dim m = corte.mesacortes
+        corte.Dispose()
+        If m = 1 Then
+            Dim nuevocorte As New CorteForm
+            nuevocorte.mesa = 1
+            nuevocorte.ShowDialog()
+            nuevocorte.Dispose()
+        ElseIf m = 2 Then
+            Dim nuevocorte As New CorteForm
+            nuevocorte.mesa = 2
+            nuevocorte.ShowDialog()
+            nuevocorte.Dispose()
+        End If
+
+    End Sub
+
+    Private Sub PulidaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PulidaToolStripMenuItem.Click
+        Dim pulida As New SeleccionMesaPulida
+        pulida.ShowDialog()
+        Dim m = pulida.pulidora
+        pulida.Dispose()
+        If m = 1 Then
+            Dim nuevapulida As New PulidaForm
+            nuevapulida.mesa = 1
+            nuevapulida.ShowDialog()
+            nuevapulida.Dispose()
+        ElseIf m = 2 Then
+            Dim nuevapulida As New PulidaForm
+            nuevapulida.mesa = 2
+            nuevapulida.ShowDialog()
+            nuevapulida.Dispose()
+        ElseIf m = 3 Then
+            Dim nuevapulida As New PulidaForm
+            nuevapulida.mesa = 3
+            nuevapulida.ShowDialog()
+            nuevapulida.Dispose()
+        End If
+    End Sub
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColoresMenu())
@@ -167,4 +222,56 @@
         ob.ForeColor = Color.White
     End Sub
 
+    Private Sub PruebaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebaToolStripMenuItem.Click
+        Dim prueb As New PruebaTickets
+        prueb.ShowDialog()
+        prueb.Dispose()
+
+    End Sub
+
+    Private Sub ImageneToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ImagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImagesToolStripMenuItem.Click
+        Dim pr As New PruebaImagens
+        pr.ShowDialog()
+        pr.Dispose()
+    End Sub
+
+    Private Sub MarcadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MarcadoToolStripMenuItem.Click
+        Dim marc As New MarcadoForm
+        marc.ShowDialog()
+        marc.Dispose()
+    End Sub
+
+    Private Sub TempladoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TempladoToolStripMenuItem.Click
+        Dim pulida As New SeleccionTemplado
+        Dim res = pulida.ShowDialog()
+        Dim m = pulida.templado
+        pulida.Dispose()
+        If m = 1 Then
+            Dim nuevoTemp As New TempladoForm
+            nuevoTemp.templado = 1
+            nuevoTemp.ShowDialog()
+            nuevoTemp.Dispose()
+        ElseIf m = 2 Then
+            Dim nuevoTemp As New TempladoForm
+            nuevoTemp.templado = 2
+            nuevoTemp.ShowDialog()
+            nuevoTemp.Dispose()
+        End If
+    End Sub
+
+    Private Sub ProducciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProducciónToolStripMenuItem.Click
+        Dim inf As New InformesProduccion
+        inf.ShowDialog()
+        inf.Dispose()
+    End Sub
+
+    Private Sub AutorizaciónMovimientosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizaciónMovimientosToolStripMenuItem.Click
+        Dim auto As New ConfirmarMIForm
+        auto.ShowDialog()
+        auto.Dispose()
+    End Sub
 End Class

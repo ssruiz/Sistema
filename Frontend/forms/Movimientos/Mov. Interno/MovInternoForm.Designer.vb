@@ -110,8 +110,8 @@ Partial Class MovInternoForm
         Me.TableLayoutPanel1.RowCount = 4
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.308057!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.87156!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.02294!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.94495!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.97248!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.99541!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1590, 872)
         Me.TableLayoutPanel1.TabIndex = 2
@@ -121,10 +121,10 @@ Partial Class MovInternoForm
         Me.Panel3.Controls.Add(Me.btnEliminarProd)
         Me.Panel3.Controls.Add(Me.dgvProductos)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 357)
+        Me.Panel3.Location = New System.Drawing.Point(0, 374)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1590, 515)
+        Me.Panel3.Size = New System.Drawing.Size(1590, 498)
         Me.Panel3.TabIndex = 5
         '
         'btnEliminarProd
@@ -134,7 +134,7 @@ Partial Class MovInternoForm
         Me.btnEliminarProd.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEliminarProd.ForeColor = System.Drawing.SystemColors.Control
         Me.btnEliminarProd.Image = Global.Frontend.My.Resources.Resources.eliminar2
-        Me.btnEliminarProd.Location = New System.Drawing.Point(1489, 19)
+        Me.btnEliminarProd.Location = New System.Drawing.Point(1492, 65)
         Me.btnEliminarProd.Margin = New System.Windows.Forms.Padding(0)
         Me.btnEliminarProd.Name = "btnEliminarProd"
         Me.btnEliminarProd.Size = New System.Drawing.Size(63, 53)
@@ -176,7 +176,7 @@ Partial Class MovInternoForm
         Me.dgvProductos.DefaultCellStyle = DataGridViewCellStyle7
         Me.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvProductos.EnableHeadersVisualStyles = False
-        Me.dgvProductos.Location = New System.Drawing.Point(63, 19)
+        Me.dgvProductos.Location = New System.Drawing.Point(65, 65)
         Me.dgvProductos.MultiSelect = False
         Me.dgvProductos.Name = "dgvProductos"
         Me.dgvProductos.RowHeadersVisible = False
@@ -246,7 +246,7 @@ Partial Class MovInternoForm
         Me.tblDatosProdutcosDetalle.Name = "tblDatosProdutcosDetalle"
         Me.tblDatosProdutcosDetalle.RowCount = 1
         Me.tblDatosProdutcosDetalle.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.tblDatosProdutcosDetalle.Size = New System.Drawing.Size(1590, 130)
+        Me.tblDatosProdutcosDetalle.Size = New System.Drawing.Size(1590, 147)
         Me.tblDatosProdutcosDetalle.TabIndex = 4
         '
         'TableLayoutPanel4
@@ -260,9 +260,9 @@ Partial Class MovInternoForm
         Me.TableLayoutPanel4.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 129.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 129.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(1590, 130)
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 134.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 134.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(1590, 147)
         Me.TableLayoutPanel4.TabIndex = 1
         '
         'Panel5
@@ -272,7 +272,7 @@ Partial Class MovInternoForm
         Me.Panel5.Location = New System.Drawing.Point(1, 1)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1588, 129)
+        Me.Panel5.Size = New System.Drawing.Size(1588, 145)
         Me.Panel5.TabIndex = 11
         '
         'Panel6
@@ -285,7 +285,7 @@ Partial Class MovInternoForm
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1588, 129)
+        Me.Panel6.Size = New System.Drawing.Size(1588, 145)
         Me.Panel6.TabIndex = 10
         '
         'GroupBox2
@@ -303,7 +303,7 @@ Partial Class MovInternoForm
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupBox2.Location = New System.Drawing.Point(363, 0)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1225, 129)
+        Me.GroupBox2.Size = New System.Drawing.Size(1225, 145)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         '
