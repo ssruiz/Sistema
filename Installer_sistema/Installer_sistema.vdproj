@@ -153,6 +153,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4A9F3913D90BBA7F50C0B3E41F61DCD7"
+        "OwnerKey" = "8:_E100BF20FC4043B9AFF5A37DD9195EDD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4D7FC466AAC24BE36A0878E999FE7C12"
         "OwnerKey" = "8:_E100BF20FC4043B9AFF5A37DD9195EDD"
         "MsmSig" = "8:_UNDEFINED"
@@ -304,7 +310,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B88734EEF8C8AF10690602CE520B56E5"
-        "OwnerKey" = "8:_E038AA1AE5DA6B1BF39C41C8E01A1D34"
+        "OwnerKey" = "8:_4A9F3913D90BBA7F50C0B3E41F61DCD7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -334,12 +340,6 @@
         "Entry"
         {
         "MsmKey" = "8:_C630DABFB1FE5F8911E8A7627B297BCB"
-        "OwnerKey" = "8:_E100BF20FC4043B9AFF5A37DD9195EDD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E038AA1AE5DA6B1BF39C41C8E01A1D34"
         "OwnerKey" = "8:_E100BF20FC4043B9AFF5A37DD9195EDD"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -568,7 +568,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E038AA1AE5DA6B1BF39C41C8E01A1D34"
+        "OwnerKey" = "8:_4A9F3913D90BBA7F50C0B3E41F61DCD7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1058,6 +1058,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4A9F3913D90BBA7F50C0B3E41F61DCD7"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Backend, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4A9F3913D90BBA7F50C0B3E41F61DCD7"
+                    {
+                    "Name" = "8:Backend.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Backend.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B4D60E6A7CCE490BA5EB735C63CC36CE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D7FC466AAC24BE36A0878E999FE7C12"
             {
             "AssemblyRegister" = "3:1"
@@ -1450,37 +1481,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E038AA1AE5DA6B1BF39C41C8E01A1D34"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Backend, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E038AA1AE5DA6B1BF39C41C8E01A1D34"
-                    {
-                    "Name" = "8:Backend.exe"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Backend.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_B4D60E6A7CCE490BA5EB735C63CC36CE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E4EDB504342B1CAF18F22388AC3C1EF0"
             {
             "AssemblyRegister" = "3:1"
@@ -1765,8 +1765,8 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Sistema2019"
-        "ProductCode" = "8:{142112BD-E3B4-4186-A0D1-B0910B00031B}"
-        "PackageCode" = "8:{FFB1B86B-D06F-47AC-8D14-CC7D80F3FF68}"
+        "ProductCode" = "8:{98F2B9FA-4DB6-4DEA-829F-041EDB0BFAA1}"
+        "PackageCode" = "8:{F79B89C6-3AE4-41B2-8F11-FE2B4C7ACE7A}"
         "UpgradeCode" = "8:{F48F1ADC-724F-443A-96DD-85842D45D1B9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

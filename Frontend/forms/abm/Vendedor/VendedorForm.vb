@@ -182,8 +182,9 @@ Public Class VendedorForm
     End Function
 
     Private Function llenarModelo() As Vendedor
+        Dim vend As New Vendedor
         Try
-            Dim vend As New Vendedor
+
             Dim str As String = txtPorcentaje.Text
             str = str.Replace("%", "")
             str = str.Replace(".", ",")
@@ -192,7 +193,7 @@ Public Class VendedorForm
             vend.porcentaje = CDbl(str) / 100
             Return vend
         Catch ex As Exception
-
+            Return vend
         End Try
     End Function
 
