@@ -53,13 +53,14 @@ Partial Class ClienteBusqueda
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1000, 80)
+        Me.Panel1.Size = New System.Drawing.Size(1000, 47)
         Me.Panel1.TabIndex = 3
         '
         'Label6
@@ -68,7 +69,7 @@ Partial Class ClienteBusqueda
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(350, 12)
+        Me.Label6.Location = New System.Drawing.Point(373, 0)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(217, 41)
@@ -80,7 +81,7 @@ Partial Class ClienteBusqueda
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label1.Location = New System.Drawing.Point(240, 116)
+        Me.Label1.Location = New System.Drawing.Point(257, 89)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(49, 23)
@@ -89,8 +90,8 @@ Partial Class ClienteBusqueda
         '
         'txtFiltro
         '
-        Me.txtFiltro.Location = New System.Drawing.Point(311, 114)
-        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtFiltro.Location = New System.Drawing.Point(314, 82)
+        Me.txtFiltro.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFiltro.Name = "txtFiltro"
         Me.txtFiltro.Size = New System.Drawing.Size(347, 30)
         Me.txtFiltro.TabIndex = 1
@@ -129,14 +130,14 @@ Partial Class ClienteBusqueda
         Me.dgvClientes.DefaultCellStyle = DataGridViewCellStyle11
         Me.dgvClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvClientes.EnableHeadersVisualStyles = False
-        Me.dgvClientes.Location = New System.Drawing.Point(55, 227)
-        Me.dgvClientes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dgvClientes.Location = New System.Drawing.Point(59, 183)
+        Me.dgvClientes.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvClientes.MultiSelect = False
         Me.dgvClientes.Name = "dgvClientes"
         Me.dgvClientes.RowHeadersVisible = False
         Me.dgvClientes.RowTemplate.Height = 24
         Me.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvClientes.Size = New System.Drawing.Size(879, 409)
+        Me.dgvClientes.Size = New System.Drawing.Size(885, 392)
         Me.dgvClientes.TabIndex = 2
         '
         'ID
@@ -146,7 +147,6 @@ Partial Class ClienteBusqueda
         Me.ID.DefaultCellStyle = DataGridViewCellStyle3
         Me.ID.HeaderText = "ID"
         Me.ID.Name = "ID"
-        Me.ID.Visible = False
         '
         'NombreC
         '
@@ -212,7 +212,7 @@ Partial Class ClienteBusqueda
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label2.Location = New System.Drawing.Point(260, 200)
+        Me.Label2.Location = New System.Drawing.Point(266, 156)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(417, 23)
@@ -224,7 +224,7 @@ Partial Class ClienteBusqueda
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1000, 664)
+        Me.ClientSize = New System.Drawing.Size(1002, 612)
         Me.Controls.Add(Me.dgvClientes)
         Me.Controls.Add(Me.txtFiltro)
         Me.Controls.Add(Me.Label2)
@@ -232,7 +232,7 @@ Partial Class ClienteBusqueda
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "ClienteBusqueda"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

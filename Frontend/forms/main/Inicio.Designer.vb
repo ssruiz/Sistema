@@ -46,12 +46,14 @@ Partial Class Inicio
         Me.MovInternoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NuevoMovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListadoMovimientosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutorizaciónMovimientosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StockTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReposicionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformesTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.CajaDelDíaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProducciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProducciónTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PulidaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,8 +61,6 @@ Partial Class Inicio
         Me.TempladoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PruebaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProducciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AutorizaciónMovimientosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -263,7 +263,7 @@ Partial Class Inicio
         Me.NuevoMovimientoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.NuevoMovimientoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.NuevoMovimientoToolStripMenuItem.Name = "NuevoMovimientoToolStripMenuItem"
-        Me.NuevoMovimientoToolStripMenuItem.Size = New System.Drawing.Size(269, 30)
+        Me.NuevoMovimientoToolStripMenuItem.Size = New System.Drawing.Size(317, 30)
         Me.NuevoMovimientoToolStripMenuItem.Text = "Movimiento Nuevo"
         '
         'ListadoMovimientosToolStripMenuItem
@@ -271,8 +271,16 @@ Partial Class Inicio
         Me.ListadoMovimientosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.ListadoMovimientosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.ListadoMovimientosToolStripMenuItem.Name = "ListadoMovimientosToolStripMenuItem"
-        Me.ListadoMovimientosToolStripMenuItem.Size = New System.Drawing.Size(269, 30)
+        Me.ListadoMovimientosToolStripMenuItem.Size = New System.Drawing.Size(317, 30)
         Me.ListadoMovimientosToolStripMenuItem.Text = "Listado Movimientos"
+        '
+        'AutorizaciónMovimientosToolStripMenuItem
+        '
+        Me.AutorizaciónMovimientosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.AutorizaciónMovimientosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
+        Me.AutorizaciónMovimientosToolStripMenuItem.Name = "AutorizaciónMovimientosToolStripMenuItem"
+        Me.AutorizaciónMovimientosToolStripMenuItem.Size = New System.Drawing.Size(317, 30)
+        Me.AutorizaciónMovimientosToolStripMenuItem.Text = "Autorización Movimientos"
         '
         'StockTS
         '
@@ -303,7 +311,7 @@ Partial Class Inicio
         Me.CajaDelDíaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.CajaDelDíaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.CajaDelDíaToolStripMenuItem.Name = "CajaDelDíaToolStripMenuItem"
-        Me.CajaDelDíaToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
+        Me.CajaDelDíaToolStripMenuItem.Size = New System.Drawing.Size(186, 30)
         Me.CajaDelDíaToolStripMenuItem.Text = "Ventas"
         '
         'VentasToolStripMenuItem
@@ -311,7 +319,7 @@ Partial Class Inicio
         Me.VentasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.VentasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(186, 30)
         Me.VentasToolStripMenuItem.Text = "Cobros"
         '
         'ComprasToolStripMenuItem1
@@ -319,8 +327,16 @@ Partial Class Inicio
         Me.ComprasToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.ComprasToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.ComprasToolStripMenuItem1.Name = "ComprasToolStripMenuItem1"
-        Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(216, 30)
+        Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(186, 30)
         Me.ComprasToolStripMenuItem1.Text = "Compras"
+        '
+        'ProducciónToolStripMenuItem
+        '
+        Me.ProducciónToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.ProducciónToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
+        Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
+        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(186, 30)
+        Me.ProducciónToolStripMenuItem.Text = "Producción"
         '
         'ProducciónTS
         '
@@ -368,28 +384,14 @@ Partial Class Inicio
         Me.PruebaToolStripMenuItem.Name = "PruebaToolStripMenuItem"
         Me.PruebaToolStripMenuItem.Size = New System.Drawing.Size(84, 39)
         Me.PruebaToolStripMenuItem.Text = "Prueba"
+        Me.PruebaToolStripMenuItem.Visible = False
         '
         'ImagesToolStripMenuItem
         '
         Me.ImagesToolStripMenuItem.Name = "ImagesToolStripMenuItem"
         Me.ImagesToolStripMenuItem.Size = New System.Drawing.Size(86, 39)
         Me.ImagesToolStripMenuItem.Text = "Images"
-        '
-        'ProducciónToolStripMenuItem
-        '
-        Me.ProducciónToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
-        Me.ProducciónToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
-        Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
-        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
-        Me.ProducciónToolStripMenuItem.Text = "Producción"
-        '
-        'AutorizaciónMovimientosToolStripMenuItem
-        '
-        Me.AutorizaciónMovimientosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
-        Me.AutorizaciónMovimientosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
-        Me.AutorizaciónMovimientosToolStripMenuItem.Name = "AutorizaciónMovimientosToolStripMenuItem"
-        Me.AutorizaciónMovimientosToolStripMenuItem.Size = New System.Drawing.Size(317, 30)
-        Me.AutorizaciónMovimientosToolStripMenuItem.Text = "Autorización Movimientos"
+        Me.ImagesToolStripMenuItem.Visible = False
         '
         'Inicio
         '

@@ -27,8 +27,11 @@ Public Class UsuarioDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Config.root, Config.Password))
             con.Open()
             ', `prodEsp`
-            Dim query = "CREATE USER '" & modelo.nombre & "'@'" & Config.Host & "' IDENTIFIED BY '" & modelo.nombre & "'; GRANT ALL PRIVILEGES ON `producir`.* TO '" & modelo.nombre & "'@'" & Config.Host & "'; FLUSH PRIVILEGES;"
+
+            Dim query = "CREATE USER '" & modelo.nombre & "'@'%'; ALTER USER '" & modelo.nombre & "'@'%' IDENTIFIED BY '" & modelo.nombre & "' ;  " & "GRANT Insert ON *.* TO '" & modelo.nombre & "'@'%';" & "GRANT Select ON *.* TO '" & modelo.nombre & "'@'%';" & "GRANT Update ON *.* TO '" & modelo.nombre & "'@'%';" & "GRANT Usage ON *.* TO '" & modelo.nombre & "'@'%';" & "FLUSH PRIVILEGES;"
+
             Dim cmd As New MySqlCommand(query, con)
+
             cmd.ExecuteNonQuery()
             con.Close()
 
@@ -62,7 +65,7 @@ Public Class UsuarioDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Config.root, Config.Password))
             con.Open()
 
-            Dim query As String = " DROP USER '" & usuario & "'@'" & Config.Host & "';"
+            Dim query As String = " DROP USER '" & usuario & "'@'%';"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@id", id)

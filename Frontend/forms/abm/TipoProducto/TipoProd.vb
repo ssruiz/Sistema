@@ -30,6 +30,7 @@ Public Class TipoProd
         Me.SuspendLayout()
         cargarTipos()
         PersonalizarDAtagridView(dgvTipos)
+
         Me.ResumeLayout()
 
     End Sub

@@ -22,9 +22,11 @@ Public Class MarcadoForm
                     'Valida si ya paso por corte
                     If prodDao.validarCorte(producc.idProd) Then
                         prodDao.guardarMarcado(producc.idProd, 0)
-                        MsgBox("Marcado Guardado", MsgBoxStyle.Information, "Pulida")
+                        'MsgBox("Marcado Guardado", MsgBoxStyle.Information, "Pulida")
                         dgvPulida.DataSource = prodDao.getMarcado(producc.idProd).Tables("tabla")
                         cargarImagenes()
+                        txtNroProd.Text = ""
+                        txtNroProd.Focus()
                     Else
                         MsgBox("Producción aun no pasó por corte", MsgBoxStyle.Critical, "Marcado")
                     End If

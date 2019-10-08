@@ -57,6 +57,7 @@ Public Class ReposicionesDAO
             cmdDetalle.Parameters.AddWithValue("@repo", repo)
             cmdDetalle.ExecuteNonQuery()
 
+
             ''Dim queryPro = "UPDATE `producir`.`produccion` SET `repoCod` = @repo  WHERE `pCod` = @prod;"
             ''Dim cmdPro As New MySqlCommand(queryPro, con)
             ''cmdPro.Parameters.AddWithValue("@repo", repo)

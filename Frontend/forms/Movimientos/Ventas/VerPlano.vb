@@ -14,6 +14,7 @@
                 Dim dirImg = dgvPlanos.Item(2, row).Value
                 Dim newImage As Image = Image.FromFile(dirImg)
                 planoSeleccionado.Image = newImage
+                planoSeleccionado.SizeMode = PictureBoxSizeMode.Zoom
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
             End Try

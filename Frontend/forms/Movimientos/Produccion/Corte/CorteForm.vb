@@ -23,8 +23,10 @@ Public Class CorteForm
                 If producc.idProd <> 0 Then
                     ' Guardar Corte
                     prodDao.guardarCorte(producc.idProd, mesa, 0)
-                    MsgBox("Corte Guardado", MsgBoxStyle.Information, "Corte")
+                    'MsgBox("Corte Guardado", MsgBoxStyle.Information, "Corte")
                     dgvCortes.DataSource = prodDao.getCorte(producc.idProd).Tables("tabla")
+                    txtNroProd.Text = ""
+                    txtNroProd.Focus()
                 End If
             End If
 

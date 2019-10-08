@@ -8,6 +8,9 @@ Public Class ReporteDeCobrosForm
             objreporte.SetParameterValue("fin", dpFin.Value)
             objreporte.SetParameterValue("inicioC", dpInicio.Value)
             objreporte.SetParameterValue("finC", dpFin.Value)
+            objreporte.SetParameterValue("inicioR", dpInicio.Value)
+            objreporte.SetParameterValue("finR", dpFin.Value)
+
             objreporte.SetParameterValue("inicioA", dpInicio.Value)
             objreporte.SetParameterValue("finA", dpFin.Value)
             Dim daou As New SesionDAO

@@ -60,6 +60,69 @@ Public Class ProduccionDAO
         Return ds
     End Function
 
+
+
+    Public Function controlarEntradaTemplado(idProd As Integer) As Boolean
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim queryComp = "Select * from `producir`.`templado` where `pCod` = @prod"
+            Dim cmdComp As New MySqlCommand(queryComp, con)
+            cmdComp.Parameters.AddWithValue("@prod", idProd)
+            Dim reader = cmdComp.ExecuteReader()
+            Dim estado = ""
+            If reader.Read Then
+                estado = SafeGetString(reader, 5)
+                reader.Close()
+                If estado = "H" Then
+                    MsgBox("Producción ya entró al horno.", MsgBoxStyle.Critical, "Templado")
+                    Return False
+                ElseIf estado = "T" Then
+                    MsgBox("Producción ya terminada.", MsgBoxStyle.Critical, "Templado")
+                    Return False
+                End If
+
+                Return True
+
+
+
+            End If
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Function
+
+    Public Function controlarEntradaTemplado2(idProd As Integer) As Boolean
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim queryComp = "Select * from `producir`.`templado` where `pCod` = @prod"
+            Dim cmdComp As New MySqlCommand(queryComp, con)
+            cmdComp.Parameters.AddWithValue("@prod", idProd)
+            Dim reader = cmdComp.ExecuteReader()
+            Dim estado = ""
+            If reader.Read Then
+                estado = SafeGetString(reader, 5)
+                reader.Close()
+                If estado = "H" Then
+                    Return True
+                ElseIf estado = "T" Then
+                    MsgBox("Producción ya terminada.", MsgBoxStyle.Critical, "Templado")
+                    Return False
+                End If
+
+
+            End If
+            Return False
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Function
+
     ' En realidad actualiza la tabla corte para esa produccion
     Public Sub guardarCorte(ByVal idProd As String, ByVal mesa As Integer, ByVal rotura As Integer)
         Try
@@ -124,6 +187,55 @@ Public Class ProduccionDAO
         End Try
         Return ds
     End Function
+
+    Public Sub guardarTemplados(rows As DataGridViewRowCollection, ByVal templado As Integer)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = ""
+            If templado = 1 Then
+                query = "UPDATE `producir`.`templado` SET `templaEntrada` = @entrada, `templaEstado` = 'H' , `templaUsrUpd` = @user, `templaFchUpd` = @fecha WHERE `pCod` = @prod;"
+                Dim cmd As New MySqlCommand(query, con)
+                For Each row As DataGridViewRow In rows
+                    Dim entrada = row.Cells(5).Value
+                    Dim user = Sesion.Usuario
+                    Dim codigoProd = row.Cells(0).Value
+
+                    cmd.Parameters.AddWithValue("@entrada", entrada)
+                    cmd.Parameters.AddWithValue("@user", user)
+                    cmd.Parameters.AddWithValue("@fecha", Date.Now)
+                    cmd.Parameters.AddWithValue("@prod", codigoProd)
+                    cmd.ExecuteNonQuery()
+                    cmd.Parameters.Clear()
+
+                Next
+
+            Else
+
+                query = "UPDATE `producir`.`templado` SET `templaSalida` = @salida, `templaEstado` = 'T' , `templaUsrUpd` = @user, `templaFchUpd` = @fecha WHERE `pCod` = @prod;"
+                Dim cmd As New MySqlCommand(query, con)
+                For Each row As DataGridViewRow In rows
+                    Dim salida = row.Cells(6).Value
+                    Dim user = Sesion.Usuario
+                    Dim codigoProd = row.Cells(0).Value
+
+                    cmd.Parameters.AddWithValue("@salida", salida)
+                    cmd.Parameters.AddWithValue("@user", user)
+                    cmd.Parameters.AddWithValue("@fecha", Date.Now)
+                    cmd.Parameters.AddWithValue("@prod", codigoProd)
+                    cmd.ExecuteNonQuery()
+                    cmd.Parameters.Clear()
+
+                Next
+
+            End If
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
 
     Public Function getPulida(ByVal id As String) As DataSet
         Dim ds As New DataSet
@@ -281,6 +393,35 @@ Public Class ProduccionDAO
     End Function
 
     'VALIDACIONES
+    Public Function validarCorteEstado(idProd As Integer) As Boolean
+        Dim res = False
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT `corteEstado` FROM `producir`.`corte` where pCod = @id ;"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@id", idProd)
+            Dim reader = cmd.ExecuteReader
+            If reader.Read Then
+                Dim estado = safeGetChar(reader, 0)
+                If estado = "T" Then
+                    MsgBox("Produccion ya pasó por corte")
+                    res = False
+                Else
+                    res = True
+                End If
+
+            End If
+
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return res
+    End Function
 
     Public Function validarCorte(ByVal idP As Integer) As Boolean
         Dim res = False
@@ -292,6 +433,7 @@ Public Class ProduccionDAO
             cmd.Parameters.AddWithValue("@id", idP)
             Dim reader = cmd.ExecuteReader
             If reader.Read Then
+
                 res = True
             End If
 
@@ -303,6 +445,36 @@ Public Class ProduccionDAO
             con.Close()
         End Try
         Return res
+    End Function
+
+    Public Function validarMarcadoEstado(idProd As Integer) As Boolean
+        Dim res = False
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT `marcadoEstado` FROM `producir`.`marcado` where pCod = @id ;"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@id", idProd)
+            Dim reader = cmd.ExecuteReader
+            If reader.Read Then
+                Dim estado = safeGetChar(reader, 0)
+                If estado = "T" Then
+                    MsgBox("Produccion ya pasó por marcado")
+                    res = False
+                Else
+                    res = True
+                End If
+            End If
+
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return res
+
     End Function
 
     Public Function validarMarcado(ByVal idP As Integer) As Boolean
@@ -326,5 +498,52 @@ Public Class ProduccionDAO
             con.Close()
         End Try
         Return res
+    End Function
+
+
+    Public Function validarPulidaEstado(ByVal idProd As Integer) As Boolean
+        Dim res = False
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT `puliEstado` FROM `producir`.`pulida` where pCod = @id ;"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@id", idProd)
+            Dim reader = cmd.ExecuteReader
+            If reader.Read Then
+                Dim estado = safeGetChar(reader, 0)
+                If estado = "T" Then
+                    MsgBox("Produccion ya pasó por pulida")
+                    res = False
+                Else
+                    res = True
+                End If
+            End If
+
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return res
+    End Function
+    Public Function getProduccionBarCode(ByVal desde As String, ByVal hasta As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT `pCod` AS Produccion FROM `produccion` WHERE `pCod` BETWEEN " & CInt(desde) & " AND " & CInt(hasta) & " ;"
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
     End Function
 End Class

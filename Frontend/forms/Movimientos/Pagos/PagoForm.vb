@@ -359,7 +359,7 @@ Public Class PagoForm
     Private Sub txtMontoPago_KeyDown(sender As Object, e As KeyEventArgs) Handles txtMontoPago.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = False
-            txtFechaEmision.Focus()
+            txtRecibo.Focus()
         End If
     End Sub
 

@@ -16,7 +16,9 @@ Public Class CorteRotura
                 If producc.idProd <> 0 Then
                     ' Guardar Corte
                     prodDao.guardarCorte(producc.idProd, mesa, 1)
-                    MsgBox("Corte Guardado", MsgBoxStyle.Information, "Corte")
+                    MsgBox("Rotura Guardado", MsgBoxStyle.Information, "Corte")
+                    Me.DialogResult = DialogResult.OK
+
                 End If
             End If
 

@@ -12,6 +12,7 @@ Public Class ClienteForm
             cargarTipos()
             cargarVendedores()
             desactivarCampos()
+            btnGuardar.Enabled = False
             PersonalizarDAtagridView(dgvClientes)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -237,6 +238,7 @@ Public Class ClienteForm
         cbTipoC.Enabled = False
         cbVendedor.Enabled = False
         cbPrecio.Enabled = False
+
     End Sub
 
 
@@ -291,6 +293,7 @@ Public Class ClienteForm
         modelo.sucursal = cbSucursal.SelectedValue
         modelo.tipo = cbTipoC.SelectedValue
         modelo.vendedor = cbVendedor.SelectedValue
+
         modelo.precioDefault = cbPrecio.SelectedValue
         Select Case cbPrecio.SelectedIndex
             Case 1
@@ -453,22 +456,30 @@ Public Class ClienteForm
 
     Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
         If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True
-            txtRUC.Focus()
+            If txtNombre.Text <> "" Then
+                e.SuppressKeyPress = True
+                txtCI.Focus()
+            End If
+
         End If
     End Sub
 
     Private Sub txtRUC_TextChanged(sender As Object, e As KeyEventArgs) Handles txtRUC.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtCI.Focus()
+            txtDir.Focus()
+
         End If
     End Sub
 
     Private Sub txtCI_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCI.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtDir.Focus()
+            If txtCI.Text <> "" Then
+                txtRUC.Text = txtCI.Text + "-"
+                txtRUC.Focus()
+                txtRUC.SelectionStart = txtRUC.Text.Length + 1
+            End If
         End If
     End Sub
 
@@ -504,6 +515,41 @@ Public Class ClienteForm
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             cbTipoC.Focus()
+        End If
+    End Sub
+
+    Private Sub cbTipoC_KeyDown(sender As Object, e As KeyEventArgs) Handles cbTipoC.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            cbSucursal.Focus()
+        End If
+    End Sub
+
+    Private Sub cbSucursal_KeyDown(sender As Object, e As KeyEventArgs) Handles cbSucursal.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            cbVendedor.Focus()
+        End If
+    End Sub
+
+    Private Sub cbVendedor_KeyDown(sender As Object, e As KeyEventArgs) Handles cbVendedor.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            cbPrecio.Focus()
+        End If
+    End Sub
+
+    Private Sub cbPrecio_KeyDown(sender As Object, e As KeyEventArgs) Handles cbPrecio.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            txtLimiteC.Focus()
+        End If
+    End Sub
+
+    Private Sub txtLimiteC_KeyDown(sender As Object, e As KeyEventArgs) Handles txtLimiteC.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnGuardar.PerformClick()
         End If
     End Sub
 End Class

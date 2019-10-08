@@ -7,6 +7,8 @@ Public Class SucursalForm
         cargarSucursales()
         cargarDepositos()
         desactivarCampos()
+        btnGuardar.Enabled = False
+
         PersonalizarDAtagridView(dgvSucursales)
     End Sub
 
@@ -226,5 +228,19 @@ Public Class SucursalForm
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
+    End Sub
+
+    Private Sub txtNombre_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombre.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            cbDepositos.Focus()
+        End If
+    End Sub
+
+    Private Sub cbDepositos_KeyDown(sender As Object, e As KeyEventArgs) Handles cbDepositos.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnGuardar.PerformClick()
+        End If
     End Sub
 End Class

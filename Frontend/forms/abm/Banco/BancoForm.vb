@@ -10,7 +10,7 @@ Public Class BancoForm
             cargarBancos()
             limpiarCampos()
             desactivarCampos()
-
+            btnGuardar.Enabled = False
             PersonalizarDAtagridView(dgvBancos)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -62,6 +62,7 @@ Public Class BancoForm
 
     Private Sub desactivarCampos()
         txtNombre.Enabled = False
+        btnGuardar.Enabled = False
     End Sub
 
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click

@@ -24,9 +24,8 @@ Partial Class TempladoForm
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnMesa1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtSalidaEntrada = New System.Windows.Forms.Label()
@@ -41,7 +40,6 @@ Partial Class TempladoForm
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.NroProdCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.productoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PanhoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AnchoCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -49,6 +47,7 @@ Partial Class TempladoForm
         Me.CorteCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SalidaCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RoturaCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnConfirmar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvPulida, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -174,15 +173,15 @@ Partial Class TempladoForm
         Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPulida.ColumnHeadersHeight = 30
         Me.dgvPulida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvPulida.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroProdCol, Me.productoCol, Me.FechaCol, Me.PanhoCol, Me.AnchoCol, Me.AltoCol, Me.CorteCol, Me.SalidaCol, Me.RoturaCol})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle5
+        Me.dgvPulida.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroProdCol, Me.FechaCol, Me.PanhoCol, Me.AnchoCol, Me.AltoCol, Me.CorteCol, Me.SalidaCol, Me.RoturaCol})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvPulida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvPulida.EnableHeadersVisualStyles = False
         Me.dgvPulida.Location = New System.Drawing.Point(37, 283)
@@ -203,6 +202,7 @@ Partial Class TempladoForm
         Me.txtNroProd.Name = "txtNroProd"
         Me.txtNroProd.Size = New System.Drawing.Size(299, 30)
         Me.txtNroProd.TabIndex = 8
+        Me.txtNroProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
         '
@@ -260,16 +260,6 @@ Partial Class TempladoForm
         Me.NroProdCol.HeaderText = "Nro. Prod."
         Me.NroProdCol.Name = "NroProdCol"
         '
-        'productoCol
-        '
-        Me.productoCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.productoCol.DataPropertyName = "Producto"
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.productoCol.DefaultCellStyle = DataGridViewCellStyle4
-        Me.productoCol.HeaderText = "Producto"
-        Me.productoCol.Name = "productoCol"
-        Me.productoCol.Visible = False
-        '
         'FechaCol
         '
         Me.FechaCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -316,12 +306,29 @@ Partial Class TempladoForm
         Me.RoturaCol.HeaderText = "Rotura"
         Me.RoturaCol.Name = "RoturaCol"
         '
+        'btnConfirmar
+        '
+        Me.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnConfirmar.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConfirmar.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnConfirmar.Image = Global.Frontend.My.Resources.Resources.guardar
+        Me.btnConfirmar.Location = New System.Drawing.Point(841, 164)
+        Me.btnConfirmar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnConfirmar.Name = "btnConfirmar"
+        Me.btnConfirmar.Size = New System.Drawing.Size(200, 69)
+        Me.btnConfirmar.TabIndex = 38
+        Me.btnConfirmar.Text = "Confirmar"
+        Me.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnConfirmar.UseVisualStyleBackColor = False
+        '
         'TempladoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1297, 686)
+        Me.Controls.Add(Me.btnConfirmar)
         Me.Controls.Add(Me.btnMesa1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtPulidora)
@@ -357,7 +364,6 @@ Partial Class TempladoForm
     Friend WithEvents lblTitulo As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents NroProdCol As DataGridViewTextBoxColumn
-    Friend WithEvents productoCol As DataGridViewTextBoxColumn
     Friend WithEvents FechaCol As DataGridViewTextBoxColumn
     Friend WithEvents PanhoCol As DataGridViewTextBoxColumn
     Friend WithEvents AnchoCol As DataGridViewTextBoxColumn
@@ -365,4 +371,5 @@ Partial Class TempladoForm
     Friend WithEvents CorteCol As DataGridViewTextBoxColumn
     Friend WithEvents SalidaCol As DataGridViewTextBoxColumn
     Friend WithEvents RoturaCol As DataGridViewTextBoxColumn
+    Friend WithEvents btnConfirmar As Button
 End Class

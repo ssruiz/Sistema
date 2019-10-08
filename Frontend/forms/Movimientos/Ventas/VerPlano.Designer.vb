@@ -22,19 +22,19 @@ Partial Class VerPlano
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.dgvPlanos = New System.Windows.Forms.DataGridView()
-        Me.planoSeleccionado = New System.Windows.Forms.PictureBox()
         Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Img = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.planoSeleccionado = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvPlanos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.planoSeleccionado, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,7 +57,7 @@ Partial Class VerPlano
         Me.lblTitulo.BackColor = System.Drawing.Color.Transparent
         Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(465, 0)
+        Me.lblTitulo.Location = New System.Drawing.Point(470, 0)
         Me.lblTitulo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(137, 41)
@@ -69,35 +69,35 @@ Partial Class VerPlano
         Me.dgvPlanos.AllowUserToAddRows = False
         Me.dgvPlanos.AllowUserToDeleteRows = False
         Me.dgvPlanos.AllowUserToResizeColumns = False
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvPlanos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvPlanos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvPlanos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPlanos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(91, Byte), Integer))
         Me.dgvPlanos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPlanos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPlanos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPlanos.ColumnHeadersHeight = 35
         Me.dgvPlanos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvPlanos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Venta, Me.Nombre, Me.Fecha, Me.Img})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPlanos.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPlanos.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvPlanos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvPlanos.EnableHeadersVisualStyles = False
         Me.dgvPlanos.Location = New System.Drawing.Point(46, 535)
@@ -111,22 +111,13 @@ Partial Class VerPlano
         Me.dgvPlanos.Size = New System.Drawing.Size(1028, 286)
         Me.dgvPlanos.TabIndex = 18
         '
-        'planoSeleccionado
-        '
-        Me.planoSeleccionado.Location = New System.Drawing.Point(46, 62)
-        Me.planoSeleccionado.Name = "planoSeleccionado"
-        Me.planoSeleccionado.Size = New System.Drawing.Size(1028, 443)
-        Me.planoSeleccionado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.planoSeleccionado.TabIndex = 19
-        Me.planoSeleccionado.TabStop = False
-        '
         'ID
         '
         Me.ID.DataPropertyName = "ID"
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle7.Format = "N2"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.ID.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.ID.DefaultCellStyle = DataGridViewCellStyle3
         Me.ID.HeaderText = "ID"
         Me.ID.Name = "ID"
         Me.ID.Visible = False
@@ -156,6 +147,15 @@ Partial Class VerPlano
         Me.Img.HeaderText = "Img"
         Me.Img.Name = "Img"
         Me.Img.Visible = False
+        '
+        'planoSeleccionado
+        '
+        Me.planoSeleccionado.Location = New System.Drawing.Point(46, 62)
+        Me.planoSeleccionado.Name = "planoSeleccionado"
+        Me.planoSeleccionado.Size = New System.Drawing.Size(1028, 443)
+        Me.planoSeleccionado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.planoSeleccionado.TabIndex = 19
+        Me.planoSeleccionado.TabStop = False
         '
         'VerPlano
         '

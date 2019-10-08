@@ -141,7 +141,7 @@ Public Class SucursalDAO
             con.Open()
 
 
-            Dim mysql = "SELECT IDD,Depósito from vlistadosucursalesdep where IDD =" & id & ";"
+            Dim mysql = "SELECT IDD,Depósito from vlistadosucursalesdep where ID =" & id & " limit 1;"
 
             Dim cmd As New MySqlCommand(mysql, con)
             Dim adp As New MySqlDataAdapter(mysql, con)

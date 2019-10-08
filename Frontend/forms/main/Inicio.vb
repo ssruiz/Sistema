@@ -1,4 +1,6 @@
-﻿Public Class Inicio
+﻿Imports Backend
+
+Public Class Inicio
     Private Sub Inicio_Load(sender As Object, e As EventArgs) Handles MyBase.Closed
         Dim lg As New login
         lg.Show()
@@ -207,10 +209,24 @@
     Private Sub Inicio_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.SuspendLayout()
         MenuStrip1.Renderer = New ToolStripProfessionalRenderer(New ColoresMenu())
-
+        aplicarNivel()
         Me.ResumeLayout()
     End Sub
 
+    Private Sub aplicarNivel()
+        Try
+            Dim acc As New Acceso
+            Dim r = acc.seguridad()
+            If r = 2 Then
+                manteTS.Enabled = False
+                ComprasToolStripMenuItem.Enabled = False
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
     Private Sub manteTS_DropDownOpened(sender As Object, e As EventArgs) Handles manteTS.DropDownOpened
         Dim ob = DirectCast(sender, ToolStripMenuItem)
         ob.ForeColor = Color.Black

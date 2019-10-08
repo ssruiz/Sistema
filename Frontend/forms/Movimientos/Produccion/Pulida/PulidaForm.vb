@@ -17,10 +17,17 @@ Public Class PulidaForm
                 producc = prodDao.getProduccion(txtNroProd.Text)
 
                 If producc.idProd <> 0 Then
+
+                    If prodDao.validarCorte(producc.idProd) = False Then
+                        MsgBox("Producción aun no pasó por corte", MsgBoxStyle.Critical, "Templado")
+                        Exit Sub
+                    End If
                     ' Guardar Corte
                     prodDao.guardarPulida(producc.idProd, mesa, 0)
-                    MsgBox("Pulida Guardada", MsgBoxStyle.Information, "Pulida")
+                    'MsgBox("Pulida Guardada", MsgBoxStyle.Information, "Pulida")
                     dgvPulida.DataSource = prodDao.getPulida(producc.idProd).Tables("tabla")
+                    txtNroProd.Text = ""
+                    txtNroProd.Focus()
                 End If
             End If
         End If

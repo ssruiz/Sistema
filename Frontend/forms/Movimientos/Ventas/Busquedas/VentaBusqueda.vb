@@ -5,11 +5,6 @@ Public Class VentaBusqueda
     Public estadoFiltro As String
     Dim list As New DataSet
     Public venta As String
-    Private Sub VentaBusqueda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Show()
-        cargarVentasCliente()
-        txtFiltro.Focus()
-    End Sub
 
     Private Sub cargarVentasCliente()
         Try
@@ -77,7 +72,19 @@ Public Class VentaBusqueda
     Private Sub txtFiltro_KeyDown(sender As Object, e As KeyEventArgs) Handles txtFiltro.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
+            dgvVentas.Rows(0).Selected = True
+
             dgvVentas.Focus()
         End If
+    End Sub
+
+    Private Sub VentaBusqueda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cargarVentasCliente()
+        'txtFiltro.Focus()
+        'dgvVentas.Focus()
+    End Sub
+
+    Private Sub VentaBusqueda_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        txtFiltro.Focus()
     End Sub
 End Class

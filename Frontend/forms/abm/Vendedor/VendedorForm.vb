@@ -8,6 +8,8 @@ Public Class VendedorForm
         cargarVendedores()
         desactivarCampos()
         PersonalizarDAtagridView(dgvVendedores)
+        btnGuardar.Enabled = False
+
     End Sub
     Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
         With dgv
@@ -273,7 +275,7 @@ Public Class VendedorForm
     Private Sub txtPorcentaje_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPorcentaje.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            btnGuardar_Click(sender, e)
+            btnGuardar.PerformClick()
         End If
     End Sub
 End Class

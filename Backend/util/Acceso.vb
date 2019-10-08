@@ -29,6 +29,8 @@ Public Class Acceso
             End If
 
         Catch ex As MySql.Data.MySqlClient.MySqlException
+
+
             Select Case ex.Number
                 Case 1042
                     Throw New DAOException("No se puede acceder al servidor." & vbCrLf & "Contacte al administrator.")
@@ -47,7 +49,7 @@ Public Class Acceso
         Try
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim query = "SELECT nivel FROM seguridad WHERE cod_usuario = @usr"
+            Dim query = "SELECT usuNivel FROM usuario WHERE usuNombre = @usr"
             Dim cmd As New MySqlCommand(query, con)
             cmd.Parameters.AddWithValue("@usr", Sesion.Usuario)
             Dim reader = cmd.ExecuteReader

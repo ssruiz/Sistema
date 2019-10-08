@@ -7,6 +7,8 @@ Public Class DepositoForm
         cargarDepositos()
         cargarDepositos()
         desactivarCampos()
+        btnGuardar.Enabled = False
+
         PersonalizarDAtagridView(dgvDepositos)
     End Sub
 

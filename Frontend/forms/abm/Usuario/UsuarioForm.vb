@@ -2,12 +2,14 @@
 
 Public Class UsuarioForm
     Dim nuevo = False
-    Dim list
+    Dim list As New DataSet
     Private Sub UsuarioForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         cbEstado.SelectedIndex = 0
         cargarUsuarios()
         PersonalizarDAtagridView(dgvUsuarios)
         desactivarCampos()
+        btnGuardar.Enabled = False
     End Sub
 
     Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
@@ -48,8 +50,11 @@ Public Class UsuarioForm
         dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         'dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-        dgvUsuarios.Columns("Código").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+
+        dgvUsuarios.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+
         dgvUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+
         dgvUsuarios.ClearSelection()
         Me.SuspendLayout()
     End Sub
@@ -91,7 +96,7 @@ Public Class UsuarioForm
         txtNivel.Enabled = False
         txtNombre.Enabled = False
         cbEstado.Enabled = False
-
+        btnGuardar.Enabled = False
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
@@ -257,7 +262,15 @@ Public Class UsuarioForm
     Private Sub txtNievel_kd(sender As Object, e As KeyEventArgs) Handles txtNivel.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            btnGuardar_Click(sender, e)
+            cbEstado.Focus()
+
+        End If
+    End Sub
+
+    Private Sub cbEstado_KeyDown(sender As Object, e As KeyEventArgs) Handles cbEstado.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnGuardar.PerformClick()
         End If
     End Sub
 End Class

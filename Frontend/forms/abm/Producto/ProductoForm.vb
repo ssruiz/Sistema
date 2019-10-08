@@ -15,9 +15,11 @@ Public Class ProductoForm
             desactivarCampos()
             PersonalizarDAtagridView(dgvProductos)
             lblSuperficie.Text = "Superficie (m" & Chr(178) & ")"
+            btnGuardar.Enabled = False
+
             Me.ResumeLayout()
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+            'MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
     Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
@@ -167,6 +169,7 @@ Public Class ProductoForm
             limpiarCampos()
             activarCampos()
             txtCodigo.Focus()
+            cbIva.SelectedIndex = 2
             btnGuardar.Enabled = True
             btnModificar.Enabled = False
             nuevo = True
@@ -592,7 +595,7 @@ Public Class ProductoForm
     Private Sub txtEspesor_KeyDown(sender As Object, e As KeyEventArgs) Handles txtEspesor.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtCosto.Focus()
+            cbColores.Focus()
         End If
     End Sub
 
@@ -639,6 +642,28 @@ Public Class ProductoForm
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             txtPD.Focus()
+        End If
+    End Sub
+
+    Private Sub cbColores_KeyDown(sender As Object, e As KeyEventArgs) Handles cbColores.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            cbIva.Focus()
+        End If
+    End Sub
+
+    Private Sub cbIva_KeyDown(sender As Object, e As KeyEventArgs) Handles cbIva.KeyDown
+        If e.KeyCode = Keys.Enter Then
+
+            e.SuppressKeyPress = True
+            txtCosto.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPD_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPD.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            btnGuardar.PerformClick()
         End If
     End Sub
 End Class

@@ -12,6 +12,7 @@ Public Class MarcadoRotura
                     ' Guardar Corte
                     prodDao.guardarMarcado(producc.idProd, 1)
                     MsgBox("Rotura Guardada", MsgBoxStyle.Information, "Marcado")
+                    Me.DialogResult = DialogResult.OK
                 End If
             End If
 

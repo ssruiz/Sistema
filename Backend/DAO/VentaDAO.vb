@@ -60,6 +60,7 @@ Public Class VentaDAO
             Dim queryDetalle = "INSERT INTO `ventasdet` (`ventCod`, `prodCod`, `ventDetCantidad`, `ventDetAncho`, `ventDetAlto`, `ventDetSup`,  `ventDetPrecioUnit`, `ventDetPrecioReal`,`ventDetObra`,`ventDetRecargo`, `ventDetDescuento`) VALUES ( @venta, @producto, @cantidad, @ancho, @alto, @sup, @pu, @pr, @obra,@recargo,@descuento); SELECT LAST_INSERT_ID();"
             Dim cmdDetalle As New MySqlCommand(queryDetalle, con)
             Dim panho = 1
+            Dim list As New Dictionary(Of String, Integer)
             For Each row As Windows.Forms.DataGridViewRow In productos
                 panho = 1
                 Dim idProducto = row.Cells(0).Value
@@ -72,7 +73,18 @@ Public Class VentaDAO
                 Dim alto = CDbl(row.Cells(7).Value)
                 Dim sup = CDbl(row.Cells(10).Value)
                 Dim obra = row.Cells(13).Value
-
+                'MsgBox(idProducto)
+                If list.Count = 0 Then
+                    list.Add(producto, 1)
+                Else
+                    Dim value As Integer
+                    If (list.TryGetValue(producto, value)) Then
+                        'list(idProducto) = value + 1
+                        'MsgBox(value)
+                    Else
+                        list.Add(producto, 1)
+                    End If
+                End If
                 cmdDetalle.Parameters.AddWithValue("@venta", ventaCod)
                 cmdDetalle.Parameters.AddWithValue("@producto", producto)
                 cmdDetalle.Parameters.AddWithValue("@cantidad", cantidad)
@@ -85,11 +97,11 @@ Public Class VentaDAO
 
                 Dim str As String = row.Cells(8).Value
                 str = str.Replace("%", "")
-                Dim val = CDbl(str) / 100
+                Dim val = CDbl(str)
                 cmdDetalle.Parameters.AddWithValue("@descuento", val)
                 str = row.Cells(9).Value
                 str = str.Replace("%", "")
-                val = CDbl(str) / 100
+                val = CDbl(str)
                 cmdDetalle.Parameters.AddWithValue("@recargo", val)
                 Dim detalleCod = CInt(cmdDetalle.ExecuteScalar())
 
@@ -111,67 +123,72 @@ Public Class VentaDAO
                     cmdStock.Parameters.Clear()
                 Else
 
-                    Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`, `produccion_detalle`) VALUES (@vent, @fet, @pan, @pdetalle); SELECT LAST_INSERT_ID();"
-                    Dim queryCorte = "INSERT INTO `producir`.`corte` (`pCod`, `corteUsuIns`, `corteFchIns`) VALUES (@prod,@usuario,@fecha);"
-                    Dim queryPulida = "INSERT INTO `producir`.`pulida` (`pCod`, `puliUsrIns`, `puliFchIns`) VALUES (@prod, @usuario, @fecha);"
-                    Dim queryTemplado = "INSERT INTO `producir`.`templado` (`pCod`, `templaUsrIns`, `templaFchIns`) VALUES (@prod, @usuario, @fecha);"
-                    Dim queryMarcado = "INSERT INTO `producir`.`marcado` (`pCod`, `marcadoUsrIns`, `marcadoFchIns`) VALUES (@prod,@usuario,@fecha);"
+                    'Dim queryProducion = "INSERT INTO `producir`.`produccion` (`ventCod`, `ventDetCod`, `pPanho`, `produccion_detalle`) VALUES (@vent, @fet, @pan, @pdetalle); SELECT LAST_INSERT_ID();"
+                    'Dim queryCorte = "INSERT INTO `producir`.`corte` (`pCod`, `corteUsuIns`, `corteFchIns`) VALUES (@prod,@usuario,@fecha);"
+                    'Dim queryPulida = "INSERT INTO `producir`.`pulida` (`pCod`, `puliUsrIns`, `puliFchIns`) VALUES (@prod, @usuario, @fecha);"
+                    'Dim queryTemplado = "INSERT INTO `producir`.`templado` (`pCod`, `templaUsrIns`, `templaFchIns`) VALUES (@prod, @usuario, @fecha);"
+                    'Dim queryMarcado = "INSERT INTO `producir`.`marcado` (`pCod`, `marcadoUsrIns`, `marcadoFchIns`) VALUES (@prod,@usuario,@fecha);"
 
-                    '' Detalle de la produccion'' ---------------------------------------------
-                    Dim queryDetalleProduccion = "INSERT INTO `producir`.`producciondetalle` (`prod_id`) VALUES (@producto); SELECT LAST_INSERT_ID();"
-                    Dim cmdDetalleProduccion As New MySqlCommand(queryDetalleProduccion, con)
+                    ''' Detalle de la produccion'' ---------------------------------------------
+                    'Dim queryDetalleProduccion = "INSERT INTO `producir`.`producciondetalle` (`prod_id`) VALUES (@producto); SELECT LAST_INSERT_ID();"
+                    'Dim cmdDetalleProduccion As New MySqlCommand(queryDetalleProduccion, con)
 
 
-                    cmdDetalleProduccion.Parameters.AddWithValue("@producto", producto)
-                    Dim detalleProduccionCod = CInt(cmdDetalleProduccion.ExecuteScalar())
+                    'cmdDetalleProduccion.Parameters.AddWithValue("@producto", producto)
+                    'Dim detalleProduccionCod = CInt(cmdDetalleProduccion.ExecuteScalar())
 
-                    cmdDetalleProduccion.Parameters.Clear()
-                    '' ---------------------------------------------
+                    'cmdDetalleProduccion.Parameters.Clear()
+                    ''' ---------------------------------------------
 
-                    '' CMDS
-                    Dim cmdProd As New MySqlCommand(queryProducion, con)
-                    Dim cmdCorte As New MySqlCommand(queryCorte, con)
-                    Dim cmdPulida As New MySqlCommand(queryPulida, con)
-                    Dim cmdTemplado As New MySqlCommand(queryTemplado, con)
-                    Dim cmdMarcado As New MySqlCommand(queryMarcado, con)
-                    For index As Integer = 1 To cantidad
-                        ' Se agrega a produccion
-                        cmdProd.Parameters.AddWithValue("@vent", ventaCod)
-                        cmdProd.Parameters.AddWithValue("@fet", detalleCod)
-                        cmdProd.Parameters.AddWithValue("@pan", panho)
-                        cmdProd.Parameters.AddWithValue("@pdetalle", detalleProduccionCod)
-                        panho += 1
-                        Dim prodCod = CInt(cmdProd.ExecuteScalar())
-                        cmdProd.Parameters.Clear()
+                    ''' CMDS
+                    'Dim cmdProd As New MySqlCommand(queryProducion, con)
+                    'Dim cmdCorte As New MySqlCommand(queryCorte, con)
+                    'Dim cmdPulida As New MySqlCommand(queryPulida, con)
+                    'Dim cmdTemplado As New MySqlCommand(queryTemplado, con)
+                    'Dim cmdMarcado As New MySqlCommand(queryMarcado, con)
+                    'For index As Integer = 1 To cantidad
+                    '    ' Se agrega a produccion
+                    '    Dim panhaux As New Integer
 
-                        '' A corte
-                        cmdCorte.Parameters.AddWithValue("@prod", prodCod)
-                        cmdCorte.Parameters.AddWithValue("@usuario", Sesion.Usuario)
-                        cmdCorte.Parameters.AddWithValue("@fecha", Date.Now)
-                        cmdCorte.ExecuteNonQuery()
-                        cmdCorte.Parameters.Clear()
+                    '    list.TryGetValue(producto, panhaux)
+                    '    ' MsgBox(panhaux)
 
-                        ' A pulida
-                        cmdPulida.Parameters.AddWithValue("@prod", prodCod)
-                        cmdPulida.Parameters.AddWithValue("@usuario", Sesion.Usuario)
-                        cmdPulida.Parameters.AddWithValue("@fecha", Date.Now)
-                        cmdPulida.ExecuteNonQuery()
-                        cmdPulida.Parameters.Clear()
+                    '    cmdProd.Parameters.AddWithValue("@vent", ventaCod)
+                    '    cmdProd.Parameters.AddWithValue("@fet", detalleCod)
+                    '    cmdProd.Parameters.AddWithValue("@pan", panhaux)
+                    '    cmdProd.Parameters.AddWithValue("@pdetalle", detalleProduccionCod)
+                    '    panho += 1
+                    '    Dim prodCod = CInt(cmdProd.ExecuteScalar())
+                    '    cmdProd.Parameters.Clear()
+                    '    list(producto) = panhaux + 1
+                    '    '' A corte
+                    '    cmdCorte.Parameters.AddWithValue("@prod", prodCod)
+                    '    cmdCorte.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                    '    cmdCorte.Parameters.AddWithValue("@fecha", Date.Now)
+                    '    cmdCorte.ExecuteNonQuery()
+                    '    cmdCorte.Parameters.Clear()
 
-                        ' A templado
-                        cmdTemplado.Parameters.AddWithValue("@prod", prodCod)
-                        cmdTemplado.Parameters.AddWithValue("@usuario", Sesion.Usuario)
-                        cmdTemplado.Parameters.AddWithValue("@fecha", Date.Now)
-                        cmdTemplado.ExecuteNonQuery()
-                        cmdTemplado.Parameters.Clear()
+                    '    ' A pulida
+                    '    cmdPulida.Parameters.AddWithValue("@prod", prodCod)
+                    '    cmdPulida.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                    '    cmdPulida.Parameters.AddWithValue("@fecha", Date.Now)
+                    '    cmdPulida.ExecuteNonQuery()
+                    '    cmdPulida.Parameters.Clear()
 
-                        ' A marcado
-                        cmdMarcado.Parameters.AddWithValue("@prod", prodCod)
-                        cmdMarcado.Parameters.AddWithValue("@usuario", Sesion.Usuario)
-                        cmdMarcado.Parameters.AddWithValue("@fecha", Date.Now)
-                        cmdMarcado.ExecuteNonQuery()
-                        cmdMarcado.Parameters.Clear()
-                    Next
+                    '    ' A templado
+                    '    cmdTemplado.Parameters.AddWithValue("@prod", prodCod)
+                    '    cmdTemplado.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                    '    cmdTemplado.Parameters.AddWithValue("@fecha", Date.Now)
+                    '    cmdTemplado.ExecuteNonQuery()
+                    '    cmdTemplado.Parameters.Clear()
+
+                    '    ' A marcado
+                    '    cmdMarcado.Parameters.AddWithValue("@prod", prodCod)
+                    '    cmdMarcado.Parameters.AddWithValue("@usuario", Sesion.Usuario)
+                    '    cmdMarcado.Parameters.AddWithValue("@fecha", Date.Now)
+                    '    cmdMarcado.ExecuteNonQuery()
+                    '    cmdMarcado.Parameters.Clear()
+                    'Next
                 End If
             Next
 
@@ -265,7 +282,7 @@ Public Class VentaDAO
         Try
             Dim con As New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim query = "Select ventCod from ventas"
+            Dim query = "Select ventCod from ventas where `ventEstado` <> 'A' "
             Dim cmd As New MySqlCommand(query, con)
             Dim reader = cmd.ExecuteReader()
 
@@ -440,7 +457,7 @@ Public Class VentaDAO
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim query = "Select * from `vetiquetas` WHERE `Venta` =" & venta & " and Impreso = 'No';"
+            Dim query = "Select * from `vetiquetas` WHERE `Venta` =" & venta & " order by Panho, Prod;"
 
             Dim adp As New MySqlDataAdapter(query, con)
             ds.Tables.Add("tabla")
@@ -538,4 +555,21 @@ Public Class VentaDAO
         End Try
         Return ds
     End Function
+
+    Public Sub actualizarVentaFactura(ByVal venta As Venta)
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "UPDATE `producir`.`ventas` SET `ventFact` = @fact, `estadoFactura` = 'S' WHERE `ventCod` = @cod"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@fact", venta.factura)
+            cmd.Parameters.AddWithValue("@cod", venta.id)
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
 End Class

@@ -9,6 +9,7 @@ Public Class ColorForm
             cargarColores()
 
             PersonalizarDAtagridView(dgvColores)
+            btnGuardar.Enabled = False
             Me.ResumeLayout()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")

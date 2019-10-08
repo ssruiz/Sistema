@@ -32,6 +32,7 @@ Public Class TipoClienteForm
         PersonalizarDAtagridView(dgvTipos)
         Me.ResumeLayout()
 
+
     End Sub
     Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
         With dgv

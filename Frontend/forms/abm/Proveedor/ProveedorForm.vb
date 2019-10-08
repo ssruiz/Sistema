@@ -10,6 +10,7 @@ Public Class ProveedorForm
             cargarProveedores()
             limpiarCampos()
             desactivarCampos()
+            btnGuardar.Enabled = False
 
 
             PersonalizarDAtagridView(dgvProveedores)

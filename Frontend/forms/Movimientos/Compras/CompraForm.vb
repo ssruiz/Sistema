@@ -26,7 +26,7 @@ Public Class CompraForm
         rbtnCred.Enabled = False
         columnasGrid = dgvProductos.Columns
         cargarCompras()
-        PersonalizarDAtagridView(dgvProductos)
+        'PersonalizarDAtagridView(dgvProductos)
         dgvProductos.DataSource = New DataSet1.detalleCompraDataTable
     End Sub
     Public Sub PersonalizarDAtagridView(ByVal dgv As DataGridView)
@@ -105,6 +105,11 @@ Public Class CompraForm
                 asignarSucursal()
                 asignarDeposito()
             End If
+            btnAnular.Enabled = False
+            'btnSgte.Enabled = False
+            'btnAnterior.Enabled = False
+            'btnPrim.Enabled = False
+            'btnUlt.Enabled = True
             txtFactuNro.Focus()
             buscarS.Dispose()
         End If
@@ -468,6 +473,11 @@ Public Class CompraForm
                 Else
                     lblTipoFactura.Text = "Contado"
                 End If
+                btnAnular.Enabled = True
+                btnSgte.Enabled = True
+                btnAnterior.Enabled = True
+                btnPrim.Enabled = True
+                btnUlt.Enabled = True
             Else
                 'Dim buscarP As New ProductoBusqueda
                 'buscarP.filtro = txtCodProd.Text

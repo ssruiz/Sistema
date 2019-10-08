@@ -41,6 +41,7 @@ Public Class MovInternoForm
     End Sub
     Private Sub cargarDepositos1(ByVal id As Integer)
         Try
+
             If id <> 0 Then
                 Dim daoD As New SucursalDAO
                 depositos = daoD.getSucursalesDepositos(id)
@@ -101,6 +102,7 @@ Public Class MovInternoForm
     Private Sub cbS1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbS1.SelectedIndexChanged
         Try
             cargarDepositos1(cbS1.SelectedValue)
+
             If cbS1.SelectedValue = cbS2.SelectedValue Then
                 cbS2.SelectedValue = 0
             End If

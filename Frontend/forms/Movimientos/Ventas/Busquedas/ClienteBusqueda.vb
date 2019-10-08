@@ -20,7 +20,7 @@ Public Class ClienteBusqueda
 
     Private Sub aplicarFiltro()
         Dim dv As New DataView(list.Tables("tabla"))
-        dv.RowFilter = String.Format("Nombre like '%{0}%' or CI like '%{0}%' ", txtFiltro.Text)
+        dv.RowFilter = String.Format("Nombre like '%{0}%' or RUC like '%{0}%' ", txtFiltro.Text)
         dgvClientes.DataSource = dv
         'dgvClientes.ClearSelection()
     End Sub
@@ -30,8 +30,10 @@ Public Class ClienteBusqueda
                 If e.KeyCode = Keys.Enter Then
                     e.SuppressKeyPress = True
                     Dim row = dgvClientes.CurrentRow.Index
-                    Dim codigo = dgvClientes.Item(0, row).Value
+                    '.Rows(yourRowIndex).Cells(yourColumnIndex).Value
+                    Dim codigo = dgvClientes.CurrentRow.Cells("ID").Value
                     Dim daoC As New ClienteDAO
+
                     cliente = daoC.getCliente(codigo)
                     Me.DialogResult = DialogResult.OK
                 End If
