@@ -27,6 +27,7 @@ Partial Class MarcadoForm
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MarcadoForm))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.Rotura1Col = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -42,19 +43,23 @@ Partial Class MarcadoForm
         Me.txtNroProd = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblFechaVenta = New System.Windows.Forms.Label()
+        Me.lblRoturas = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblMarcados = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.pbPlano = New System.Windows.Forms.PictureBox()
         Me.btnImgPrev = New System.Windows.Forms.Button()
         Me.btnMesa1 = New System.Windows.Forms.Button()
         Me.btnImgNext = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvPulida, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.pbPlano, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -65,7 +70,7 @@ Partial Class MarcadoForm
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1250, 49)
+        Me.Panel1.Size = New System.Drawing.Size(1346, 49)
         Me.Panel1.TabIndex = 40
         '
         'lblTitulo
@@ -204,6 +209,7 @@ Partial Class MarcadoForm
         Me.txtNroProd.Name = "txtNroProd"
         Me.txtNroProd.Size = New System.Drawing.Size(299, 22)
         Me.txtNroProd.TabIndex = 8
+        Me.txtNroProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label2
         '
@@ -228,65 +234,67 @@ Partial Class MarcadoForm
         Me.Label3.TabIndex = 23
         Me.Label3.Text = "Marcados"
         '
-        'lblFechaVenta
+        'lblRoturas
         '
-        Me.lblFechaVenta.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.lblFechaVenta.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaVenta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblFechaVenta.Location = New System.Drawing.Point(337, 27)
-        Me.lblFechaVenta.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblFechaVenta.Name = "lblFechaVenta"
-        Me.lblFechaVenta.Padding = New System.Windows.Forms.Padding(4)
-        Me.lblFechaVenta.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblFechaVenta.Size = New System.Drawing.Size(113, 34)
-        Me.lblFechaVenta.TabIndex = 24
-        Me.lblFechaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblRoturas.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblRoturas.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRoturas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblRoturas.Location = New System.Drawing.Point(429, 29)
+        Me.lblRoturas.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblRoturas.Name = "lblRoturas"
+        Me.lblRoturas.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblRoturas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblRoturas.Size = New System.Drawing.Size(156, 34)
+        Me.lblRoturas.TabIndex = 24
+        Me.lblRoturas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label4.Location = New System.Drawing.Point(253, 34)
+        Me.Label4.Location = New System.Drawing.Point(339, 34)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(69, 23)
         Me.Label4.TabIndex = 25
         Me.Label4.Text = "Roturas"
         '
-        'Label1
+        'lblMarcados
         '
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(115, 27)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Padding = New System.Windows.Forms.Padding(4)
-        Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label1.Size = New System.Drawing.Size(113, 34)
-        Me.Label1.TabIndex = 26
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblMarcados.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblMarcados.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarcados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblMarcados.Location = New System.Drawing.Point(115, 27)
+        Me.lblMarcados.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblMarcados.Name = "lblMarcados"
+        Me.lblMarcados.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblMarcados.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblMarcados.Size = New System.Drawing.Size(181, 34)
+        Me.lblMarcados.TabIndex = 26
+        Me.lblMarcados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.lblFechaVenta)
+        Me.GroupBox1.Controls.Add(Me.lblRoturas)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.lblMarcados)
+        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.GroupBox1.Location = New System.Drawing.Point(24, 175)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(519, 79)
+        Me.GroupBox1.Size = New System.Drawing.Size(657, 79)
         Me.GroupBox1.TabIndex = 42
         Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "DEL DÍA"
         '
         'pbPlano
         '
-        Me.pbPlano.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbPlano.Location = New System.Drawing.Point(615, 70)
+        Me.pbPlano.Location = New System.Drawing.Point(3, 3)
         Me.pbPlano.Name = "pbPlano"
-        Me.pbPlano.Size = New System.Drawing.Size(524, 281)
+        Me.pbPlano.Size = New System.Drawing.Size(359, 219)
+        Me.pbPlano.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbPlano.TabIndex = 47
         Me.pbPlano.TabStop = False
         '
@@ -297,7 +305,7 @@ Partial Class MarcadoForm
         Me.btnImgPrev.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImgPrev.ForeColor = System.Drawing.SystemColors.Control
         Me.btnImgPrev.Image = Global.ProduccionMarcado.My.Resources.Resources.icons8_atrás_30
-        Me.btnImgPrev.Location = New System.Drawing.Point(567, 167)
+        Me.btnImgPrev.Location = New System.Drawing.Point(709, 161)
         Me.btnImgPrev.Margin = New System.Windows.Forms.Padding(0)
         Me.btnImgPrev.Name = "btnImgPrev"
         Me.btnImgPrev.Size = New System.Drawing.Size(45, 69)
@@ -315,7 +323,7 @@ Partial Class MarcadoForm
         Me.btnMesa1.Location = New System.Drawing.Point(24, 329)
         Me.btnMesa1.Margin = New System.Windows.Forms.Padding(0)
         Me.btnMesa1.Name = "btnMesa1"
-        Me.btnMesa1.Size = New System.Drawing.Size(163, 69)
+        Me.btnMesa1.Size = New System.Drawing.Size(243, 69)
         Me.btnMesa1.TabIndex = 45
         Me.btnMesa1.Text = "Rotura"
         Me.btnMesa1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -328,7 +336,7 @@ Partial Class MarcadoForm
         Me.btnImgNext.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnImgNext.ForeColor = System.Drawing.SystemColors.Control
         Me.btnImgNext.Image = Global.ProduccionMarcado.My.Resources.Resources.icons8_adelante_30
-        Me.btnImgNext.Location = New System.Drawing.Point(1142, 167)
+        Me.btnImgNext.Location = New System.Drawing.Point(1284, 161)
         Me.btnImgNext.Margin = New System.Windows.Forms.Padding(0)
         Me.btnImgNext.Name = "btnImgNext"
         Me.btnImgNext.Size = New System.Drawing.Size(51, 69)
@@ -336,13 +344,55 @@ Partial Class MarcadoForm
         Me.btnImgNext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnImgNext.UseVisualStyleBackColor = False
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button1.Location = New System.Drawing.Point(901, 377)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(65, 44)
+        Me.Button1.TabIndex = 48
+        Me.Button1.Text = "+"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(1055, 377)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(60, 44)
+        Me.Button2.TabIndex = 49
+        Me.Button2.Text = "-"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Panel2
+        '
+        Me.Panel2.AutoScroll = True
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.pbPlano)
+        Me.Panel2.Location = New System.Drawing.Point(757, 64)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(524, 310)
+        Me.Panel2.TabIndex = 50
+        '
         'MarcadoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1250, 896)
-        Me.Controls.Add(Me.pbPlano)
+        Me.ClientSize = New System.Drawing.Size(1346, 896)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnImgPrev)
         Me.Controls.Add(Me.btnMesa1)
         Me.Controls.Add(Me.Panel1)
@@ -350,9 +400,10 @@ Partial Class MarcadoForm
         Me.Controls.Add(Me.dgvPulida)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MarcadoForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "MarcadoForm"
+        Me.Text = "Marcado"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dgvPulida, System.ComponentModel.ISupportInitialize).EndInit()
@@ -361,6 +412,7 @@ Partial Class MarcadoForm
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.pbPlano, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -384,8 +436,11 @@ Partial Class MarcadoForm
     Friend WithEvents txtNroProd As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents lblFechaVenta As Label
+    Friend WithEvents lblRoturas As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblMarcados As Label
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Panel2 As Panel
 End Class

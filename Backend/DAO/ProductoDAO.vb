@@ -286,5 +286,81 @@ Public Class ProductoDAO
         End Try
         Return stock
     End Function
+
+    Public Function TotalDepositoMes(mes As String, hoy As String, filtro As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "(SELECT s.`prodCodigo` AS Prod, SUM(s.`stCantidad`) AS Inicial, 0 AS Entrada, 0 AS Salida, 0 AS Total, p.`prodDesc` AS Producto, dep.`depoDesc` AS Deposito, p.`prodTipo` AS Tipo FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` WHERE ((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') < '" & mes & " 00:00:00')) " & filtro & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc` ) UNION (SELECT s.`prodCodigo` AS Prod, 0 AS Inicial, SUM(s.`stCantidad`) AS Entrada , 0 AS Salida, 0 AS Total, p.`prodDesc` AS Producto, dep.`depoDesc` AS Deposito, p.`prodTipo` AS Tipo FROM `stock` s WHERE ((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') >= '" & mes & " 00:00:00')) AND DATE_FORMAT((s.`stFchIns` , '%Y/%m/%d %T')) <= '" & hoy & " 23:59:59' AND s.stCantidad > 0 " & filtro & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc` ) UNION (SELECT s.`prodCodigo` AS Prod, 0 AS Inicial, 0 AS Entrada , SUM(s.`stCantidad`) AS Salida, 0 AS Total, p.`prodDesc` AS Producto, dep.`depoDesc` AS Deposito, p.`prodTipo` AS Tipo FROM `stock` s WHERE ((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') >= '" & mes & " 00:00:00')) AND DATE_FORMAT((s.`stFchIns` , '%Y/%m/%d %T')) <= '" & hoy & " 23:59:59' AND s.stCantidad < 0 " & filtro & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc` ) UNION (SELECT s.`prodCodigo` AS Prod, 0 AS Inicial, 0 AS Entrada , 0 AS Salida, SUM(s.`stCantidad`) AS Total, p.`prodDesc` AS Producto, dep.`depoDesc` AS Deposito, p.`prodTipo` AS Tipo FROM `stock` s WHERE ((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') >= '" & mes & " 00:00:00')) AND DATE_FORMAT((s.`stFchIns` , '%Y/%m/%d %T')) <= '" & hoy & " 23:59:59' AND s.stCantidad < 0 " & filtro & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc` ORDER BY Prod,Tipo)"
+
+            Dim Sql = "SELECT  s.`prodCodigo` as Articod, Sum(s.`stCantidad`) AS Inicial,0 as Entrada,0 as Salida,0 as Total,p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc, p.`prodTipo`" _
+           & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo` " _
+           & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T')  < '" & mes & " 00:00:00')) " & filtro & " " _
+           & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc`" _
+          & " UNION " _
+       & " SELECT s.`prodCodigo` as Articod,0 as Inicial , SUM(s.`stCantidad`) AS Entrada,0 as Salida,0 as Total , p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc,p.`prodTipo`" _
+          & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo`" _
+           & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') >= '" & mes & " 00:00:00' And DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') <= '" & hoy & " 23:59:59') and s.`stCantidad` > 0) " & filtro & " " _
+          & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc`" _
+            & " UNION " _
+        & " SELECT s.`prodCodigo` as Articod,0 as Inicial ,0 as Entrada, Sum(s.`stCantidad`) AS Salida,0 as Total, p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc, p.`prodTipo`" _
+          & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo`" _
+           & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') >= '" & mes & " 00:00:00' And DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') <= '" & hoy & " 23:59:59') and s.`stCantidad` < 0)  " & filtro & " " _
+          & " GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc`" _
+        & " UNION " _
+       & " SELECT  s.`prodCodigo`  as Articod,0 as Inicial ,0 as Entrada,0 as Salida, Sum(s.`stCantidad`) AS Total,p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc,p.`prodTipo`" _
+           & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo`" _
+            & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') >= '" & mes & " 00:00:00' And DATE_FORMAT((s.`stFchIns`), '%Y/%m/%d %T') <= '" & hoy & " 23:59:59')) " & filtro & " " _
+           & "  GROUP BY s.`prodCodigo`, p.`prodDesc`,dep.`depoDesc` ORDER BY Articod,prodTipo"
+
+            Dim sql2 = "Select * from (SELECT  s.`prodCodigo` as Articod, Sum(s.`stCantidad`) AS Inicial,0 as Entrada,0 as Salida,0 as Total,p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc" _
+           & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo` " _
+           & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss')  < '" & mes & " 00:00:00'))" _
+           & " GROUP BY s.`prodCodigo`, p.`prodDesc`, dep.`depoDesc`" _
+          & " UNION " _
+       & " SELECT  s.`prodCodigo` as Articod,0 as Inicial ,Sum(s.`stCantidad`) AS Entrada,0 as Salida,0 as Total ,p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc" _
+          & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo`  " _
+           & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss') >= '" & mes & " 00:00:00' And DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss') <= '" & hoy & " 23:59:59') and s.`stCantidad` > 0) " _
+          & " GROUP BY s.`prodCodigo`, p.`prodDesc`, dep.`depoDesc`" _
+            & " UNION " _
+        & " SELECT  s.`prodCodigo` as Articod,0 as Inicial ,0 as Entrada,Sum(s.`stCantidad`) AS Salida,0 as Total, p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc" _
+          & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo` " _
+           & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss') >= '" & mes & " 00:00:00' And DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss') <= '" & hoy & " 23:59:59') and s.`stCantidad` < 0) " _
+          & " GROUP BY s.`prodCodigo`, p.`prodDesc`, dep.`depoDesc`" _
+        & " UNION " _
+       & " SELECT s.`prodCodigo` as Articod,0 as Inicial ,0 as Entrada,0 as Salida, Sum(s.`stCantidad`) AS Total,p.`prodDesc` as ArtiDesc, dep.`depoDesc` as DepoDesc" _
+           & " FROM `stock` s INNER JOIN `deposito` dep ON dep.`depoCod` = s.`depoCod` INNER JOIN `productos` p ON p.`prodCod` = s.`prodCodigo` INNER JOIN `prodtipo` tp ON tp.`prodTipocod` = p.`prodTipo` " _
+            & " WHERE((DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss') >= '" & mes & " 00:00:00' And DATE_FORMAT((s.`stFchIns`), '%Y-%m-%d H:mm:ss') <= '" & hoy & " 23:59:59')) " _
+           & " GROUP BY s.`prodCodigo`, p.`prodDesc`, dep.`depoDesc` ORDER BY Articod) as t"
+            ' MsgBox(mysql)
+
+            Dim querydef = ""
+            'Dim FILE_NAME As String = "C:\Users\ssrui\Desktop\test.txt"
+
+            'If System.IO.File.Exists(FILE_NAME) = True Then
+
+            '    Dim objWriter As New System.IO.StreamWriter(FILE_NAME)
+
+            '    objWriter.Write(sql2)
+            '    objWriter.Close()
+            '    ' MessageBox.Show("Text written to file")
+            'End If
+
+            Dim cmd As New MySqlCommand(sql2, con)
+            ' cmd.Parameters.AddWithValue("@codigo", id)
+            ' Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(sql2, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+            'reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
 End Class
 

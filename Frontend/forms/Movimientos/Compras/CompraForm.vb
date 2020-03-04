@@ -210,6 +210,7 @@ Public Class CompraForm
                     txtCodProd.Text = ""
                     txtCantidad.Enabled = True
                     txtExenta.Enabled = True
+                    txtCantidad.Text = 1
                     txtExenta.Text = 0
                     asignarCosto()
                     txtExenta.Focus()
@@ -280,6 +281,10 @@ Public Class CompraForm
                 dgvProductos.DataSource = row2
                 dgvProductos.ClearSelection()
                 calcularTotal(total, iva5, iva10, exenta)
+                txtCantidad.Enabled = False
+                txtExenta.Text = ""
+                txtExenta.Enabled = False
+                txtCodProd.Focus()
             End If
         End If
     End Sub

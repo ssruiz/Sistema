@@ -87,6 +87,8 @@ Public Class PagoDAO
                 modelo.userUp = SafeGetString(reader, 16)
                 modelo.fechaU = SafeGetDate(reader, 17)
                 modelo.moneda = safeGetChar(reader, 18)
+                modelo.estado = safeGetChar(reader, 19)
+                modelo.comentario = SafeGetString(reader, 20)
             End While
 
             reader.Close()
@@ -99,4 +101,21 @@ Public Class PagoDAO
         End Try
 
     End Function
+
+    Public Sub anularPago(ByVal cod As String, ByVal coment As String)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "UPDATE `producir`.`pagos` SET `pago_estado` = 'A', `pago_comentario` = @com WHERE `pagoCod` = @cod;"
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@cod", cod)
+            cmd.Parameters.AddWithValue("@com", ("Anulado el: " + Date.Today + " . " + coment))
+
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
 End Class

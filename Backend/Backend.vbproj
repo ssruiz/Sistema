@@ -47,6 +47,29 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>Backend.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>Backend.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -96,6 +119,7 @@
     <Compile Include="DAO\EspesorDAO.vb" />
     <Compile Include="DAO\MovInternoDAO.vb" />
     <Compile Include="DAO\PagoDAO.vb" />
+    <Compile Include="DAO\PedidoInternoDAO.vb" />
     <Compile Include="DAO\ProduccionDAO.vb" />
     <Compile Include="DAO\ProductoDAO.vb" />
     <Compile Include="DAO\ProveedorDAO.vb" />
@@ -120,6 +144,7 @@
     <Compile Include="Models\Espesor.vb" />
     <Compile Include="Models\MInterno.vb" />
     <Compile Include="Models\Pago.vb" />
+    <Compile Include="Models\PedidoInterno.vb" />
     <Compile Include="Models\Produccion.vb" />
     <Compile Include="Models\Producto.vb" />
     <Compile Include="Models\Proveedor.vb" />

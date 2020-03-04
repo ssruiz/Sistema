@@ -104,7 +104,7 @@ Partial Class InformesProduccion
         '
         Me.cbInformes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbInformes.FormattingEnabled = True
-        Me.cbInformes.Items.AddRange(New Object() {"--- Seleccione el tipo de Informe ---", "Producción Templados", "Pendientes a Templar", "Pendientes a Cortar", "Producción por Clientes"})
+        Me.cbInformes.Items.AddRange(New Object() {"--- Seleccione el tipo de Informe ---", "Producción Templados", "Pendientes a Templar", "Pendientes a Cortar", "Producción por Clientes", "Pendientes a Pulir"})
         Me.cbInformes.Location = New System.Drawing.Point(139, 79)
         Me.cbInformes.Name = "cbInformes"
         Me.cbInformes.Size = New System.Drawing.Size(519, 31)

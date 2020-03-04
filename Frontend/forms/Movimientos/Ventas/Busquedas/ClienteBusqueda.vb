@@ -23,6 +23,12 @@ Public Class ClienteBusqueda
         dv.RowFilter = String.Format("Nombre like '%{0}%' or RUC like '%{0}%' ", txtFiltro.Text)
         dgvClientes.DataSource = dv
         'dgvClientes.ClearSelection()
+        dgvClientes.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        dgvClientes.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        dgvClientes.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        dgvClientes.Columns(8).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        dgvClientes.Columns(9).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+        dgvClientes.Columns(10).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
     End Sub
     Private Sub dgvClientes_KeyDown(sender As Object, e As KeyEventArgs) Handles dgvClientes.KeyDown
         Try

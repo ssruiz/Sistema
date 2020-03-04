@@ -19,7 +19,7 @@ Public Class MesaCorteForm
     Private Sub btnMesa1_Click(sender As Object, e As EventArgs) Handles btnMesa1.Click
         Dim cortef As New CorteForm
         cortef.mesa = 1
-        Me.Visible = False
+        Me.Hide()
         cortef.Show()
 
     End Sub
@@ -27,7 +27,7 @@ Public Class MesaCorteForm
     Private Sub btnMesa2_Click(sender As Object, e As EventArgs) Handles btnMesa2.Click
         Dim cortef As New CorteForm
         cortef.mesa = 2
-        Me.Visible = False
+        Me.Hide()
         cortef.ShowDialog()
     End Sub
 

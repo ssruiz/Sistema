@@ -20,6 +20,42 @@ Public Class TipoPagoDAO
         Return ds
     End Function
 
+    Public Function getTiposGS() As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vlistadotipospagos where ID <> 2 and ID <> 4"
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getTiposDOL() As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vlistadotipospagos where ID <> 1 and ID <> 3"
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
     Public Function getTipo(ByVal id As String) As TipoPagoM
         Try
 

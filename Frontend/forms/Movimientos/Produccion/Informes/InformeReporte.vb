@@ -10,6 +10,7 @@ Public Class InformeReporte
             Case 1
 
                 Dim rep As New ReporteProd1
+                'Dim rep As New CRInformeRepo
                 Dim dao As New SesionDAO
                 rep.SetParameterValue("fecha1", inicio)
                 rep.SetParameterValue("fecha2", fin)
@@ -25,7 +26,13 @@ Public Class InformeReporte
                 rep.SetParameterValue("usuario", dao.getUsuario)
                 crvProduc.ReportSource = rep
             Case 3
-                Me.Close()
+                Dim rep As New ReporteProd3
+                Dim dao As New SesionDAO
+                rep.SetParameterValue("fecha1", inicio)
+                rep.SetParameterValue("fecha2", fin)
+
+                rep.SetParameterValue("usuario", dao.getUsuario)
+                crvProduc.ReportSource = rep
 
             Case 4
                 Dim rep As New ReporteProd4
@@ -34,6 +41,21 @@ Public Class InformeReporte
                 rep.SetParameterValue("f2", fin)
 
                 rep.SetParameterValue("usuario", dao.getUsuario)
+                crvProduc.ReportSource = rep
+
+            Case 5
+                Dim rep As New ReporteProd5
+                Dim dao As New SesionDAO
+                Dim daop As New ProduccionDAO
+
+                Dim dt = daop.pulidasPendientes(inicio, fin)
+
+
+                rep.SetDataSource(dt.Tables("tabla"))
+
+                rep.SetParameterValue("usu", dao.getUsuario)
+                rep.SetParameterValue("f1", inicio)
+                rep.SetParameterValue("f2", fin)
                 crvProduc.ReportSource = rep
         End Select
     End Sub

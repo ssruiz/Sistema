@@ -12,6 +12,11 @@ Public Class TempladoForm
             txtPulidora.Text = "TEMPLADOS - SALIDA"
             txtSalidaEntrada.Text = "Nro. Salidas"
         End If
+
+        Dim prodDao As New ProduccionDAO
+        lblEntradas.Text = prodDao.getTempEntradasDia()
+        lblSalidas.Text = prodDao.getTempSalidasDia()
+        lblRoturas.Text = prodDao.getTempRoturas()
     End Sub
 
     Private Sub txtNroProd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNroProd.KeyDown
@@ -49,7 +54,8 @@ Public Class TempladoForm
                             If ban = False Then
 
                                 dgvPulida.Rows.Add(producc.idProd, producto.codigo, producc.panho, producc.ancho, producc.alto, Date.Now, "", "")
-
+                                Dim piezas = dgvPulida.Rows.Count
+                                lblPiezas.Text = piezas
                             End If
 
 
@@ -77,6 +83,8 @@ Public Class TempladoForm
 
                             If ban = False Then
                                 dgvPulida.Rows.Add(producc.idProd, producto.codigo, producc.panho, producc.ancho, producc.alto, "", Date.Now, "")
+                                Dim piezas = dgvPulida.Rows.Count
+                                lblPiezas.Text = piezas
                             End If
                         End If
 
@@ -135,16 +143,20 @@ Public Class TempladoForm
             End If
             txtNroProd.Text = ""
             txtNroProd.Focus()
+            'Dim prodDao As New ProduccionDAO
+            lblEntradas.Text = prodDao.getTempEntradasDia()
+            lblSalidas.Text = prodDao.getTempSalidasDia()
+            lblRoturas.Text = prodDao.getTempRoturas()
         End If
 
     End Sub
 
     Private Sub btnMesa1_Click(sender As Object, e As EventArgs) Handles btnMesa1.Click
-        'Dim corteRot As New RoturaPulida
-        'corteRot.pulidora = mesa
-        'corteRot.ShowDialog()
+        Dim corteRot As New TempladoRotura
+        corteRot.templa = templado
+        corteRot.ShowDialog()
 
-        'corteRot.Dispose()
+        corteRot.Dispose()
     End Sub
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click

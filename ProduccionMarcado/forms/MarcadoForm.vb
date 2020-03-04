@@ -12,10 +12,15 @@ Public Class MarcadoForm
         Try
             If conectar.login("MARCADO", "MARCADO") Then
                 dgvPulida.DataSource = New DataSetProduccion.MarcadoDataTable
+                Dim prodDao As New ProduccionDAO
+                lblMarcados.Text = Math.Round(prodDao.getMarcadosDia(), 2).ToString + " (m" & Chr(178) & ")"
+                lblRoturas.Text = Math.Round(prodDao.getMarcadosRoturaDia(), 2).ToString + " (m" & Chr(178) & ")"
+
             Else
                 MsgBox("Conexión no realizada")
                 Application.Exit()
             End If
+
         Catch ex As Exception
             MsgBox(ex.Message)
             Application.Exit()
@@ -32,21 +37,25 @@ Public Class MarcadoForm
                 producc = prodDao.getProduccion(txtNroProd.Text)
 
                 If producc.idProd <> 0 Then
+                    cargarImagenes()
                     'Valida si ya paso por corte
                     If prodDao.validarCorte(producc.idProd) Then
 
 
                         If prodDao.validarMarcadoEstado(producc.idProd) Then
-                                prodDao.guardarMarcado(producc.idProd, 0)
-                                'MsgBox("Marcado Guardado", MsgBoxStyle.Information, "Pulida")
-                                dgvPulida.DataSource = prodDao.getMarcado(producc.idProd).Tables("tabla")
-                                cargarImagenes()
-                                txtNroProd.Text = ""
-                                txtNroProd.Focus()
-                            End If
+                            prodDao.guardarMarcado(producc.idProd, 0)
+                            'MsgBox("Marcado Guardado", MsgBoxStyle.Information, "Pulida")
+                            dgvPulida.DataSource = prodDao.getMarcado(producc.idProd).Tables("tabla")
 
-                        Else
-                            MsgBox("Producción aun no pasó por corte", MsgBoxStyle.Critical, "Marcado")
+                            txtNroProd.Text = ""
+                            txtNroProd.Focus()
+                            'Dim prodDao As New ProduccionDAO
+                            lblMarcados.Text = Math.Round(prodDao.getMarcadosDia(), 2).ToString + " (m" & Chr(178) & ")"
+                            lblRoturas.Text = Math.Round(prodDao.getMarcadosRoturaDia(), 2).ToString + " (m" & Chr(178) & ")"
+                        End If
+
+                    Else
+                        MsgBox("Producción aun no pasó por corte", MsgBoxStyle.Critical, "Marcado")
                     End If
                     ' Guardar marcado
 
@@ -75,14 +84,17 @@ Public Class MarcadoForm
         corteRot.ShowDialog()
 
         corteRot.Dispose()
+        Dim prodDao As New ProduccionDAO
+        lblMarcados.Text = Math.Round(prodDao.getMarcadosDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prodDao.getMarcadosRoturaDia(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 
     Private Sub pbPlano_Click(sender As Object, e As EventArgs) Handles pbPlano.Click
-        Dim plv As New PlanoViewer
-        plv.plano = pbPlano.Image
+        'Dim plv As New PlanoViewer
+        'plv.plano = pbPlano.Image
 
-        plv.ShowDialog()
-        plv.Dispose()
+        'plv.ShowDialog()
+        'plv.Dispose()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnImgNext.Click
@@ -115,5 +127,20 @@ Public Class MarcadoForm
             End If
 
         End If
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        pbPlano.Width *= 1.2
+        pbPlano.Height *= 1.2
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        pbPlano.Width *= 0.8
+        pbPlano.Height *= 0.8
+    End Sub
+
+    Private Sub pbPlano_LoadCompleted(sender As Object, e As System.ComponentModel.AsyncCompletedEventArgs) Handles pbPlano.LoadCompleted
+        pbPlano.Width = pbPlano.Image.Width
+        pbPlano.Height = pbPlano.Image.Height
     End Sub
 End Class

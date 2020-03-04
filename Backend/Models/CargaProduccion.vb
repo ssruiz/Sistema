@@ -128,4 +128,24 @@
             _fechaOt = value
         End Set
     End Property
+
+    Private _roturas As Integer
+    Public Property roturas() As Integer
+        Get
+            Return _roturas
+        End Get
+        Set(ByVal value As Integer)
+            _roturas = value
+        End Set
+    End Property
+
+    Private _repo As String
+    Public Property repo() As String
+        Get
+            Return _repo
+        End Get
+        Set(ByVal value As String)
+            _repo = value
+        End Set
+    End Property
 End Class

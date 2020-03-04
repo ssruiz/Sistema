@@ -38,6 +38,7 @@ Partial Class ClienteBusqueda
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtFiltro = New System.Windows.Forms.TextBox()
         Me.dgvClientes = New System.Windows.Forms.DataGridView()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NombreC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CIC = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,7 +47,9 @@ Partial Class ClienteBusqueda
         Me.Insert = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ULTA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaACT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.dircolcliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CelCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VendeCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -103,7 +106,7 @@ Partial Class ClienteBusqueda
         Me.dgvClientes.AllowUserToResizeColumns = False
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
@@ -112,17 +115,17 @@ Partial Class ClienteBusqueda
         Me.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(34, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvClientes.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.NombreC, Me.CIC, Me.RUCC, Me.TipoC, Me.Insert, Me.ULTA, Me.FechaACT})
+        Me.dgvClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.NombreC, Me.CIC, Me.RUCC, Me.TipoC, Me.Insert, Me.ULTA, Me.FechaACT, Me.dircolcliente, Me.CelCol, Me.VendeCol})
         DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal
         DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -135,17 +138,30 @@ Partial Class ClienteBusqueda
         Me.dgvClientes.MultiSelect = False
         Me.dgvClientes.Name = "dgvClientes"
         Me.dgvClientes.RowHeadersVisible = False
+        Me.dgvClientes.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvClientes.RowTemplate.Height = 24
         Me.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvClientes.Size = New System.Drawing.Size(885, 392)
         Me.dgvClientes.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label2.Location = New System.Drawing.Point(266, 156)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(417, 23)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Seleccione un cliente y presione enter para confirmar"
         '
         'ID
         '
         Me.ID.DataPropertyName = "ID"
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ID.DefaultCellStyle = DataGridViewCellStyle3
-        Me.ID.HeaderText = "ID"
+        Me.ID.HeaderText = "Cod"
         Me.ID.Name = "ID"
         '
         'NombreC
@@ -163,6 +179,7 @@ Partial Class ClienteBusqueda
         Me.CIC.DefaultCellStyle = DataGridViewCellStyle5
         Me.CIC.HeaderText = "CI"
         Me.CIC.Name = "CIC"
+        Me.CIC.Visible = False
         '
         'RUCC
         '
@@ -179,6 +196,7 @@ Partial Class ClienteBusqueda
         Me.TipoC.DefaultCellStyle = DataGridViewCellStyle7
         Me.TipoC.HeaderText = "Tipo"
         Me.TipoC.Name = "TipoC"
+        Me.TipoC.Visible = False
         '
         'Insert
         '
@@ -207,17 +225,23 @@ Partial Class ClienteBusqueda
         Me.FechaACT.Name = "FechaACT"
         Me.FechaACT.Visible = False
         '
-        'Label2
+        'dircolcliente
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label2.Location = New System.Drawing.Point(266, 156)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(417, 23)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Seleccione un cliente y presione enter para confirmar"
+        Me.dircolcliente.DataPropertyName = "direccion"
+        Me.dircolcliente.HeaderText = "Dirección"
+        Me.dircolcliente.Name = "dircolcliente"
+        '
+        'CelCol
+        '
+        Me.CelCol.DataPropertyName = "celular"
+        Me.CelCol.HeaderText = "Celular"
+        Me.CelCol.Name = "CelCol"
+        '
+        'VendeCol
+        '
+        Me.VendeCol.DataPropertyName = "vendedor"
+        Me.VendeCol.HeaderText = "Vendedor"
+        Me.VendeCol.Name = "VendeCol"
         '
         'ClienteBusqueda
         '
@@ -259,4 +283,7 @@ Partial Class ClienteBusqueda
     Friend WithEvents Insert As DataGridViewTextBoxColumn
     Friend WithEvents ULTA As DataGridViewTextBoxColumn
     Friend WithEvents FechaACT As DataGridViewTextBoxColumn
+    Friend WithEvents dircolcliente As DataGridViewTextBoxColumn
+    Friend WithEvents CelCol As DataGridViewTextBoxColumn
+    Friend WithEvents VendeCol As DataGridViewTextBoxColumn
 End Class

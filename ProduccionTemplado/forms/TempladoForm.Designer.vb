@@ -22,11 +22,11 @@ Partial Class TempladoForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.btnConfirmar = New System.Windows.Forms.Button()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TempladoForm))
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.txtNroProd = New System.Windows.Forms.TextBox()
@@ -42,32 +42,23 @@ Partial Class TempladoForm
         Me.txtPulidora = New System.Windows.Forms.Label()
         Me.dgvPulida = New System.Windows.Forms.DataGridView()
         Me.txtSalidaEntrada = New System.Windows.Forms.Label()
-        Me.lblFechaVenta = New System.Windows.Forms.Label()
+        Me.lblRoturas = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnMesa1 = New System.Windows.Forms.Button()
+        Me.lblSalidas = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblEntradas = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblPiezas = New System.Windows.Forms.Label()
+        Me.btnOrdenCompleta = New System.Windows.Forms.Button()
+        Me.btnConfirmar = New System.Windows.Forms.Button()
+        Me.btnMesa1 = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvPulida, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnConfirmar
-        '
-        Me.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnConfirmar.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnConfirmar.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnConfirmar.Location = New System.Drawing.Point(759, 174)
-        Me.btnConfirmar.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnConfirmar.Name = "btnConfirmar"
-        Me.btnConfirmar.Size = New System.Drawing.Size(213, 69)
-        Me.btnConfirmar.TabIndex = 44
-        Me.btnConfirmar.Text = "Confirmar"
-        Me.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnConfirmar.UseVisualStyleBackColor = False
         '
         'lblTitulo
         '
@@ -89,7 +80,7 @@ Partial Class TempladoForm
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(517, 79)
+        Me.GroupBox2.Size = New System.Drawing.Size(451, 79)
         Me.GroupBox2.TabIndex = 40
         Me.GroupBox2.TabStop = False
         '
@@ -98,7 +89,7 @@ Partial Class TempladoForm
         Me.txtNroProd.Location = New System.Drawing.Point(177, 33)
         Me.txtNroProd.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNroProd.Name = "txtNroProd"
-        Me.txtNroProd.Size = New System.Drawing.Size(299, 22)
+        Me.txtNroProd.Size = New System.Drawing.Size(249, 22)
         Me.txtNroProd.TabIndex = 8
         Me.txtNroProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -164,8 +155,8 @@ Partial Class TempladoForm
         '
         Me.NroProdCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.NroProdCol.DataPropertyName = "Nro. Prod."
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.NroProdCol.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.NroProdCol.DefaultCellStyle = DataGridViewCellStyle1
         Me.NroProdCol.HeaderText = "Nro. Prod."
         Me.NroProdCol.Name = "NroProdCol"
         '
@@ -174,12 +165,12 @@ Partial Class TempladoForm
         Me.txtPulidora.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(44, Byte), Integer))
         Me.txtPulidora.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPulidora.ForeColor = System.Drawing.Color.AliceBlue
-        Me.txtPulidora.Location = New System.Drawing.Point(762, 77)
+        Me.txtPulidora.Location = New System.Drawing.Point(515, 82)
         Me.txtPulidora.Margin = New System.Windows.Forms.Padding(0)
         Me.txtPulidora.Name = "txtPulidora"
         Me.txtPulidora.Padding = New System.Windows.Forms.Padding(4)
         Me.txtPulidora.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtPulidora.Size = New System.Drawing.Size(463, 69)
+        Me.txtPulidora.Size = New System.Drawing.Size(474, 69)
         Me.txtPulidora.TabIndex = 43
         Me.txtPulidora.Text = "MESA DE PULIDA1"
         Me.txtPulidora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -189,34 +180,34 @@ Partial Class TempladoForm
         Me.dgvPulida.AllowUserToAddRows = False
         Me.dgvPulida.AllowUserToDeleteRows = False
         Me.dgvPulida.AllowUserToResizeColumns = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvPulida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvPulida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPulida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPulida.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvPulida.ColumnHeadersHeight = 30
         Me.dgvPulida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvPulida.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroProdCol, Me.FechaCol, Me.PanhoCol, Me.AnchoCol, Me.AltoCol, Me.CorteCol, Me.SalidaCol, Me.RoturaCol})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle4
         Me.dgvPulida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvPulida.EnableHeadersVisualStyles = False
         Me.dgvPulida.Location = New System.Drawing.Point(36, 296)
@@ -235,80 +226,93 @@ Partial Class TempladoForm
         Me.txtSalidaEntrada.AutoSize = True
         Me.txtSalidaEntrada.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSalidaEntrada.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.txtSalidaEntrada.Location = New System.Drawing.Point(15, 30)
+        Me.txtSalidaEntrada.Location = New System.Drawing.Point(249, 30)
         Me.txtSalidaEntrada.Name = "txtSalidaEntrada"
-        Me.txtSalidaEntrada.Size = New System.Drawing.Size(93, 23)
+        Me.txtSalidaEntrada.Size = New System.Drawing.Size(62, 23)
         Me.txtSalidaEntrada.TabIndex = 23
-        Me.txtSalidaEntrada.Text = "Nro. Salida"
+        Me.txtSalidaEntrada.Text = "Salidas"
         '
-        'lblFechaVenta
+        'lblRoturas
         '
-        Me.lblFechaVenta.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.lblFechaVenta.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaVenta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblFechaVenta.Location = New System.Drawing.Point(385, 23)
-        Me.lblFechaVenta.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblFechaVenta.Name = "lblFechaVenta"
-        Me.lblFechaVenta.Padding = New System.Windows.Forms.Padding(4)
-        Me.lblFechaVenta.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblFechaVenta.Size = New System.Drawing.Size(113, 34)
-        Me.lblFechaVenta.TabIndex = 24
-        Me.lblFechaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblRoturas.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblRoturas.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRoturas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblRoturas.Location = New System.Drawing.Point(571, 23)
+        Me.lblRoturas.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblRoturas.Name = "lblRoturas"
+        Me.lblRoturas.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblRoturas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblRoturas.Size = New System.Drawing.Size(128, 34)
+        Me.lblRoturas.TabIndex = 24
+        Me.lblRoturas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label4.Location = New System.Drawing.Point(304, 30)
+        Me.Label4.Location = New System.Drawing.Point(15, 30)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(69, 23)
+        Me.Label4.Size = New System.Drawing.Size(76, 23)
         Me.Label4.TabIndex = 25
-        Me.Label4.Text = "Roturas"
+        Me.Label4.Text = "Entradas"
         '
-        'Label1
+        'lblSalidas
         '
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(140, 23)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Padding = New System.Windows.Forms.Padding(4)
-        Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label1.Size = New System.Drawing.Size(113, 34)
-        Me.Label1.TabIndex = 26
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnMesa1
-        '
-        Me.btnMesa1.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnMesa1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMesa1.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMesa1.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnMesa1.Image = Global.ProduccionTemplado.My.Resources.Resources._3
-        Me.btnMesa1.Location = New System.Drawing.Point(1009, 172)
-        Me.btnMesa1.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnMesa1.Name = "btnMesa1"
-        Me.btnMesa1.Size = New System.Drawing.Size(215, 69)
-        Me.btnMesa1.TabIndex = 45
-        Me.btnMesa1.Text = "Rotura"
-        Me.btnMesa1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnMesa1.UseVisualStyleBackColor = False
+        Me.lblSalidas.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblSalidas.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSalidas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblSalidas.Location = New System.Drawing.Point(329, 23)
+        Me.lblSalidas.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblSalidas.Name = "lblSalidas"
+        Me.lblSalidas.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblSalidas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblSalidas.Size = New System.Drawing.Size(122, 34)
+        Me.lblSalidas.TabIndex = 26
+        Me.lblSalidas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.txtSalidaEntrada)
-        Me.GroupBox1.Controls.Add(Me.lblFechaVenta)
+        Me.GroupBox1.Controls.Add(Me.lblRoturas)
+        Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.lblEntradas)
+        Me.GroupBox1.Controls.Add(Me.lblSalidas)
+        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.GroupBox1.Location = New System.Drawing.Point(37, 164)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(517, 79)
+        Me.GroupBox1.Size = New System.Drawing.Size(718, 79)
         Me.GroupBox1.TabIndex = 41
         Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "DEL DÍA"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Label5.Location = New System.Drawing.Point(480, 30)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(69, 23)
+        Me.Label5.TabIndex = 25
+        Me.Label5.Text = "Roturas"
+        '
+        'lblEntradas
+        '
+        Me.lblEntradas.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblEntradas.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEntradas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblEntradas.Location = New System.Drawing.Point(103, 23)
+        Me.lblEntradas.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblEntradas.Name = "lblEntradas"
+        Me.lblEntradas.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblEntradas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblEntradas.Size = New System.Drawing.Size(126, 34)
+        Me.lblEntradas.TabIndex = 26
+        Me.lblEntradas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel1
         '
@@ -318,15 +322,89 @@ Partial Class TempladoForm
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1264, 49)
+        Me.Panel1.Size = New System.Drawing.Size(1286, 49)
         Me.Panel1.TabIndex = 39
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.Location = New System.Drawing.Point(33, 256)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(147, 23)
+        Me.Label3.TabIndex = 46
+        Me.Label3.Text = "Piezas Agregadas:"
+        '
+        'lblPiezas
+        '
+        Me.lblPiezas.AutoSize = True
+        Me.lblPiezas.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPiezas.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.lblPiezas.Location = New System.Drawing.Point(188, 256)
+        Me.lblPiezas.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblPiezas.Name = "lblPiezas"
+        Me.lblPiezas.Size = New System.Drawing.Size(0, 23)
+        Me.lblPiezas.TabIndex = 46
+        '
+        'btnOrdenCompleta
+        '
+        Me.btnOrdenCompleta.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnOrdenCompleta.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnOrdenCompleta.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnOrdenCompleta.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnOrdenCompleta.Image = Global.ProduccionTemplado.My.Resources.Resources.templado_aprobado
+        Me.btnOrdenCompleta.Location = New System.Drawing.Point(1016, 85)
+        Me.btnOrdenCompleta.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnOrdenCompleta.Name = "btnOrdenCompleta"
+        Me.btnOrdenCompleta.Size = New System.Drawing.Size(208, 71)
+        Me.btnOrdenCompleta.TabIndex = 47
+        Me.btnOrdenCompleta.Text = "Orden Completa"
+        Me.btnOrdenCompleta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnOrdenCompleta.UseVisualStyleBackColor = False
+        '
+        'btnConfirmar
+        '
+        Me.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnConfirmar.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnConfirmar.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnConfirmar.Image = Global.ProduccionTemplado.My.Resources.Resources.aprob
+        Me.btnConfirmar.Location = New System.Drawing.Point(807, 188)
+        Me.btnConfirmar.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnConfirmar.Name = "btnConfirmar"
+        Me.btnConfirmar.Size = New System.Drawing.Size(182, 71)
+        Me.btnConfirmar.TabIndex = 44
+        Me.btnConfirmar.Text = "Confirmar"
+        Me.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnConfirmar.UseVisualStyleBackColor = False
+        '
+        'btnMesa1
+        '
+        Me.btnMesa1.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnMesa1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMesa1.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMesa1.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnMesa1.Image = Global.ProduccionTemplado.My.Resources.Resources._3
+        Me.btnMesa1.Location = New System.Drawing.Point(1016, 187)
+        Me.btnMesa1.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnMesa1.Name = "btnMesa1"
+        Me.btnMesa1.Size = New System.Drawing.Size(208, 71)
+        Me.btnMesa1.TabIndex = 45
+        Me.btnMesa1.Text = "Rotura"
+        Me.btnMesa1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnMesa1.UseVisualStyleBackColor = False
         '
         'TempladoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1264, 716)
+        Me.ClientSize = New System.Drawing.Size(1286, 716)
+        Me.Controls.Add(Me.btnOrdenCompleta)
+        Me.Controls.Add(Me.lblPiezas)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnConfirmar)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.txtPulidora)
@@ -334,9 +412,10 @@ Partial Class TempladoForm
         Me.Controls.Add(Me.btnMesa1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TempladoForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "TempladoForm"
+        Me.Text = "Templado"
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.dgvPulida, System.ComponentModel.ISupportInitialize).EndInit()
@@ -345,6 +424,7 @@ Partial Class TempladoForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -364,10 +444,15 @@ Partial Class TempladoForm
     Friend WithEvents txtPulidora As Label
     Friend WithEvents dgvPulida As DataGridView
     Friend WithEvents txtSalidaEntrada As Label
-    Friend WithEvents lblFechaVenta As Label
+    Friend WithEvents lblRoturas As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblSalidas As Label
     Friend WithEvents btnMesa1 As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblPiezas As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents lblEntradas As Label
+    Friend WithEvents btnOrdenCompleta As Button
 End Class

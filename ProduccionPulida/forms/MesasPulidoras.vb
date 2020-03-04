@@ -18,21 +18,21 @@ Public Class MesasPulidoras
     Private Sub btnMesa1_Click(sender As Object, e As EventArgs) Handles btnMesa1.Click
         Dim pulf As New PulidaForm
         pulf.mesa = 1
-        Me.Visible = False
+        Me.Hide()
         pulf.Show()
     End Sub
 
     Private Sub btnMesa2_Click(sender As Object, e As EventArgs) Handles btnMesa2.Click
         Dim pulf As New PulidaForm
         pulf.mesa = 2
-        Me.Visible = False
+        Me.Hide()
         pulf.Show()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim pulf As New PulidaForm
         pulf.mesa = 3
-        Me.Visible = False
+        Me.Hide()
         pulf.Show()
     End Sub
 

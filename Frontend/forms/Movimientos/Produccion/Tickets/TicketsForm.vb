@@ -17,7 +17,7 @@ Public Class TicketsForm
     Private Sub cargarEtiquetas()
         Try
             Dim daov As New VentaDAO
-            Dim res = daov.cargarEtiquetas(idVenta)
+            Dim res = daov.cargarEtiquetas2(idVenta)
             list = res
             dgvEtiquetas.DataSource = res.Tables("tabla")
             dgvEtiquetas.ClearSelection()
@@ -95,6 +95,7 @@ Public Class TicketsForm
                 fin = txtHasta.Text
 
 
+
                 ticketsImprimir.PrintOptions.PrinterName = "Datamax-O'Neil E-4205A Mark III" ''PONER NOMBRE DE IMPRESORA
                 'ticketsImprimir.PrintOptions.PrinterName = "Win2PDF" ''PONER NOMBRE DE IMPRESORA
 
@@ -107,7 +108,7 @@ Public Class TicketsForm
                 '   Else
                 '    MsgBox "Printed"
                 'End If
-                MsgBox("¡Tickets impresos!", MsgBoxStyle.Information, "Notificación")
+                ' MsgBox("¡Tickets impresos!", MsgBoxStyle.Information, "Notificación")
                 actualizarProduccion()
             End If
 

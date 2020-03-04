@@ -47,6 +47,32 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>glass.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>ProduccionTemplado.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>ProduccionTemplado.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,6 +99,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forms\OrdenCompletaForm.Designer.vb">
+      <DependentUpon>OrdenCompletaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\OrdenCompletaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\SeleccionTemplado.Designer.vb">
       <DependentUpon>SeleccionTemplado.vb</DependentUpon>
     </Compile>
@@ -83,6 +115,12 @@
       <DependentUpon>TempladoForm.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\TempladoForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\TempladoRotura.Designer.vb">
+      <DependentUpon>TempladoRotura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\TempladoRotura.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -102,11 +140,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="forms\OrdenCompletaForm.resx">
+      <DependentUpon>OrdenCompletaForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\SeleccionTemplado.resx">
       <DependentUpon>SeleccionTemplado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\TempladoForm.resx">
       <DependentUpon>TempladoForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\TempladoRotura.resx">
+      <DependentUpon>TempladoRotura.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -142,6 +186,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\approve1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="glass.ico" />
+    <None Include="Resources\icons8-someter-para-aprobacion-30.png" />
+    <None Include="Resources\aprob.png" />
+    <None Include="Resources\templado_aprobado.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

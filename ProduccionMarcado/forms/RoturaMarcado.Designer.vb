@@ -22,6 +22,7 @@ Partial Class RoturaMarcado
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RoturaMarcado))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -39,7 +40,7 @@ Partial Class RoturaMarcado
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(775, 50)
+        Me.Panel1.Size = New System.Drawing.Size(626, 50)
         Me.Panel1.TabIndex = 24
         '
         'lblTitulo
@@ -48,7 +49,7 @@ Partial Class RoturaMarcado
         Me.lblTitulo.BackColor = System.Drawing.Color.Transparent
         Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(221, 0)
+        Me.lblTitulo.Location = New System.Drawing.Point(141, 0)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(324, 41)
         Me.lblTitulo.TabIndex = 1
@@ -57,7 +58,7 @@ Partial Class RoturaMarcado
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.txtNroProd)
-        Me.GroupBox2.Location = New System.Drawing.Point(182, 107)
+        Me.GroupBox2.Location = New System.Drawing.Point(103, 107)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
@@ -78,7 +79,7 @@ Partial Class RoturaMarcado
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(300, 80)
+        Me.Label2.Location = New System.Drawing.Point(202, 80)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(191, 23)
@@ -90,12 +91,13 @@ Partial Class RoturaMarcado
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(775, 224)
+        Me.ClientSize = New System.Drawing.Size(626, 224)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Label2)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "RoturaMarcado"
-        Me.Text = "RoturaMarcado"
+        Me.Text = "Rotura Marcado"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)

@@ -31,6 +31,7 @@ Public Class PagoDetalle
         lblRecibo.Text = pago.recibo
         lblBanco.Text = banco.nombre
         lblCheque.Text = pago.chequenro
+        lblComent.Text = pago.comentario
         If banco.nombre <> "" Then
             lblchequev.Text = pago.chequevenc
         End If

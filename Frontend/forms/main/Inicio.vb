@@ -104,9 +104,7 @@ Public Class Inicio
     End Sub
     'Ventas
     Private Sub VentasTS_Click(sender As Object, e As EventArgs) Handles VentasTS.Click
-        Dim cliV As New VentasForm
-        cliV.ShowDialog()
-        cliV.Dispose()
+
     End Sub
 
     'Compras
@@ -123,9 +121,7 @@ Public Class Inicio
     End Sub
     'Stock
     Private Sub StockTS_Click(sender As Object, e As EventArgs) Handles StockTS.Click
-        Dim infV As New StockForm
-        infV.ShowDialog()
-        infV.Dispose()
+
     End Sub
     'Mov. Interno
     Private Sub NuevoMovimientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevoMovimientoToolStripMenuItem.Click
@@ -239,17 +235,16 @@ Public Class Inicio
     End Sub
 
     Private Sub PruebaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebaToolStripMenuItem.Click
-        Dim prueb As New PruebaTickets
-        prueb.ShowDialog()
-        prueb.Dispose()
-
+        Dim exp As New ExpedicionForm
+        exp.ShowDialog()
+        exp.Dispose()
     End Sub
 
     Private Sub ImageneToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub ImagesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImagesToolStripMenuItem.Click
+    Private Sub ImagesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Dim pr As New PruebaImagens
         pr.ShowDialog()
         pr.Dispose()
@@ -283,11 +278,102 @@ Public Class Inicio
         Dim inf As New InformesProduccion
         inf.ShowDialog()
         inf.Dispose()
+
     End Sub
 
     Private Sub AutorizaciónMovimientosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizaciónMovimientosToolStripMenuItem.Click
         Dim auto As New ConfirmarMIForm
         auto.ShowDialog()
         auto.Dispose()
+    End Sub
+
+    Private Sub ExpediciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExpediciónToolStripMenuItem.Click
+        Dim exp As New ExpedicionForm
+        exp.ShowDialog()
+        exp.Dispose()
+    End Sub
+
+    Private Sub InformeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InformeToolStripMenuItem.Click
+        Dim infV As New ReporteDeCobrosForm
+
+        infV.ShowDialog()
+        infV.Dispose()
+    End Sub
+
+    Private Sub InformesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InformesToolStripMenuItem.Click
+        Dim inf As New InformesProduccion
+        inf.ShowDialog()
+        inf.Dispose()
+    End Sub
+
+    Private Sub VerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerToolStripMenuItem.Click
+        Dim infV As New StockForm
+        infV.ShowDialog()
+        infV.Dispose()
+    End Sub
+
+    Private Sub InformeToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles InformeToolStripMenuItem1.Click
+        Dim reporte As New ReporteStockForm
+        reporte.ShowDialog()
+        reporte.Dispose()
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        Dim ped As New PedidoInternoGeneral
+        ped.ShowDialog()
+        ped.Dispose()
+    End Sub
+
+    Private Sub SaldoClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldoClientesToolStripMenuItem.Click
+        Dim rep As New ReporteVentasClienteForm
+        rep.ShowDialog()
+        rep.Dispose()
+    End Sub
+
+    Private Sub VentasTipoProductoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasTipoProductoToolStripMenuItem.Click
+        Dim rep As New ReporteVentasPorProducto
+        rep.ShowDialog()
+        rep.Dispose()
+    End Sub
+
+    Private Sub PagosVendedoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PagosVendedoresToolStripMenuItem.Click
+        Dim rep As New ReporteVentasVendedores
+        rep.ShowDialog()
+        rep.Dispose()
+    End Sub
+
+    Private Sub CobrosTipoProductoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CobrosTipoProductoToolStripMenuItem.Click
+        Dim rep As New ReporteCobrosPorProducto
+        rep.ShowDialog()
+        rep.Dispose()
+    End Sub
+
+    Private Sub PorMesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PorMesToolStripMenuItem.Click
+        Dim rp As New StockPorMesForm
+        rp.ShowDialog()
+        rp.Dispose()
+    End Sub
+
+    Private Sub NuevaVentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevaVentaToolStripMenuItem.Click
+        Dim cliV As New VentasForm
+        cliV.ShowDialog()
+        cliV.Dispose()
+    End Sub
+
+    Private Sub AnularFacturaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnularFacturaToolStripMenuItem.Click
+        Dim cliV As New AnularFacturaForm
+        cliV.ShowDialog()
+        cliV.Dispose()
+    End Sub
+
+    Private Sub ReposicionesTempladoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReposicionesTempladoToolStripMenuItem.Click
+        Dim rep As New InformeReposiciones2
+        rep.ShowDialog()
+        rep.Dispose()
+
     End Sub
 End Class

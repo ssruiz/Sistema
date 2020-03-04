@@ -22,6 +22,7 @@ Partial Class MesaCorteForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MesaCorteForm))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnMesa2 = New System.Windows.Forms.Button()
@@ -91,6 +92,7 @@ Partial Class MesaCorteForm
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnMesa2)
         Me.Controls.Add(Me.btnMesa1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MesaCorteForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MesaCorteForm"

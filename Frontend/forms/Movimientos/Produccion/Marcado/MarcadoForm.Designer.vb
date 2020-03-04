@@ -22,16 +22,16 @@ Partial Class MarcadoForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblFechaVenta = New System.Windows.Forms.Label()
+        Me.lblRoturas = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblMarcados = New System.Windows.Forms.Label()
         Me.txtNroProd = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -50,19 +50,23 @@ Partial Class MarcadoForm
         Me.btnImgPrev = New System.Windows.Forms.Button()
         Me.btnImgNext = New System.Windows.Forms.Button()
         Me.btnMesa1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgvPulida, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.pbPlano, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.lblFechaVenta)
+        Me.GroupBox1.Controls.Add(Me.lblRoturas)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.lblMarcados)
         Me.GroupBox1.Location = New System.Drawing.Point(24, 163)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
@@ -82,19 +86,19 @@ Partial Class MarcadoForm
         Me.Label3.TabIndex = 23
         Me.Label3.Text = "Marcados"
         '
-        'lblFechaVenta
+        'lblRoturas
         '
-        Me.lblFechaVenta.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.lblFechaVenta.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaVenta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblFechaVenta.Location = New System.Drawing.Point(337, 27)
-        Me.lblFechaVenta.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblFechaVenta.Name = "lblFechaVenta"
-        Me.lblFechaVenta.Padding = New System.Windows.Forms.Padding(4)
-        Me.lblFechaVenta.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lblFechaVenta.Size = New System.Drawing.Size(113, 34)
-        Me.lblFechaVenta.TabIndex = 24
-        Me.lblFechaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblRoturas.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblRoturas.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRoturas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblRoturas.Location = New System.Drawing.Point(337, 27)
+        Me.lblRoturas.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblRoturas.Name = "lblRoturas"
+        Me.lblRoturas.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblRoturas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblRoturas.Size = New System.Drawing.Size(113, 34)
+        Me.lblRoturas.TabIndex = 24
+        Me.lblRoturas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label4
         '
@@ -107,19 +111,19 @@ Partial Class MarcadoForm
         Me.Label4.TabIndex = 25
         Me.Label4.Text = "Roturas"
         '
-        'Label1
+        'lblMarcados
         '
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(103, 27)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Padding = New System.Windows.Forms.Padding(4)
-        Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label1.Size = New System.Drawing.Size(113, 34)
-        Me.Label1.TabIndex = 26
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblMarcados.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblMarcados.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarcados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblMarcados.Location = New System.Drawing.Point(103, 27)
+        Me.lblMarcados.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblMarcados.Name = "lblMarcados"
+        Me.lblMarcados.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblMarcados.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblMarcados.Size = New System.Drawing.Size(113, 34)
+        Me.lblMarcados.TabIndex = 26
+        Me.lblMarcados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtNroProd
         '
@@ -170,37 +174,37 @@ Partial Class MarcadoForm
         Me.dgvPulida.AllowUserToAddRows = False
         Me.dgvPulida.AllowUserToDeleteRows = False
         Me.dgvPulida.AllowUserToResizeColumns = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvPulida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvPulida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvPulida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPulida.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPulida.ColumnHeadersHeight = 30
         Me.dgvPulida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvPulida.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroProdCol, Me.productoCol, Me.FechaCol, Me.PanhoCol, Me.AnchoCol, Me.AltoCol, Me.CorteCol, Me.Rotura1Col})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgvPulida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvPulida.EnableHeadersVisualStyles = False
-        Me.dgvPulida.Location = New System.Drawing.Point(24, 387)
+        Me.dgvPulida.Location = New System.Drawing.Point(24, 479)
         Me.dgvPulida.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvPulida.MultiSelect = False
         Me.dgvPulida.Name = "dgvPulida"
@@ -208,15 +212,15 @@ Partial Class MarcadoForm
         Me.dgvPulida.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dgvPulida.RowTemplate.Height = 24
         Me.dgvPulida.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvPulida.Size = New System.Drawing.Size(1188, 382)
+        Me.dgvPulida.Size = New System.Drawing.Size(1179, 264)
         Me.dgvPulida.TabIndex = 36
         '
         'NroProdCol
         '
         Me.NroProdCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.NroProdCol.DataPropertyName = "Nro. Prod."
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.NroProdCol.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.NroProdCol.DefaultCellStyle = DataGridViewCellStyle3
         Me.NroProdCol.HeaderText = "Nro. Prod."
         Me.NroProdCol.Name = "NroProdCol"
         '
@@ -224,8 +228,8 @@ Partial Class MarcadoForm
         '
         Me.productoCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.productoCol.DataPropertyName = "Producto"
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.productoCol.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.productoCol.DefaultCellStyle = DataGridViewCellStyle4
         Me.productoCol.HeaderText = "Producto"
         Me.productoCol.Name = "productoCol"
         Me.productoCol.Visible = False
@@ -284,9 +288,10 @@ Partial Class MarcadoForm
         'pbPlano
         '
         Me.pbPlano.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pbPlano.Location = New System.Drawing.Point(615, 62)
+        Me.pbPlano.Location = New System.Drawing.Point(3, 3)
         Me.pbPlano.Name = "pbPlano"
-        Me.pbPlano.Size = New System.Drawing.Size(524, 281)
+        Me.pbPlano.Size = New System.Drawing.Size(379, 212)
+        Me.pbPlano.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbPlano.TabIndex = 39
         Me.pbPlano.TabStop = False
         '
@@ -336,13 +341,55 @@ Partial Class MarcadoForm
         Me.btnMesa1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnMesa1.UseVisualStyleBackColor = False
         '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(876, 387)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(60, 44)
+        Me.Button2.TabIndex = 51
+        Me.Button2.Text = "-"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Button1.Location = New System.Drawing.Point(746, 387)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(65, 44)
+        Me.Button1.TabIndex = 50
+        Me.Button1.Text = "+"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Panel2
+        '
+        Me.Panel2.AutoScroll = True
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.Panel2.Controls.Add(Me.pbPlano)
+        Me.Panel2.Location = New System.Drawing.Point(615, 52)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(524, 318)
+        Me.Panel2.TabIndex = 52
+        '
         'MarcadoForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 23.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1257, 782)
-        Me.Controls.Add(Me.pbPlano)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnImgPrev)
         Me.Controls.Add(Me.btnImgNext)
@@ -366,14 +413,15 @@ Partial Class MarcadoForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.pbPlano, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents lblFechaVenta As Label
+    Friend WithEvents lblRoturas As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblMarcados As Label
     Friend WithEvents btnMesa1 As Button
     Friend WithEvents txtNroProd As TextBox
     Friend WithEvents Label2 As Label
@@ -392,4 +440,7 @@ Partial Class MarcadoForm
     Friend WithEvents pbPlano As PictureBox
     Friend WithEvents btnImgNext As Button
     Friend WithEvents btnImgPrev As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Panel2 As Panel
 End Class

@@ -38,10 +38,10 @@ Partial Class CompraForm
         Me.btnUlt = New System.Windows.Forms.Button()
         Me.btnPrim = New System.Windows.Forms.Button()
         Me.btnSgte = New System.Windows.Forms.Button()
-        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.btnAnterior = New System.Windows.Forms.Button()
+        Me.btnImprimir = New System.Windows.Forms.Button()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnEliminarProd = New System.Windows.Forms.Button()
@@ -142,12 +142,15 @@ Partial Class CompraForm
         Me.btnAnular.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAnular.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAnular.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnAnular.Image = Global.Frontend.My.Resources.Resources.eliminar
+        Me.btnAnular.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAnular.Location = New System.Drawing.Point(711, 11)
         Me.btnAnular.Margin = New System.Windows.Forms.Padding(0)
         Me.btnAnular.Name = "btnAnular"
-        Me.btnAnular.Size = New System.Drawing.Size(83, 53)
+        Me.btnAnular.Size = New System.Drawing.Size(105, 53)
         Me.btnAnular.TabIndex = 4
         Me.btnAnular.Text = "Anular"
+        Me.btnAnular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnAnular.UseVisualStyleBackColor = False
         '
         'Panel6
@@ -221,22 +224,6 @@ Partial Class CompraForm
         Me.ToolTip1.SetToolTip(Me.btnSgte, "Siguiente registro")
         Me.btnSgte.UseVisualStyleBackColor = False
         '
-        'btnImprimir
-        '
-        Me.btnImprimir.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimir.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnImprimir.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnImprimir.Image = Global.Frontend.My.Resources.Resources.imprimir
-        Me.btnImprimir.Location = New System.Drawing.Point(707, 55)
-        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(0)
-        Me.btnImprimir.Name = "btnImprimir"
-        Me.btnImprimir.Size = New System.Drawing.Size(63, 53)
-        Me.btnImprimir.TabIndex = 4
-        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.ToolTip1.SetToolTip(Me.btnImprimir, "Imprimir Factura")
-        Me.btnImprimir.UseVisualStyleBackColor = False
-        '
         'btnGuardar
         '
         Me.btnGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
@@ -287,6 +274,22 @@ Partial Class CompraForm
         Me.btnAnterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTip1.SetToolTip(Me.btnAnterior, "Anterior Registro")
         Me.btnAnterior.UseVisualStyleBackColor = False
+        '
+        'btnImprimir
+        '
+        Me.btnImprimir.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnImprimir.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImprimir.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnImprimir.Image = Global.Frontend.My.Resources.Resources.imprimir
+        Me.btnImprimir.Location = New System.Drawing.Point(707, 55)
+        Me.btnImprimir.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnImprimir.Name = "btnImprimir"
+        Me.btnImprimir.Size = New System.Drawing.Size(63, 53)
+        Me.btnImprimir.TabIndex = 4
+        Me.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ToolTip1.SetToolTip(Me.btnImprimir, "Imprimir Factura")
+        Me.btnImprimir.UseVisualStyleBackColor = False
         '
         'TableLayoutPanel4
         '
@@ -503,7 +506,7 @@ Partial Class CompraForm
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label8.Location = New System.Drawing.Point(208, 62)
+        Me.Label8.Location = New System.Drawing.Point(235, 62)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(65, 19)
         Me.Label8.TabIndex = 1
@@ -514,7 +517,7 @@ Partial Class CompraForm
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label10.Location = New System.Drawing.Point(458, 9)
+        Me.Label10.Location = New System.Drawing.Point(471, 16)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(55, 19)
         Me.Label10.TabIndex = 1
@@ -525,7 +528,7 @@ Partial Class CompraForm
         Me.txtSaldo.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtSaldo.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSaldo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtSaldo.Location = New System.Drawing.Point(689, 33)
+        Me.txtSaldo.Location = New System.Drawing.Point(716, 33)
         Me.txtSaldo.Margin = New System.Windows.Forms.Padding(0)
         Me.txtSaldo.Name = "txtSaldo"
         Me.txtSaldo.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -538,7 +541,7 @@ Partial Class CompraForm
         Me.txtExentaT.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtExentaT.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtExentaT.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtExentaT.Location = New System.Drawing.Point(444, 38)
+        Me.txtExentaT.Location = New System.Drawing.Point(471, 38)
         Me.txtExentaT.Margin = New System.Windows.Forms.Padding(0)
         Me.txtExentaT.Name = "txtExentaT"
         Me.txtExentaT.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -551,7 +554,7 @@ Partial Class CompraForm
         Me.txtIva10.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtIva10.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIva10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtIva10.Location = New System.Drawing.Point(285, 57)
+        Me.txtIva10.Location = New System.Drawing.Point(312, 57)
         Me.txtIva10.Margin = New System.Windows.Forms.Padding(0)
         Me.txtIva10.Name = "txtIva10"
         Me.txtIva10.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -564,7 +567,7 @@ Partial Class CompraForm
         Me.txtIva5.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
         Me.txtIva5.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIva5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtIva5.Location = New System.Drawing.Point(285, 9)
+        Me.txtIva5.Location = New System.Drawing.Point(312, 9)
         Me.txtIva5.Margin = New System.Windows.Forms.Padding(0)
         Me.txtIva5.Name = "txtIva5"
         Me.txtIva5.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -590,7 +593,7 @@ Partial Class CompraForm
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label22.Location = New System.Drawing.Point(208, 16)
+        Me.Label22.Location = New System.Drawing.Point(235, 16)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(57, 19)
         Me.Label22.TabIndex = 1
@@ -601,7 +604,7 @@ Partial Class CompraForm
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label24.Location = New System.Drawing.Point(628, 40)
+        Me.Label24.Location = New System.Drawing.Point(655, 40)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(42, 19)
         Me.Label24.TabIndex = 1
@@ -995,7 +998,7 @@ Partial Class CompraForm
         Me.lblTitulo.BackColor = System.Drawing.Color.Transparent
         Me.lblTitulo.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(661, 0)
+        Me.lblTitulo.Location = New System.Drawing.Point(565, 0)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(142, 41)
         Me.lblTitulo.TabIndex = 1
@@ -1124,7 +1127,7 @@ Partial Class CompraForm
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label19.Location = New System.Drawing.Point(6, 173)
+        Me.Label19.Location = New System.Drawing.Point(22, 172)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(57, 23)
         Me.Label19.TabIndex = 1
@@ -1145,9 +1148,9 @@ Partial Class CompraForm
         '
         Me.txtExenta.Enabled = False
         Me.txtExenta.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtExenta.Location = New System.Drawing.Point(118, 222)
+        Me.txtExenta.Location = New System.Drawing.Point(114, 222)
         Me.txtExenta.Name = "txtExenta"
-        Me.txtExenta.Size = New System.Drawing.Size(153, 25)
+        Me.txtExenta.Size = New System.Drawing.Size(157, 25)
         Me.txtExenta.TabIndex = 0
         Me.txtExenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1155,9 +1158,9 @@ Partial Class CompraForm
         '
         Me.txtPrecio.Enabled = False
         Me.txtPrecio.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrecio.Location = New System.Drawing.Point(118, 170)
+        Me.txtPrecio.Location = New System.Drawing.Point(114, 170)
         Me.txtPrecio.Name = "txtPrecio"
-        Me.txtPrecio.Size = New System.Drawing.Size(153, 25)
+        Me.txtPrecio.Size = New System.Drawing.Size(157, 25)
         Me.txtPrecio.TabIndex = 0
         Me.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '

@@ -189,4 +189,24 @@
             _moneda = value
         End Set
     End Property
+
+    Private _estado As Char
+    Public Property estado() As Char
+        Get
+            Return _estado
+        End Get
+        Set(ByVal value As Char)
+            _estado = value
+        End Set
+    End Property
+
+    Private _comentario As String
+    Public Property comentario() As String
+        Get
+            Return _comentario
+        End Get
+        Set(ByVal value As String)
+            _comentario = value
+        End Set
+    End Property
 End Class

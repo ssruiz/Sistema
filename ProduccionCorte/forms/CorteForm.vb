@@ -15,6 +15,9 @@ Public Class CorteForm
     Private Sub CorteForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvCortes.DataSource = New DataSetProduccion.CorteDataTable
         txtMesaCorte.Text = "MESA DE CORTE " + mesa.ToString
+        Dim prod As New ProduccionDAO
+        lblCortes.Text = Math.Round(prod.getCortesDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prod.getCortesRoturaDia(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 
     Private Sub txtNroProd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNroProd.KeyDown
@@ -32,6 +35,8 @@ Public Class CorteForm
                         dgvCortes.DataSource = prodDao.getCorte(producc.idProd).Tables("tabla")
                         txtNroProd.Text = ""
                         txtNroProd.Focus()
+                        lblCortes.Text = Math.Round(prodDao.getCortesDia(), 2).ToString + " (m" & Chr(178) & ")"
+                        lblRoturas.Text = Math.Round(prodDao.getCortesRoturaDia(), 2).ToString + " (m" & Chr(178) & ")"
                     End If
 
                 End If
@@ -46,5 +51,8 @@ Public Class CorteForm
         corteRot.ShowDialog()
 
         corteRot.Dispose()
+        Dim prodDao As New ProduccionDAO
+        lblCortes.Text = Math.Round(prodDao.getCortesDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prodDao.getCortesRoturaDia(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 End Class

@@ -22,11 +22,11 @@ Partial Class PulidaForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -35,8 +35,8 @@ Partial Class PulidaForm
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblFechaVenta = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblRoturas = New System.Windows.Forms.Label()
+        Me.lblPulidas = New System.Windows.Forms.Label()
         Me.txtPulidora = New System.Windows.Forms.Label()
         Me.dgvPulida = New System.Windows.Forms.DataGridView()
         Me.NroProdCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -116,8 +116,9 @@ Partial Class PulidaForm
         '
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.lblFechaVenta)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.lblRoturas)
+        Me.GroupBox1.Controls.Add(Me.lblPulidas)
+        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.GroupBox1.Location = New System.Drawing.Point(37, 156)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
@@ -125,6 +126,7 @@ Partial Class PulidaForm
         Me.GroupBox1.Size = New System.Drawing.Size(502, 79)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "DEL DÍA"
         '
         'Label3
         '
@@ -151,30 +153,30 @@ Partial Class PulidaForm
         Me.lblFechaVenta.TabIndex = 24
         Me.lblFechaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label4
+        'lblRoturas
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label4.Location = New System.Drawing.Point(267, 34)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(69, 23)
-        Me.Label4.TabIndex = 25
-        Me.Label4.Text = "Roturas"
+        Me.lblRoturas.AutoSize = True
+        Me.lblRoturas.Font = New System.Drawing.Font("Segoe UI Semibold", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRoturas.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.lblRoturas.Location = New System.Drawing.Point(267, 34)
+        Me.lblRoturas.Name = "lblRoturas"
+        Me.lblRoturas.Size = New System.Drawing.Size(69, 23)
+        Me.lblRoturas.TabIndex = 25
+        Me.lblRoturas.Text = "Roturas"
         '
-        'Label1
+        'lblPulidas
         '
-        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Location = New System.Drawing.Point(117, 27)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Padding = New System.Windows.Forms.Padding(4)
-        Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label1.Size = New System.Drawing.Size(113, 34)
-        Me.Label1.TabIndex = 26
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblPulidas.BackColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.lblPulidas.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPulidas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblPulidas.Location = New System.Drawing.Point(117, 27)
+        Me.lblPulidas.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblPulidas.Name = "lblPulidas"
+        Me.lblPulidas.Padding = New System.Windows.Forms.Padding(4)
+        Me.lblPulidas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblPulidas.Size = New System.Drawing.Size(113, 34)
+        Me.lblPulidas.TabIndex = 26
+        Me.lblPulidas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtPulidora
         '
@@ -196,34 +198,34 @@ Partial Class PulidaForm
         Me.dgvPulida.AllowUserToAddRows = False
         Me.dgvPulida.AllowUserToDeleteRows = False
         Me.dgvPulida.AllowUserToResizeColumns = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        Me.dgvPulida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        Me.dgvPulida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvPulida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvPulida.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvPulida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvPulida.ColumnHeadersHeight = 30
         Me.dgvPulida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvPulida.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NroProdCol, Me.productoCol, Me.FechaCol, Me.PanhoCol, Me.AnchoCol, Me.AltoCol, Me.CorteCol, Me.NroOptiCol, Me.Rotura1Col, Me.Rotura2Col, Me.Rotura3Col})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvPulida.DefaultCellStyle = DataGridViewCellStyle5
         Me.dgvPulida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvPulida.EnableHeadersVisualStyles = False
         Me.dgvPulida.Location = New System.Drawing.Point(37, 259)
@@ -241,8 +243,8 @@ Partial Class PulidaForm
         '
         Me.NroProdCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.NroProdCol.DataPropertyName = "Nro. Prod."
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.NroProdCol.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.NroProdCol.DefaultCellStyle = DataGridViewCellStyle3
         Me.NroProdCol.HeaderText = "Nro. Prod."
         Me.NroProdCol.Name = "NroProdCol"
         '
@@ -250,8 +252,8 @@ Partial Class PulidaForm
         '
         Me.productoCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.productoCol.DataPropertyName = "Producto"
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.productoCol.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.productoCol.DefaultCellStyle = DataGridViewCellStyle4
         Me.productoCol.HeaderText = "Producto"
         Me.productoCol.Name = "productoCol"
         Me.productoCol.Visible = False
@@ -369,8 +371,8 @@ Partial Class PulidaForm
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label3 As Label
     Friend WithEvents lblFechaVenta As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblRoturas As Label
+    Friend WithEvents lblPulidas As Label
     Friend WithEvents btnMesa1 As Button
     Friend WithEvents txtPulidora As Label
     Friend WithEvents dgvPulida As DataGridView

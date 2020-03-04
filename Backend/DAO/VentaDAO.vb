@@ -39,20 +39,20 @@ Public Class VentaDAO
 
             Dim ventaCod = CInt(cmdVenta.ExecuteScalar())
 
-            If venta.credito = "N" Then
-                Dim pago As New Pago
-                pago.fecha = Date.Today
-                pago.fechaI = Date.Today
-                pago.moneda = venta.moneda
-                pago.monto = venta.total
-                pago.userIn = Sesion.Usuario
-                pago.recibo = "Factura Contado - " & venta.factura
-                pago.tpago = 1
-                pago.saldo = 0
-                pago.venta = ventaCod
-                Dim daop As New PagoDAO
-                daop.guardarPago(pago)
-            End If
+            'If venta.credito = "N" Then
+            '    Dim pago As New Pago
+            '    pago.fecha = Date.Today
+            '    pago.fechaI = Date.Today
+            '    pago.moneda = venta.moneda
+            '    pago.monto = venta.total
+            '    pago.userIn = Sesion.Usuario
+            '    pago.recibo = "Factura Contado - " & venta.factura
+            '    pago.tpago = 1
+            '    pago.saldo = 0
+            '    pago.venta = ventaCod
+            '    Dim daop As New PagoDAO
+            '    daop.guardarPago(pago)
+            'End If
 
             con.Close()
             con.Open()
@@ -207,6 +207,7 @@ Public Class VentaDAO
             con.Close()
         End Try
     End Function
+
 
     Public Function getVenta(ByVal id As String) As Venta
         Try
@@ -365,6 +366,7 @@ Public Class VentaDAO
 
             Dim i = 1
             Dim pathImg = Path.Combine(Config.RutaImagenes, id.ToString)
+            'MsgBox(pathImg)
             If (Not System.IO.Directory.Exists(pathImg)) Then
                 System.IO.Directory.CreateDirectory(pathImg)
             End If
@@ -396,11 +398,13 @@ Public Class VentaDAO
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
-            Dim query = "UPDATE `producir`.`ventas` SET `ventEstado` = 'A',`ventObs` = @motivo WHERE `ventCod` = @cod;"
+            Dim query = "UPDATE `producir`.`ventas` SET `ventEstado` = 'A',`ventObs` = @motivo, `ventFU` = @fecha, ventUU = @usu WHERE `ventCod` = @cod;"
             Dim cmd As New MySqlCommand(query, con)
 
             cmd.Parameters.AddWithValue("@cod", venta.id)
             cmd.Parameters.AddWithValue("@motivo", motivo)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today)
+            cmd.Parameters.AddWithValue("@usu", Sesion.Codigo)
             cmd.ExecuteNonQuery()
 
         Catch ex As Exception
@@ -441,6 +445,7 @@ Public Class VentaDAO
             Dim reader = cmd.ExecuteReader()
             While reader.Read
                 planos.Add(Image.FromFile(SafeGetString(reader, 1)))
+
             End While
 
 
@@ -453,6 +458,25 @@ Public Class VentaDAO
     End Function
 
     Public Function cargarEtiquetas(ByVal venta As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "Select * from `vetiquetas` WHERE `Venta` =" & venta & " and Impreso = 'No' order by Panho, Prod;"
+
+            Dim adp As New MySqlDataAdapter(query, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function cargarEtiquetas2(ByVal venta As String) As DataSet
         Dim ds As New DataSet
         Try
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
@@ -572,4 +596,224 @@ Public Class VentaDAO
             con.Close()
         End Try
     End Sub
+
+
+    Public Function getVentasCaja2() As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT * FROM `vventascaja`"
+
+
+
+            Dim adp As New MySqlDataAdapter(query, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getFacturaVenta(ByVal id As String) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "CALL `facturadetalle`(" & id & ")"
+
+
+
+            Dim adp As New MySqlDataAdapter(query, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+
+    '' busqueda de ventas
+
+    '' POR FECHA
+
+    Public Function getVentasFecha(ini As Date, fin As Date) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT * from vbusquedadeventas where Fecha between @f1 and @f2"
+
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@f1", ini)
+            cmd.Parameters.AddWithValue("@f2", fin)
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getDetalleBusquedaVentas(ByVal id As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vdetalleproductosbusquedav where Venta = " & id & ";"
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    '' BUSQUEDA POR CLIENTE
+
+    Public Function getVentasCliente(ByVal id As Integer) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT * from vbusquedadeventas where IDCli = @cli ORDER BY ID DESC"
+
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@cli", id)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+
+    Public Sub anularFactura(id As Integer, factura As String, ByVal motivo As String)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "UPDATE `ventas` SET `ventFact` = @fact, `estadoFactura` = 'N' WHERE `ventCod` = @id;"
+
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@id", id)
+            cmd.Parameters.AddWithValue("@fact", "")
+
+
+            cmd.ExecuteNonQuery()
+            Dim query2 = "INSERT INTO `producir`.`anulaciones` (`ventaCod`, `motivo`, `fechaI`, `usuarioIns`,`facturaNro`) VALUES (@venta, @motivo, @fecha, @usu,@factu);"
+            Dim cmd2 As New MySqlCommand(query2, con)
+            cmd2.Parameters.AddWithValue("@venta", id)
+            cmd2.Parameters.AddWithValue("@motivo", motivo)
+            cmd2.Parameters.AddWithValue("@fecha", Date.Now)
+            cmd2.Parameters.AddWithValue("@usu", Sesion.Usuario)
+            cmd2.Parameters.AddWithValue("@factu", factura)
+            cmd2.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+
+
+    End Sub
+
+
+    Public Function cargarAnulacionesFactura(ByVal id As Integer) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT * from vlistadoanulacionesfact where OT = @cli"
+
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@cli", id)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getIngresador(ByVal id As String) As String
+        Dim r = ""
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+
+
+
+            Dim query = "SELECT `usuNombre` FROM `producir`.`usuario` where `usuCod` = @id"
+            Dim cmdVenta As New MySqlCommand(query, con)
+            cmdVenta.Parameters.AddWithValue("@id", id)
+            Dim reader = cmdVenta.ExecuteReader()
+
+            While reader.Read
+
+                r = SafeGetString(reader, 0)
+            End While
+            reader.Close()
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return r
+    End Function
+
+    Public Function getFacturasAnuladas(ByVal inicio As Date, ByVal fin As Date) As DataSet
+        Dim ds As New DataSet
+
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "SELECT a.`id_an` AS ID, a.`motivo` AS Motivo, DATE_FORMAT(a.`fechaI`, '%Y-%m-%d') AS Fecha, c.`clieNombre` AS Cliente, a.`facturaNro` AS Factura FROm `anulaciones` a INNER JOIN `ventas` v ON v.`ventCod` = a.`ventaCod` INNER JOIN `clientes` c ON c.`clieCod` = v.`clieCod` WHERE DATE_FORMAT(a.`fechaI`, '%Y-%m-%d') BETWEEN DATE_FORMAT(@in, '%Y-%m-%d') AND DATE_FORMAT(@fin, '%Y-%m-%d') ORDER BY c.`clieNombre`;"
+
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@in", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
 End Class

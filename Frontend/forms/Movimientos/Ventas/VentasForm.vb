@@ -1,6 +1,7 @@
-﻿Imports System.Globalization
+﻿Imports System.Drawing.Printing
+Imports System.Globalization
 Imports Backend
-
+Imports ZXing
 Public Class VentasForm
     'Variables utiles
     Dim listClientes As New DataTable
@@ -25,28 +26,41 @@ Public Class VentasForm
     Dim dolar = False
     Dim descuentoTotal = 0
     Dim recargoTotal = 0
+    Dim linea = 0
+    Dim planchas = False
     Dim planos As New DataTable
     ' Carga del formulario
     Private Sub VentasForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Me.PerformAutoScale()
         'Sets the scaling mode
-        Me.AutoScaleMode = AutoScaleMode.Dpi
+        'Me.AutoScaleMode = AutoScaleMode.Dpi
         'Enables appearance settings
-
+        Me.SuspendLayout()
+        Dim classResize As New ClsResizeForm
+        classResize.ResizeForm(Me, 1308, 857)
+        Me.WindowState = FormWindowState.Maximized
+        Me.ResumeLayout()
+        '1431; 857
         lblFechaVenta.Text = Date.Today
         lblProducto.Text = ""
         lblSuperficie.Text = "Superficie (m" & Chr(178) & ")"
-        rbtnNo.Checked = True
+        'rbtnNo.Checked = True
         lblTitulo.Left = (Me.ClientSize.Width / 2) - (lblTitulo.Width / 2)
         calcularTotal(0)
+        lblSupTotalOT.Text = 0
         rbtnCont.Enabled = False
         rbtnCred.Enabled = False
         columnasGrid = dgvProductos.Columns
         cargarVentas()
         actualizarProduccion()
         dgvProductos.DataSource = New DataSet1.detalleVentaDataTable
+
+        txtOT.Focus()
+
         cargarCambio()
     End Sub
+
+
 
     Private Sub cargarCambio()
         Try
@@ -120,16 +134,16 @@ Public Class VentasForm
             MsgBox(ex.Message, MsgBoxStyle.Exclamation, "Asignar Vendedor - Error")
         End Try
     End Sub
-    Private Sub rbtnSi_CheckedChanged(sender As Object, e As EventArgs) Handles rbtnSi.CheckedChanged
-        If rbtnSi.Checked Then
-            'pnldDir.Enabled = True
-            txtPlazo1.Enabled = True
-            txtPlazo1.Focus()
-        Else
-            txtPlazo1.Enabled = False
-            'txtFecha1.Enabled = False
-        End If
-    End Sub
+    'Private Sub rbtnSi_CheckedChanged(sender As Object, e As EventArgs)
+    '    If rbtnSi.Checked Then
+    '        'pnldDir.Enabled = True
+    '        txtPlazo1.Enabled = True
+    '        txtPlazo1.Focus()
+    '    Else
+    '        txtPlazo1.Enabled = False
+    '        'txtFecha1.Enabled = False
+    '    End If
+    'End Sub
 
     Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
@@ -143,11 +157,15 @@ Public Class VentasForm
             producto = daoP.getProductoByCod(txtCodProd.Text)
 
             Dim tipoP = daoT.getTipo(producto.tipo)
-            If templado2 = True And (tipoP.nombre = "perfiles" Or tipoP.nombre = "herrajes" Or tipoP.nombre = "planchas") Then
+
+            If templado2 = True And (tipoP.nombre = "perfiles" Or tipoP.nombre = "herrajes" Or tipoP.nombre = "planchas" Or tipoP.nombre = "planchasc") Then
                 MsgBox("Solo puede agregar templados", MsgBoxStyle.Critical, "Tipo producto")
                 Exit Sub
             ElseIf porUnidad = 1 And tipoP.nombre = "templado" Then
                 MsgBox("No puede agregar templados. Solo productos que se venden por cantidad", MsgBoxStyle.Critical, "Tipo producto")
+                Exit Sub
+            ElseIf planchas = True And tipoP.nombre = "templado" Then
+                MsgBox("No puede agregar templados. Solo productos planchas", MsgBoxStyle.Critical, "Tipo producto")
                 Exit Sub
             End If
 
@@ -182,6 +200,9 @@ Public Class VentasForm
                     ElseIf porUnidad = 1 And tipoP.nombre = "templado" Then
                         MsgBox("No puede agregar templados. Solo productos que se venden por cantidad", MsgBoxStyle.Critical, "Tipo producto")
                         Exit Sub
+                    ElseIf planchas = True And tipoP.nombre = "templado" Then
+                        MsgBox("No puede agregar templados. Solo productos planchas", MsgBoxStyle.Critical, "Tipo producto")
+                        Exit Sub
                     End If
 
                     lblProducto.Text = producto.descripcion
@@ -200,6 +221,8 @@ Public Class VentasForm
                 buscarP.Dispose()
             End If
         End If
+
+
     End Sub
 
     Private Sub stockReal()
@@ -211,7 +234,10 @@ Public Class VentasForm
                 st += row.Cells.Item("CantidadCol").Value
             End If
         Next
-        txtStock.Text = CInt(txtStock.Text) - st
+        If txtStock.Text <> "" Then
+            txtStock.Text = CInt(txtStock.Text) - st
+        End If
+
     End Sub
 
     Private Sub activarMedidas(ByVal tipo As Integer)
@@ -226,6 +252,18 @@ Public Class VentasForm
             txtCantidad.Focus()
             txtDescuento.Enabled = True
             txtRecargo.Enabled = True
+            If tipoP.nombre = "planchasc" Then
+                planchas = True
+                txtAlto.Enabled = True
+                txtAncho.Enabled = True
+                txtObra.Enabled = True
+
+                txtCantidad.Enabled = True
+                txtDescuento.Enabled = True
+                txtRecargo.Enabled = True
+            Else
+                planchas = False
+            End If
         Else
             txtAlto.Enabled = True
             txtAncho.Enabled = True
@@ -309,19 +347,20 @@ Public Class VentasForm
         lblCantidadPlanos.Text = ""
         lblTitCantPlanos.Visible = False
         txtObservacion.Text = ""
-        lblFechaEntrega.Text = ""
+        'lblFechaEntrega.Text = ""
         txtOT.Text = ""
-        txtPlazo1.Text = ""
+        'txtPlazo1.Text = ""
         lblEstado.Text = ""
         lblTipoFactura.Text = ""
         lblFechaVenta.Text = Date.Today
         rbtnCred.Checked = True
         templado = False
         templado2 = False
+        planchas = False
         porUnidad = 0
         produccionVenta = 0
         rbtnGS.Checked = True
-        rbtnNo.Checked = True
+        'rbtnNo.Checked = True
     End Sub
 
     Private Sub nuevaVenta()
@@ -340,7 +379,7 @@ Public Class VentasForm
             lblClienteNombre.Text = cliente.nombre
             lblClienteRuc.Text = cliente.ruc
             lblClienteTel.Text = cliente.telf
-            lblDirEnvio.Text = cliente.dir
+            'lblDirEnvio.Text = cliente.dir
             asignarVendedor()
             asignarSucursal()
             asignarDeposito()
@@ -353,6 +392,15 @@ Public Class VentasForm
             btnAnular.Enabled = False
             btnModificar.Enabled = False
             btnAnular.Enabled = False
+            linea = 0
+            lblLinea.Text = linea
+            lblSupTotalOT.Text = 0
+            lblIngresadopor.Text = ""
+            planchas = False
+            'lblTipoPago.Visible = True
+            'cbTipodePago.Visible = True
+            'lblEstado.Visible = False
+            'Label26.Visible = False
         End If
         buscarC.Dispose()
 
@@ -366,7 +414,7 @@ Public Class VentasForm
         lblClienteRuc.Text = ""
         lblClienteTel.Text = ""
         lblVendedor.Text = ""
-        lblDirEnvio.Text = ""
+        'lblDirEnvio.Text = ""
     End Sub
     Private Sub limpiarTotales()
         txtTotal.Text = FormatCurrency(0, 0)
@@ -377,11 +425,11 @@ Public Class VentasForm
     End Sub
 
     Private Sub limpiarTotalesDolares()
-        txtTotal.Text = String.Format("${0:n2}", CType(0, Double))
-        txtIva.Text = String.Format("${0:n2}", CType(0, Double))
-        txtSaldo.Text = String.Format("${0:n2}", CType(0, Double))
-        txtDescuentoTotal.Text = String.Format("${0:n2}", CType(0, Double))
-        txtRecargoTotal.Text = String.Format("${0:n2}", CType(0, Double))
+        txtTotal.Text = String.Format("${0:n0}", CType(0, Double))
+        txtIva.Text = String.Format("${0:n0}", CType(0, Double))
+        txtSaldo.Text = String.Format("${0:n0}", CType(0, Double))
+        txtDescuentoTotal.Text = String.Format("${0:n0}", CType(0, Double))
+        txtRecargoTotal.Text = String.Format("${0:n0}", CType(0, Double))
     End Sub
     Private Sub limpiarProductos()
         txtCodProd.Text = ""
@@ -416,14 +464,14 @@ Public Class VentasForm
         txtFactuNro.Enabled = True
         txtFactuNro.Focus()
         txtObservacion.Enabled = True
-        pnlEnvio.Enabled = True
+        'pnlEnvio.Enabled = True
         txtCodProd.Enabled = True
         pnlTipoP.Enabled = True
         btnGuardar.Enabled = True
         rbtnCont.Enabled = True
         rbtnCred.Enabled = True
         btnEliminarProd.Enabled = True
-        pnlEnvioNuevo.Visible = True
+        'pnlEnvioNuevo.Visible = True
     End Sub
 
     Private Sub desactivarCamposNuevaVenta()
@@ -433,7 +481,7 @@ Public Class VentasForm
         'txtVendedor.Enabled = True
         txtFactuNro.Focus()
         txtObservacion.Enabled = False
-        pnlEnvio.Enabled = False
+        'pnlEnvio.Enabled = False
         txtCodProd.Enabled = False
         pnlTipoP.Enabled = False
         btnGuardar.Enabled = False
@@ -477,6 +525,11 @@ Public Class VentasForm
     Private Sub txtObra_KeyDown(sender As Object, e As KeyEventArgs) Handles txtObra.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
+            If linea = 13 Then
+                MsgBox("Límite de items alcanzado", MsgBoxStyle.Critical, "Items")
+                Exit Sub
+            End If
+
             If validarProducto() Then
                 Dim row2 As DataTable = dgvProductos.DataSource
                 Dim row As DataRow = row2.NewRow
@@ -515,6 +568,14 @@ Public Class VentasForm
                     detalle.ancho = CDbl(txtAncho.Text)
                     detalle.alto = CDbl(txtAlto.Text)
                     detalle.sup = Math.Round(CDbl((detalle.ancho * detalle.alto) / 1000000), 2)
+
+                    Dim auxtotalsup = CDbl(0)
+                    If Double.TryParse(lblSupTotalOT.Text, auxtotalsup) Then
+                        Dim aux2 = Math.Round(auxtotalsup, 2)
+                        lblSupTotalOT.Text = CDbl(aux2 + detalle.sup * detalle.cantidad)
+                    Else
+                        lblSupTotalOT.Text = detalle.sup * detalle.cantidad
+                    End If
                     produccionVenta += detalle.sup * detalle.cantidad
                     detalle.total = detalle.sup * detalle.precioU * detalle.cantidad
 
@@ -535,41 +596,74 @@ Public Class VentasForm
                     descuentoTotal += CDbl(strdescuento) * detalle.sup * detalle.cantidad
                     recargoTotal += CDbl(strrecargo) * detalle.sup * detalle.cantidad
                 Else
-                    If CInt(txtCantidad.Text) > CInt(txtStock.Text) Then
-                        MsgBox("Cantidad ingresada mayor al stock disponible", MsgBoxStyle.Critical, "Stock insuficiente")
-                        txtCantidad.Focus()
-                        Exit Sub
-                    ElseIf txtCantidad.Text = 0 Then
-                        MsgBox("Stock no disponible", MsgBoxStyle.Critical, "Stock insuficiente")
-                        txtCodProd.Focus()
-                        Exit Sub
-                    End If
-                    detalle.cantidad = CInt(txtCantidad.Text)
-                    detalle.ancho = 0
-                    detalle.alto = 0
-                    detalle.sup = 0
-                    produccionVenta = 0
-                    detalle.total = detalle.cantidad * detalle.precioU
-                    If CDbl(strdescuento) <> 0 Then
-                        Dim des = CDbl(strdescuento) * detalle.cantidad * detalle.sup
-                        detalle.total = detalle.total - des
-                    ElseIf CDbl(strrecargo) <> 0 Then
-                        Dim rec = CDbl(strrecargo) * detalle.cantidad * detalle.sup
-                        detalle.total = detalle.total + rec
+                    If planchas = True Then
+                        detalle.cantidad = CInt(txtCantidad.Text)
+
+                        detalle.ancho = CDbl(txtAncho.Text)
+                        detalle.alto = CDbl(txtAlto.Text)
+                        detalle.sup = Math.Round(CDbl((detalle.ancho * detalle.alto) / 1000000), 2)
+
+
+                        'produccionVenta += detalle.sup * detalle.cantidad
+                        detalle.total = detalle.sup * detalle.precioU * detalle.cantidad
+
+                        If CDbl(strdescuento) <> 0 Then
+                            Dim des = CDbl(strdescuento) * detalle.cantidad * detalle.sup
+                            detalle.total = detalle.total - des
+                        ElseIf CDbl(strrecargo) <> 0 Then
+                            Dim rec = CDbl(strrecargo) * detalle.cantidad * detalle.sup
+                            detalle.total = detalle.total + rec
+                        End If
+                        row("Cantidad") = detalle.cantidad
+                        row("Ancho") = CDbl(detalle.ancho)
+                        row("Alto") = CDbl(detalle.alto)
+                        row("Superficie") = CDbl(detalle.sup) * detalle.cantidad
+                        row("Total") = detalle.total
+                        row("Descuento") = CDbl(strdescuento) * detalle.sup * detalle.cantidad
+                        row("Recargo") = CDbl(strrecargo) * detalle.sup * detalle.cantidad
+                        descuentoTotal += CDbl(strdescuento) * detalle.sup * detalle.cantidad
+                        recargoTotal += CDbl(strrecargo) * detalle.sup * detalle.cantidad
+                        porUnidad = 1
+                        templado = False
+                        templado2 = False
+                    Else
+                        If CInt(txtCantidad.Text) > CInt(txtStock.Text) Then
+                            MsgBox("Cantidad ingresada mayor al stock disponible", MsgBoxStyle.Critical, "Stock insuficiente")
+                            txtCantidad.Focus()
+                            Exit Sub
+                        ElseIf txtCantidad.Text = 0 Then
+                            MsgBox("Stock no disponible", MsgBoxStyle.Critical, "Stock insuficiente")
+                            txtCodProd.Focus()
+                            Exit Sub
+                        End If
+                        detalle.cantidad = CInt(txtCantidad.Text)
+                        detalle.ancho = 0
+                        detalle.alto = 0
+                        detalle.sup = 0
+                        produccionVenta = 0
+                        detalle.total = detalle.cantidad * detalle.precioU
+                        If CDbl(strdescuento) <> 0 Then
+                            Dim des = CDbl(strdescuento) * detalle.cantidad
+                            detalle.total = detalle.total - des
+                        ElseIf CDbl(strrecargo) <> 0 Then
+                            Dim rec = CDbl(strrecargo) * detalle.cantidad
+                            detalle.total = detalle.total + rec
+                        End If
+
+                        row("Cantidad") = detalle.cantidad
+                        row("Ancho") = 0
+                        row("Alto") = 0
+                        row("Superficie") = 0
+                        row("Total") = detalle.total
+                        row("Descuento") = CDbl(strdescuento) * detalle.cantidad
+                        row("Recargo") = CDbl(strrecargo) * detalle.cantidad
+                        descuentoTotal += CDbl(strdescuento) * detalle.cantidad
+                        recargoTotal += CDbl(strrecargo) * detalle.cantidad
+                        porUnidad = 1
+                        templado = False
+                        templado2 = False
                     End If
 
-                    row("Cantidad") = detalle.cantidad
-                    row("Ancho") = 0
-                    row("Alto") = 0
-                    row("Superficie") = 0
-                    row("Total") = detalle.total
-                    row("Descuento") = CDbl(strdescuento) * detalle.cantidad
-                    row("Recargo") = CDbl(strrecargo) * detalle.cantidad
-                    descuentoTotal += CDbl(strdescuento) * detalle.cantidad
-                    recargoTotal += CDbl(strrecargo) * detalle.cantidad
-                    porUnidad = 1
-                    templado = False
-                    templado2 = False
                 End If
 
 
@@ -580,6 +674,8 @@ Public Class VentasForm
                 dgvProductos.ClearSelection()
                 calcularTotal(detalle.total)
 
+                linea = linea + 1
+                lblLinea.Text = linea
                 If templado = True Then
                     templado2 = True
                 Else
@@ -589,6 +685,9 @@ Public Class VentasForm
                 limpiarProductos2()
                 txtCodProd.Focus()
                 deshabilitarProducto()
+                dgvProductos.Columns(4).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                dgvProductos.AutoResizeColumnHeadersHeight()
+
             End If
         ElseIf e.KeyCode = Keys.Up Then
             txtRecargo.Focus()
@@ -609,20 +708,20 @@ Public Class VentasForm
         If dolar = False Then
             If txtTotal.Text = "" Then
                 txtTotal.Text = FormatCurrency(0, 0)
-                txtIva.Text = FormatCurrency(0)
+                txtIva.Text = FormatCurrency(0, 0)
             Else
                 Dim tmp = CDbl(txtTotal.Text + monto)
 
-                txtTotal.Text = FormatCurrency(tmp)
-                txtIva.Text = FormatCurrency(tmp / 11)
+                txtTotal.Text = FormatCurrency(tmp, 0)
+                txtIva.Text = FormatCurrency(tmp / 11, 0)
             End If
 
-            txtDescuentoTotal.Text = FormatCurrency(descuentoTotal)
-            txtRecargoTotal.Text = FormatCurrency(recargoTotal)
+            txtDescuentoTotal.Text = FormatCurrency(descuentoTotal, 0)
+            txtRecargoTotal.Text = FormatCurrency(recargoTotal, 0)
             If rbtnCred.Checked Then
                 txtSaldo.Text = txtTotal.Text
             Else
-                txtSaldo.Text = FormatCurrency(0)
+                txtSaldo.Text = FormatCurrency(0, 0)
             End If
         Else
             If txtTotal.Text = "" Then
@@ -636,17 +735,17 @@ Public Class VentasForm
                 Dim tpm2 = tmp.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
                 Dim ivatmp = CDbl(tmp / 11)
                 Dim ivatmp2 = ivatmp.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
-                txtTotal.Text = String.Format("${0:n2}", CType(tmp, Double))
-                txtIva.Text = String.Format("${0:n2}", CType(ivatmp, Double))
+                txtTotal.Text = String.Format("${0:n0}", CType(tmp, Double))
+                txtIva.Text = String.Format("${0:n0}", CType(ivatmp, Double))
             End If
 
-            txtDescuentoTotal.Text = String.Format("${0:n2}", CType(descuentoTotal, Double))
-            txtRecargoTotal.Text = String.Format("${0:n2}", CType(recargoTotal, Double))
+            txtDescuentoTotal.Text = String.Format("${0:n0}", CType(descuentoTotal, Double))
+            txtRecargoTotal.Text = String.Format("${0:n0}", CType(recargoTotal, Double))
 
             If rbtnCred.Checked Then
                 txtSaldo.Text = txtTotal.Text
             Else
-                txtSaldo.Text = String.Format("${0:n2}", CType(0, Double))
+                txtSaldo.Text = String.Format("${0:n0}", CType(0, Double))
             End If
         End If
 
@@ -681,26 +780,38 @@ Public Class VentasForm
                     nuevaVenta.descuento = descuentoTotal
                     nuevaVenta.recargo = recargoTotal
 
-                    nuevaVenta.m2 = produccionVenta
+                    nuevaVenta.m2 = CDbl(lblSupTotalOT.Text)
                     If rbtnCont.Checked = True Then
                         nuevaVenta.credito = "N"
-                        nuevaVenta.saldo = 0
-                        nuevaVenta.estado = "C"
+                        If cliente.nombre = "INTERNO" Then
+                            nuevaVenta.saldo = 0
+                            nuevaVenta.estado = "C"
+                        Else
+                            nuevaVenta.saldo = nuevaVenta.total
+                            nuevaVenta.estado = "P"
+                        End If
                     Else
+
                         nuevaVenta.credito = "S"
+                        If cliente.nombre = "INTERNO" Then
+                            nuevaVenta.saldo = 0
+                            nuevaVenta.estado = "C"
+                        Else
+                            nuevaVenta.saldo = nuevaVenta.total
+                            nuevaVenta.estado = "P"
+                        End If
 
-                        nuevaVenta.saldo = nuevaVenta.total
-                        nuevaVenta.estado = "P"
+
                     End If
 
-                    If rbtnSi.Checked Then
-                        nuevaVenta.plazo = txtPlazo1.Text
-                        nuevaVenta.direEnv = lblDirEnvio.Text
-                        nuevaVenta.fechaP = CDate(lblFechaEntrega.Text)
-                        nuevaVenta.envio = "S"
-                    Else
-                        nuevaVenta.envio = "N"
-                    End If
+                    'If rbtnSi.Checked Then
+                    '    nuevaVenta.plazo = txtPlazo1.Text
+                    '    nuevaVenta.direEnv = lblDirEnvio.Text
+                    '    nuevaVenta.fechaP = CDate(lblFechaEntrega.Text)
+                    '    nuevaVenta.envio = "S"
+                    'Else
+                    '    nuevaVenta.envio = "N"
+                    'End If
                     Dim daoVenta As New VentaDAO
                     Dim ventaGuardada = daoVenta.guardarVenta(nuevaVenta, dgvProductos.Rows, sucursal, deposito, produccionVenta)
                     If templado2 = True Then
@@ -709,20 +820,189 @@ Public Class VentasForm
                         End If
                     End If
 
-                    MsgBox("¡Venta Realizada!", MsgBoxStyle.Information, "Notificación Venta")
-                    limpiarCampos()
-                    activarCamposNuevaVenta()
+                    'MsgBox("¡Venta Realizada! Desea imprimir factura?", MsgBoxStyle.Information, "Notificación Venta")
+                    'If nuevaVenta.credito = "N" Then
+                    '    Do
+                    '        Dim pag As New PagoVentaContado
+                    '        pag.ventaId = ventaGuardada
+                    '        pag.dolar = nuevaVenta.moneda
+                    '        Dim r = pag.ShowDialog()
+
+                    '        If r = DialogResult.OK Then
+                    '            pag.Dispose()
+                    '            Exit Do
+                    '        End If
+                    '        pag.Dispose()
+                    '    Loop
+
+                    'End If
+                    Dim resultImp As Integer = MessageBox.Show("¡Venta Realizada! ¿Imprimir factura?", "Factura", MessageBoxButtons.YesNo)
+                    If resultImp = DialogResult.Yes Then
+
+                        cargarVentas()
+                        pnlTipoVentaMoneda.Visible = False
+                        lblTipoFactura.Visible = True
+                        txtFactuNro.Enabled = False
+                        txtObservacion.Enabled = False
+                        txtCodProd.Enabled = False
+                        txtCantidad.Enabled = False
+                        txtAncho.Enabled = False
+                        txtAlto.Enabled = False
+                        txtObra.Enabled = False
+                        txtDescuento.Enabled = False
+                        txtRecargo.Enabled = False
+                        limpiarProductos()
+                        cargarVentaOT(ventaGuardada)
+                        btnAnular.Enabled = True
+                        btnModificar.Enabled = True
+                        btnImprimir.Visible = True
+                        btnEliminarProd.Enabled = False
+                        btnImprimir.PerformClick()
+                    Else
+                        cargarVentas()
+                        linea = 0
+                        limpiarCampos()
+                        activarCamposNuevaVenta()
+
+                        modificar = False
+                        btnAnterior.Enabled = True
+                        btnSgte.Enabled = True
+                        btnPrim.Enabled = True
+                        btnUlt.Enabled = True
+
+                        dgvProductos.DataSource = New DataSet1.detalleVentaDataTable
+                    End If
+
+                    '------------------
+
+
                     If nuevaVenta.m2 > 0 Then
                         actualizarProduccion()
-                    End If
-                    modificar = False
-                    btnAnterior.Enabled = True
-                    btnSgte.Enabled = True
-                    btnPrim.Enabled = True
-                    btnUlt.Enabled = True
 
-                    dgvProductos.DataSource = New DataSet1.detalleVentaDataTable
-                    cargarVentas()
+
+                        '' -------------------------
+                        Dim resultImp2 As Integer = MessageBox.Show("¿Imprimir Etiquetas?", "Etiquetas", MessageBoxButtons.YesNo)
+
+                        If resultImp2 = DialogResult.Yes Then
+                            Dim banPrint = False
+                            Dim s = ""
+                            Dim pt As New PrinterSettings
+
+                            'Dim strPrintServer As String = "localhost"
+                            'Dim WMIObject As String = "winmgmts://" & strPrintServer
+                            'Dim PrinterSet As Object = GetObject(WMIObject).InstancesOf("win32_Printer")
+                            'Get default printer name
+                            'Dim printDocument1 As PrintDocument = New PrintDocument()
+                            'MessageBox.Show(printDocument1.PrinterSettings.PrinterName)
+
+                            Dim moReturn As Management.ManagementObjectCollection
+
+                            Dim moSearch As Management.ManagementObjectSearcher
+
+                            Dim mo As Management.ManagementObject
+
+                            moSearch = New Management.ManagementObjectSearcher("Select * from Win32_Printer")
+
+                            moReturn = moSearch.Get
+
+                            For Each mo In moReturn
+                                If mo("Name") = "Datamax-O'Neil E-4205A Mark III" Then
+                                    banPrint = True
+                                    s = mo("Status")
+                                    Exit For
+                                End If
+                                'Debug.WriteLine(String.Format("{0} Status {1} ", mo("Name"), mo("Status")))
+                            Next
+
+                            'For Each Printer As Object In PrinterSet
+                            '    'ListBox1.Items.Add(Printer.Name & ": " & PrinterStatusToString(Printer.PrinterStatus))
+                            '    If Printer.Name = "Datamax-O'Neil E-4205A Mark III" Then
+                            '        banPrint = True
+                            '        Select Case Printer.PrinterStatus
+                            '            Case 3
+                            '                s = "waiting (idle)"
+                            '            Case 4
+                            '                s = "printing"
+                            '            Case 5
+                            '                s = "warming up"
+                            '            Case Else
+                            '                s = "unknown"
+                            '        End Select
+
+                            '        MsgBox(banPrint)
+                            '        MsgBox(s)
+                            '        Exit For
+                            '    End If
+                            'Next Printer
+
+                            'For Each prn As String In PrinterSettings.InstalledPrinters
+                            '    If prn = "Datamax-O'Neil E-4205A Mark III" Then
+
+                            '        Dim printDocument As PrintDocument = New PrintDocument
+                            '        printDocument.PrinterSettings.PrinterName = prn
+                            '        If printDocument.PrinterSettings.IsValid Then
+                            '            banPrint = True
+                            '            s = "ready"
+                            '        End If
+                            '        Exit For
+                            '    End If
+                            'Next
+
+                            If banPrint = False Then
+                                MsgBox("Impresora de etiquetas no instalada", MsgBoxStyle.Critical, "error")
+                            Else
+                                Try
+                                    cargarVentaOT(ventaGuardada)
+                                    Dim ticketsImprimir As New Tickets
+                                    Dim daov As New VentaDAO
+                                    Dim listadeTickets = daov.cargarEtiquetas(venta.id)
+                                    Dim dv2 As New DataView(listadeTickets.Tables("tabla"))
+                                    dv2.Sort = "Produccion"
+                                    Dim prodHasta = dv2(dv2.Count - 1)(1).ToString
+                                    Dim proDesde = dv2(0)(1).ToString
+
+                                    Dim usud As New SesionDAO
+                                    Dim usuar = usud.getUsuario()
+                                    Dim prodDao As New ProduccionDAO
+
+
+                                    Dim ds = prodDao.getTickets(proDesde, prodHasta)
+
+                                    ds.Tables("tabla").Columns.Add(New DataColumn("BarCode", System.Type.GetType("System.Byte[]")))
+
+
+
+                                    Dim barwriter As New BarcodeWriter
+                                    barwriter.Format = BarcodeFormat.CODE_128
+
+                                    For Each row As DataRow In ds.Tables("tabla").Rows
+                                        Dim img = barwriter.Write(CInt(row.Item("Produccion")).ToString)
+                                        Dim converter As New ImageConverter
+                                        Dim imageData = converter.ConvertTo(img, GetType(Byte()))
+                                        row.Item("BarCode") = imageData
+                                    Next
+
+                                    ticketsImprimir.SetDataSource(ds.Tables("tabla"))
+                                    ticketsImprimir.SetParameterValue("Usuario", usuar)
+                                    ticketsImprimir.SetParameterValue("Obs", venta.obs)
+                                    ticketsImprimir.SetParameterValue("Cliente", cliente.nombre)
+
+
+
+
+                                    ticketsImprimir.PrintOptions.PrinterName = "Datamax-O'Neil E-4205A Mark III" ''PONER NOMBRE DE IMPRESORA
+                                    'ticketsImprimir.PrintOptions.PrinterName = "Win2PDF" ''PONER NOMBRE DE IMPRESORA
+                                    ticketsImprimir.PrintToPrinter(1, False, 0, 0)
+                                    'MsgBox("¡Tickets impresos!", MsgBoxStyle.Information, "Notificación")
+                                    actualizarProduccionTickets(proDesde, prodHasta)
+                                Catch ex As Exception
+                                    MsgBox(ex.Message)
+                                End Try
+                            End If
+                        End If
+                        '----------------
+                    End If
+
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
@@ -809,11 +1089,11 @@ Public Class VentasForm
             '    MsgBox("Debe agregar un plano para la venta", MsgBoxStyle.Critical, "Error de datos")
             '    txtCodProd.Focus()
             '    Return False
-        ElseIf rbtnSi.Checked Then
-            If txtPlazo1.Text = "" Then
-                MsgBox("Ingrese la cantidad de días hábiles para la entrega", MsgBoxStyle.Critical, "Error de datos")
-                txtPlazo1.Focus()
-            End If
+            'ElseIf rbtnSi.Checked Then
+            '    If txtPlazo1.Text = "" Then
+            '        MsgBox("Ingrese la cantidad de días hábiles para la entrega", MsgBoxStyle.Critical, "Error de datos")
+            '        txtPlazo1.Focus()
+            '    End If
         End If
         Return True
     End Function
@@ -856,26 +1136,31 @@ Public Class VentasForm
 
                 lblTipoFactura.Text = "Contado"
                 txtObservacion.Focus()
-                txtSaldo.Text = FormatCurrency(0)
+                txtSaldo.Text = FormatCurrency(0, 0)
+                'cbTipodePago.Enabled = True
+                txtObservacion.Focus()
             Else
 
                 lblTipoFactura.Text = "Crédito"
-                txtSaldo.Text = FormatCurrency(txtTotal.Text)
-
+                txtSaldo.Text = FormatCurrency(txtTotal.Text, 0)
+                'cbTipodePago.Enabled = False
                 txtObservacion.Focus()
 
             End If
         Else
             If rbtnCont.Checked Then
 
-                txtSaldo.Text = String.Format("${0:n2}", CType(0, Double))
+                txtSaldo.Text = String.Format("${0:n0}", CType(0, Double))
                 lblTipoFactura.Text = "Contado"
+                'cbTipodePago.Enabled = True
                 txtObservacion.Focus()
             Else
                 Dim aux = txtTotal.Text.Replace("$", "")
                 Dim montoTotal = CType(aux, Double)
-                txtSaldo.Text = String.Format("${0:n2}", CType(aux, Double))
+                txtSaldo.Text = String.Format("${0:n0}", CType(aux, Double))
                 lblTipoFactura.Text = "Crédito"
+                'cbTipodePago.Enabled = False
+
                 txtObservacion.Focus()
             End If
         End If
@@ -899,7 +1184,7 @@ Public Class VentasForm
         txtRecargo.Enabled = False
         pnlTipoVentaMoneda.Visible = False
         limpiarProductos()
-        pnlEnvioNuevo.Visible = False
+        'pnlEnvioNuevo.Visible = False
     End Sub
     'Venta anterior
     Private Sub btnAnterior_Click(sender As Object, e As EventArgs) Handles btnAnterior.Click
@@ -914,6 +1199,9 @@ Public Class VentasForm
             btnModificar.Enabled = True
             btnImprimir.Visible = True
             btnAnular.Enabled = True
+            btnGuardar.Enabled = False
+            linea = 0
+            lblLinea.Text = ""
         End If
 
     End Sub
@@ -929,29 +1217,41 @@ Public Class VentasForm
             btnModificar.Enabled = True
             btnImprimir.Visible = True
             btnAnular.Enabled = True
+
+            btnGuardar.Enabled = False
+            linea = 0
+            lblLinea.Text = ""
         End If
     End Sub
     'Primera Venta
     Private Sub btnPrim_Click(sender As Object, e As EventArgs) Handles btnPrim.Click
         If listadoVentas.Count > 0 Then
+            cargarVentas()
             ventaActual = 0
             cargarVenta()
             desactivarCampos()
             btnModificar.Enabled = True
             btnImprimir.Visible = True
             btnAnular.Enabled = True
+            btnGuardar.Enabled = False
+            linea = 0
+            lblLinea.Text = ""
         End If
 
     End Sub
     'Ultima venta
     Private Sub btnUlt_Click(sender As Object, e As EventArgs) Handles btnUlt.Click
         If listadoVentas.Count > 0 Then
+            cargarVentas()
             ventaActual = listadoVentas.Count - 1
             cargarVenta()
             desactivarCampos()
             btnModificar.Enabled = True
             btnImprimir.Visible = True
             btnAnular.Enabled = True
+            btnGuardar.Enabled = False
+            linea = 0
+            lblLinea.Text = ""
         End If
     End Sub
     ' carga la venta
@@ -964,9 +1264,9 @@ Public Class VentasForm
             txtObservacion.Text = venta.obs
             Dim tmp = CDbl(venta.total)
             If venta.moneda = "G" Then
-                txtTotal.Text = FormatCurrency(tmp, 3)
-                txtIva.Text = FormatCurrency(tmp / 11, 3)
-                txtSaldo.Text = FormatCurrency(venta.saldo, 3)
+                txtTotal.Text = FormatCurrency(tmp, 0)
+                txtIva.Text = FormatCurrency(tmp / 11, 0)
+                txtSaldo.Text = FormatCurrency(venta.saldo, 0)
             Else
                 Dim totalS = tmp.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
                 Dim IvaS = CDbl(tmp / 11).ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
@@ -986,18 +1286,18 @@ Public Class VentasForm
             End Try
 
 
-
-            If venta.envio = "S" Then
-                'chbEntrega1.Checked = True
-                txtPlazo1.Enabled = False
-                'txtFecha1.Enabled = False
-                txtPlazo1.Text = venta.plazo
-                lblFechaEntrega.Text = venta.fechaP
-            Else
-                'chbEntrega1.Checked = False
-                txtPlazo1.Text = ""
-                lblFechaEntrega.Text = ""
-            End If
+            lblIngresadopor.Text = daoV.getIngresador(venta.usuI)
+            'If venta.envio = "S" Then
+            '    'chbEntrega1.Checked = True
+            '    txtPlazo1.Enabled = False
+            '    'txtFecha1.Enabled = False
+            '    txtPlazo1.Text = venta.plazo
+            '    lblFechaEntrega.Text = venta.fechaP
+            'Else
+            '    'chbEntrega1.Checked = False
+            '    txtPlazo1.Text = ""
+            '    lblFechaEntrega.Text = ""
+            'End If
             If venta.estado = "A" Then
                 lblEstado.Text = "Anulado"
                 txtObservacion.Text = txtObservacion.Text + ". Anulado por: " + venta.motivo
@@ -1035,7 +1335,7 @@ Public Class VentasForm
             cliente = daoC.getCliente(venta.cliente)
             lblClienteNombre.Text = cliente.nombre
             lblClienteRuc.Text = cliente.ruc
-            lblClienteTel.Text = cliente.telf
+            lblClienteTel.Text = cliente.cel
             asignarVendedor()
             asignarSucursal()
             asignarDeposito()
@@ -1048,12 +1348,77 @@ Public Class VentasForm
         If venta.id = 0 Then
             MsgBox("Seleccione una ot antes de imprimir etiquetas", MsgBoxStyle.Information, "Notificacion")
         Else
-            Dim impEt As New TicketsForm
-            impEt.idVenta = venta.id
-            impEt.cliente = cliente.nombre
-            impEt.obs = venta.obs
-            impEt.ShowDialog()
+            If venta.m2 = 0 Then
+                Exit Sub
+            End If
+            'Dim impEt As New TicketsForm
+            'impEt.idVenta = venta.id
+            'impEt.cliente = cliente.nombre
+            'impEt.obs = venta.obs
+            'impEt.ShowDialog()
+
+            Try
+                Dim ticketsImprimir As New Tickets
+                Dim daov As New VentaDAO
+                Dim listadeTickets = daov.cargarEtiquetas(venta.id)
+                If listadeTickets.Tables("tabla").Rows.Count = 0 Then
+                    MsgBox("Todos los Tickets ya impresos")
+                    Exit Sub
+                End If
+                Dim dv2 As New DataView(listadeTickets.Tables("tabla"))
+                dv2.Sort = "Produccion"
+                Dim prodHasta = dv2(dv2.Count - 1)(1).ToString
+                Dim proDesde = dv2(0)(1).ToString
+
+                Dim usud As New SesionDAO
+                Dim usuar = usud.getUsuario()
+                Dim prodDao As New ProduccionDAO
+
+
+
+                Dim ds = prodDao.getTickets(proDesde, prodHasta)
+
+                ds.Tables("tabla").Columns.Add(New DataColumn("BarCode", System.Type.GetType("System.Byte[]")))
+
+
+
+                Dim barwriter As New BarcodeWriter
+                barwriter.Format = BarcodeFormat.CODE_128
+
+                For Each row As DataRow In ds.Tables("tabla").Rows
+                    Dim img = barwriter.Write(CInt(row.Item("Produccion")).ToString)
+                    Dim converter As New ImageConverter
+                    Dim imageData = converter.ConvertTo(img, GetType(Byte()))
+                    row.Item("BarCode") = imageData
+                Next
+
+                ticketsImprimir.SetDataSource(ds.Tables("tabla"))
+                ticketsImprimir.SetParameterValue("Usuario", usuar)
+                ticketsImprimir.SetParameterValue("Obs", venta.obs)
+                ticketsImprimir.SetParameterValue("Cliente", cliente.nombre)
+
+
+
+
+                ticketsImprimir.PrintOptions.PrinterName = "Datamax-O'Neil E-4205A Mark III" ''PONER NOMBRE DE IMPRESORA
+                'ticketsImprimir.PrintOptions.PrinterName = "Win2PDF" ''PONER NOMBRE DE IMPRESORA
+
+                ticketsImprimir.PrintToPrinter(1, False, 0, 0)
+                'MsgBox("¡Tickets impresos!", MsgBoxStyle.Information, "Notificación")
+                actualizarProduccionTickets(proDesde, prodHasta)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
         End If
+    End Sub
+
+    Private Sub actualizarProduccionTickets(ByVal ini As String, ByVal fin As String)
+        Try
+            Dim daov As New VentaDAO
+            daov.actualizarProduccion(venta.id, ini, fin)
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub activarCamposModificar()
@@ -1083,10 +1448,10 @@ Public Class VentasForm
         btnGuardar.Enabled = False
 
 
-        If venta.direEnv = "S" Then
-            pnlEntrega1.Enabled = False
-            'chbEntrega1.Enabled = True
-        End If
+        'If venta.direEnv = "S" Then
+        '    pnlEntrega1.Enabled = False
+        '    'chbEntrega1.Enabled = True
+        'End If
     End Sub
     '---------------------------------------------'---------------------------------------------'---------------------------------------------
     ' Formatos de numeros
@@ -1096,7 +1461,7 @@ Public Class VentasForm
         End If
     End Sub
 
-    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs) Handles txtPlazo1.KeyPress
+    Private Sub soloAdmiteNumeros(sender As Object, e As KeyPressEventArgs)
 
         soloNumeros(e)
     End Sub
@@ -1105,20 +1470,20 @@ Public Class VentasForm
 
 
 
-    Private Sub txtPlazo1_TextChanged(sender As Object, e As EventArgs) Handles txtPlazo1.TextChanged
-        If txtPlazo1.Text <> "" Then
-            Dim tod = Date.Today
-            Dim dateP = tod.AddDays(txtPlazo1.Text)
-            If dateP.DayOfWeek = DayOfWeek.Sunday Then
-                dateP = tod.AddDays(1)
-            End If
-            lblFechaEnvio.Text = dateP.ToShortDateString
+    'Private Sub txtPlazo1_TextChanged(sender As Object, e As EventArgs)
+    '    If txtPlazo1.Text <> "" Then
+    '        Dim tod = Date.Today
+    '        Dim dateP = tod.AddDays(txtPlazo1.Text)
+    '        If dateP.DayOfWeek = DayOfWeek.Sunday Then
+    '            dateP = tod.AddDays(1)
+    '        End If
+    '        lblFechaEnvio.Text = dateP.ToShortDateString
 
-        Else
-            lblFechaEnvio.Text = Date.Today
-        End If
+    '    Else
+    '        lblFechaEnvio.Text = Date.Today
+    '    End If
 
-    End Sub
+    'End Sub
 
     'Private Sub precioFormat(sender As Object, e As EventArgs)
     '    Try
@@ -1159,77 +1524,100 @@ Public Class VentasForm
     'End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnEliminarProd.Click
-        If dgvProductos.SelectedRows.Count > 0 Then
+        Try
+            If dgvProductos.SelectedRows.Count > 0 Then
 
-            For Each row As DataGridViewRow In dgvProductos.SelectedRows
+                For Each row As DataGridViewRow In dgvProductos.SelectedRows
 
-                If rbtnGS.Checked Then
+                    If templado = True Then
+                        Dim sup = row.Cells(10).Value
+                        Dim sup2 = CDbl(sup)
+                        Dim auxtotalsup = CDbl(0)
+                        If Double.TryParse(lblSupTotalOT.Text, auxtotalsup) Then
+                            Dim aux2 = Math.Round(auxtotalsup, 2)
+                            If aux2 > 0 Then
+                                lblSupTotalOT.Text = CDbl(aux2 - sup2)
+                            End If
+                        End If
+                    End If
+                    If rbtnGS.Checked Then
 
 
-                    Dim monto = row.Cells("TotalCol").Value
-                    Dim tmp = CDbl(txtTotal.Text - monto)
+                        Dim monto = row.Cells("TotalCol").Value
+                        Dim tmp = CDbl(txtTotal.Text - monto)
 
-                    Dim strdescuento = CDbl(row.Cells("Descuento").Value)
-                    Dim strrecargo = CDbl(row.Cells("Recargo").Value)
+                        Dim strdescuento = CDbl(row.Cells("Descuento").Value)
+                        Dim strrecargo = CDbl(row.Cells("Recargo").Value)
 
-                    descuentoTotal -= strdescuento
-                    recargoTotal -= strrecargo
+                        descuentoTotal -= strdescuento
+                        recargoTotal -= strrecargo
 
-                    txtTotal.Text = FormatCurrency(tmp)
-                    txtIva.Text = FormatCurrency(tmp / 11)
-                    txtDescuentoTotal.Text = FormatCurrency(descuentoTotal)
-                    txtRecargoTotal.Text = FormatCurrency(recargoTotal)
+                        txtTotal.Text = FormatCurrency(tmp)
+                        txtIva.Text = FormatCurrency(tmp / 11)
+                        txtDescuentoTotal.Text = FormatCurrency(descuentoTotal)
+                        txtRecargoTotal.Text = FormatCurrency(recargoTotal)
 
-                    If rbtnCont.Checked Then
-                        txtSaldo.Text = FormatCurrency(0)
+                        If rbtnCont.Checked Then
+                            txtSaldo.Text = FormatCurrency(0)
+                        Else
+                            txtSaldo.Text = FormatCurrency(tmp)
+                        End If
+                        Dim produc = row.Cells("IDProdCol").Value
+
+                        If produc = producto.id And porUnidad = 1 And txtStock.Text <> "" Then
+                            txtStock.Text = CInt(txtStock.Text) + row.Cells("CantidadCol").Value
+                        End If
                     Else
-                        txtSaldo.Text = FormatCurrency(tmp)
+                        Dim strdescuento = CDbl(row.Cells("Descuento").Value)
+                        Dim strrecargo = CDbl(row.Cells("Recargo").Value)
+
+                        descuentoTotal -= strdescuento
+                        recargoTotal -= strrecargo
+
+                        Dim monto = row.Cells("TotalCol").Value
+                        Dim totalAux = txtTotal.Text.Replace("$", "")
+                        Dim tmp = CDbl(totalAux - monto)
+
+                        txtTotal.Text = String.Format("${0:n0}", CType(tmp, Double))
+                        Dim tmpiva = CDbl(tmp / 11)
+                        txtIva.Text = String.Format("${0:n0}", CType(tmpiva, Double))
+                        txtDescuentoTotal.Text = String.Format("${0:n0}", CType(descuentoTotal, Double))
+                        txtRecargoTotal.Text = String.Format("${0:n0}", CType(recargoTotal, Double))
+
+
+                        If rbtnCont.Checked Then
+                            txtSaldo.Text = String.Format("${0:n0}", CType(0, Double))
+                        Else
+                            txtSaldo.Text = String.Format("${0:n0}", CType(tmp, Double))
+                        End If
+
+                        Dim produc = row.Cells("IDProdCol").Value
+
+                        If produc = producto.id And porUnidad = 1 Then
+                            'txtStock.Text = CInt(txtStock.Text) + row.Cells("CantidadCol").Value
+                        End If
                     End If
-                    Dim produc = row.Cells("IDProdCol").Value
 
-                    If produc = producto.id And porUnidad = 1 Then
-                        txtStock.Text = CInt(txtStock.Text) + row.Cells("CantidadCol").Value
-                    End If
-                Else
-                    Dim strdescuento = CDbl(row.Cells("Descuento").Value)
-                    Dim strrecargo = CDbl(row.Cells("Recargo").Value)
+                    dgvProductos.Rows.Remove(row)
+                    linea = linea - 1
+                    lblLinea.Text = linea
+                Next
 
-                    descuentoTotal -= strdescuento
-                    recargoTotal -= strrecargo
-
-                    Dim monto = row.Cells("TotalCol").Value
-                    Dim totalAux = txtTotal.Text.Replace("$", "")
-                    Dim tmp = CDbl(totalAux - monto)
-
-                    txtTotal.Text = String.Format("${0:n2}", CType(tmp, Double))
-                    Dim tmpiva = CDbl(tmp / 11)
-                    txtIva.Text = String.Format("${0:n2}", CType(tmpiva, Double))
-                    txtDescuentoTotal.Text = String.Format("${0:n2}", CType(descuentoTotal, Double))
-                    txtRecargoTotal.Text = String.Format("${0:n2}", CType(recargoTotal, Double))
-
-
-                    If rbtnCont.Checked Then
-                        txtSaldo.Text = String.Format("${0:n2}", CType(0, Double))
-                    Else
-                        txtSaldo.Text = String.Format("${0:n2}", CType(tmp, Double))
-                    End If
-
-                    Dim produc = row.Cells("IDProdCol").Value
-
-                    If produc = producto.id And porUnidad = 1 Then
-                        txtStock.Text = CInt(txtStock.Text) + row.Cells("CantidadCol").Value
-                    End If
+                If dgvProductos.Rows.Count = 0 Then
+                    porUnidad = 0
+                    templado = False
+                    templado2 = False
+                    limpiarProductos2()
+                    txtCodProd.Focus()
+                    deshabilitarProducto()
+                    txtPrecio.Text = ""
                 End If
-
-                dgvProductos.Rows.Remove(row)
-            Next
-
-            If dgvProductos.Rows.Count = 0 Then
-                porUnidad = 0
-                templado = False
-                templado2 = False
             End If
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
@@ -1247,12 +1635,375 @@ Public Class VentasForm
         nroFactForm.venta = venta
         Dim res = nroFactForm.ShowDialog
         If res = DialogResult.OK Then
+            Dim daoV As New VentaDAO
+            daoV.actualizarVentaFactura(venta)
+            'Dim result As Integer = MessageBox.Show("¿Imprimir factura?", "Factura", MessageBoxButtons.YesNo)
+
+            'If result = DialogResult.Yes Then
             venta.factura = nroFactForm.venta.factura
-            imprimirfact()
+            imprimirFact3()
+            'End If
+
+
         End If
         'End If
     End Sub
 
+    Private Sub imprimirFact3()
+        Dim ds As New DataSet
+        ' Dim traerDs As New cmdFacturas
+        Dim dt As New DataTable
+        Dim letras As String
+        Dim numero As Double
+        'Dim convertirnumero As New nroLetras
+        Dim filtro As String = ""
+        Dim i As Integer = 0
+        'ds = traerDs.ComandosFactura(txtOT.Text)
+        'dt = ds.Tables(0)
+        Dim precioUnitario As String = ""
+        Dim totalPrecios As Double = 0
+        Dim Marca As String = ""
+
+
+        Dim daoV As New VentaDAO
+        Dim daoc As New ClienteDAO
+
+        Dim dataS = daoV.getFacturaVenta(venta.id)
+        Dim tabla = dataS.Tables("tabla")
+        Dim dtmDate As DateTime
+        dtmDate = DateTime.Now()
+        'Dim insertar As New cmdFacturas
+        Dim resultado As String = ""
+        Dim FechaImp As String = "Coronel Oviedo, " & dtmDate.ToString("dd") & " " & dtmDate.ToString("MMMM") & " de " & dtmDate.ToString("yyyy")
+        Dim cli As String = cliente.nombre
+        Dim rucImp As String = cliente.ruc
+        Dim precioImp As Double
+        Dim cantImp As String
+        Dim fila As Integer = 16
+        Dim descpImp As String
+        Dim totalGral As Double = 0
+        Dim tipoFactCo As String = ""
+        Dim tipoFactCr As String = ""
+        Dim iva As Double = 0
+
+
+
+
+
+
+
+        Dim OT As String = venta.id
+
+
+
+
+        If venta.credito = "N" Then
+            tipoFactCo = "   x"
+        Else
+            tipoFactCr = "x"
+        End If
+
+        Const fic As String = "factura.txt"
+
+
+
+
+        Dim sw As New System.IO.StreamWriter(fic)
+        Dim saltos As String
+        Dim detalle As String
+        Dim pie As String
+        'Dim OT As String
+        Dim cabecera As String = vbCr _
+                                  & vbCr _
+                                    & vbCr _
+                                    & vbCr _
+                                    & vbCr _
+                                    & vbCr _
+                                    & vbCr _
+                                    & vbCr _
+                                    & "        " & FechaImp.PadLeft(38, " ") & tipoFactCo.PadLeft(43, " ") & tipoFactCr.PadLeft(12, " ") & vbCr _
+                                    & "       " & vbTab & "  " & rucImp & vbCr _
+                                    & "    " & vbTab & vbTab & "   " & cli & vbCr
+        sw.WriteLine(cabecera)
+        saltos = vbCr _
+            & vbCr _
+               & vbCr
+
+        Dim unidad As Decimal
+        Dim entero As Integer
+        If tabla.Rows.Count > 0 Then
+
+
+            For Each row As DataRow In tabla.Rows
+                precioUnitario = row("P. Unitario")
+                '      precioUnitario = CType(row.FindControl("txtPrecio"), TextBox).Text
+                'If precioUnitario = "" Then
+                '    dt.Rows(i)("PrecioModificado") = dt.Rows(i)("precio_unitario")
+                'Else
+                '    dt.Rows(i)("PrecioModificado") = precioUnitario
+                '    Marca = "(M)"
+                '    resultado = insertar.InsertarVenta(dt.Rows(i)("nro_venta"), "", dt.Rows(i)("codigo"), dt.Rows(i)("precio_unitario"), dt.Rows(i)("PrecioModificado"))
+                'End If
+                ' precioImp = CDbl(dt.Rows(i)("PrecioModificado"))
+                ' If dt.Rows(i)("superficie") = 0 Then
+                'dt.Rows(i)("superficie") = dt.Rows(i)("cantidad")
+
+                ' End If
+                Dim cantLetrasProd As Integer
+                If venta.m2 > 0 Then
+                    cantImp = row("Superficie")
+
+                Else
+                    cantImp = row("Cantidad")
+
+                End If
+                'cantImp = dt.Rows(i)("superficie")
+                descpImp = row("Producto")
+                cantLetrasProd = descpImp.Length
+                Dim totalPreciosFormat As String
+                Dim precioImpFormat As String
+                Dim cantidadUnitnario As Integer
+                precioImpFormat = String.Format("{0:0,0}", precioUnitario)
+                cantidadUnitnario = precioImpFormat.Length
+
+                'totalPrecios = (CDbl(dt.Rows(i)("PrecioModificado")) * dt.Rows(i)("superficie"))
+                totalPrecios = (CDbl(precioUnitario * cantImp))
+                totalPreciosFormat = String.Format("{0:0,0}", totalPrecios)
+
+                detalle = saltos & cantImp.PadLeft(10, " ") & vbTab & descpImp.PadRight(57, " ") & precioImpFormat.PadRight(26, " ") & totalPreciosFormat
+
+
+                sw.WriteLine(detalle)
+
+
+                totalGral = totalGral + totalPrecios
+                i = i + 1
+                fila = fila + 1
+                saltos = Nothing
+
+
+            Next row
+
+            numero = CDbl(CInt(totalGral))
+            Dim totalGralformat As String
+            Dim ivaFormat As String
+            letras = Num2Text(numero) + " GS"
+            iva = CDbl(CInt(totalGral / 11))
+            ivaFormat = String.Format("{0:0,0}", iva)
+            ' OT = vbTab & vbTab
+            OT = vbTab & vbTab & "OT: " & venta.id
+            sw.WriteLine(OT)
+            Dim numenter As Integer = 29 - fila
+            Dim mc As Integer = 0
+            While mc < numenter - 1
+                saltos = saltos & vbCr
+                mc = mc + 1
+            End While
+            totalGralformat = String.Format("{0:0,0}", totalGral)
+            pie = saltos & totalGralformat.PadLeft(110, " ") _
+                 & vbCr _
+                 & vbTab & vbTab & "  " & letras.PadRight(85, " ") & totalGralformat _
+                 & vbCr _
+                & vbCr & ivaFormat.PadLeft(55, " ") & vbTab & vbTab & vbTab & vbTab & ivaFormat
+            sw.WriteLine(pie)
+            Dim marcaImpr As String
+            marcaImpr = vbCr _
+                 & vbCr _
+                  & vbCr _
+                 & vbTab & "   " & Marca
+            sw.WriteLine(marcaImpr)
+            sw.Close()
+            saltos = Nothing
+
+
+            Dim proc As New Process
+            ' Dim impresora As New PrintDocument
+            '  impresora.PrinterSettings.PrinterName = "ELX350"
+
+            proc.StartInfo.FileName = "factura.txt"
+            proc.StartInfo.Verb = "printto"
+            proc.StartInfo.Arguments = "ELX350"
+
+            'Dim st As StreamReader
+            'st = New StreamReader("factura.txt")
+            proc.StartInfo.CreateNoWindow = False
+            proc.Start()
+            '  impresora.Print()
+            proc.CloseMainWindow()
+        End If
+    End Sub
+
+    Public Sub imprimirfact2()
+
+        Dim ds As New DataSet
+        Dim daoV As New VentaDAO
+        Dim daoc As New ClienteDAO
+        'Dim traerDs As New cmdFacturas
+        Dim dt As New DataTable
+        Dim letras As String
+        Dim numero As Double
+        'Dim convertirnumero As New nroLetras
+        Dim filtro As String = ""
+        Dim i As Integer = 0
+        'ds = traerDs.ComandosFactura(txtOT.Text)
+        'dt = ds.Tables(0)
+        Dim precioUnitario As String = ""
+        Dim totalPrecios As Double = 0
+        Dim Marca As String = ""
+
+        Dim dataS = daoV.getFacturaVenta(venta.id)
+        Dim tabla = dataS.Tables("tabla")
+        Dim dtmDate As DateTime
+        dtmDate = DateTime.Now()
+        'Dim insertar As New cmdFacturas
+        Dim resultado As String = ""
+        Dim FechaImp As String = "Coronel Oviedo, " & dtmDate.ToString("dd") & " " & dtmDate.ToString("MMMM") & " de " & dtmDate.ToString("yyyy")
+        Dim cli As String = cliente.nombre
+        Dim rucImp As String = cliente.ruc
+        Dim precioImp As Double
+        Dim cantImp As String
+        Dim fila As Integer = 16
+        Dim descpImp As String
+        Dim totalGral As Double = 0
+        Dim tipoFactCo As String = ""
+        Dim tipoFactCr As String = ""
+        Dim iva As Double = 0
+
+        If venta.credito = "N" Then
+            tipoFactCo = "   x"
+        Else
+            tipoFactCr = "x"
+        End If
+
+        Const fic As String = "factura.txt"
+
+
+        Dim sw As New System.IO.StreamWriter(fic)
+        Dim saltos As String
+        Dim detalle As String
+        Dim pie As String
+        Dim OT As String
+        Dim cabecera As String = vbCr _
+                                      & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & vbCr _
+                                        & "       " & FechaImp.PadLeft(44, " ") & tipoFactCo.PadLeft(49, " ") & tipoFactCr.PadLeft(12, " ") & vbCr _
+                                        & "       " & vbTab & vbTab & vbTab & "      " & cli & vbCr _
+                                        & "    " & vbTab & vbTab & rucImp & vbCr
+        sw.WriteLine(cabecera)
+        saltos = vbCr _
+                & vbCr _
+                   & vbCr
+
+
+        If tabla.Rows.Count > 0 Then
+
+
+            For Each row As DataRow In tabla.Rows
+
+                precioUnitario = row("P. Unitario")
+                '      precioUnitario = CType(row.FindControl("txtPrecio"), TextBox).Text
+                'If precioUnitario = "" Then
+                '    dt.Rows(i)("PrecioModificado") = dt.Rows(i)("precio_unitario")
+                'Else
+                '    dt.Rows(i)("PrecioModificado") = precioUnitario
+                '    Marca = "(M)"
+                '    resultado = insertar.InsertarVenta(dt.Rows(i)("nro_venta"), "", dt.Rows(i)("codigo"), dt.Rows(i)("precio_unitario"), dt.Rows(i)("PrecioModificado"))
+                'End If
+                ' precioImp = CDbl(dt.Rows(i)("PrecioModificado"))
+                ' If dt.Rows(i)("superficie") = 0 Then
+                'dt.Rows(i)("superficie") = dt.Rows(i)("cantidad")
+
+                ' End If
+                Dim cantLetrasProd As Integer
+                If venta.m2 > 0 Then
+                    cantImp = row("Superficie")
+
+                Else
+                    cantImp = row("Cantidad")
+
+                End If
+                'cantImp = dt.Rows(i)("superficie")
+                descpImp = row("Producto")
+                cantLetrasProd = descpImp.Length
+                Dim totalPreciosFormat As String
+                Dim precioImpFormat As String
+                Dim cantidadUnitnario As Integer
+                precioImpFormat = String.Format("{0:0,0}", precioUnitario)
+                cantidadUnitnario = precioImpFormat.Length
+
+                'totalPrecios = (CDbl(dt.Rows(i)("PrecioModificado")) * dt.Rows(i)("superficie"))
+                totalPrecios = (CDbl(precioUnitario * cantImp))
+                totalPreciosFormat = String.Format("{0:0,0}", totalPrecios)
+
+                detalle = saltos & cantImp.PadLeft(10, " ") & vbTab & descpImp.PadRight(57, " ") & precioImpFormat.PadRight(26, " ") & totalPreciosFormat
+
+
+                sw.WriteLine(detalle)
+
+
+                totalGral = totalGral + totalPrecios
+                i = i + 1
+                fila = fila + 1
+                saltos = Nothing
+            Next row
+
+            numero = CDbl(CInt(totalGral))
+            Dim totalGralformat As String
+            Dim ivaFormat As String
+            letras = Num2Text(numero) + " GS"
+            iva = CDbl(CInt(totalGral / 11))
+            ivaFormat = String.Format("{0:0,0}", iva)
+            OT = vbTab & vbTab
+            ' OT = vbTab & vbTab & "OT: " & txtOT.Text
+            sw.WriteLine(OT)
+            Dim numenter As Integer = 29 - fila
+            Dim mc As Integer = 0
+            While mc < numenter - 1
+                saltos = saltos & vbCr
+                mc = mc + 1
+            End While
+            totalGralformat = String.Format("{0:0,0}", totalGral)
+            pie = saltos & totalGralformat.PadLeft(110, " ") _
+                     & vbCr _
+                     & vbCr _
+                     & vbTab & vbTab & "  " & letras.PadRight(85, " ") & totalGralformat _
+                     & vbCr _
+                    & vbCr & ivaFormat.PadLeft(60, " ") & vbTab & vbTab & ivaFormat
+            sw.WriteLine(pie)
+            Dim marcaImpr As String
+            marcaImpr = vbCr _
+                     & vbCr _
+                      & vbCr _
+                     & vbTab & "   " & Marca
+            sw.WriteLine(marcaImpr)
+            sw.Close()
+            saltos = Nothing
+
+
+            Dim proc As New Process
+            ' Dim impresora As New PrintDocument
+            '  impresora.PrinterSettings.PrinterName = "ELX350"
+
+            proc.StartInfo.FileName = "factura.txt"
+            proc.StartInfo.Verb = "printto"
+            proc.StartInfo.Arguments = "ELX350"
+
+            'Dim st As StreamReader
+            'st = New StreamReader("factura.txt")
+            proc.StartInfo.CreateNoWindow = False
+            proc.Start()
+            '  impresora.Print()
+            proc.CloseMainWindow()
+        End If
+
+    End Sub
     Public Sub imprimirfact()
         Try
             Dim facturaImprimir As New ImpresionFactura
@@ -1265,8 +2016,13 @@ Public Class VentasForm
             facturaImprimir.SetParameterValue("cliente", currentCliente.nombre)
             facturaImprimir.SetParameterValue("ruc", currentCliente.ruc)
             facturaImprimir.SetParameterValue("Fecha", Date.Today)
-            Dim convert As New NumLetra
+            facturaImprimir.SetParameterValue("TotalVenta", venta.total)
 
+            facturaImprimir.SetParameterValue("TotalIvaVenta", (venta.total * (9.0909 / 100)))
+            facturaImprimir.SetParameterValue("Fecha", Date.Today)
+
+            Dim convert As New NumLetra
+            facturaImprimir.SetParameterValue("totalGuaranies", Num2Text(venta.total))
             If venta.credito = "S" Then
                 facturaImprimir.SetParameterValue("contado", "X")
                 facturaImprimir.SetParameterValue("credito", "")
@@ -1274,30 +2030,81 @@ Public Class VentasForm
                 facturaImprimir.SetParameterValue("contado", "")
                 facturaImprimir.SetParameterValue("credito", "X")
             End If
-            facturaImprimir.SetParameterValue("totalGuaranies", convert.EnLetras(venta.total))
+
             ''facturaImprimir.SetParameterValue("totalVenta", currentVenta.total)
             ''facturaImprimir.SetParameterValue("liquidacionIva10", currentVenta.total * 0.090909)
             '= facturaImprimir.PrintOptions.PrinterName = "EPSONLX-350" ''PONER NOMBRE DE IMPRESORA
             'facturaImprimir.PrintOptions.PrinterName = "Win2PDF"
             facturaImprimir.PrintOptions.PrinterName = "ELX350"
             'facturaImprimir.PrintOptions.PaperSource = "papelp2"
-            Dim daoV As New VentaDAO
-            daoV.actualizarVentaFactura(venta)
+
             facturaImprimir.PrintToPrinter(1, False, 0, 0)
             MsgBox("¡Factura impresa!", MsgBoxStyle.Information, "Notificación")
             txtOT.Text = venta.id
             cargarVentas()
-            cargarVentaOT()
+            cargarVentasOT()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
 
+    Public Function Num2Text(ByVal value As Double) As String
+        Select Case value
+            Case 0 : Num2Text = "CERO"
+            Case 1 : Num2Text = "UN"
+            Case 2 : Num2Text = "DOS"
+            Case 3 : Num2Text = "TRES"
+            Case 4 : Num2Text = "CUATRO"
+            Case 5 : Num2Text = "CINCO"
+            Case 6 : Num2Text = "SEIS"
+            Case 7 : Num2Text = "SIETE"
+            Case 8 : Num2Text = "OCHO"
+            Case 9 : Num2Text = "NUEVE"
+            Case 10 : Num2Text = "DIEZ"
+            Case 11 : Num2Text = "ONCE"
+            Case 12 : Num2Text = "DOCE"
+            Case 13 : Num2Text = "TRECE"
+            Case 14 : Num2Text = "CATORCE"
+            Case 15 : Num2Text = "QUINCE"
+            Case Is < 20 : Num2Text = "DIECI" & Num2Text(value - 10)
+            Case 20 : Num2Text = "VEINTE"
+            Case Is < 30 : Num2Text = "VEINTI" & Num2Text(value - 20)
+            Case 30 : Num2Text = "TREINTA"
+            Case 40 : Num2Text = "CUARENTA"
+            Case 50 : Num2Text = "CINCUENTA"
+            Case 60 : Num2Text = "SESENTA"
+            Case 70 : Num2Text = "SETENTA"
+            Case 80 : Num2Text = "OCHENTA"
+            Case 90 : Num2Text = "NOVENTA"
+            Case Is < 100 : Num2Text = Num2Text(Int(value \ 10) * 10) & " Y " & Num2Text(value Mod 10)
+            Case 100 : Num2Text = "CIEN"
+            Case Is < 200 : Num2Text = "CIENTO " & Num2Text(value - 100)
+            Case 200, 300, 400, 600, 800 : Num2Text = Num2Text(Int(value \ 100)) & "CIENTOS"
+            Case 500 : Num2Text = "QUINIENTOS"
+            Case 700 : Num2Text = "SETECIENTOS"
+            Case 900 : Num2Text = "NOVECIENTOS"
+            Case Is < 1000 : Num2Text = Num2Text(Int(value \ 100) * 100) & " " & Num2Text(value Mod 100)
+            Case 1000 : Num2Text = "MIL"
+            Case Is < 2000 : Num2Text = "MIL " & Num2Text(value Mod 1000)
+            Case Is < 1000000 : Num2Text = Num2Text(Int(value \ 1000)) & " MIL"
+                If value Mod 1000 Then Num2Text = Num2Text & " " & Num2Text(value Mod 1000)
+            Case 1000000 : Num2Text = "UN MILLON"
+            Case Is < 2000000 : Num2Text = "UN MILLON " & Num2Text(value Mod 1000000)
+            Case Is < 1000000000000.0# : Num2Text = Num2Text(Int(value / 1000000)) & " MILLONES "
+                If (value - Int(value / 1000000) * 1000000) Then Num2Text = Num2Text & " " & Num2Text(value - Int(value / 1000000) * 1000000)
+            Case 1000000000000.0# : Num2Text = "UN BILLON"
+            Case Is < 2000000000000.0# : Num2Text = "UN BILLON " & Num2Text(value - Int(value / 1000000000000.0#) * 1000000000000.0#)
+            Case Else : Num2Text = Num2Text(Int(value / 1000000000000.0#)) & " BILLONES"
+                If (value - Int(value / 1000000000000.0#) * 1000000000000.0#) Then Num2Text = Num2Text & " " & Num2Text(value - Int(value / 1000000000000.0#) * 1000000000000.0#)
+        End Select
+    End Function
+
     Private Sub txtOT_KeyDown(sender As Object, e As KeyEventArgs) Handles txtOT.KeyDown
 
+
         If e.KeyCode = Keys.Enter Then
-            pnlEnvioNuevo.Visible = False
+            ' pnlEnvioNuevo.Visible = False
             pnlTipoVentaMoneda.Visible = False
             e.SuppressKeyPress = True
             Dim daoP As New VentaDAO
@@ -1314,17 +2121,22 @@ Public Class VentasForm
                 txtDescuento.Enabled = False
                 txtRecargo.Enabled = False
 
-                cargarVentaOT()
+                cargarVentaOT(txtOT.Text)
                 btnAnular.Enabled = True
                 btnModificar.Enabled = True
                 btnImprimir.Visible = True
+                'lblTipoPago.Visible = False
+                'cbTipodePago.Visible = False
+
+                'lblEstado.Visible = True
+                'Label26.Visible = True
             Else
                 btnNuevo.PerformClick()
             End If
         End If
     End Sub
 
-    Private Sub cargarVentaOT()
+    Private Sub cargarVentaOT(ByVal vent As String)
         Try
             Dim daoV As New VentaDAO
 
@@ -1333,21 +2145,21 @@ Public Class VentasForm
 
             End If
             ventaActual = (listadoVentas.FindIndex(Function(value As Integer)
-                                                       Return value = txtOT.Text
+                                                       Return value = vent
                                                    End Function))
             If ventaActual <> -1 Then
                 venta = daoV.getVenta(listadoVentas.Item(ventaActual))
                 lblFechaVenta.Text = venta.fecha
                 txtFactuNro.Text = venta.factura
                 txtObservacion.Text = venta.obs
-                Dim tmp = CDbl(venta.total)
+                Dim tmp = CDbl(venta.total) '- venta.descuento + venta.recargo
                 If venta.moneda = "G" Then
                     lblMonedaVenta.Text = "Guaraníes"
-                    txtTotal.Text = FormatCurrency(tmp, 3)
-                    txtIva.Text = FormatCurrency(tmp / 11, 3)
-                    txtSaldo.Text = FormatCurrency(venta.saldo, 3)
-                    txtDescuentoTotal.Text = FormatCurrency(venta.descuento, 3)
-                    txtRecargoTotal.Text = FormatCurrency(venta.recargo, 3)
+                    txtTotal.Text = FormatCurrency(tmp, 0)
+                    txtIva.Text = FormatCurrency(tmp / 11, 0)
+                    txtSaldo.Text = FormatCurrency(venta.saldo, 0)
+                    txtDescuentoTotal.Text = FormatCurrency(venta.descuento, 0)
+                    txtRecargoTotal.Text = FormatCurrency(venta.recargo, 0)
                 Else
                     lblMonedaVenta.Text = "Dólares"
                     Dim totalS = tmp.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
@@ -1364,7 +2176,7 @@ Public Class VentasForm
 
                 lblOTSeleccionada.Text = venta.id
                 pnlTipoP.Visible = False
-                lblSupTotalOT.Text = venta.m2
+                lblSupTotalOT.Text = Math.Round(venta.m2, 2)
 
                 If venta.credito = "N" Then
                     'rbtnCont.Checked = True
@@ -1373,21 +2185,21 @@ Public Class VentasForm
                     'rbtnCred.AutoCheck = True
                     lblTipoFactura.Text = "Crédito"
                 End If
-                If venta.envio = "S" Then
-                    'chbEntrega1.Checked = True
-                    txtPlazo1.Enabled = False
-                    'txtFecha1.Enabled = False
-                    txtPlazo1.Text = venta.plazo
-                    lblFechaEntrega.Text = venta.fechaP
-                    lblFechaEntrega.Text = venta.fechaP
-                    lblEnvio.Text = "Sí"
-                Else
-                    'chbEntrega1.Checked = False
-                    txtPlazo1.Text = ""
-                    lblFechaEntrega.Text = ""
-                    lblFechaEntrega.Text = ""
-                    lblEnvio.Text = "No"
-                End If
+                'If venta.envio = "S" Then
+                '    'chbEntrega1.Checked = True
+                '    txtPlazo1.Enabled = False
+                '    'txtFecha1.Enabled = False
+                '    txtPlazo1.Text = venta.plazo
+                '    lblFechaEntrega.Text = venta.fechaP
+                '    lblFechaEntrega.Text = venta.fechaP
+                '    lblEnvio.Text = "Sí"
+                'Else
+                '    'chbEntrega1.Checked = False
+                '    txtPlazo1.Text = ""
+                '    lblFechaEntrega.Text = ""
+                '    lblFechaEntrega.Text = ""
+                '    lblEnvio.Text = "No"
+                'End If
                 If venta.estado = "A" Then
                     lblEstado.Text = "Anulado"
                     txtObservacion.Text = txtObservacion.Text + ". Anulado por: " + venta.motivo
@@ -1403,7 +2215,7 @@ Public Class VentasForm
                 Dim det = daoV.getDetalle(venta.id)
                 dgvProductos.DataSource = det.Tables("tabla")
                 cargarCliente()
-
+                limpiarProductos()
                 txtOT.Text = ""
                 cargarPlanos()
             End If
@@ -1472,7 +2284,9 @@ Public Class VentasForm
     Private Sub txtAncho_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAncho.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtAlto.Focus()
+            If txtAncho.Text <> "" Then
+                txtAlto.Focus()
+            End If
         ElseIf e.KeyCode = Keys.Up Then
             txtCantidad.Focus()
             txtCantidad.SelectAll()
@@ -1482,7 +2296,9 @@ Public Class VentasForm
     Private Sub txtAlto_KeyDown(sender As Object, e As KeyEventArgs) Handles txtAlto.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtDescuento.Focus()
+            If txtAlto.Text <> "" Then
+                txtDescuento.Focus()
+            End If
         ElseIf e.KeyCode = Keys.Up Then
             txtAncho.Focus()
             txtAncho.SelectAll()
@@ -1515,31 +2331,31 @@ Public Class VentasForm
                     'Textbox1.Text = String.Format("{0:n2} $", CType(Textbox1.Text, Double))
                     Dim aux = txtDescuento.Text.Replace("$", "")
                     'descuentoTotal = CType(aux, Double)
-                    txtDescuento.Text = String.Format("${0:n2}", CType(aux, Double))
-                    txtDescuento.Select(sender.TextLength - 3, 0)
+                    txtDescuento.Text = String.Format("${0:n0}", CType(aux, Double))
+                    txtDescuento.Select(sender.TextLength, 0)
                 Else
                     'descuentoTotal = CType(0, Double)
-                    txtDescuento.Text = String.Format("${0:n2}", CType(0, Double))
-                    txtDescuento.Select(sender.TextLength - 3, 0)
+                    txtDescuento.Text = String.Format("${0:n0}", CType(0, Double))
+                    txtDescuento.Select(sender.TextLength, 0)
                 End If
             Else
                 If sender.Text <> "" Then
                     'descuentoTotal = CType(txtDescuento.Text, Double)
-                    txtDescuento.Text = FormatCurrency(sender.Text, 1)
-                    txtDescuento.Select(sender.TextLength - 2, 0)
+                    txtDescuento.Text = FormatCurrency(sender.Text, 0)
+                    txtDescuento.Select(sender.TextLength, 0)
                 Else
                     'descuentoTotal = 0
-                    txtDescuento.Text = FormatCurrency(0, 1)
-                    txtDescuento.Select(sender.TextLength - 2, 0)
+                    txtDescuento.Text = FormatCurrency(0, 0)
+                    txtDescuento.Select(sender.TextLength, 0)
                 End If
             End If
         Catch ex As Exception
             If rbtnDol.Checked Then
-                txtDescuento.Text = String.Format("${0:n2}", CType(0, Double))
-                txtDescuento.Select(sender.TextLength - 3, 0)
+                txtDescuento.Text = String.Format("${0:n0}", CType(0, Double))
+                txtDescuento.Select(sender.TextLength - 1, 0)
             Else
-                txtDescuento.Text = FormatCurrency(0, 1)
-                txtDescuento.Select(sender.TextLength - 2, 0)
+                txtDescuento.Text = FormatCurrency(0, 0)
+                txtDescuento.Select(sender.TextLength, 0)
             End If
         End Try
 
@@ -1555,31 +2371,31 @@ Public Class VentasForm
                     'Textbox1.Text = String.Format("{0:n2} $", CType(Textbox1.Text, Double))
                     Dim aux = txtRecargo.Text.Replace("$", "")
                     'recargoTotal = CType(aux, Double)
-                    txtRecargo.Text = String.Format("${0:n2}", CType(aux, Double))
-                    txtRecargo.Select(sender.TextLength - 3, 0)
+                    txtRecargo.Text = String.Format("${0:n0}", CType(aux, Double))
+                    txtRecargo.Select(sender.TextLength, 0)
                 Else
                     'recargoTotal = CType(0, Double)
-                    txtRecargo.Text = String.Format("${0:n2}", CType(0, Double))
-                    txtRecargo.Select(sender.TextLength - 3, 0)
+                    txtRecargo.Text = String.Format("${0:n0}", CType(0, Double))
+                    txtRecargo.Select(sender.TextLength, 0)
                 End If
             Else
                 If sender.Text <> "" Then
                     'recargoTotal = CType(txtRecargo.Text, Double)
-                    txtRecargo.Text = FormatCurrency(sender.Text, 1)
-                    txtRecargo.Select(sender.TextLength - 2, 0)
+                    txtRecargo.Text = FormatCurrency(sender.Text, 0)
+                    txtRecargo.Select(sender.TextLength, 0)
                 Else
                     'recargoTotal = 0
-                    txtRecargo.Text = FormatCurrency(0, 1)
-                    txtRecargo.Select(sender.TextLength - 2, 0)
+                    txtRecargo.Text = FormatCurrency(0, 0)
+                    txtRecargo.Select(sender.TextLength, 0)
                 End If
             End If
         Catch ex As Exception
             If rbtnDol.Checked Then
-                txtRecargo.Text = String.Format("${0:n2}", CType(0, Double))
-                txtRecargo.Select(sender.TextLength - 3, 0)
+                txtRecargo.Text = String.Format("${0:n0}", CType(0, Double))
+                txtRecargo.Select(sender.TextLength, 0)
             Else
-                txtRecargo.Text = FormatCurrency(0, 1)
-                txtRecargo.Select(sender.TextLength - 2, 0)
+                txtRecargo.Text = FormatCurrency(0, 0)
+                txtRecargo.Select(sender.TextLength, 0)
             End If
         End Try
 
@@ -1671,7 +2487,7 @@ Public Class VentasForm
         soloNumeros(e)
     End Sub
 
-    Private Sub txtPlazo1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPlazo1.KeyDown
+    Private Sub txtPlazo1_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             txtObservacion.Focus()
@@ -1688,6 +2504,7 @@ Public Class VentasForm
                     templado2 = False
                     descuentoTotal = 0
                     recargoTotal = 0
+                    lblSupTotalOT.Text = 0
                     limpiarTotalesDolares()
                     limpiarProductos()
                 Else
@@ -1747,11 +2564,11 @@ Public Class VentasForm
     End Sub
 
     Private Sub txtDescuento_Click(sender As Object, e As EventArgs) Handles txtDescuento.Click
-        txtDescuento.Select(sender.TextLength - 2, 0)
+        txtDescuento.Select(sender.TextLength, 0)
     End Sub
 
     Private Sub txtRecargo_Click(sender As Object, e As EventArgs) Handles txtRecargo.Click
-        txtRecargo.Select(sender.TextLength - 2, 0)
+        txtRecargo.Select(sender.TextLength, 0)
     End Sub
 
     Private Sub btnPlanos_Click(sender As Object, e As EventArgs) Handles btnPlanos.Click
@@ -1770,7 +2587,38 @@ Public Class VentasForm
         txtFactuNro.Focus()
     End Sub
 
+    Private Sub btnBuscar_Click_1(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        Dim busqvent As New VentaBusqueda
+        busqvent.inicial = 1
+        Dim r = busqvent.ShowDialog()
+        If r = DialogResult.OK Then
+            cargarVentaOT(busqvent.ventaSel)
+            btnModificar.Enabled = True
+            btnImprimir.Visible = True
+            btnAnular.Enabled = True
+        End If
+        busqvent.Dispose()
+    End Sub
 
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        If venta.id = 0 Then
+            MsgBox("Seleccione una ot antes de reimprimir etiquetas", MsgBoxStyle.Information, "Notificacion")
+        Else
+            If venta.m2 = 0 Then
+                Exit Sub
+            End If
+            Dim impEt As New TicketsForm
+            impEt.idVenta = venta.id
+            impEt.cliente = cliente.nombre
+            impEt.obs = venta.obs
+            impEt.ShowDialog()
+        End If
+    End Sub
 
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        Dim pag As New PagoVentaContado
+        pag.ventaId = 55
+        pag.dolar = "N"
+        pag.ShowDialog()
+    End Sub
 End Class

@@ -8,6 +8,9 @@ Public Class PulidaForm
     Private Sub PulidaForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvPulida.DataSource = New DataSetProduccion.PulidaDataTable
         txtPulidora.Text = "PULIDORA " + mesa.ToString
+        Dim prodDao As New ProduccionDAO
+        lblPulidas.Text = Math.Round(prodDao.getPulidasDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prodDao.getPulidasRoturasDia(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 
     Private Sub txtNroProd_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNroProd.KeyDown
@@ -34,6 +37,8 @@ Public Class PulidaForm
                     dgvPulida.DataSource = prodDao.getPulida(producc.idProd).Tables("tabla")
                     txtNroProd.Text = ""
                     txtNroProd.Focus()
+                    lblPulidas.Text = Math.Round(prodDao.getPulidasDia(), 2).ToString + " (m" & Chr(178) & ")"
+                    lblRoturas.Text = Math.Round(prodDao.getPulidasRoturasDia(), 2).ToString + " (m" & Chr(178) & ")"
                 End If
             End If
         End If
@@ -45,6 +50,9 @@ Public Class PulidaForm
         corteRot.ShowDialog()
 
         corteRot.Dispose()
+        Dim prodDao As New ProduccionDAO
+        lblPulidas.Text = Math.Round(prodDao.getPulidasDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prodDao.getPulidasRoturasDia(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 
     Private Sub Inicio_Load(sender As Object, e As EventArgs) Handles MyBase.Closed

@@ -59,8 +59,10 @@ Partial Class InformeReporte
         Me.crvProduc.Dock = System.Windows.Forms.DockStyle.Fill
         Me.crvProduc.Location = New System.Drawing.Point(0, 49)
         Me.crvProduc.Name = "crvProduc"
+        Me.crvProduc.ShowLogo = False
         Me.crvProduc.Size = New System.Drawing.Size(1497, 871)
         Me.crvProduc.TabIndex = 36
+        Me.crvProduc.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'InformeReporte
         '

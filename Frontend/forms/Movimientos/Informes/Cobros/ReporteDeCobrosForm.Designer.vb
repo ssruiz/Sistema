@@ -32,6 +32,7 @@ Partial Class ReporteDeCobrosForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.ReporteVentasView = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.CobrosReporte21 = New Frontend.CobrosReporte2()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -194,4 +195,5 @@ Partial Class ReporteDeCobrosForm
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblTitulo As Label
     Friend WithEvents ReporteVentasView As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents CobrosReporte21 As CobrosReporte2
 End Class

@@ -8,13 +8,19 @@ Public Class TempladoForm
     Private Sub TempladoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If templado = 1 Then
             txtPulidora.Text = "TEMPLADOS - ENTRADA"
-            txtSalidaEntrada.Text = "Nro. Entradas"
+            btnOrdenCompleta.Visible = False
+            'txtSalidaEntrada.Text = "Nro. Entradas"
         Else
             txtPulidora.Text = "TEMPLADOS - SALIDA"
-            txtSalidaEntrada.Text = "Nro. Salidas"
+            btnOrdenCompleta.Visible = True
+
+            'txtSalidaEntrada.Text = "Nro. Salidas"
         End If
 
-
+        Dim prodDao As New ProduccionDAO
+        lblEntradas.Text = Math.Round(prodDao.getTempEntradasDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblSalidas.Text = Math.Round(prodDao.getTempSalidasDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prodDao.getTempRoturas(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 
 
@@ -58,7 +64,8 @@ Public Class TempladoForm
                             If ban = False Then
 
                                 dgvPulida.Rows.Add(producc.idProd, producto.codigo, producc.panho, producc.ancho, producc.alto, Date.Now, "", "")
-
+                                Dim piezas = dgvPulida.Rows.Count
+                                lblPiezas.Text = piezas
                             End If
 
 
@@ -86,6 +93,8 @@ Public Class TempladoForm
 
                             If ban = False Then
                                 dgvPulida.Rows.Add(producc.idProd, producto.codigo, producc.panho, producc.ancho, producc.alto, "", Date.Now, "")
+                                Dim piezas = dgvPulida.Rows.Count
+                                lblPiezas.Text = piezas
                             End If
                         End If
 
@@ -149,11 +158,15 @@ Public Class TempladoForm
     End Sub
 
     Private Sub btnMesa1_Click(sender As Object, e As EventArgs) Handles btnMesa1.Click
-        'Dim corteRot As New RoturaPulida
-        'corteRot.pulidora = mesa
-        'corteRot.ShowDialog()
+        Dim corteRot As New TempladoRotura
+        corteRot.templa = templado
+        corteRot.ShowDialog()
 
-        'corteRot.Dispose()
+        corteRot.Dispose()
+        Dim prodDao As New ProduccionDAO
+        lblEntradas.Text = Math.Round(prodDao.getTempEntradasDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblSalidas.Text = Math.Round(prodDao.getTempSalidasDia(), 2).ToString + " (m" & Chr(178) & ")"
+        lblRoturas.Text = Math.Round(prodDao.getTempRoturas(), 2).ToString + " (m" & Chr(178) & ")"
     End Sub
 
     Private Sub btnConfirmar_Click(sender As Object, e As EventArgs) Handles btnConfirmar.Click
@@ -183,7 +196,7 @@ Public Class TempladoForm
             '    MsgBox("Producción aun no pasó por corte", MsgBoxStyle.Critical, "Marcado")
             'End If
 
-
+            Me.Close()
         Else
 
             ' Guardar Entrada al horno
@@ -191,7 +204,16 @@ Public Class TempladoForm
                 prodDao.guardarTemplados(dgvPulida.Rows, 2)
             End If
 
+            Me.Close()
+        End If
+    End Sub
 
+    Private Sub btnOrdenCompleta_Click(sender As Object, e As EventArgs) Handles btnOrdenCompleta.Click
+        Dim ordForm As New OrdenCompletaForm
+        Dim r = ordForm.ShowDialog()
+        ordForm.Dispose()
+        If r = DialogResult.OK Then
+            MsgBox("Orden Completada", MsgBoxStyle.Information, "Templado")
         End If
     End Sub
 End Class

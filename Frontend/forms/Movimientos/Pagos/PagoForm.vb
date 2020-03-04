@@ -6,6 +6,11 @@ Public Class PagoForm
     Dim cambio As New Cambio
     Dim montoTotal = 0
     Private Sub PagoForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.SuspendLayout()
+        Dim classResize As New ClsResizeForm
+        classResize.ResizeForm(Me, 1339, 839)
+        Me.WindowState = FormWindowState.Maximized
+        Me.ResumeLayout()
         Me.Show()
         cargarTiposP()
         cargarBancos()
@@ -13,6 +18,7 @@ Public Class PagoForm
         txtMontoPago.Text = 0
         PersonalizarDAtagridView(Me.dgvPagos)
         txtOt.Focus()
+
     End Sub
 
     Private Sub cargarTiposP()
@@ -117,19 +123,23 @@ Public Class PagoForm
             e.SuppressKeyPress = True
             Dim ot = ""
             If txtOt.Text = "" Then
-                Dim busquedaCli As New ClienteBusqueda
-                busquedaCli.ShowDialog()
-                Dim cli = busquedaCli.cliente
-                busquedaCli.Dispose()
+                'Dim busquedaCli As New ClienteBusqueda
+                'busquedaCli.ShowDialog()
+                'Dim cli = busquedaCli.cliente
+                'busquedaCli.Dispose()
 
-                If cli.id <> 0 Then
-                    Dim busquedaOT As New VentaBusqueda
-                    busquedaOT.codigoCliente = cli.id
-                    busquedaOT.ShowDialog()
-                    ot = busquedaOT.venta
 
-                    busquedaOT.Dispose()
+                Dim busquedaOT As New VentaBusqueda
+
+                busquedaOT.inicial = 1
+                Dim r = busquedaOT.ShowDialog()
+                If r = DialogResult.OK Then
+                    ot = busquedaOT.ventaSel
                 End If
+
+
+                busquedaOT.Dispose()
+
             Else
                 ot = txtOt.Text
             End If
@@ -141,6 +151,8 @@ Public Class PagoForm
                 cbTiposP.Focus()
             End If
         End If
+        lblPagoResult.Visible = False
+        lblAdvFecha.Visible = False
     End Sub
 
     Private Sub cargarVentaOT(ByVal id As String)
@@ -161,26 +173,35 @@ Public Class PagoForm
 
                 If venta.moneda = "G" Then
 
-                    txtTotal.Text = FormatCurrency(tmp, 3)
-                    txtIva.Text = FormatCurrency(tmp / 11, 3)
-                    txtSaldo.Text = FormatCurrency(venta.saldo, 3)
-                    txtPago.Text = FormatCurrency(venta.total - venta.saldo)
+                    txtTotal.Text = FormatCurrency(tmp, 0)
+                    txtIva.Text = FormatCurrency(tmp / 11, 0)
+                    txtSaldo.Text = FormatCurrency(venta.saldo, 0)
+                    txtPago.Text = FormatCurrency(tmp - venta.saldo)
+                    txtMontoPago.Text = FormatCurrency(venta.saldo, 0)
                 Else
                     Dim totalS = tmp.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
                     Dim IvaS = CDbl(tmp / 11).ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
                     Dim saldoS = venta.saldo.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
-                    Dim pagoS = (venta.total - venta.saldo).ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
+                    Dim pagoS = (tmp - venta.saldo).ToString("C", CultureInfo.CreateSpecificCulture("en-US"))
                     txtTotal.Text = totalS
                     txtIva.Text = IvaS
                     txtSaldo.Text = saldoS
                     txtPago.Text = pagoS
+                    txtMontoPago.Text = saldoS
                 End If
 
-                If venta.envio = "N" Then
-                    lblFechaPrometida.Text = ""
+                If venta.credito = "N" Then
+                    txtRecibo.Text = 0
+                    txtRecibo.Enabled = False
                 Else
-                    lblFechaPrometida.Text = venta.fechaP
+                    txtRecibo.Text = ""
+                    txtRecibo.Enabled = True
                 End If
+                'If venta.envio = "N" Then
+                '    lblFechaPrometida.Text = ""
+                'Else
+                '    lblFechaPrometida.Text = venta.fechaP
+                'End If
                 cargarCliente()
                 txtOt.Text = ""
                 cargarPagos()
@@ -226,6 +247,7 @@ Public Class PagoForm
     End Sub
 
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+
         If venta.saldo = 0 Then
             MsgBox("Venta ya saldada", MsgBoxStyle.Information, "Pago")
         Else
@@ -233,7 +255,8 @@ Public Class PagoForm
                 Dim result As Integer = MessageBox.Show("¿Guardar el pago?", "Guardar", MessageBoxButtons.YesNo)
                 If result = DialogResult.Yes Then
                     guardarPago()
-
+                    txtOt.Focus()
+                    'txtOt.Select()
                 End If
             End If
         End If
@@ -241,32 +264,44 @@ Public Class PagoForm
 
     Private Function validarPago() As Boolean
         If txtMontoPago.Text = "" Then
-            MsgBox("Ingrese un monto para el pago", MsgBoxStyle.Critical, "Monto")
+            'MsgBox("Ingrese un monto para el pago", MsgBoxStyle.Critical, "Monto")
+            lblAvMonto.Text = "Ingrese un monto para el pago"
+            lblAvMonto.Visible = True
             txtMontoPago.Focus()
             Return False
         ElseIf CDbl(txtMontoPago.Text.Replace("$", "")) = 0 Then
-            MsgBox("Ingrese un monto mayor a 0 para el pago", MsgBoxStyle.Critical, "Monto")
+            lblAvMonto.Text = "Ingrese un monto mayor a 0 para el pago"
+            lblAvMonto.Visible = True
+            'MsgBox("Ingrese un monto mayor a 0 para el pago", MsgBoxStyle.Critical, "Monto")
             txtMontoPago.Focus()
             Return False
         End If
 
         If txtRecibo.Text = "" Then
-            MsgBox("Ingrese un número de recibo", MsgBoxStyle.Critical, "Monto")
+            'MsgBox("Ingrese un número de recibo", MsgBoxStyle.Critical, "Monto")
+            lblAdvRecibo.Visible = True
             txtRecibo.Focus()
             Return False
+        Else
+            lblAdvRecibo.Visible = False
         End If
+
         If venta.moneda = "G" Then
             If cbTiposP.SelectedValue = 2 Or cbTiposP.SelectedValue = 4 Then
                 Dim montoGS = CDbl(txtMontoPago.Text.Replace("$", "")) * cambio.cambio
                 If montoGS > venta.saldo Then
-                    MsgBox("El monto ingresado en dolares al cambio actual son " & montoGS & "GS. y supera al saldo de la venta", MsgBoxStyle.Critical, "Monto")
+                    lblAvMonto.Text = "El monto ingresado en dolares al cambio actual son " & montoGS & "GS. y supera al saldo de la venta"
+                    lblAvMonto.Visible = True
+                    ' MsgBox("El monto ingresado en dolares al cambio actual son " & montoGS & "GS. y supera al saldo de la venta", MsgBoxStyle.Critical, "Monto")
                     txtMontoPago.Text = ""
                     txtMontoPago.Focus()
                     Return False
                 End If
             Else
                 If CDbl(txtMontoPago.Text) > venta.saldo Then
-                    MsgBox("El monto supera al saldo de la venta", MsgBoxStyle.Critical, "Monto")
+                    lblAvMonto.Text = "El monto supera al saldo de la venta"
+                    lblAvMonto.Visible = True
+                    'MsgBox("El monto supera al saldo de la venta", MsgBoxStyle.Critical, "Monto")
                     txtMontoPago.Focus()
                     Return False
                 End If
@@ -275,37 +310,49 @@ Public Class PagoForm
             If cbTiposP.SelectedValue = 1 Or cbTiposP.SelectedValue = 3 Then
                 Dim montoGS = CDbl(txtMontoPago.Text) / cambio.cambio
                 If montoGS > venta.saldo Then
-                    MsgBox("El monto ingresado en guaranies al cambio actual son " & montoGS & " $ y supera al saldo de la venta", MsgBoxStyle.Critical, "Monto")
+                    lblAvMonto.Text = "El monto ingresado en dolares al cambio actual son " & montoGS & "GS. y supera al saldo de la venta"
+                    lblAvMonto.Visible = True
                     txtMontoPago.Text = ""
                     txtMontoPago.Focus()
                     Return False
                 End If
             Else
                 If CDbl(txtMontoPago.Text.Replace("$", "")) > venta.saldo Then
-                    MsgBox("El monto supera al saldo de la venta", MsgBoxStyle.Critical, "Monto")
+                    lblAvMonto.Text = "El monto supera al saldo de la venta"
+                    lblAvMonto.Visible = True
                     txtMontoPago.Focus()
                     Return False
                 End If
             End If
         End If
         ' Pago con cheques
-
-        If cbTiposP.SelectedValue = 3 Or cbTiposP.SelectedValue = 4 Then
+        Dim test As Date
+        If cbTiposP.SelectedValue = 3 Or cbTiposP.SelectedValue = 4 Or cbTiposP.SelectedValue = 7 Then
             If cbBancos.SelectedValue = 0 Then
-                MsgBox("Seleccione un banco", MsgBoxStyle.Critical, "Banco no seleccionado")
+                'MsgBox("Seleccione un banco", MsgBoxStyle.Critical, "Banco no seleccionado")
+                lblAdvBanco.Visible = True
                 cbBancos.Focus()
                 Return False
             ElseIf txtCheque.Text = "" Then
-                MsgBox("Ingrese un número de cheque", MsgBoxStyle.Critical, "Cheque no ingresado")
+                'MsgBox("Ingrese un número de cheque", MsgBoxStyle.Critical, "Cheque no ingresado")
+                lblAdvCheque.Visible = True
                 txtCheque.Focus()
                 Return False
-            ElseIf dpChequeVenc.Value < Date.Today Then
-                MsgBox("Fecha de vencimiento ya pasada", MsgBoxStyle.Critical, "Cheque vencimiento")
-                txtCheque.Focus()
+            ElseIf Not Date.TryParseExact(txtFechaVenci.Text.ToString(), "dd/mm/yyyy", System.Globalization.CultureInfo.CurrentCulture, Globalization.DateTimeStyles.None, test) Then
+                'MsgBox("Fecha de vencimiento ya pasada", MsgBoxStyle.Critical, "Cheque vencimiento")
+                Dim sMsk = txtFechaVenci.Mask
+                txtFechaVenci.Mask = ""
+                txtFechaVenci.Text = ""
+                txtFechaVenci.Mask = sMsk
+                txtFechaVenci.Focus()
+                lblAdvFecha.Visible = True
                 Return False
             End If
+
+
+
         End If
-        Return True
+            Return True
     End Function
     Private Sub guardarPago()
         Try
@@ -313,7 +360,8 @@ Public Class PagoForm
             Dim pag As New Pago
             pag = llenarPago()
             daop.guardarPago(pag)
-            MsgBox("Pago registrado", MsgBoxStyle.Information, "Pago")
+            'MsgBox("Pago registrado", MsgBoxStyle.Information, "Pago")
+            lblPagoResult.Visible = True
             cargarVentaOT(venta.id)
             cargarPagos()
             limpiarCampos()
@@ -326,7 +374,7 @@ Public Class PagoForm
         cbTiposP.SelectedValue = 1
         txtRecibo.Text = ""
         txtFechaEmision.Text = ""
-        txtMontoPago.Text = ""
+        'txtMontoPago.Text = ""
         txtFechaEmision.Text = Date.Today
     End Sub
     Private Function llenarPago() As Pago
@@ -335,7 +383,16 @@ Public Class PagoForm
             pag.banco = cbBancos.SelectedValue
         End If
         pag.chequenro = txtCheque.Text
-        pag.chequevenc = dpChequeVenc.Value
+        Dim test As Date
+        If Date.TryParseExact(txtFechaVenci.Text.ToString(), "dd/mm/yyyy", System.Globalization.CultureInfo.CurrentCulture, Globalization.DateTimeStyles.None, test) Then
+            '
+            'pageMsgBox()
+            pag.chequevenc = txtFechaVenci.Text.ToString()
+            'pag.chequevenc = test
+        Else
+            'pag.chequevenc = Nothing
+        End If
+
         pag.descuento = 0
         pag.dias = Date.Today
         pag.fecha = Date.Today
@@ -360,6 +417,7 @@ Public Class PagoForm
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = False
             txtRecibo.Focus()
+            lblAvMonto.Visible = False
         End If
     End Sub
 
@@ -368,45 +426,91 @@ Public Class PagoForm
     End Sub
 
     Private Sub txtMontoPago_TextChanged(sender As Object, e As EventArgs) Handles txtMontoPago.TextChanged
-        If cbTiposP.SelectedValue = 2 Or cbTiposP.SelectedValue = 4 Then
-            If sender.Text <> "" Then
-                ' Text1.text = Format(Text1.text, "Currency")
-                'Textbox1.Text = String.Format("{0:n2} $", CType(Textbox1.Text, Double))
-                Dim aux = txtMontoPago.Text.Replace("$", "")
-                montoTotal = CType(aux, Double)
-                'txtMontoPago.Text = String.Format("${0:n2}", CType(aux, Double))
-                'txtMontoPago.Select(sender.TextLength - 3, 0)
-                txtMontoPago.Text = String.Format("{0:n1}", CType(aux, Double))
-                txtMontoPago.Select(sender.TextLength - 2, 0)
+        Try
+            If cbTiposP.SelectedValue = 2 Or cbTiposP.SelectedValue = 4 Then
+                If sender.Text <> "" Then
+                    ' Text1.text = Format(Text1.text, "Currency")
+                    'Textbox1.Text = String.Format("{0:n2} $", CType(Textbox1.Text, Double))
+                    Dim aux = txtMontoPago.Text.Replace("$", "")
+                    montoTotal = CType(aux, Double)
+                    'txtMontoPago.Text = String.Format("${0:n2}", CType(aux, Double))
+                    'txtMontoPago.Select(sender.TextLength - 3, 0)
+                    txtMontoPago.Text = String.Format("{0:n0}", CType(aux, Double))
+                    txtMontoPago.Select(sender.TextLength, 0)
 
+                Else
+                    montoTotal = CType(0, Double)
+                    txtMontoPago.Text = String.Format("{0:n0}", CType(0, Double))
+                    txtMontoPago.Select(sender.TextLength, 0)
+                End If
             Else
-                montoTotal = CType(0, Double)
-                txtMontoPago.Text = String.Format("{0:n1}", CType(0, Double))
-                txtMontoPago.Select(sender.TextLength - 2, 0)
+                If sender.Text <> "" Then
+                    montoTotal = CType(txtMontoPago.Text, Double)
+                    txtMontoPago.Text = FormatCurrency(sender.Text, 0)
+                    txtMontoPago.Select(sender.TextLength, 0)
+                Else
+                    montoTotal = 0
+                    txtMontoPago.Text = FormatCurrency(0, 0)
+                    txtMontoPago.Select(sender.TextLength, 0)
+                End If
             End If
-        Else
-            If sender.Text <> "" Then
-                montoTotal = CType(txtMontoPago.Text, Double)
-                txtMontoPago.Text = FormatCurrency(sender.Text, 1)
-                txtMontoPago.Select(sender.TextLength - 2, 0)
+
+        Catch ex As Exception
+            If cbTiposP.SelectedValue = 2 Or cbTiposP.SelectedValue = 4 Then
+                txtMontoPago.Text = String.Format("${0:n0}", CType(0, Double))
+                txtMontoPago.Select(sender.TextLength - 1, 0)
             Else
-                montoTotal = 0
-                txtMontoPago.Text = FormatCurrency(0, 1)
-                txtMontoPago.Select(sender.TextLength - 2, 0)
+                txtMontoPago.Text = FormatCurrency(0, 0)
+                txtMontoPago.Select(sender.TextLength, 0)
             End If
-        End If
+        End Try
+        'Try
+        '    Dim str2 As String = txtDescuento.Text
+        '    If rbtnDol.Checked Then
+        '        If sender.Text <> "" Then
+        '            ' Text1.text = Format(Text1.text, "Currency")
+        '            'Textbox1.Text = String.Format("{0:n2} $", CType(Textbox1.Text, Double))
+        '            Dim aux = txtDescuento.Text.Replace("$", "")
+        '            'descuentoTotal = CType(aux, Double)
+        '            txtDescuento.Text = String.Format("${0:n0}", CType(aux, Double))
+        '            txtDescuento.Select(sender.TextLength, 0)
+        '        Else
+        '            'descuentoTotal = CType(0, Double)
+        '            txtDescuento.Text = String.Format("${0:n0}", CType(0, Double))
+        '            txtDescuento.Select(sender.TextLength, 0)
+        '        End If
+        '    Else
+        '        If sender.Text <> "" Then
+        '            'descuentoTotal = CType(txtDescuento.Text, Double)
+        '            txtDescuento.Text = FormatCurrency(sender.Text, 0)
+        '            txtDescuento.Select(sender.TextLength, 0)
+        '        Else
+        '            'descuentoTotal = 0
+        '            txtDescuento.Text = FormatCurrency(0, 0)
+        '            txtDescuento.Select(sender.TextLength, 0)
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        '    If rbtnDol.Checked Then
+        '        txtDescuento.Text = String.Format("${0:n0}", CType(0, Double))
+        '        txtDescuento.Select(sender.TextLength - 1, 0)
+        '    Else
+        '        txtDescuento.Text = FormatCurrency(0, 0)
+        '        txtDescuento.Select(sender.TextLength, 0)
+        '    End If
+        'End Try
 
     End Sub
 
     Private Sub txtMontoPago_Click(sender As Object, e As EventArgs) Handles txtMontoPago.Click
         If cbTiposP.SelectedValue = 2 Or cbTiposP.SelectedValue = 4 Then
             If sender.Text <> "" Then
-                txtMontoPago.Select(sender.TextLength - 2, 0)
+                txtMontoPago.Select(sender.TextLength, 0)
 
             End If
         Else
             If sender.Text <> "" Then
-                sender.Select(sender.TextLength - 2, 0)
+                sender.Select(sender.TextLength, 0)
 
             End If
         End If
@@ -414,11 +518,12 @@ Public Class PagoForm
 
     Private Sub cbTiposP_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbTiposP.SelectedIndexChanged
         If cbTiposP.DataSource IsNot Nothing Then
-            txtMontoPago.Text = ""
-            If cbTiposP.SelectedValue = 3 Or cbTiposP.SelectedValue = 4 Then
-                dpChequeVenc.Enabled = True
+            txtMontoPago.Text = FormatCurrency(venta.saldo, 0)
+            If cbTiposP.SelectedValue = 3 Or cbTiposP.SelectedValue = 4 Or cbTiposP.SelectedValue = 5 Or cbTiposP.SelectedValue = 6 Or cbTiposP.SelectedValue = 7 Then
+                'dpChequeVenc.Enabled = True
                 cbBancos.Enabled = True
                 txtCheque.Enabled = True
+                txtFechaVenci.Enabled = True
                 txtCheque.Text = ""
                 cbBancos.SelectedValue = 0
                 If cbTiposP.SelectedValue = 4 Then
@@ -428,9 +533,10 @@ Public Class PagoForm
 
                 End If
             Else
-                dpChequeVenc.Enabled = False
+                'dpChequeVenc.Enabled = False
                 cbBancos.Enabled = False
                 txtCheque.Enabled = False
+                txtFechaVenci.Enabled = False
                 txtCheque.Text = ""
                 cbBancos.SelectedValue = 0
                 If cbTiposP.SelectedValue = 2 Then
@@ -490,15 +596,24 @@ Public Class PagoForm
     End Sub
 
     Private Sub cbBancos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbBancos.SelectedIndexChanged
-        If cbBancos.Enabled Then
-            txtCheque.Focus()
-        End If
+        'If cbBancos.Enabled Then
+        '    txtCheque.Focus()
+        'End If
+
     End Sub
 
     Private Sub txtCheque_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCheque.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            txtMontoPago.Focus()
+            If txtCheque.Text = "" Then
+                txtCheque.Focus()
+                lblAdvCheque.Visible = True
+
+            Else
+                txtFechaVenci.Focus()
+                lblAdvCheque.Visible = False
+            End If
+            'txtMontoPago.Focus()
         End If
     End Sub
 
@@ -518,17 +633,7 @@ Public Class PagoForm
 
     Private Sub txtRecibo_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRecibo.KeyDown
         If e.KeyCode = Keys.Enter Then
-            If venta.saldo = 0 Then
-                MsgBox("Venta ya saldada", MsgBoxStyle.Information, "Pago")
-            Else
-                If validarPago() Then
-                    Dim result As Integer = MessageBox.Show("¿Guardar el pago?", "Guardar", MessageBoxButtons.YesNo)
-                    If result = DialogResult.Yes Then
-                        guardarPago()
-
-                    End If
-                End If
-            End If
+            btnGuardar.PerformClick()
         End If
     End Sub
 
@@ -551,12 +656,68 @@ Public Class PagoForm
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             If cbBancos.SelectedIndex = 0 Then
-                MsgBox("Seleccione un banco", MsgBoxStyle.Critical, "Banco no seleccionado")
                 cbBancos.Focus()
+                lblAdvBanco.Visible = True
             Else
+                lblAdvBanco.Visible = False
                 txtCheque.Focus()
             End If
 
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If dgvPagos.SelectedRows.Count > 0 Then
+            For Each row As DataGridViewRow In dgvPagos.SelectedRows
+                Dim co = row.Cells(0).Value
+                Dim estado = row.Cells(6).Value
+                If estado = "Anulado" Then
+                    Exit Sub
+                End If
+                Dim anularF As New ComentarioAnularVenta
+                Dim res = anularF.ShowDialog()
+                If res = DialogResult.OK Then
+                    Dim pagd As New PagoDAO
+                    pagd.anularPago(co, anularF.anular)
+                    MsgBox("Pago anulado correctamente", MsgBoxStyle.Information, "Anulación")
+                    cargarVentaOT(venta.id)
+                    cargarPagos()
+                    limpiarCampos()
+                    txtOt.Focus()
+                End If
+                anularF.Dispose()
+            Next
+        End If
+    End Sub
+
+    Private Sub btnDetalle_Click_1(sender As Object, e As EventArgs)
+
+    End Sub
+
+
+
+    Private Sub txtFechaVenci_KeyDown_1(sender As Object, e As KeyEventArgs) Handles txtFechaVenci.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            Dim test As Date
+            If Date.TryParseExact(txtFechaVenci.Text.ToString(), "dd/mm/yyyy", System.Globalization.CultureInfo.CurrentCulture, Globalization.DateTimeStyles.None, test) Then
+                txtMontoPago.Focus()
+                lblAdvFecha.Visible = False
+            Else
+                Dim sMsk = txtFechaVenci.Mask
+                txtFechaVenci.Mask = ""
+                txtFechaVenci.Text = ""
+                txtFechaVenci.Mask = sMsk
+                txtFechaVenci.Focus()
+                lblAdvFecha.Visible = True
+            End If
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim rp As New InformeFacturasAnuladas
+        rp.ShowDialog()
+        rp.Dispose()
+
     End Sub
 End Class

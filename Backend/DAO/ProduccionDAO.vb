@@ -133,7 +133,7 @@ Public Class ProduccionDAO
             If rotura = 0 Then
                 mysql = "UPDATE `producir`.`corte` SET `corteMesa` = @mesa, `corteNroOpti` = IF(`corteNroOpti` IS NULL , 0 , `corteNroOpti`+1), `corteUsuUpd` = @user, `corteFchUpd` = @fecha, `corteEstado` = 'T' WHERE `pCod` = @prod;"
             Else
-                mysql = "UPDATE `producir`.`corte` SET `corteMesa` = @mesa, `corteNroOpti` = IF(`corteNroOpti` IS NULL , 0 , `corteNroOpti`+1), `corteUsuUpd` = @user, `corteFchUpd` = @fecha, `corteEstado` = 'R' WHERE `pCod` = @prod;"
+                mysql = "UPDATE `producir`.`corte` SET `corteMesa` = @mesa, `corteNroOpti` = IF(`corteNroOpti` IS NULL , 0 , `corteNroOpti`+1), `corteUsuUpd` = @user,`corteRotFecha` = @fecha, `corteFchUpd` = @fecha, `corteEstado` = 'R' WHERE `pCod` = @prod;"
             End If
 
             Dim cmd As New MySqlCommand(mysql, con)
@@ -237,6 +237,8 @@ Public Class ProduccionDAO
         End Try
     End Sub
 
+
+
     Public Function getPulida(ByVal id As String) As DataSet
         Dim ds As New DataSet
         Try
@@ -265,7 +267,7 @@ Public Class ProduccionDAO
 
                 mysql = "UPDATE `producir`.`pulida` SET `pulidora` = @puli, `nroOpti` = IF(`nroOpti` IS NULL , 1 , `nroOpti`+1), `puliUsrUpd` = @user, `puliFchUpd` = @fecha, `puliEstado` = 'T' WHERE `pCod` = @prod;"
             Else
-                mysql = "UPDATE `producir`.`pulida` SET `pulidora` = @puli, `nroOpti` = IF(`nroOpti` IS NULL , 1 , `nroOpti`+1), `puliUsrUpd` = @user, `puliFchUpd` = @fecha, `puliEstado` = 'R' WHERE `pCod` = @prod;"
+                mysql = "UPDATE `producir`.`pulida` SET `pulidora` = @puli, `nroOpti` = IF(`nroOpti` IS NULL , 1 , `nroOpti`+1), `puliUsrUpd` = @user, `puliRotFch` = @fecha, `puliFchUpd` = @fecha, `puliEstado` = 'R' WHERE `pCod` = @prod;"
 
             End If
 
@@ -354,7 +356,7 @@ Public Class ProduccionDAO
                 End If
 
             Else
-                mysql = "UPDATE `producir`.`templado` SET `templaRotura` = @fecha, 'templaEstado' = 'R' , `templaUsrUpd` = @user, `templaFchUpd` = @fecha WHERE `pCod` = @prod;"
+                mysql = "UPDATE `producir`.`templado` SET `templaRotura` = @fecha, `templaEstado` = 'R' , `templaUsrUpd` = @user, `templaFchUpd` = @fecha WHERE `pCod` = @prod;"
 
             End If
 
@@ -537,6 +539,659 @@ Public Class ProduccionDAO
             Dim mysql = "SELECT `pCod` AS Produccion FROM `produccion` WHERE `pCod` BETWEEN " & CInt(desde) & " AND " & CInt(hasta) & " ;"
             Dim cmd As New MySqlCommand(mysql, con)
             Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+
+    Public Function getExpTemplado(ByVal ot) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vexpedtemplado` WHERE Ot = @ot "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExpCorte(ByVal ot) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vexpcorte` WHERE Ot = @ot"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExpMarcado(ByVal ot) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vexpmarcado` WHERE Ot = @ot "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExpPulida(ByVal ot) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vexppulida` WHERE Ot = @ot"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExtTotalPanhos(ByVal ot) As Integer
+        Dim ds = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(vd.`ventDetCantidad`) AS Maximo FROM `ventasdet` vd  WHERE vd.`ventCod` = @ot"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim reader = cmd.ExecuteReader
+            If reader.Read() Then
+                ds = SafeGetInt(reader, 0)
+            End If
+            reader.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExtTotalPanhosExpedidos(ByVal ot) As Integer
+        Dim ds = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT COUNT(`pCod`) FROM `produccion` p WHERE p.ventCod = @ot and p.`produccion_expedido` = 'S'"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim reader = cmd.ExecuteReader
+            If reader.Read() Then
+                ds = SafeGetInt(reader, 0)
+            End If
+            reader.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Sub guardarExpedicion(ByVal nrop As String)
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "INSERT INTO `producir`.`expedicion` (`pCod`, `expFI`, `expUI`) VALUES (@prod, @fecha ,@user);"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@prod", nrop)
+            cmd.Parameters.AddWithValue("@fecha", Date.Now)
+            cmd.Parameters.AddWithValue("@user", Sesion.Usuario)
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+    Public Function cargarExped(ByVal ot As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vventaexpediciones` WHERE ID = @ot "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function guardarExpedicion2(expediciones As DataGridViewRowCollection) As Integer
+        Dim res = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim i = 1
+            For Each row As Windows.Forms.DataGridViewRow In expediciones
+                Dim nroProd = row.Cells(1).Value
+
+                If i = 1 Then
+                    Dim query = "INSERT INTO `producir`.`expedicion` (`pCod`, `expFI`, `expUI`) VALUES (@prod, @fecha ,@user);  SELECT LAST_INSERT_ID();"
+                    Dim cmd As New MySqlCommand(query, con)
+                    cmd.Parameters.AddWithValue("@prod", nroProd)
+                    cmd.Parameters.AddWithValue("@fecha", Date.Now)
+                    cmd.Parameters.AddWithValue("@user", Sesion.Usuario)
+                    Dim last = cmd.ExecuteScalar()
+                    res = last
+
+                    Dim queryUpdate = "UPDATE `producir`.`expedicion` SET `nroExp` = @nro WHERE `expCod` = @nro;"
+                    Dim cmd2 As New MySqlCommand(queryUpdate, con)
+                    cmd2.Parameters.AddWithValue("@nro", last)
+                    cmd2.ExecuteNonQuery()
+                    i = i + 1
+                Else
+                    Dim query = "INSERT INTO `producir`.`expedicion` (`pCod`, `nroExp`, `expFI`, `expUI`) VALUES (@prod, @nro, @fecha ,@user);"
+                    Dim cmd As New MySqlCommand(query, con)
+                    cmd.Parameters.AddWithValue("@prod", nroProd)
+                    cmd.Parameters.AddWithValue("@nro", res)
+                    cmd.Parameters.AddWithValue("@fecha", Date.Now)
+                    cmd.Parameters.AddWithValue("@user", Sesion.Usuario)
+                    cmd.ExecuteNonQuery()
+                End If
+            Next
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return res
+    End Function
+
+
+    Public Function cargarProduccionOT(id As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vexpediciontodojunto` WHERE OT = @ot "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", id)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function cargarProduccionOTErrores(id As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * FROM `vexpediciontodojunto` WHERE OT = @ot and Expedido = 'S'"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", id)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getDetalleExpedicion(id As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL `spreporteexpediciones`(@nro) "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@nro", id)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExpediciones(id As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from vlistadoexpediciones where Venta = @ot "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", id)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExtTotalPanhosTerminados(ByVal ot) As Integer
+        Dim ds = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT COUNT(p.`pCod`) FROM `templado` p INNER JOIN `produccion` tp ON tp.`pCod` = p.`pCod` WHERE tp.`ventCod` = @ot AND p.`templaEstado` = 'T'"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim reader = cmd.ExecuteReader
+            If reader.Read() Then
+                ds = SafeGetInt(reader, 0)
+            End If
+            reader.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getExtTotalPanhosRotos(ByVal ot) As Integer
+        Dim ds = 0
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(p.`produccion_roturas`) FROM `produccion` p WHERE p.`ventCod` = @ot "
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim reader = cmd.ExecuteReader
+            If reader.Read() Then
+                ds = SafeGetInt(reader, 0)
+            End If
+            reader.Close()
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function cargarExpedicionesRealizadas(ByVal id As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT * from listadoexpediciones2 where `Venta` = " & id & " and Repo = 'N';"
+            Dim cmd As New MySqlCommand(mysql, con)
+            Dim adp As New MySqlDataAdapter(mysql, con)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getCortesDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`corteFchUpd` AS Fecha FROM `corte` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`corteFchUpd`, '%Y-%m-%d') = @fecha ) AS t"
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getCortesRoturaDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`corteRotFecha` AS Fecha FROM `corte` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`corteRotFecha`, '%Y-%m-%d') = @fecha ) AS t"
+
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getMarcadosDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`marcadoFchUpd` AS Fecha FROM `marcado` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`marcadoFchUpd`, '%Y-%m-%d') = @fecha ) AS t"
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getMarcadosRoturaDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`marcadoRotFch` AS Fecha FROM `marcado` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`marcadoRotFch`, '%Y-%m-%d') = @fecha ) AS t"
+
+
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getPulidasDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`puliFchUpd` AS Fecha FROM `pulida` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`puliFchUpd`, '%Y-%m-%d') = @fecha ) AS t "
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getPulidasRoturasDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`puliRotFch` AS Fecha FROM `pulida` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`puliRotFch`, '%Y-%m-%d') = @fecha ) AS t "
+
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getTempEntradasDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`templaEntrada` AS Fecha FROM `templado` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`templaEntrada`, '%Y-%m-%d') = @fecha ) AS t"
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getTempSalidasDia() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`templaSalida` AS Fecha FROM `templado` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`templaSalida`, '%Y-%m-%d') = @fecha ) AS t"
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getTempRoturas() As Double
+        Dim ds As Double
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "SELECT SUM(m2) FROM ( SELECT c.`pCod`, (dt.`ventDetSup` / dt.`ventDetCantidad`) AS m2, c.`templaRotura` AS Fecha FROM `templado` c INNER JOIN `produccion` p ON p.`pCod` = c.`pCod` INNER JOIN `ventasdet` dt ON dt.`ventDetcod` = p.`ventDetCod` WHERE DATE_FORMAT(c.`templaRotura`, '%Y-%m-%d') = @fecha ) AS t"
+            'MsgBox(Date.Today)
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@fecha", Date.Today.ToString("yyyy-MM-dd"))
+            Dim reader = cmd.ExecuteReader()
+
+            While reader.Read
+                ds = SafeGetDouble(reader, 0)
+            End While
+            reader.Close()
+            Return ds
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Sub actualizarProduccion(ByVal prod As Integer)
+        Try
+            Dim p = getProduccion(prod)
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim query = "(SELECT * FROM `producir`.`producciondia` WHERE `prodDiaFecha` = CURDATE())"
+            Dim cmd As New MySqlCommand(query, con)
+            Dim reader = cmd.ExecuteReader()
+            If Not reader.HasRows Then
+                reader.Close()
+                Dim queryInser = "INSERT INTO `producir`.`producciondia` (`prodDiaSup`, `prodDiaFecha`) VALUES ( @sup, CURDATE());"
+                Dim cmdInsert As New MySqlCommand(queryInser, con)
+                cmdInsert.Parameters.AddWithValue("@sup", p.sup)
+                cmdInsert.ExecuteNonQuery()
+            Else
+                reader.Close()
+                Dim query2 = "UPDATE `producir`.`producciondia` SET `prodDiaSup` = `prodDiaSup` + @sup WHERE `prodDiaFecha` = CURDATE();"
+                Dim cmd2 As New MySqlCommand(query2, con)
+                cmd2.Parameters.AddWithValue("@sup", p.sup)
+                cmd2.ExecuteNonQuery()
+            End If
+
+
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+    End Sub
+
+    Public Sub completarOrden(ByVal desde As String, ByVal hasta As String)
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim queryCorte = "CALL updateorden(@desde,@hasta);"
+            Dim cmd As New MySqlCommand(queryCorte, con)
+            cmd.Parameters.AddWithValue("@desde", desde)
+            cmd.Parameters.AddWithValue("@hasta", hasta)
+            cmd.ExecuteNonQuery()
+
+
+
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+
+    End Sub
+
+    Public Function pulidasPendientes(ByVal desde As Date, ByVal hasta As Date) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL reporteprodpulidapend(@desde,@hasta);"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@desde", desde)
+            cmd.Parameters.AddWithValue("@hasta", hasta)
+
+            Dim adp As New MySqlDataAdapter(cmd)
             ds.Tables.Add("tabla")
             adp.Fill(ds.Tables("tabla"))
         Catch ex As Exception
