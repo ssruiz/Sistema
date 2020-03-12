@@ -44,7 +44,7 @@ Partial Class Inicio
         Me.InformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.NuevaVentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AnularFacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.c = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComprasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovInternoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NuevoMovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -54,7 +54,7 @@ Partial Class Inicio
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PorMesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReposicionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReposicionTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformesTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.CajaDelDíaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -65,15 +65,16 @@ Partial Class Inicio
         Me.PagosVendedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CobrosTipoProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReposicionesTempladoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProducciónTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaldoClienteProduccionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProduccionTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PulidaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MarcadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TempladoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExpediciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PruebaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExpedicionTS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PedInternoTS = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -82,7 +83,7 @@ Partial Class Inicio
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.manteTS, Me.CobrosTS, Me.VentasTS, Me.ComprasToolStripMenuItem, Me.MovInternoToolStripMenuItem, Me.StockTS, Me.ReposicionesToolStripMenuItem, Me.InformesTS, Me.ProducciónTS, Me.PruebaToolStripMenuItem, Me.ToolStripMenuItem1})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.manteTS, Me.CobrosTS, Me.VentasTS, Me.ComprasToolStripMenuItem, Me.MovInternoToolStripMenuItem, Me.StockTS, Me.ReposicionTS, Me.InformesTS, Me.ProduccionTS, Me.ExpedicionTS, Me.PedInternoTS})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
@@ -258,7 +259,7 @@ Partial Class Inicio
         '
         'VentasTS
         '
-        Me.VentasTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevaVentaToolStripMenuItem, Me.AnularFacturaToolStripMenuItem})
+        Me.VentasTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevaVentaToolStripMenuItem, Me.c})
         Me.VentasTS.ForeColor = System.Drawing.Color.White
         Me.VentasTS.Name = "VentasTS"
         Me.VentasTS.Padding = New System.Windows.Forms.Padding(5)
@@ -273,13 +274,13 @@ Partial Class Inicio
         Me.NuevaVentaToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.NuevaVentaToolStripMenuItem.Text = "Nueva Venta"
         '
-        'AnularFacturaToolStripMenuItem
+        'c
         '
-        Me.AnularFacturaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
-        Me.AnularFacturaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.AnularFacturaToolStripMenuItem.Name = "AnularFacturaToolStripMenuItem"
-        Me.AnularFacturaToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
-        Me.AnularFacturaToolStripMenuItem.Text = "Anular Factura"
+        Me.c.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.c.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.c.Name = "c"
+        Me.c.Size = New System.Drawing.Size(216, 30)
+        Me.c.Text = "Anular Factura"
         '
         'ComprasToolStripMenuItem
         '
@@ -334,7 +335,7 @@ Partial Class Inicio
         Me.VerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.VerToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.VerToolStripMenuItem.Name = "VerToolStripMenuItem"
-        Me.VerToolStripMenuItem.Size = New System.Drawing.Size(159, 30)
+        Me.VerToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.VerToolStripMenuItem.Text = "Ver"
         '
         'InformeToolStripMenuItem1
@@ -342,7 +343,7 @@ Partial Class Inicio
         Me.InformeToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.InformeToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.InformeToolStripMenuItem1.Name = "InformeToolStripMenuItem1"
-        Me.InformeToolStripMenuItem1.Size = New System.Drawing.Size(159, 30)
+        Me.InformeToolStripMenuItem1.Size = New System.Drawing.Size(216, 30)
         Me.InformeToolStripMenuItem1.Text = "Informe"
         '
         'PorMesToolStripMenuItem
@@ -350,19 +351,19 @@ Partial Class Inicio
         Me.PorMesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.PorMesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.PorMesToolStripMenuItem.Name = "PorMesToolStripMenuItem"
-        Me.PorMesToolStripMenuItem.Size = New System.Drawing.Size(159, 30)
+        Me.PorMesToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.PorMesToolStripMenuItem.Text = "Por Mes"
         '
-        'ReposicionesToolStripMenuItem
+        'ReposicionTS
         '
-        Me.ReposicionesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.ReposicionesToolStripMenuItem.Name = "ReposicionesToolStripMenuItem"
-        Me.ReposicionesToolStripMenuItem.Size = New System.Drawing.Size(134, 39)
-        Me.ReposicionesToolStripMenuItem.Text = "Reposiciones"
+        Me.ReposicionTS.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.ReposicionTS.Name = "ReposicionTS"
+        Me.ReposicionTS.Size = New System.Drawing.Size(134, 39)
+        Me.ReposicionTS.Text = "Reposiciones"
         '
         'InformesTS
         '
-        Me.InformesTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CajaDelDíaToolStripMenuItem, Me.VentasToolStripMenuItem, Me.ComprasToolStripMenuItem1, Me.ProducciónToolStripMenuItem, Me.SaldoClientesToolStripMenuItem, Me.VentasTipoProductoToolStripMenuItem, Me.PagosVendedoresToolStripMenuItem, Me.CobrosTipoProductoToolStripMenuItem, Me.ReposicionesTempladoToolStripMenuItem})
+        Me.InformesTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CajaDelDíaToolStripMenuItem, Me.VentasToolStripMenuItem, Me.ComprasToolStripMenuItem1, Me.ProducciónToolStripMenuItem, Me.SaldoClientesToolStripMenuItem, Me.VentasTipoProductoToolStripMenuItem, Me.PagosVendedoresToolStripMenuItem, Me.CobrosTipoProductoToolStripMenuItem, Me.ReposicionesTempladoToolStripMenuItem, Me.SaldoClienteProduccionToolStripMenuItem})
         Me.InformesTS.ForeColor = System.Drawing.Color.White
         Me.InformesTS.Name = "InformesTS"
         Me.InformesTS.Padding = New System.Windows.Forms.Padding(5)
@@ -374,7 +375,7 @@ Partial Class Inicio
         Me.CajaDelDíaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.CajaDelDíaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.CajaDelDíaToolStripMenuItem.Name = "CajaDelDíaToolStripMenuItem"
-        Me.CajaDelDíaToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.CajaDelDíaToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.CajaDelDíaToolStripMenuItem.Text = "Ventas"
         '
         'VentasToolStripMenuItem
@@ -382,7 +383,7 @@ Partial Class Inicio
         Me.VentasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.VentasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.VentasToolStripMenuItem.Text = "Cobros"
         Me.VentasToolStripMenuItem.Visible = False
         '
@@ -391,7 +392,7 @@ Partial Class Inicio
         Me.ComprasToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.ComprasToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.ComprasToolStripMenuItem1.Name = "ComprasToolStripMenuItem1"
-        Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(301, 30)
+        Me.ComprasToolStripMenuItem1.Size = New System.Drawing.Size(316, 30)
         Me.ComprasToolStripMenuItem1.Text = "Compras"
         '
         'ProducciónToolStripMenuItem
@@ -399,7 +400,7 @@ Partial Class Inicio
         Me.ProducciónToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.ProducciónToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.ProducciónToolStripMenuItem.Name = "ProducciónToolStripMenuItem"
-        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.ProducciónToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.ProducciónToolStripMenuItem.Text = "Producción"
         '
         'SaldoClientesToolStripMenuItem
@@ -407,7 +408,7 @@ Partial Class Inicio
         Me.SaldoClientesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.SaldoClientesToolStripMenuItem.ForeColor = System.Drawing.Color.Cornsilk
         Me.SaldoClientesToolStripMenuItem.Name = "SaldoClientesToolStripMenuItem"
-        Me.SaldoClientesToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.SaldoClientesToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.SaldoClientesToolStripMenuItem.Text = "Saldo-Clientes"
         '
         'VentasTipoProductoToolStripMenuItem
@@ -415,7 +416,7 @@ Partial Class Inicio
         Me.VentasTipoProductoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.VentasTipoProductoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
         Me.VentasTipoProductoToolStripMenuItem.Name = "VentasTipoProductoToolStripMenuItem"
-        Me.VentasTipoProductoToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.VentasTipoProductoToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.VentasTipoProductoToolStripMenuItem.Text = "Ventas - Tipo Producto"
         '
         'PagosVendedoresToolStripMenuItem
@@ -423,7 +424,7 @@ Partial Class Inicio
         Me.PagosVendedoresToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.PagosVendedoresToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.PagosVendedoresToolStripMenuItem.Name = "PagosVendedoresToolStripMenuItem"
-        Me.PagosVendedoresToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.PagosVendedoresToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.PagosVendedoresToolStripMenuItem.Text = "Pagos - Vendedores"
         '
         'CobrosTipoProductoToolStripMenuItem
@@ -431,7 +432,7 @@ Partial Class Inicio
         Me.CobrosTipoProductoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.CobrosTipoProductoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.CobrosTipoProductoToolStripMenuItem.Name = "CobrosTipoProductoToolStripMenuItem"
-        Me.CobrosTipoProductoToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.CobrosTipoProductoToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.CobrosTipoProductoToolStripMenuItem.Text = "Cobros - Tipo Producto"
         '
         'ReposicionesTempladoToolStripMenuItem
@@ -439,24 +440,32 @@ Partial Class Inicio
         Me.ReposicionesTempladoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.ReposicionesTempladoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.ReposicionesTempladoToolStripMenuItem.Name = "ReposicionesTempladoToolStripMenuItem"
-        Me.ReposicionesTempladoToolStripMenuItem.Size = New System.Drawing.Size(301, 30)
+        Me.ReposicionesTempladoToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.ReposicionesTempladoToolStripMenuItem.Text = "Reposiciones - Templado"
         '
-        'ProducciónTS
+        'SaldoClienteProduccionToolStripMenuItem
         '
-        Me.ProducciónTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CorteToolStripMenuItem, Me.PulidaToolStripMenuItem, Me.MarcadoToolStripMenuItem, Me.TempladoToolStripMenuItem, Me.ExpediciónToolStripMenuItem, Me.InformesToolStripMenuItem})
-        Me.ProducciónTS.ForeColor = System.Drawing.Color.White
-        Me.ProducciónTS.Name = "ProducciónTS"
-        Me.ProducciónTS.Padding = New System.Windows.Forms.Padding(5)
-        Me.ProducciónTS.Size = New System.Drawing.Size(122, 39)
-        Me.ProducciónTS.Text = "Producción"
+        Me.SaldoClienteProduccionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.SaldoClienteProduccionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.SaldoClienteProduccionToolStripMenuItem.Name = "SaldoClienteProduccionToolStripMenuItem"
+        Me.SaldoClienteProduccionToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
+        Me.SaldoClienteProduccionToolStripMenuItem.Text = "Saldo Cliente - Produccion"
+        '
+        'ProduccionTS
+        '
+        Me.ProduccionTS.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CorteToolStripMenuItem, Me.PulidaToolStripMenuItem, Me.MarcadoToolStripMenuItem, Me.TempladoToolStripMenuItem, Me.ExpediciónToolStripMenuItem, Me.InformesToolStripMenuItem})
+        Me.ProduccionTS.ForeColor = System.Drawing.Color.White
+        Me.ProduccionTS.Name = "ProduccionTS"
+        Me.ProduccionTS.Padding = New System.Windows.Forms.Padding(5)
+        Me.ProduccionTS.Size = New System.Drawing.Size(122, 39)
+        Me.ProduccionTS.Text = "Producción"
         '
         'CorteToolStripMenuItem
         '
         Me.CorteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.CorteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.CorteToolStripMenuItem.Name = "CorteToolStripMenuItem"
-        Me.CorteToolStripMenuItem.Size = New System.Drawing.Size(183, 30)
+        Me.CorteToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.CorteToolStripMenuItem.Text = "Corte"
         '
         'PulidaToolStripMenuItem
@@ -464,7 +473,7 @@ Partial Class Inicio
         Me.PulidaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.PulidaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.PulidaToolStripMenuItem.Name = "PulidaToolStripMenuItem"
-        Me.PulidaToolStripMenuItem.Size = New System.Drawing.Size(183, 30)
+        Me.PulidaToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.PulidaToolStripMenuItem.Text = "Pulida"
         '
         'MarcadoToolStripMenuItem
@@ -472,7 +481,7 @@ Partial Class Inicio
         Me.MarcadoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.MarcadoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.MarcadoToolStripMenuItem.Name = "MarcadoToolStripMenuItem"
-        Me.MarcadoToolStripMenuItem.Size = New System.Drawing.Size(183, 30)
+        Me.MarcadoToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.MarcadoToolStripMenuItem.Text = "Marcado"
         '
         'TempladoToolStripMenuItem
@@ -480,7 +489,7 @@ Partial Class Inicio
         Me.TempladoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.TempladoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.TempladoToolStripMenuItem.Name = "TempladoToolStripMenuItem"
-        Me.TempladoToolStripMenuItem.Size = New System.Drawing.Size(183, 30)
+        Me.TempladoToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.TempladoToolStripMenuItem.Text = "Templado"
         '
         'ExpediciónToolStripMenuItem
@@ -488,7 +497,7 @@ Partial Class Inicio
         Me.ExpediciónToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.ExpediciónToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.ExpediciónToolStripMenuItem.Name = "ExpediciónToolStripMenuItem"
-        Me.ExpediciónToolStripMenuItem.Size = New System.Drawing.Size(183, 30)
+        Me.ExpediciónToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.ExpediciónToolStripMenuItem.Text = "Expedición"
         Me.ExpediciónToolStripMenuItem.Visible = False
         '
@@ -497,23 +506,23 @@ Partial Class Inicio
         Me.InformesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(75, Byte), Integer))
         Me.InformesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem"
-        Me.InformesToolStripMenuItem.Size = New System.Drawing.Size(183, 30)
+        Me.InformesToolStripMenuItem.Size = New System.Drawing.Size(216, 30)
         Me.InformesToolStripMenuItem.Text = "Informes"
         Me.InformesToolStripMenuItem.Visible = False
         '
-        'PruebaToolStripMenuItem
+        'ExpedicionTS
         '
-        Me.PruebaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.PruebaToolStripMenuItem.Name = "PruebaToolStripMenuItem"
-        Me.PruebaToolStripMenuItem.Size = New System.Drawing.Size(117, 39)
-        Me.PruebaToolStripMenuItem.Text = "Expedición"
+        Me.ExpedicionTS.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.ExpedicionTS.Name = "ExpedicionTS"
+        Me.ExpedicionTS.Size = New System.Drawing.Size(117, 39)
+        Me.ExpedicionTS.Text = "Expedición"
         '
-        'ToolStripMenuItem1
+        'PedInternoTS
         '
-        Me.ToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(150, 39)
-        Me.ToolStripMenuItem1.Text = "Pedido Interno"
+        Me.PedInternoTS.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.PedInternoTS.Name = "PedInternoTS"
+        Me.PedInternoTS.Size = New System.Drawing.Size(150, 39)
+        Me.PedInternoTS.Text = "Pedido Interno"
         '
         'Inicio
         '
@@ -564,12 +573,12 @@ Partial Class Inicio
     Friend WithEvents PagosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CambioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CajaDelDíaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProducciónTS As ToolStripMenuItem
-    Friend WithEvents ReposicionesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProduccionTS As ToolStripMenuItem
+    Friend WithEvents ReposicionTS As ToolStripMenuItem
     Friend WithEvents CorteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PulidaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TempladoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PruebaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExpedicionTS As ToolStripMenuItem
     Friend WithEvents MarcadoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProducciónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AutorizaciónMovimientosToolStripMenuItem As ToolStripMenuItem
@@ -578,13 +587,14 @@ Partial Class Inicio
     Friend WithEvents InformesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InformeToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents PedInternoTS As ToolStripMenuItem
     Friend WithEvents SaldoClientesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VentasTipoProductoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PagosVendedoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CobrosTipoProductoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PorMesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NuevaVentaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AnularFacturaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents c As ToolStripMenuItem
     Friend WithEvents ReposicionesTempladoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaldoClienteProduccionToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -149,7 +149,7 @@ Public Class Inicio
         cambioForm.Dispose()
     End Sub
 
-    Private Sub ReposicionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReposicionesToolStripMenuItem.Click
+    Private Sub ReposicionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReposicionTS.Click
         Dim repof As New ReposicionesForm
         repof.ShowDialog()
         repof.Dispose()
@@ -216,6 +216,27 @@ Public Class Inicio
             If r = 2 Then
                 manteTS.Enabled = False
                 ComprasToolStripMenuItem.Enabled = False
+                CobrosTS.Enabled = False
+                ComprasToolStripMenuItem.Enabled = False
+                AnularFacturaComentario.Enabled = False
+                MovInternoToolStripMenuItem.Enabled = False
+                StockTS.Enabled = False
+                ReposicionTS.Enabled = False
+                InformesTS.Enabled = False
+                ProduccionTS.Enabled = False
+                PedInternoTS.Enabled = False
+            ElseIf r = 3 Then
+                manteTS.Enabled = False
+                ComprasToolStripMenuItem.Enabled = False
+                CobrosTS.Enabled = True
+                ComprasToolStripMenuItem.Enabled = False
+                AnularFacturaComentario.Enabled = False
+                MovInternoToolStripMenuItem.Enabled = False
+                StockTS.Enabled = False
+                ReposicionTS.Enabled = False
+                InformesTS.Enabled = False
+                ProduccionTS.Enabled = False
+                PedInternoTS.Enabled = False
 
             End If
 
@@ -234,7 +255,7 @@ Public Class Inicio
         ob.ForeColor = Color.White
     End Sub
 
-    Private Sub PruebaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebaToolStripMenuItem.Click
+    Private Sub PruebaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExpedicionTS.Click
         Dim exp As New ExpedicionForm
         exp.ShowDialog()
         exp.Dispose()
@@ -322,7 +343,7 @@ Public Class Inicio
 
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PedInternoTS.Click
         Dim ped As New PedidoInternoGeneral
         ped.ShowDialog()
         ped.Dispose()
@@ -364,7 +385,7 @@ Public Class Inicio
         cliV.Dispose()
     End Sub
 
-    Private Sub AnularFacturaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnularFacturaToolStripMenuItem.Click
+    Private Sub AnularFacturaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles c.Click
         Dim cliV As New AnularFacturaForm
         cliV.ShowDialog()
         cliV.Dispose()
@@ -374,6 +395,13 @@ Public Class Inicio
         Dim rep As New InformeReposiciones2
         rep.ShowDialog()
         rep.Dispose()
+
+    End Sub
+
+    Private Sub SaldoClienteProduccionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaldoClienteProduccionToolStripMenuItem.Click
+        Dim f As New SaldoPorClienteProduccionForm
+        f.ShowDialog()
+        f.Dispose()
 
     End Sub
 End Class

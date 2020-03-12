@@ -177,6 +177,14 @@
     <Compile Include="datasets\DataSetProduccion.vb">
       <DependentUpon>DataSetProduccion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="datasets\DataSetSaldoProduccion.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetSaldoProduccion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="datasets\DataSetSaldoProduccion.vb">
+      <DependentUpon>DataSetSaldoProduccion.xsd</DependentUpon>
+    </Compile>
     <Compile Include="forms\abm\Banco\BancoForm.Designer.vb">
       <DependentUpon>BancoForm.vb</DependentUpon>
     </Compile>
@@ -815,6 +823,36 @@
     <Compile Include="forms\Movimientos\Ventas\VerPlano.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\ultimos reportes\ReporteSaldoProduccionForm.Designer.vb">
+      <DependentUpon>ReporteSaldoProduccionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\ReporteSaldoProduccionForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\ReporteSaldoProduccionGenForm.Designer.vb">
+      <DependentUpon>ReporteSaldoProduccionGenForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\ReporteSaldoProduccionGenForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\SaldoClientesProduccionGeneral.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaldoClientesProduccionGeneral.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\SaldoClientesProduccionIndividual.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaldoClientesProduccionIndividual.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\SaldoPorClienteProduccionForm.Designer.vb">
+      <DependentUpon>SaldoPorClienteProduccionForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\SaldoPorClienteProduccionForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Funciones\ClsResizeForm.vb" />
     <Compile Include="Funciones\CrystalDBCon.vb" />
     <Compile Include="Funciones\Funciones.vb" />
@@ -1179,6 +1217,23 @@
     <EmbeddedResource Include="forms\Movimientos\Ventas\VerPlano.resx">
       <DependentUpon>VerPlano.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\ReporteSaldoProduccionForm.resx">
+      <DependentUpon>ReporteSaldoProduccionForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\ReporteSaldoProduccionGenForm.resx">
+      <DependentUpon>ReporteSaldoProduccionGenForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\SaldoClientesProduccionGeneral.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaldoClientesProduccionGeneral.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\SaldoClientesProduccionIndividual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SaldoClientesProduccionIndividual.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\SaldoPorClienteProduccionForm.resx">
+      <DependentUpon>SaldoPorClienteProduccionForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -1230,6 +1285,17 @@
     </None>
     <None Include="datasets\DataSetProduccion.xss">
       <DependentUpon>DataSetProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\DataSetSaldoProduccion.xsc">
+      <DependentUpon>DataSetSaldoProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="datasets\DataSetSaldoProduccion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetSaldoProduccion.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="datasets\DataSetSaldoProduccion.xss">
+      <DependentUpon>DataSetSaldoProduccion.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

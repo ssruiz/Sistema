@@ -4,9 +4,13 @@ Imports CrystalDecisions.Shared
 Public Class ReporteDeCobrosForm
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         Try
+
             Dim objreporte As New CobrosReporte2
+            Dim daoc As New CobrosDAO
+            Dim dsAnteriores = daoc.getCobrosAnteriores(dpInicio.Value)
             objreporte.SetParameterValue("inicio", dpInicio.Value)
             objreporte.SetParameterValue("fin", dpFin.Value)
+            objreporte.SetParameterValue("hasta", dpInicio.Value)
             objreporte.SetParameterValue("inicioC", dpInicio.Value)
             objreporte.SetParameterValue("finC", dpFin.Value)
             objreporte.SetParameterValue("inicioR", dpInicio.Value)
@@ -27,6 +31,8 @@ Public Class ReporteDeCobrosForm
             objreporte.SetParameterValue("tipov", "")
             objreporte.SetParameterValue("Usuario", daou.getUsuario())
             objreporte.SetDatabaseLogon("samuel", "system", "localhost", "producir")
+
+            'objreporte.Subreports("Subreport1").Database.Tables("PagosAnteriores").SetDataSource(dsAnteriores.Tables("tabla"))
             'objreporte.Subreports("HeaderRpt.rpt").SetDataSource(HeaderDT)
             ReporteVentasView.ReportSource = objreporte
 

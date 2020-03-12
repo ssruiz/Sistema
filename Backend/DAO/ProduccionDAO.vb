@@ -1201,4 +1201,117 @@ Public Class ProduccionDAO
         End Try
         Return ds
     End Function
+
+    Public Function getSaldoClienteProduccion(ByVal tipo As Integer, ByVal cliente As Integer, ByVal ot As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spcobrossaldoaux(@tipo,@cliente,@ot);"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@tipo", tipo)
+            cmd.Parameters.AddWithValue("@cliente", cliente)
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+    Public Function getDetalleSaldoPIndividual(ByVal ot As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spreportesaldoauxindiv2(@ot);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getResumenSaldoPIndividual(ByVal ot As String) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spreportesaldoauxindiv1(@ot);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@ot", ot)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+    Public Function getResumenSaldoGeneral(ByVal ot As Integer, ByVal filtroCliente As Integer, ByVal clienteCod As Integer, ByVal tipo As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spsaldoclig1(@tipo, @filtroCliente,@clienteCod, @ot);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@ot", ot)
+            cmd.Parameters.AddWithValue("@tipo", tipo)
+            cmd.Parameters.AddWithValue("@filtroCliente", filtroCliente)
+            cmd.Parameters.AddWithValue("@clienteCod", clienteCod)
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+
+    Public Function getDetalleSaldoPGeneral() As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spsaldoclig2();"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
 End Class

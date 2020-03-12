@@ -113,6 +113,7 @@
     <Compile Include="DAO\BancoDAO.vb" />
     <Compile Include="DAO\CambioDAO.vb" />
     <Compile Include="DAO\ClienteDAO.vb" />
+    <Compile Include="DAO\CobrosDAO.vb" />
     <Compile Include="DAO\ColorDAO.vb" />
     <Compile Include="DAO\CompraDAO.vb" />
     <Compile Include="DAO\DepositoDAO.vb" />
