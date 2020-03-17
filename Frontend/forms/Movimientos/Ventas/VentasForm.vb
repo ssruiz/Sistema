@@ -1677,7 +1677,7 @@ Public Class VentasForm
         Dim FechaImp As String = "Coronel Oviedo, " & dtmDate.ToString("dd") & " " & dtmDate.ToString("MMMM") & " de " & dtmDate.ToString("yyyy")
         Dim cli As String = cliente.nombre
         Dim rucImp As String = cliente.ruc
-        Dim precioImp As Double
+        ' Dim precioImp As Double
         Dim cantImp As String
         Dim fila As Integer = 16
         Dim descpImp As String
@@ -1729,8 +1729,8 @@ Public Class VentasForm
             & vbCr _
                & vbCr
 
-        Dim unidad As Decimal
-        Dim entero As Integer
+        'Dim unidad As Decimal
+        ' Dim entero As Integer
         If tabla.Rows.Count > 0 Then
 
 
@@ -1860,7 +1860,7 @@ Public Class VentasForm
         Dim FechaImp As String = "Coronel Oviedo, " & dtmDate.ToString("dd") & " " & dtmDate.ToString("MMMM") & " de " & dtmDate.ToString("yyyy")
         Dim cli As String = cliente.nombre
         Dim rucImp As String = cliente.ruc
-        Dim precioImp As Double
+        ' Dim precioImp As Double
         Dim cantImp As String
         Dim fila As Integer = 16
         Dim descpImp As String

@@ -129,7 +129,7 @@ Public Class VentaDAO
                     'Dim queryTemplado = "INSERT INTO `producir`.`templado` (`pCod`, `templaUsrIns`, `templaFchIns`) VALUES (@prod, @usuario, @fecha);"
                     'Dim queryMarcado = "INSERT INTO `producir`.`marcado` (`pCod`, `marcadoUsrIns`, `marcadoFchIns`) VALUES (@prod,@usuario,@fecha);"
 
-                    ''' Detalle de la produccion'' ---------------------------------------------
+
                     'Dim queryDetalleProduccion = "INSERT INTO `producir`.`producciondetalle` (`prod_id`) VALUES (@producto); SELECT LAST_INSERT_ID();"
                     'Dim cmdDetalleProduccion As New MySqlCommand(queryDetalleProduccion, con)
 
@@ -138,9 +138,9 @@ Public Class VentaDAO
                     'Dim detalleProduccionCod = CInt(cmdDetalleProduccion.ExecuteScalar())
 
                     'cmdDetalleProduccion.Parameters.Clear()
-                    ''' ---------------------------------------------
 
-                    ''' CMDS
+
+
                     'Dim cmdProd As New MySqlCommand(queryProducion, con)
                     'Dim cmdCorte As New MySqlCommand(queryCorte, con)
                     'Dim cmdPulida As New MySqlCommand(queryPulida, con)

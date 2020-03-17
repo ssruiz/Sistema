@@ -9,7 +9,7 @@ Public Class StockPorMesForm
         Dim ds As New DataSet
         Dim mes2 As String
         Dim dt As New DataTable
-        Dim sql As String
+        ' Dim sql As String
         Dim filtro As String
         'If cbTipo.SelectedValue = 0 Then
         '    sql = ""

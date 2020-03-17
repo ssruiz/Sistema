@@ -22,6 +22,7 @@ Partial Class ReporteDeCobrosForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.dpFin = New System.Windows.Forms.DateTimePicker()
@@ -31,11 +32,13 @@ Partial Class ReporteDeCobrosForm
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
-        Me.ReporteVentasView = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.CobrosReporte21 = New Frontend.CobrosReporte2()
+        Me.rptvCobros = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -111,8 +114,8 @@ Partial Class ReporteDeCobrosForm
         '
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.rptvCobros, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.ReporteVentasView, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.GroupBox1, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -148,18 +151,18 @@ Partial Class ReporteDeCobrosForm
         Me.lblTitulo.TabIndex = 1
         Me.lblTitulo.Text = "INFORME DE COBROS"
         '
-        'ReporteVentasView
+        'rptvCobros
         '
-        Me.ReporteVentasView.ActiveViewIndex = -1
-        Me.ReporteVentasView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.ReporteVentasView.Cursor = System.Windows.Forms.Cursors.Default
-        Me.ReporteVentasView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ReporteVentasView.Location = New System.Drawing.Point(3, 149)
-        Me.ReporteVentasView.Name = "ReporteVentasView"
-        Me.ReporteVentasView.ShowCloseButton = False
-        Me.ReporteVentasView.Size = New System.Drawing.Size(1216, 677)
-        Me.ReporteVentasView.TabIndex = 5
-        Me.ReporteVentasView.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        Me.rptvCobros.ActiveViewIndex = -1
+        Me.rptvCobros.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.rptvCobros.Cursor = System.Windows.Forms.Cursors.Default
+        Me.rptvCobros.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.rptvCobros.Location = New System.Drawing.Point(3, 149)
+        Me.rptvCobros.Name = "rptvCobros"
+        Me.rptvCobros.ShowCloseButton = False
+        Me.rptvCobros.Size = New System.Drawing.Size(1216, 677)
+        Me.rptvCobros.TabIndex = 7
+        Me.rptvCobros.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'ReporteDeCobrosForm
         '
@@ -181,6 +184,7 @@ Partial Class ReporteDeCobrosForm
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -194,6 +198,7 @@ Partial Class ReporteDeCobrosForm
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblTitulo As Label
-    Friend WithEvents ReporteVentasView As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents CobrosReporte21 As CobrosReporte2
+    Friend WithEvents BindingSource1 As BindingSource
+    Friend WithEvents rptvCobros As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class

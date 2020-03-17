@@ -128,7 +128,7 @@ Public Class TicketsForm
         End Try
     End Sub
     Private Function validarNros() As Boolean
-        Dim dv As DataView
+        'Dim dv As DataView
         If CInt(txtDesde.Text) = 0 And CInt(txtHasta.Text) = 0 Then
 
             Dim dv2 As New DataView(list.Tables("tabla"))

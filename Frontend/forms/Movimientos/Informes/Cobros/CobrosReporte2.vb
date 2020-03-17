@@ -110,7 +110,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property DetailSection5() As CrystalDecisions.CrystalReports.Engine.Section
+    Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
         Get
             Return Me.ReportDefinition.Sections(7)
         End Get
@@ -118,17 +118,9 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Section4() As CrystalDecisions.CrystalReports.Engine.Section
-        Get
-            Return Me.ReportDefinition.Sections(8)
-        End Get
-    End Property
-    
-    <Browsable(false),  _
-     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
     Public ReadOnly Property Section5() As CrystalDecisions.CrystalReports.Engine.Section
         Get
-            Return Me.ReportDefinition.Sections(9)
+            Return Me.ReportDefinition.Sections(8)
         End Get
     End Property
     
@@ -142,7 +134,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_Cobros_inicioC() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Cobros_TotalFacturaSumaRpt() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(1)
         End Get
@@ -150,7 +142,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_Cobros_finC() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Cobros_TotalDeTotalPagado() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(2)
         End Get
@@ -158,7 +150,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_ResumenGeneral_inicio() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Cobros_fechaInicio() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(3)
         End Get
@@ -166,7 +158,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_ResumenGeneral_fin() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Cobros_fechaFin() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(4)
         End Get
@@ -174,7 +166,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_ResumenGeneral_estado() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_ResumenGeneral_inicio() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(5)
         End Get
@@ -182,7 +174,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_ResumenGeneral_unidad() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_ResumenGeneral_fin() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(6)
         End Get
@@ -190,7 +182,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_ResumenGeneral_tipov() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_ResumenGeneral_estado() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(7)
         End Get
@@ -198,7 +190,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_anulaciones_inicioA() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_ResumenGeneral_unidad() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(8)
         End Get
@@ -206,7 +198,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_anulaciones_finA() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_ResumenGeneral_tipov() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(9)
         End Get
@@ -214,7 +206,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_dsa_hasta() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_anulaciones_inicioA() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(10)
         End Get
@@ -222,7 +214,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_informeChequesBoletas_inicioCh() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_anulaciones_finA() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(11)
         End Get
@@ -230,7 +222,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_informeChequesBoletas_finCh() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_informeChequesBoletas_inicioCh() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(12)
         End Get
@@ -238,7 +230,7 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_reposicionesInforme_inicioR() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_informeChequesBoletas_finCh() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(13)
         End Get
@@ -246,9 +238,17 @@ Public Class CobrosReporte2
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_reposicionesInforme_finR() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_reposicionesInforme_inicioR() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(14)
+        End Get
+    End Property
+    
+    <Browsable(false),  _
+     DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
+    Public ReadOnly Property Parameter_reposicionesInforme_finR() As CrystalDecisions.[Shared].IParameterField
+        Get
+            Return Me.DataDefinition.ParameterFields(15)
         End Get
     End Property
 End Class

@@ -8,8 +8,9 @@ Public Class NumLetra
         Dim b, paso As Integer
 
         Dim expresion, entero, deci, flag As String
-
-
+        expresion = ""
+        entero = ""
+        deci = ""
 
         flag = "N"
 

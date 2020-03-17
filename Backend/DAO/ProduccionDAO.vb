@@ -89,9 +89,11 @@ Public Class ProduccionDAO
             End If
         Catch ex As Exception
             Throw New DAOException(ex.ToString)
+            Return False
         Finally
             con.Close()
         End Try
+        Return False
     End Function
 
     Public Function controlarEntradaTemplado2(idProd As Integer) As Boolean

@@ -29,7 +29,7 @@ Public Class PruebaImagens
             Dim user = "sistema"
             Dim pass = "system"
             'System.IO.File.Copy(path, "\\192.168.0.10\Z:\12.jpg")
-            '''pbPlano.Image.SaveAs()
+            ''pbPlano.Image.SaveAs()
             ''Dim credentials As System.Net.NetworkCredential = System.Net.CredentialCache.DefaultNetworkCredentials
             My.Computer.Network.UploadFile(path, fullPath)
 
