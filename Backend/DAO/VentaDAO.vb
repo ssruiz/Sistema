@@ -208,6 +208,26 @@ Public Class VentaDAO
         End Try
     End Function
 
+    Public Function getFacturasDescuentos(inicio As Date, fin As Date) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spfacturasdescuentos(@inicio,@fin);"
+            Dim cmd As New MySqlCommand(mysql, con)
+            cmd.Parameters.AddWithValue("@inicio", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
 
     Public Function getVenta(ByVal id As String) As Venta
         Try

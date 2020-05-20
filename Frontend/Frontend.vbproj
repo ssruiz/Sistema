@@ -385,11 +385,23 @@
       <DependentUpon>CRStockPorMes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="forms\Movimientos\Informes\Stock\StockPorDiaForm.Designer.vb">
+      <DependentUpon>StockPorDiaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\Stock\StockPorDiaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\Movimientos\Informes\Stock\StockPorMesForm.Designer.vb">
       <DependentUpon>StockPorMesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\Movimientos\Informes\Stock\StockPorMesForm.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\Movimientos\Informes\Stock\StockSalidasRangoRpt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockSalidasRangoRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="forms\Movimientos\Pagos\CRFacturasAn.vb">
       <AutoGen>True</AutoGen>
@@ -823,6 +835,42 @@
     <Compile Include="forms\Movimientos\Ventas\VerPlano.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\ultimos reportes\Reporte descuentos\DescuentoPorFacturaForm.Designer.vb">
+      <DependentUpon>DescuentoPorFacturaForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reporte descuentos\DescuentoPorFacturaForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reporte descuentos\RptDescuentoPorFactura.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptDescuentoPorFactura.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reportes de produccion\MesaCorteInformeForm.Designer.vb">
+      <DependentUpon>MesaCorteInformeForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reportes de produccion\MesaCorteInformeForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reportes de produccion\MesaDeCorteReporte.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MesaDeCorteReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reportes de produccion\PulidasReporte.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PulidasReporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reportes de produccion\PulidoraInformeForm.Designer.vb">
+      <DependentUpon>PulidoraInformeForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\ultimos reportes\Reportes de produccion\PulidoraInformeForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\ultimos reportes\ReporteSaldoProduccionForm.Designer.vb">
       <DependentUpon>ReporteSaldoProduccionForm.vb</DependentUpon>
     </Compile>
@@ -980,8 +1028,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRStockPorMes.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\Stock\StockPorDiaForm.resx">
+      <DependentUpon>StockPorDiaForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Informes\Stock\StockPorMesForm.resx">
       <DependentUpon>StockPorMesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Movimientos\Informes\Stock\StockSalidasRangoRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockSalidasRangoRpt.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Pagos\CRFacturasAn.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1216,6 +1271,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Movimientos\Ventas\VerPlano.resx">
       <DependentUpon>VerPlano.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\Reporte descuentos\DescuentoPorFacturaForm.resx">
+      <DependentUpon>DescuentoPorFacturaForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\Reporte descuentos\RptDescuentoPorFactura.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptDescuentoPorFactura.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\Reportes de produccion\MesaCorteInformeForm.resx">
+      <DependentUpon>MesaCorteInformeForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\Reportes de produccion\MesaDeCorteReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MesaDeCorteReporte.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\Reportes de produccion\PulidasReporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PulidasReporte.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ultimos reportes\Reportes de produccion\PulidoraInformeForm.resx">
+      <DependentUpon>PulidoraInformeForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\ultimos reportes\ReporteSaldoProduccionForm.resx">
       <DependentUpon>ReporteSaldoProduccionForm.vb</DependentUpon>

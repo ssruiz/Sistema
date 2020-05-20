@@ -42,6 +42,8 @@ Public Class StockPorMesForm
 
 
         filtro = cbTipo.SelectedValue.ToString
+
+
         Dim sucursalt = cbDepo.Text
         Dim daosuc As New SucursalDAO
         Dim suc = daosuc.getSucursalNombre(sucursalt)

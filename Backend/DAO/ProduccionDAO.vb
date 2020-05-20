@@ -132,10 +132,20 @@ Public Class ProduccionDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             Dim mysql = ""
+
             If rotura = 0 Then
                 mysql = "UPDATE `producir`.`corte` SET `corteMesa` = @mesa, `corteNroOpti` = IF(`corteNroOpti` IS NULL , 0 , `corteNroOpti`+1), `corteUsuUpd` = @user, `corteFchUpd` = @fecha, `corteEstado` = 'T' WHERE `pCod` = @prod;"
             Else
                 mysql = "UPDATE `producir`.`corte` SET `corteMesa` = @mesa, `corteNroOpti` = IF(`corteNroOpti` IS NULL , 0 , `corteNroOpti`+1), `corteUsuUpd` = @user,`corteRotFecha` = @fecha, `corteFchUpd` = @fecha, `corteEstado` = 'R' WHERE `pCod` = @prod;"
+
+                Dim mysql2 = "INSERT INTO `producir`.`roturascorte` (`idProd`, `fechaRotura`, `mesaRotura`) VALUES (@prod, NOW(), @mesa);"
+                Dim cmd2 As New MySqlCommand(mysql2, con)
+                cmd2.Parameters.AddWithValue("@mesa", mesa)
+                ' cmd2.Parameters.AddWithValue("@user", Sesion.Usuario)
+                'cmd2.Parameters.AddWithValue("@fecha", Date.Now)
+                cmd2.Parameters.AddWithValue("@prod", idProd)
+                cmd2.ExecuteNonQuery()
+
             End If
 
             Dim cmd As New MySqlCommand(mysql, con)
@@ -271,6 +281,14 @@ Public Class ProduccionDAO
             Else
                 mysql = "UPDATE `producir`.`pulida` SET `pulidora` = @puli, `nroOpti` = IF(`nroOpti` IS NULL , 1 , `nroOpti`+1), `puliUsrUpd` = @user, `puliRotFch` = @fecha, `puliFchUpd` = @fecha, `puliEstado` = 'R' WHERE `pCod` = @prod;"
 
+
+                Dim mysql2 = "INSERT INTO `producir`.`roturaspulida` (`idProd`, `fechaRotura`, `pulidoraRotura`) VALUES (@prod, NOW(), @puli);"
+                Dim cmd2 As New MySqlCommand(mysql2, con)
+                cmd2.Parameters.AddWithValue("@puli", pulidora)
+                ' cmd2.Parameters.AddWithValue("@user", Sesion.Usuario)
+                'cmd2.Parameters.AddWithValue("@fecha", Date.Now)
+                cmd2.Parameters.AddWithValue("@prod", idProd)
+                cmd2.ExecuteNonQuery()
             End If
 
             Dim cmd As New MySqlCommand(mysql, con)
@@ -1303,6 +1321,131 @@ Public Class ProduccionDAO
             Dim mysql = "CALL spsaldoclig2();"
             Dim cmd As New MySqlCommand(mysql, con)
 
+
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getCortesTerminados(ByVal inicio As Date, ByVal fin As Date, ByVal mesa As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spmesascorteresumen(@inicio,@fin,@mesa);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@inicio", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.Parameters.AddWithValue("@mesa", mesa)
+
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getCortesRoturas(ByVal inicio As Date, ByVal fin As Date, ByVal mesa As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spmesascorteresumenroturas(@inicio,@fin,@mesa);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@inicio", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.Parameters.AddWithValue("@mesa", mesa)
+
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getPulidasTerminadas(ByVal inicio As Date, ByVal fin As Date, ByVal pulidora As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL sppulidasterminadas(@inicio,@fin,@pulidora);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@inicio", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.Parameters.AddWithValue("@pulidora", pulidora)
+
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getPulidasRoturas(ByVal inicio As Date, ByVal fin As Date, ByVal pulidora As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL sppulidasroturas(@inicio,@fin,@pulidora);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@inicio", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.Parameters.AddWithValue("@pulidora", pulidora)
+
+
+
+            Dim adp As New MySqlDataAdapter(cmd)
+            ds.Tables.Add("tabla")
+            adp.Fill(ds.Tables("tabla"))
+        Catch ex As Exception
+            Throw New DAOException(ex.ToString)
+        Finally
+            con.Close()
+        End Try
+        Return ds
+    End Function
+
+    Public Function getSalidas(ByVal inicio As Date, ByVal fin As Date, ByVal tipo As Integer) As DataSet
+        Dim ds As New DataSet
+        Try
+            con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
+            con.Open()
+            Dim mysql = "CALL spstocksalidasdia(@tipo, @inicio,@fin);"
+            Dim cmd As New MySqlCommand(mysql, con)
+
+            cmd.Parameters.AddWithValue("@inicio", inicio)
+            cmd.Parameters.AddWithValue("@fin", fin)
+            cmd.Parameters.AddWithValue("@tipo", tipo)
 
 
 

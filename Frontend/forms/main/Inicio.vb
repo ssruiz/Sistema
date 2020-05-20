@@ -404,4 +404,58 @@ Public Class Inicio
         f.Dispose()
 
     End Sub
+
+    Private Sub Mesa1ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Mesa1ToolStripMenuItem.Click
+        Dim f As New MesaCorteInformeForm
+        f.mesa = 1
+        f.ShowDialog()
+        f.Dispose()
+
+    End Sub
+
+    Private Sub Mesa2ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Mesa2ToolStripMenuItem.Click
+        Dim f As New MesaCorteInformeForm
+        f.mesa = 2
+        f.ShowDialog()
+        f.Dispose()
+
+    End Sub
+
+    Private Sub Pulidora1ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Pulidora1ToolStripMenuItem.Click
+        Dim f As New PulidoraInformeForm
+
+        f.pulidora = 1
+        f.ShowDialog()
+        f.Dispose()
+    End Sub
+
+    Private Sub Pulidora2ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Pulidora2ToolStripMenuItem.Click
+        Dim f As New PulidoraInformeForm
+
+        f.pulidora = 2
+        f.ShowDialog()
+        f.Dispose()
+    End Sub
+
+    Private Sub Pulidora3ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Pulidora3ToolStripMenuItem.Click
+        Dim f As New PulidoraInformeForm
+
+        f.pulidora = 3
+        f.ShowDialog()
+        f.Dispose()
+    End Sub
+
+    Private Sub DescuentosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DescuentosToolStripMenuItem.Click
+        Dim f As New DescuentoPorFacturaForm
+        f.ShowDialog()
+        f.Dispose()
+
+    End Sub
+
+    Private Sub SalidasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalidasToolStripMenuItem.Click
+        Dim f As New StockPorDiaForm
+        f.ShowDialog()
+        f.Dispose()
+
+    End Sub
 End Class

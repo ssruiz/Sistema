@@ -7,6 +7,7 @@ Public Class ReporteDeCobrosForm
     Dim totalFacturas = 0
     Dim totalPagado = 0
     Dim totalPagado2 = 0
+
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         Try
             diccionarioMontos = New Dictionary(Of Integer, Double)
@@ -14,6 +15,10 @@ Public Class ReporteDeCobrosForm
             totalFacturas = 0
             totalPagado = 0
             totalPagado2 = 0
+
+
+
+
             Dim objreporte As New CobrosReporte2
             Dim daoc As New CobrosDAO
             Dim pagos = daoc.getCobros(dpInicio.Value, dpFin.Value)
@@ -111,7 +116,7 @@ Public Class ReporteDeCobrosForm
 
                         diccionarioMontosSinCC.Add(ventaC, suma + pValue)
                     End If
-                    totalFacturas += aux
+                    ' totalFacturas += aux
                 End If
 
             Else
@@ -137,10 +142,13 @@ Public Class ReporteDeCobrosForm
                         'End If
                         diccionarioMontosSinCC.Add(ventaC, suma)
                     End If
-                    totalFacturas += aux
+
+                    If tipo <> "Credito Otorgado" Then
+                        totalFacturas += aux
+                    End If
                 End If
 
-            End If
+                End If
         Next row
         Return dataT
     End Function
