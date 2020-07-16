@@ -30,10 +30,6 @@ Partial Class PedidoInternoGeneral
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -49,10 +45,6 @@ Partial Class PedidoInternoGeneral
         Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -61,17 +53,25 @@ Partial Class PedidoInternoGeneral
         Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabControlPago = New System.Windows.Forms.TabControl()
         Me.tabPageInicio = New System.Windows.Forms.TabPage()
         Me.dgvPedidosDetalle = New System.Windows.Forms.DataGridView()
@@ -81,12 +81,6 @@ Partial Class PedidoInternoGeneral
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvPedidosEstado = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tabPagePedidoInterno = New System.Windows.Forms.TabPage()
@@ -96,7 +90,7 @@ Partial Class PedidoInternoGeneral
         Me.cbSoliPage2 = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblfechaPedidoInterno = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
@@ -141,12 +135,6 @@ Partial Class PedidoInternoGeneral
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvAutorizarPage = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.tabPageAnulacion = New System.Windows.Forms.TabPage()
@@ -158,35 +146,47 @@ Partial Class PedidoInternoGeneral
         Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvAnulacion = New System.Windows.Forms.DataGridView()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.tabPageDeposito = New System.Windows.Forms.TabPage()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.dgvSalidas = New System.Windows.Forms.DataGridView()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.tabInformeSalida = New System.Windows.Forms.TabPage()
+        Me.crvSalidas = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.dpHastaInforme = New System.Windows.Forms.DateTimePicker()
+        Me.dpDesdeInforme = New System.Windows.Forms.DateTimePicker()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.tabPageDeposito = New System.Windows.Forms.TabPage()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.dgvSalidas = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.tabInformeSalida = New System.Windows.Forms.TabPage()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.dpDesdeInforme = New System.Windows.Forms.DateTimePicker()
-        Me.dpHastaInforme = New System.Windows.Forms.DateTimePicker()
-        Me.crvSalidas = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabControlPago.SuspendLayout()
         Me.tabPageInicio.SuspendLayout()
         CType(Me.dgvPedidosDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -215,8 +215,8 @@ Partial Class PedidoInternoGeneral
         CType(Me.dgvSalidas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         Me.tabInformeSalida.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'tabControlPago
@@ -386,56 +386,6 @@ Partial Class PedidoInternoGeneral
         Me.dgvPedidosEstado.Size = New System.Drawing.Size(990, 234)
         Me.dgvPedidosEstado.TabIndex = 18
         '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle8.Format = "N0"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle8
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Cod"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Fecha"
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle9.Format = "N2"
-        DataGridViewCellStyle9.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle9
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Fecha"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Producto"
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle10.Format = "N2"
-        DataGridViewCellStyle10.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle10
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Producto"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Opti"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "N° Optimización"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Cantidad"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Cantidad"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Estado"
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle11
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Estado"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
@@ -455,7 +405,7 @@ Partial Class PedidoInternoGeneral
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(397, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(399, 41)
+        Me.Label13.Size = New System.Drawing.Size(326, 32)
         Me.Label13.TabIndex = 1
         Me.Label13.Text = "Estado de Pedidos Internos"
         '
@@ -497,7 +447,7 @@ Partial Class PedidoInternoGeneral
         Me.GroupBox2.Controls.Add(Me.cbSoliPage2)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.lblfechaPedidoInterno)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Location = New System.Drawing.Point(0, 46)
@@ -511,10 +461,10 @@ Partial Class PedidoInternoGeneral
         '
         Me.cbAutoP2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAutoP2.FormattingEnabled = True
-        Me.cbAutoP2.Items.AddRange(New Object() {"Marcelo Cardus", "Francisco Dominguez"})
+        Me.cbAutoP2.Items.AddRange(New Object() {"Ever Galeano", "Francisco Dominguez"})
         Me.cbAutoP2.Location = New System.Drawing.Point(735, 32)
         Me.cbAutoP2.Name = "cbAutoP2"
-        Me.cbAutoP2.Size = New System.Drawing.Size(176, 25)
+        Me.cbAutoP2.Size = New System.Drawing.Size(176, 20)
         Me.cbAutoP2.TabIndex = 16
         '
         'cbSoliPage2
@@ -524,7 +474,7 @@ Partial Class PedidoInternoGeneral
         Me.cbSoliPage2.Items.AddRange(New Object() {"Depto Producción"})
         Me.cbSoliPage2.Location = New System.Drawing.Point(404, 32)
         Me.cbSoliPage2.Name = "cbSoliPage2"
-        Me.cbSoliPage2.Size = New System.Drawing.Size(180, 25)
+        Me.cbSoliPage2.Size = New System.Drawing.Size(180, 20)
         Me.cbSoliPage2.TabIndex = 16
         '
         'Label4
@@ -534,7 +484,7 @@ Partial Class PedidoInternoGeneral
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label4.Location = New System.Drawing.Point(625, 35)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(107, 19)
+        Me.Label4.Size = New System.Drawing.Size(87, 13)
         Me.Label4.TabIndex = 15
         Me.Label4.Text = "Autorizado por:"
         '
@@ -545,22 +495,22 @@ Partial Class PedidoInternoGeneral
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label5.Location = New System.Drawing.Point(296, 35)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 19)
+        Me.Label5.Size = New System.Drawing.Size(82, 13)
         Me.Label5.TabIndex = 14
         Me.Label5.Text = "Solicitado por:"
         '
-        'Label6
+        'lblfechaPedidoInterno
         '
-        Me.Label6.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label6.Location = New System.Drawing.Point(81, 25)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label6.Name = "Label6"
-        Me.Label6.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Label6.Size = New System.Drawing.Size(152, 30)
-        Me.Label6.TabIndex = 13
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblfechaPedidoInterno.BackColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.lblfechaPedidoInterno.Font = New System.Drawing.Font("Segoe UI", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblfechaPedidoInterno.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblfechaPedidoInterno.Location = New System.Drawing.Point(81, 25)
+        Me.lblfechaPedidoInterno.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblfechaPedidoInterno.Name = "lblfechaPedidoInterno"
+        Me.lblfechaPedidoInterno.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblfechaPedidoInterno.Size = New System.Drawing.Size(152, 30)
+        Me.lblfechaPedidoInterno.TabIndex = 13
+        Me.lblfechaPedidoInterno.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label7
         '
@@ -569,7 +519,7 @@ Partial Class PedidoInternoGeneral
         Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label7.Location = New System.Drawing.Point(34, 32)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(45, 19)
+        Me.Label7.Size = New System.Drawing.Size(36, 13)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Fecha"
         '
@@ -592,7 +542,7 @@ Partial Class PedidoInternoGeneral
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
         Me.lblTitulo.Location = New System.Drawing.Point(478, 0)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(228, 41)
+        Me.lblTitulo.Size = New System.Drawing.Size(186, 32)
         Me.lblTitulo.TabIndex = 1
         Me.lblTitulo.Text = "Pedido Interno"
         '
@@ -632,7 +582,7 @@ Partial Class PedidoInternoGeneral
         Me.cbProvP2.Items.AddRange(New Object() {"Depto Producción"})
         Me.cbProvP2.Location = New System.Drawing.Point(95, 100)
         Me.cbProvP2.Name = "cbProvP2"
-        Me.cbProvP2.Size = New System.Drawing.Size(135, 25)
+        Me.cbProvP2.Size = New System.Drawing.Size(135, 20)
         Me.cbProvP2.TabIndex = 16
         '
         'Label1
@@ -642,7 +592,7 @@ Partial Class PedidoInternoGeneral
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label1.Location = New System.Drawing.Point(9, 103)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(72, 19)
+        Me.Label1.Size = New System.Drawing.Size(60, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Proveedor"
         '
@@ -662,7 +612,7 @@ Partial Class PedidoInternoGeneral
         '
         Me.txtCantidad.Location = New System.Drawing.Point(131, 100)
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(138, 25)
+        Me.txtCantidad.Size = New System.Drawing.Size(138, 21)
         Me.txtCantidad.TabIndex = 17
         '
         'Label2
@@ -672,7 +622,7 @@ Partial Class PedidoInternoGeneral
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label2.Location = New System.Drawing.Point(49, 106)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 19)
+        Me.Label2.Size = New System.Drawing.Size(53, 13)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Cantidad"
         '
@@ -737,7 +687,7 @@ Partial Class PedidoInternoGeneral
         '
         Me.txtCodProd.Location = New System.Drawing.Point(203, 37)
         Me.txtCodProd.Name = "txtCodProd"
-        Me.txtCodProd.Size = New System.Drawing.Size(221, 25)
+        Me.txtCodProd.Size = New System.Drawing.Size(221, 21)
         Me.txtCodProd.TabIndex = 17
         Me.txtCodProd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -748,7 +698,7 @@ Partial Class PedidoInternoGeneral
         Me.Label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label10.Location = New System.Drawing.Point(87, 189)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(115, 19)
+        Me.Label10.Size = New System.Drawing.Size(93, 13)
         Me.Label10.TabIndex = 14
         Me.Label10.Text = "Stock Disponible"
         '
@@ -759,7 +709,7 @@ Partial Class PedidoInternoGeneral
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label9.Location = New System.Drawing.Point(87, 143)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(83, 19)
+        Me.Label9.Size = New System.Drawing.Size(66, 13)
         Me.Label9.TabIndex = 14
         Me.Label9.Text = "Descripción"
         '
@@ -770,7 +720,7 @@ Partial Class PedidoInternoGeneral
         Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label8.Location = New System.Drawing.Point(87, 95)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(54, 19)
+        Me.Label8.Size = New System.Drawing.Size(45, 13)
         Me.Label8.TabIndex = 14
         Me.Label8.Text = "Código"
         '
@@ -781,7 +731,7 @@ Partial Class PedidoInternoGeneral
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label3.Location = New System.Drawing.Point(87, 40)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 19)
+        Me.Label3.Size = New System.Drawing.Size(53, 13)
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Producto"
         '
@@ -837,14 +787,14 @@ Partial Class PedidoInternoGeneral
         '
         Me.txtOt.Location = New System.Drawing.Point(501, 45)
         Me.txtOt.Name = "txtOt"
-        Me.txtOt.Size = New System.Drawing.Size(138, 25)
+        Me.txtOt.Size = New System.Drawing.Size(138, 21)
         Me.txtOt.TabIndex = 17
         '
         'txtNroOpti
         '
         Me.txtNroOpti.Location = New System.Drawing.Point(162, 48)
         Me.txtNroOpti.Name = "txtNroOpti"
-        Me.txtNroOpti.Size = New System.Drawing.Size(138, 25)
+        Me.txtNroOpti.Size = New System.Drawing.Size(138, 21)
         Me.txtNroOpti.TabIndex = 17
         '
         'Label12
@@ -854,7 +804,7 @@ Partial Class PedidoInternoGeneral
         Me.Label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label12.Location = New System.Drawing.Point(437, 48)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(58, 19)
+        Me.Label12.Size = New System.Drawing.Size(46, 13)
         Me.Label12.TabIndex = 0
         Me.Label12.Text = "Nro. OT"
         '
@@ -865,7 +815,7 @@ Partial Class PedidoInternoGeneral
         Me.Label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label11.Location = New System.Drawing.Point(31, 51)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(125, 19)
+        Me.Label11.Size = New System.Drawing.Size(99, 13)
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "Nro. Optimización"
         '
@@ -1155,56 +1105,6 @@ Partial Class PedidoInternoGeneral
         Me.dgvAutorizarPage.Size = New System.Drawing.Size(990, 234)
         Me.dgvAutorizarPage.TabIndex = 20
         '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "ID"
-        DataGridViewCellStyle27.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle27.Format = "N0"
-        DataGridViewCellStyle27.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle27
-        Me.DataGridViewTextBoxColumn15.HeaderText = "Cod"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Fecha"
-        DataGridViewCellStyle28.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle28.Format = "N2"
-        DataGridViewCellStyle28.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle28
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Fecha"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Producto"
-        DataGridViewCellStyle29.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle29.Format = "N2"
-        DataGridViewCellStyle29.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn17.DefaultCellStyle = DataGridViewCellStyle29
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Producto"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "Opti"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "N° Optimización"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.DataPropertyName = "Cantidad"
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Cantidad"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "Estado"
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle30
-        Me.DataGridViewTextBoxColumn20.HeaderText = "Estado"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
@@ -1224,7 +1124,7 @@ Partial Class PedidoInternoGeneral
         Me.Label14.ForeColor = System.Drawing.Color.White
         Me.Label14.Location = New System.Drawing.Point(397, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(469, 41)
+        Me.Label14.Size = New System.Drawing.Size(386, 32)
         Me.Label14.TabIndex = 1
         Me.Label14.Text = "Autorización -  Pedidos Internos"
         '
@@ -1388,56 +1288,6 @@ Partial Class PedidoInternoGeneral
         Me.dgvAnulacion.Size = New System.Drawing.Size(990, 234)
         Me.dgvAnulacion.TabIndex = 23
         '
-        'DataGridViewTextBoxColumn26
-        '
-        Me.DataGridViewTextBoxColumn26.DataPropertyName = "ID"
-        DataGridViewCellStyle39.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle39.Format = "N0"
-        DataGridViewCellStyle39.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle39
-        Me.DataGridViewTextBoxColumn26.HeaderText = "Cod"
-        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
-        '
-        'DataGridViewTextBoxColumn27
-        '
-        Me.DataGridViewTextBoxColumn27.DataPropertyName = "Fecha"
-        DataGridViewCellStyle40.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle40.Format = "N2"
-        DataGridViewCellStyle40.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn27.DefaultCellStyle = DataGridViewCellStyle40
-        Me.DataGridViewTextBoxColumn27.HeaderText = "Fecha"
-        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
-        '
-        'DataGridViewTextBoxColumn28
-        '
-        Me.DataGridViewTextBoxColumn28.DataPropertyName = "Producto"
-        DataGridViewCellStyle41.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle41.Format = "N2"
-        DataGridViewCellStyle41.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn28.DefaultCellStyle = DataGridViewCellStyle41
-        Me.DataGridViewTextBoxColumn28.HeaderText = "Producto"
-        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
-        '
-        'DataGridViewTextBoxColumn29
-        '
-        Me.DataGridViewTextBoxColumn29.DataPropertyName = "Opti"
-        Me.DataGridViewTextBoxColumn29.HeaderText = "N° Optimización"
-        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.DataPropertyName = "Cantidad"
-        Me.DataGridViewTextBoxColumn30.HeaderText = "Cantidad"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.DataPropertyName = "Estado"
-        DataGridViewCellStyle42.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        Me.DataGridViewTextBoxColumn31.DefaultCellStyle = DataGridViewCellStyle42
-        Me.DataGridViewTextBoxColumn31.HeaderText = "Estado"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        '
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
@@ -1457,7 +1307,7 @@ Partial Class PedidoInternoGeneral
         Me.Label15.ForeColor = System.Drawing.Color.White
         Me.Label15.Location = New System.Drawing.Point(417, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(431, 41)
+        Me.Label15.Size = New System.Drawing.Size(355, 32)
         Me.Label15.TabIndex = 1
         Me.Label15.Text = "Anulación -  Pedidos Internos"
         '
@@ -1534,6 +1384,243 @@ Partial Class PedidoInternoGeneral
         Me.dgvSalidas.Size = New System.Drawing.Size(990, 234)
         Me.dgvSalidas.TabIndex = 24
         '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.Panel5.Controls.Add(Me.Label16)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(3, 3)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1241, 46)
+        Me.Panel5.TabIndex = 8
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.BackColor = System.Drawing.Color.Transparent
+        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.White
+        Me.Label16.Location = New System.Drawing.Point(330, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(468, 32)
+        Me.Label16.TabIndex = 1
+        Me.Label16.Text = "Salida de Materiales -  Pedidos Internos"
+        '
+        'tabInformeSalida
+        '
+        Me.tabInformeSalida.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
+        Me.tabInformeSalida.Controls.Add(Me.crvSalidas)
+        Me.tabInformeSalida.Controls.Add(Me.GroupBox7)
+        Me.tabInformeSalida.Controls.Add(Me.Panel6)
+        Me.tabInformeSalida.Location = New System.Drawing.Point(4, 39)
+        Me.tabInformeSalida.Name = "tabInformeSalida"
+        Me.tabInformeSalida.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabInformeSalida.Size = New System.Drawing.Size(1247, 805)
+        Me.tabInformeSalida.TabIndex = 5
+        Me.tabInformeSalida.Text = "Informe Salidas"
+        '
+        'crvSalidas
+        '
+        Me.crvSalidas.ActiveViewIndex = -1
+        Me.crvSalidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.crvSalidas.Cursor = System.Windows.Forms.Cursors.Default
+        Me.crvSalidas.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.crvSalidas.Location = New System.Drawing.Point(3, 134)
+        Me.crvSalidas.Name = "crvSalidas"
+        Me.crvSalidas.ShowCloseButton = False
+        Me.crvSalidas.ShowLogo = False
+        Me.crvSalidas.Size = New System.Drawing.Size(1241, 668)
+        Me.crvSalidas.TabIndex = 19
+        Me.crvSalidas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.btnBuscar)
+        Me.GroupBox7.Controls.Add(Me.dpHastaInforme)
+        Me.GroupBox7.Controls.Add(Me.dpDesdeInforme)
+        Me.GroupBox7.Controls.Add(Me.Label18)
+        Me.GroupBox7.Controls.Add(Me.Label19)
+        Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox7.Location = New System.Drawing.Point(3, 49)
+        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(0)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(1241, 85)
+        Me.GroupBox7.TabIndex = 18
+        Me.GroupBox7.TabStop = False
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBuscar.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscar.ForeColor = System.Drawing.SystemColors.Control
+        Me.btnBuscar.Location = New System.Drawing.Point(772, 19)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(140, 42)
+        Me.btnBuscar.TabIndex = 18
+        Me.btnBuscar.Text = "BUSCAR"
+        Me.btnBuscar.UseVisualStyleBackColor = False
+        '
+        'dpHastaInforme
+        '
+        Me.dpHastaInforme.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dpHastaInforme.Location = New System.Drawing.Point(446, 29)
+        Me.dpHastaInforme.Name = "dpHastaInforme"
+        Me.dpHastaInforme.Size = New System.Drawing.Size(200, 21)
+        Me.dpHastaInforme.TabIndex = 17
+        '
+        'dpDesdeInforme
+        '
+        Me.dpDesdeInforme.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dpDesdeInforme.Location = New System.Drawing.Point(99, 29)
+        Me.dpDesdeInforme.Name = "dpDesdeInforme"
+        Me.dpDesdeInforme.Size = New System.Drawing.Size(200, 21)
+        Me.dpDesdeInforme.TabIndex = 16
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label18.Location = New System.Drawing.Point(385, 35)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(43, 13)
+        Me.Label18.TabIndex = 15
+        Me.Label18.Text = "HASTA:"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label19.Location = New System.Drawing.Point(39, 35)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(44, 13)
+        Me.Label19.TabIndex = 14
+        Me.Label19.Text = "DESDE:"
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
+        Me.Panel6.Controls.Add(Me.Label17)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel6.Location = New System.Drawing.Point(3, 3)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1241, 46)
+        Me.Panel6.TabIndex = 9
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.BackColor = System.Drawing.Color.Transparent
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.White
+        Me.Label17.Location = New System.Drawing.Point(480, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(229, 32)
+        Me.Label17.TabIndex = 1
+        Me.Label17.Text = "INFORME SALIDAS"
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID"
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle8.Format = "N0"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle8
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Cod"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Fecha"
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle9
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Fecha"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Producto"
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle10.Format = "N2"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle10
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Producto"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Opti"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "N° Optimización"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Cantidad"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Cantidad"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Estado"
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle11
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Estado"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn26
+        '
+        Me.DataGridViewTextBoxColumn26.DataPropertyName = "ID"
+        DataGridViewCellStyle39.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle39.Format = "N0"
+        DataGridViewCellStyle39.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle39
+        Me.DataGridViewTextBoxColumn26.HeaderText = "Cod"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        '
+        'DataGridViewTextBoxColumn27
+        '
+        Me.DataGridViewTextBoxColumn27.DataPropertyName = "Fecha"
+        DataGridViewCellStyle40.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle40.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn27.DefaultCellStyle = DataGridViewCellStyle40
+        Me.DataGridViewTextBoxColumn27.HeaderText = "Fecha"
+        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
+        '
+        'DataGridViewTextBoxColumn28
+        '
+        Me.DataGridViewTextBoxColumn28.DataPropertyName = "Producto"
+        DataGridViewCellStyle41.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle41.Format = "N2"
+        DataGridViewCellStyle41.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn28.DefaultCellStyle = DataGridViewCellStyle41
+        Me.DataGridViewTextBoxColumn28.HeaderText = "Producto"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        Me.DataGridViewTextBoxColumn29.DataPropertyName = "Opti"
+        Me.DataGridViewTextBoxColumn29.HeaderText = "N° Optimización"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        '
+        'DataGridViewTextBoxColumn30
+        '
+        Me.DataGridViewTextBoxColumn30.DataPropertyName = "Cantidad"
+        Me.DataGridViewTextBoxColumn30.HeaderText = "Cantidad"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        '
+        'DataGridViewTextBoxColumn31
+        '
+        Me.DataGridViewTextBoxColumn31.DataPropertyName = "Estado"
+        DataGridViewCellStyle42.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.DataGridViewTextBoxColumn31.DefaultCellStyle = DataGridViewCellStyle42
+        Me.DataGridViewTextBoxColumn31.HeaderText = "Estado"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        '
         'DataGridViewTextBoxColumn32
         '
         Me.DataGridViewTextBoxColumn32.DataPropertyName = "ID"
@@ -1548,7 +1635,6 @@ Partial Class PedidoInternoGeneral
         '
         Me.DataGridViewTextBoxColumn33.DataPropertyName = "Fecha"
         DataGridViewCellStyle47.Font = New System.Drawing.Font("Segoe UI", 10.2!)
-        DataGridViewCellStyle47.Format = "N2"
         DataGridViewCellStyle47.NullValue = Nothing
         Me.DataGridViewTextBoxColumn33.DefaultCellStyle = DataGridViewCellStyle47
         Me.DataGridViewTextBoxColumn33.HeaderText = "Fecha"
@@ -1584,148 +1670,57 @@ Partial Class PedidoInternoGeneral
         Me.DataGridViewTextBoxColumn37.HeaderText = "Estado"
         Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
         '
-        'Panel5
+        'DataGridViewTextBoxColumn15
         '
-        Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.Panel5.Controls.Add(Me.Label16)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(3, 3)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(0)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1241, 46)
-        Me.Panel5.TabIndex = 8
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "ID"
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle27.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle27
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Cod"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
         '
-        'Label16
+        'DataGridViewTextBoxColumn16
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.BackColor = System.Drawing.Color.Transparent
-        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.ForeColor = System.Drawing.Color.White
-        Me.Label16.Location = New System.Drawing.Point(330, 0)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(575, 41)
-        Me.Label16.TabIndex = 1
-        Me.Label16.Text = "Salida de Materiales -  Pedidos Internos"
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Fecha"
+        DataGridViewCellStyle28.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle28.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle28
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Fecha"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
         '
-        'tabInformeSalida
+        'DataGridViewTextBoxColumn17
         '
-        Me.tabInformeSalida.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
-        Me.tabInformeSalida.Controls.Add(Me.crvSalidas)
-        Me.tabInformeSalida.Controls.Add(Me.GroupBox7)
-        Me.tabInformeSalida.Controls.Add(Me.Panel6)
-        Me.tabInformeSalida.Location = New System.Drawing.Point(4, 39)
-        Me.tabInformeSalida.Name = "tabInformeSalida"
-        Me.tabInformeSalida.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabInformeSalida.Size = New System.Drawing.Size(1247, 805)
-        Me.tabInformeSalida.TabIndex = 5
-        Me.tabInformeSalida.Text = "Informe Salidas"
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "Producto"
+        DataGridViewCellStyle29.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        DataGridViewCellStyle29.Format = "N2"
+        DataGridViewCellStyle29.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn17.DefaultCellStyle = DataGridViewCellStyle29
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Producto"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
         '
-        'Panel6
+        'DataGridViewTextBoxColumn18
         '
-        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.Panel6.Controls.Add(Me.Label17)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(3, 3)
-        Me.Panel6.Margin = New System.Windows.Forms.Padding(0)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1241, 46)
-        Me.Panel6.TabIndex = 9
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "Opti"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "N° Optimización"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
         '
-        'Label17
+        'DataGridViewTextBoxColumn19
         '
-        Me.Label17.AutoSize = True
-        Me.Label17.BackColor = System.Drawing.Color.Transparent
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.White
-        Me.Label17.Location = New System.Drawing.Point(480, 0)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(287, 41)
-        Me.Label17.TabIndex = 1
-        Me.Label17.Text = "INFORME SALIDAS"
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "Cantidad"
+        Me.DataGridViewTextBoxColumn19.HeaderText = "Cantidad"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
         '
-        'GroupBox7
+        'DataGridViewTextBoxColumn20
         '
-        Me.GroupBox7.Controls.Add(Me.btnBuscar)
-        Me.GroupBox7.Controls.Add(Me.dpHastaInforme)
-        Me.GroupBox7.Controls.Add(Me.dpDesdeInforme)
-        Me.GroupBox7.Controls.Add(Me.Label18)
-        Me.GroupBox7.Controls.Add(Me.Label19)
-        Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox7.Location = New System.Drawing.Point(3, 49)
-        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(0)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(1241, 85)
-        Me.GroupBox7.TabIndex = 18
-        Me.GroupBox7.TabStop = False
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label18.Location = New System.Drawing.Point(385, 35)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(55, 19)
-        Me.Label18.TabIndex = 15
-        Me.Label18.Text = "HASTA:"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Segoe UI Semibold", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label19.Location = New System.Drawing.Point(39, 35)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(54, 19)
-        Me.Label19.TabIndex = 14
-        Me.Label19.Text = "DESDE:"
-        '
-        'dpDesdeInforme
-        '
-        Me.dpDesdeInforme.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dpDesdeInforme.Location = New System.Drawing.Point(99, 29)
-        Me.dpDesdeInforme.Name = "dpDesdeInforme"
-        Me.dpDesdeInforme.Size = New System.Drawing.Size(200, 25)
-        Me.dpDesdeInforme.TabIndex = 16
-        '
-        'dpHastaInforme
-        '
-        Me.dpHastaInforme.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dpHastaInforme.Location = New System.Drawing.Point(446, 29)
-        Me.dpHastaInforme.Name = "dpHastaInforme"
-        Me.dpHastaInforme.Size = New System.Drawing.Size(200, 25)
-        Me.dpHastaInforme.TabIndex = 17
-        '
-        'crvSalidas
-        '
-        Me.crvSalidas.ActiveViewIndex = -1
-        Me.crvSalidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.crvSalidas.Cursor = System.Windows.Forms.Cursors.Default
-        Me.crvSalidas.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.crvSalidas.Location = New System.Drawing.Point(3, 134)
-        Me.crvSalidas.Name = "crvSalidas"
-        Me.crvSalidas.ShowCloseButton = False
-        Me.crvSalidas.ShowLogo = False
-        Me.crvSalidas.Size = New System.Drawing.Size(1241, 668)
-        Me.crvSalidas.TabIndex = 19
-        Me.crvSalidas.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-        '
-        'btnBuscar
-        '
-        Me.btnBuscar.BackColor = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(28, Byte), Integer))
-        Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBuscar.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscar.ForeColor = System.Drawing.SystemColors.Control
-        Me.btnBuscar.Location = New System.Drawing.Point(772, 19)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(140, 42)
-        Me.btnBuscar.TabIndex = 18
-        Me.btnBuscar.Text = "BUSCAR"
-        Me.btnBuscar.UseVisualStyleBackColor = False
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "Estado"
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Segoe UI", 10.2!)
+        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle30
+        Me.DataGridViewTextBoxColumn20.HeaderText = "Estado"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
         '
         'PedidoInternoGeneral
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(26, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(92, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1255, 848)
@@ -1771,10 +1766,10 @@ Partial Class PedidoInternoGeneral
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         Me.tabInformeSalida.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1792,7 +1787,7 @@ Partial Class PedidoInternoGeneral
     Friend WithEvents cbSoliPage2 As ComboBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
+    Friend WithEvents lblfechaPedidoInterno As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblTitulo As Label
@@ -1847,18 +1842,6 @@ Partial Class PedidoInternoGeneral
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label14 As Label
     Friend WithEvents btnAutorizar As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label15 As Label
     Friend WithEvents Button2 As Button
@@ -1869,19 +1852,7 @@ Partial Class PedidoInternoGeneral
     Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents dgvAnulacion As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
     Friend WithEvents dgvSalidas As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn36 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn37 As DataGridViewTextBoxColumn
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Label16 As Label
     Friend WithEvents Button3 As Button
@@ -1894,4 +1865,28 @@ Partial Class PedidoInternoGeneral
     Friend WithEvents Panel6 As Panel
     Friend WithEvents Label17 As Label
     Friend WithEvents btnBuscar As Button
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn36 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn37 As DataGridViewTextBoxColumn
 End Class

@@ -61,6 +61,11 @@ Public Class PedidoInternoDAO
             con = New MySqlConnection(ConexionDB.cadenaConexionBD(Sesion.Usuario, Sesion.Password))
             con.Open()
             Dim mysql = "INSERT INTO `producir`.`pedidointernocab` (`piFecha`, `piSolicitado`, `piAutorizado`, `depoCod`, `piCantidad`, `prodCod`, `piCodOpti`, `piUsrIns`, `piFchIns`,`piEstado`,`piProv`) VALUES (@fecha, @sol, @auto, @depo, @cant, @prod, @opti, @user, @fecha, 'GENERADO' , @prov); SELECT LAST_INSERT_ID();"
+            ped.prov = sucursalCod
+            Dim daoSuc As New SucursalDAO
+            Dim sucAux = daoSuc.getSucursal(sucursalCod)
+            ped.depo = sucAux.deposito
+
             Dim cmd As New MySqlCommand(mysql, con)
             cmd.Parameters.AddWithValue("@fecha", ped.fecha)
             cmd.Parameters.AddWithValue("@sol", ped.soli)

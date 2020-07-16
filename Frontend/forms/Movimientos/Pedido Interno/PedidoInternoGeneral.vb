@@ -13,6 +13,9 @@ Public Class PedidoInternoGeneral
         Me.Show()
         controlarNivel()
         cargarPedidos()
+        lblfechaPedidoInterno.Text = Date.Today.ToShortDateString
+
+
         ' Pedido Interno
         'tabControlPago.TabPages.Remove(tabControlPago.TabPages(0))
         dgvPage2.DataSource = New DataSetPedidoInterno.PedidoInternoDataTable
